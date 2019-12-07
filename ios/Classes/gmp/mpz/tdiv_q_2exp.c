@@ -1,0 +1,44 @@
+/* mpz_tdiv_q_2exp -- Divide an integer by 2**CNT.  Round the quotient
+   towards -infinity.
+
+Copyright 1991, 1993, 1994, 1996, 2001, 2002, 2012 Free Software Foundation,
+Inc.
+  */
+
+#include "../gmp.h"
+#include "../gmp-impl.h"
+#include "../gmp-impl.c"
+
+void
+mpz_tdiv_q_2exp (mpz_ptr r, mpz_srcptr u, mp_bitcnt_t cnt)
+{
+  mp_size_t un, rn;
+  mp_size_t limb_cnt;
+  mp_ptr rp;
+  mp_srcptr up;
+
+  un = SIZ(u);
+  limb_cnt = cnt / GMP_NUMB_BITS;
+  rn = ABS (un) - limb_cnt;
+
+  if (rn <= 0)
+    rn = 0;
+  else
+    {
+      rp = MPZ_REALLOC (r, rn);
+      up = PTR(u) + limb_cnt;
+
+      cnt %= GMP_NUMB_BITS;
+      if (cnt != 0)
+	{
+	  mpn_rshift (rp, up, rn, cnt);
+	  rn -= rp[rn - 1] == 0;
+	}
+      else
+	{
+	  MPN_COPY_INCR (rp, up, rn);
+	}
+    }
+
+  SIZ(r) = un >= 0 ? rn : -rn;
+}
