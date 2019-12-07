@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 
-    String command = "1+1";
+    String command = "165513123";
     for(int i=0;i<command.length;i++){
       putChar(command.codeUnitAt(i));
     }
@@ -90,11 +90,11 @@ class _MyAppState extends State<MyApp> {
       msg = e.toString();
     }
 
-    String answer = "";
+    String answer = "x";
     while(true){
       int char = getChar();
       if(char == 0) break;
-      answer += String.fromCharCode(char);
+      answer += String.fromCharCode(char)+",";
     }
 
     return MaterialApp(
@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('$msg 1 + 2 == ${nativeAdd(1, 2)} $answer'),// / ${nativeExecute()}
+          child: Text('$msg x$answer'),// / ${nativeExecute()}
         ),
       ),
     );

@@ -6,6 +6,7 @@
 #define CALCULATE_ALL_H2
 
 #define QAL
+#define gmpurandmui
 
 #include "config.h"
 #include "libqalculate/BuiltinFunctions.h"
