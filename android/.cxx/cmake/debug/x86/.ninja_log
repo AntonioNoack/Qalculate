@@ -1,0 +1,8 @@
+# ninja log v5
+0	6355	0	CMakeFiles/native_add.dir/home/antonio/AndroidStudioProjects/calculate/ios/Classes/all.c.o	d69259bca51864af
+0	19557	0	CMakeFiles/native_add.dir/home/antonio/AndroidStudioProjects/calculate/ios/Classes/qal.cpp.o	ec31d074c6c70be7
+19558	19762	0	/home/antonio/AndroidStudioProjects/calculate/app/build/calculate/intermediates/cmake/debug/obj/x86/libnative_add.so	80aac2805ebb5a94
+2	20578	0	CMakeFiles/native_add.dir/home/antonio/AndroidStudioProjects/calculate/ios/Classes/qal.cpp.o	ec31d074c6c70be7
+20579	20796	0	/home/antonio/AndroidStudioProjects/calculate/app/build/calculate/intermediates/cmake/debug/obj/x86/libnative_add.so	80aac2805ebb5a94
+5	17271	0	CMakeFiles/native_add.dir/home/antonio/AndroidStudioProjects/calculate/ios/Classes/qal.cpp.o	ec31d074c6c70be7
+17271	17523	0	/home/antonio/AndroidStudioProjects/calculate/app/build/calculate/intermediates/cmake/debug/obj/x86/libnative_add.so	80aac2805ebb5a94

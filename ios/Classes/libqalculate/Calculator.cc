@@ -4,6 +4,7 @@
     Qalculate
 
     Copyright (C) 2003-2007, 2008, 2016-2019  Hanna Knutsson (hanna.knutsson@protonmail.com)
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
@@ -51,11 +52,13 @@
 #	include <unordered_map>
 	using std::unordered_map;
 #elif 	defined(__GNUC__)
+
 #	ifndef __has_include
 #	define __has_include(x) 0
 #	endif
 
-#	if (defined(__clang__) && __has_include(<tr1/unordered_map>)) || (__GNUC__ >= 4 && __GNUC_MINOR__ >= 3)#		include <tr1/unordered_map>
+#	if (defined(__clang__) && __has_include(<tr1/unordered_map>)) || (__GNUC__ >= 4 && __GNUC_MINOR__ >= 3)
+#		include <tr1/unordered_map>
 		namespace Sgi = std;
 #		define unordered_map std::tr1::unordered_map
 #	else
@@ -173,39 +176,39 @@ long int usecs, secs, usecs2, usecs3;
 typedef void (*CREATEPLUG_PROC)();
 
 PlotParameters::PlotParameters() {
-	auto_y_min = true;std::cout << "176" << endl;
-	auto_x_min = true;std::cout << "177" << endl;
-	auto_y_max = true;std::cout << "178" << endl;
-	auto_x_max = true;std::cout << "179" << endl;
-	y_log = false;std::cout << "180" << endl;
-	x_log = false;std::cout << "181" << endl;
-	y_log_base = 10;std::cout << "182" << endl;
-	x_log_base = 10;std::cout << "183" << endl;
-	grid = false;std::cout << "184" << endl;
-	color = true;std::cout << "185" << endl;
-	linewidth = -1;std::cout << "186" << endl;
-	show_all_borders = false;std::cout << "187" << endl;
-	legend_placement = PLOT_LEGEND_TOP_RIGHT;std::cout << "188" << endl;
+	auto_y_min = true;
+	auto_x_min = true;
+	auto_y_max = true;
+	auto_x_max = true;
+	y_log = false;
+	x_log = false;
+	y_log_base = 10;
+	x_log_base = 10;
+	grid = false;
+	color = true;
+	linewidth = -1;
+	show_all_borders = false;
+	legend_placement = PLOT_LEGEND_TOP_RIGHT;
 }
 PlotDataParameters::PlotDataParameters() {
-	yaxis2 = false;std::cout << "191" << endl;
-	xaxis2 = false;std::cout << "192" << endl;
-	style = PLOT_STYLE_LINES;std::cout << "193" << endl;
-	smoothing = PLOT_SMOOTHING_NONE;std::cout << "194" << endl;
-	test_continuous = false;std::cout << "195" << endl;
+	yaxis2 = false;
+	xaxis2 = false;
+	style = PLOT_STYLE_LINES;
+	smoothing = PLOT_SMOOTHING_NONE;
+	test_continuous = false;
 }
 
 CalculatorMessage::CalculatorMessage(string message_, MessageType type_, int cat_, int stage_) {
-	mtype = type_;std::cout << "199" << endl;
-	i_stage = stage_;std::cout << "200" << endl;
-	i_cat = cat_;std::cout << "201" << endl;
-	smessage = message_;std::cout << "202" << endl;
+	mtype = type_;
+	i_stage = stage_;
+	i_cat = cat_;
+	smessage = message_;
 }
 CalculatorMessage::CalculatorMessage(const CalculatorMessage &e) {
-	mtype = e.type();std::cout << "205" << endl;
-	i_stage = e.stage();std::cout << "206" << endl;
-	i_cat = e.category();std::cout << "207" << endl;
-	smessage = e.message();std::cout << "208" << endl;
+	mtype = e.type();
+	i_stage = e.stage();
+	i_cat = e.category();
+	smessage = e.message();
 }
 string CalculatorMessage::message() const {
 	return smessage;
@@ -224,28 +227,28 @@ int CalculatorMessage::category() const {
 }
 
 void Calculator::addStringAlternative(string replacement, string standard) {
-	signs.push_back(replacement);std::cout << "227" << endl;
-	real_signs.push_back(standard);std::cout << "228" << endl;
+	signs.push_back(replacement);
+	real_signs.push_back(standard);
 }
 bool Calculator::delStringAlternative(string replacement, string standard) {
 	for(size_t i = 0; i < signs.size(); i++) {
 		if(signs[i] == replacement && real_signs[i] == standard) {
-			signs.erase(signs.begin() + i);std::cout << "233" << endl;
-			real_signs.erase(real_signs.begin() + i);std::cout << "234" << endl;
+			signs.erase(signs.begin() + i);
+			real_signs.erase(real_signs.begin() + i);
 			return true;
 		}
 	}
 	return false;
 }
 void Calculator::addDefaultStringAlternative(string replacement, string standard) {
-	default_signs.push_back(replacement);std::cout << "241" << endl;
-	default_real_signs.push_back(standard);std::cout << "242" << endl;
+	default_signs.push_back(replacement);
+	default_real_signs.push_back(standard);
 }
 bool Calculator::delDefaultStringAlternative(string replacement, string standard) {
 	for(size_t i = 0; i < default_signs.size(); i++) {
 		if(default_signs[i] == replacement && default_real_signs[i] == standard) {
-			default_signs.erase(default_signs.begin() + i);std::cout << "247" << endl;
-			default_real_signs.erase(default_real_signs.begin() + i);std::cout << "248" << endl;
+			default_signs.erase(default_signs.begin() + i);
+			default_real_signs.erase(default_real_signs.begin() + i);
 			return true;
 		}
 	}
@@ -287,15 +290,15 @@ void autoConvert(const MathStructure &morig, MathStructure &mconv, const Evaluat
 	}
 	switch(eo.auto_post_conversion) {
 		case POST_CONVERSION_OPTIMAL: {
-			mconv.set(CALCULATOR->convertToOptimalUnit(morig, eo, false));std::cout << "290" << endl;
+			mconv.set(CALCULATOR->convertToOptimalUnit(morig, eo, false));
 			break;
 		}
 		case POST_CONVERSION_BASE: {
-			mconv.set(CALCULATOR->convertToBaseUnits(morig, eo));std::cout << "294" << endl;
+			mconv.set(CALCULATOR->convertToBaseUnits(morig, eo));
 			break;
 		}
 		case POST_CONVERSION_OPTIMAL_SI: {
-			mconv.set(CALCULATOR->convertToOptimalUnit(morig, eo, true));std::cout << "298" << endl;
+			mconv.set(CALCULATOR->convertToOptimalUnit(morig, eo, true));
 			break;
 		}
 		default: {
@@ -306,67 +309,67 @@ void autoConvert(const MathStructure &morig, MathStructure &mconv, const Evaluat
 }
 
 void CalculateThread::run() {
-	enableAsynchronousCancel();std::cout << "309" << endl;
+	enableAsynchronousCancel();
 	while(true) {
-		bool b_parse = true;std::cout << "311" << endl;
+		bool b_parse = true;
 		if(!read<bool>(&b_parse)) break;
-		void *x = NULL;std::cout << "313" << endl;
+		void *x = NULL;
 		if(!read<void *>(&x) || !x) break;
-		MathStructure *mstruct = (MathStructure*) x;std::cout << "315" << endl;
-		CALCULATOR->startControl();std::cout << "316" << endl;
+		MathStructure *mstruct = (MathStructure*) x;
+		CALCULATOR->startControl();
 		if(b_parse) {
-			mstruct->setAborted();std::cout << "318" << endl;
+			mstruct->setAborted();
 			if(CALCULATOR->tmp_parsedstruct) CALCULATOR->tmp_parsedstruct->setAborted();
 			//if(CALCULATOR->tmp_tostruct) CALCULATOR->tmp_tostruct->setUndefined();
-			mstruct->set(CALCULATOR->calculate(CALCULATOR->expression_to_calculate, CALCULATOR->tmp_evaluationoptions, CALCULATOR->tmp_parsedstruct, CALCULATOR->tmp_tostruct, CALCULATOR->tmp_maketodivision));std::cout << "321" << endl;
+			mstruct->set(CALCULATOR->calculate(CALCULATOR->expression_to_calculate, CALCULATOR->tmp_evaluationoptions, CALCULATOR->tmp_parsedstruct, CALCULATOR->tmp_tostruct, CALCULATOR->tmp_maketodivision));
 		} else {
-			MathStructure meval(*mstruct);std::cout << "323" << endl;
-			mstruct->setAborted();std::cout << "324" << endl;
-			mstruct->set(CALCULATOR->calculate(meval, CALCULATOR->tmp_evaluationoptions));std::cout << "325" << endl;
+			MathStructure meval(*mstruct);
+			mstruct->setAborted();
+			mstruct->set(CALCULATOR->calculate(meval, CALCULATOR->tmp_evaluationoptions));
 		}
 		switch(CALCULATOR->tmp_proc_command) {
 			case PROC_RPN_ADD: {
-				CALCULATOR->RPNStackEnter(mstruct, false);std::cout << "329" << endl;
+				CALCULATOR->RPNStackEnter(mstruct, false);
 				break;
 			}
 			case PROC_RPN_SET: {
-				CALCULATOR->setRPNRegister(CALCULATOR->tmp_rpnindex, mstruct, false);std::cout << "333" << endl;
+				CALCULATOR->setRPNRegister(CALCULATOR->tmp_rpnindex, mstruct, false);
 				break;
 			}
 			case PROC_RPN_OPERATION_1: {
 				if(CALCULATOR->RPNStackSize() > 0) {
-					CALCULATOR->setRPNRegister(1, mstruct, false);std::cout << "338" << endl;
+					CALCULATOR->setRPNRegister(1, mstruct, false);
 				} else {
-					CALCULATOR->RPNStackEnter(mstruct, false);std::cout << "340" << endl;
+					CALCULATOR->RPNStackEnter(mstruct, false);
 				}
 				break;
 			}
 			case PROC_RPN_OPERATION_2: {
 				if(CALCULATOR->RPNStackSize() > 1) {
-					CALCULATOR->deleteRPNRegister(1);std::cout << "346" << endl;
+					CALCULATOR->deleteRPNRegister(1);
 				}
 				if(CALCULATOR->RPNStackSize() > 0) {
-					CALCULATOR->setRPNRegister(1, mstruct, false);std::cout << "349" << endl;
+					CALCULATOR->setRPNRegister(1, mstruct, false);
 				} else {
-					CALCULATOR->RPNStackEnter(mstruct, false);std::cout << "351" << endl;
+					CALCULATOR->RPNStackEnter(mstruct, false);
 				}
 				break;
 			}
 			case PROC_RPN_OPERATION_F: {
 				for(size_t i = 0; (CALCULATOR->tmp_proc_registers < 0 || (int) i < CALCULATOR->tmp_proc_registers - 1) && CALCULATOR->RPNStackSize() > 1; i++) {
-					CALCULATOR->deleteRPNRegister(1);std::cout << "357" << endl;
+					CALCULATOR->deleteRPNRegister(1);
 				}
 				if(CALCULATOR->RPNStackSize() > 0 && CALCULATOR->tmp_proc_registers != 0) {
-					CALCULATOR->setRPNRegister(1, mstruct, false);std::cout << "360" << endl;
+					CALCULATOR->setRPNRegister(1, mstruct, false);
 				} else {
-					CALCULATOR->RPNStackEnter(mstruct, false);std::cout << "362" << endl;
+					CALCULATOR->RPNStackEnter(mstruct, false);
 				}
 				break;
 			}
 			case PROC_NO_COMMAND: {}
 		}
-		CALCULATOR->stopControl();std::cout << "368" << endl;
-		CALCULATOR->b_busy = false;std::cout << "369" << endl;
+		CALCULATOR->stopControl();
+		CALCULATOR->b_busy = false;
 	}
 }
 
@@ -404,11 +407,11 @@ bool is_not_number(char c, int base) {
 #define BITWISE_XOR "⊻"
 
 Calculator::Calculator() {
-	b_ignore_locale = false;std::cout << "407" << endl;
+	b_ignore_locale = false;
 
 #ifdef ENABLE_NLS
 	if(!b_ignore_locale) {
-		bindtextdomain(GETTEXT_PACKAGE, getPackageLocaleDir().c_str());std::cout << "411" << endl;
+		bindtextdomain(GETTEXT_PACKAGE, getPackageLocaleDir().c_str());
 		bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	}
 #endif
@@ -416,53 +419,53 @@ Calculator::Calculator() {
 	if(b_ignore_locale) {
 		char *current_lc_monetary = setlocale(LC_MONETARY, "");
 		if(current_lc_monetary) saved_locale = strdup(current_lc_monetary);
-		else saved_locale = NULL;std::cout << "419" << endl;
+		else saved_locale = NULL;
 		setlocale(LC_ALL, "C");
 		if(saved_locale) {
-			setlocale(LC_MONETARY, saved_locale);std::cout << "422" << endl;
-			free(saved_locale);std::cout << "423" << endl;
-			saved_locale = NULL;std::cout << "424" << endl;
+			setlocale(LC_MONETARY, saved_locale);
+			free(saved_locale);
+			saved_locale = NULL;
 		}
 	} else {
 		setlocale(LC_ALL, "");
 	}
 
 
-	gmp_randinit_default(randstate);std::cout << "431" << endl;
-	gmp_randseed_ui(randstate, (unsigned long int) time(NULL));std::cout << "432" << endl;
+	gmp_randinit_default(randstate);
+	gmp_randseed_ui(randstate, (unsigned long int) time(NULL));
 
-	priv = new Calculator_p;std::cout << "434" << endl;
-	priv->custom_input_base_i = 0;std::cout << "435" << endl;
-	priv->ids_i = 0;std::cout << "436" << endl;
-	priv->local_currency = NULL;std::cout << "437" << endl;
-	priv->use_binary_prefixes = 0;std::cout << "438" << endl;
+	priv = new Calculator_p;
+	priv->custom_input_base_i = 0;
+	priv->ids_i = 0;
+	priv->local_currency = NULL;
+	priv->use_binary_prefixes = 0;
 
 #ifdef HAVE_ICU
-	UErrorCode err = U_ZERO_ERROR;std::cout << "441" << endl;
-	ucm = ucasemap_open(NULL, 0, &err);std::cout << "442" << endl;
+	UErrorCode err = U_ZERO_ERROR;
+	ucm = ucasemap_open(NULL, 0, &err);
 #endif
 
-	srand(time(NULL));std::cout << "445" << endl;
+	srand(time(NULL));
 
-	exchange_rates_time[0] = 0;std::cout << "447" << endl;
-	exchange_rates_time[1] = 0;std::cout << "448" << endl;
-	exchange_rates_time[2] = 0;std::cout << "449" << endl;
-	exchange_rates_check_time[0] = 0;std::cout << "450" << endl;
-	exchange_rates_check_time[1] = 0;std::cout << "451" << endl;
-	exchange_rates_check_time[2] = 0;std::cout << "452" << endl;
-	b_exchange_rates_warning_enabled = true;std::cout << "453" << endl;
-	b_exchange_rates_used = 0;std::cout << "454" << endl;
+	exchange_rates_time[0] = 0;
+	exchange_rates_time[1] = 0;
+	exchange_rates_time[2] = 0;
+	exchange_rates_check_time[0] = 0;
+	exchange_rates_check_time[1] = 0;
+	exchange_rates_check_time[2] = 0;
+	b_exchange_rates_warning_enabled = true;
+	b_exchange_rates_used = 0;
 
-	i_aborted = 0;std::cout << "456" << endl;
-	b_controlled = false;std::cout << "457" << endl;
-	i_timeout = 0;std::cout << "458" << endl;
+	i_aborted = 0;
+	b_controlled = false;
+	i_timeout = 0;
 
-	setPrecision(DEFAULT_PRECISION);std::cout << "460" << endl;
-	b_interval = true;std::cout << "461" << endl;
-	i_stop_interval = 0;std::cout << "462" << endl;
-	i_start_interval = 0;std::cout << "463" << endl;
+	setPrecision(DEFAULT_PRECISION);
+	b_interval = true;
+	i_stop_interval = 0;
+	i_start_interval = 0;
 
-	b_var_units = true;std::cout << "465" << endl;
+	b_var_units = true;
 
 	addStringAlternative(SIGN_DIVISION, DIVISION);
 	addStringAlternative(SIGN_DIVISION_SLASH, DIVISION);
@@ -493,33 +496,33 @@ Calculator::Calculator() {
 	addStringAlternative(SIGN_MICRO, "μ");
 
 	per_str = _("per");
-	per_str_len = per_str.length();std::cout << "496" << endl;
+	per_str_len = per_str.length();
 	times_str = _("times");
-	times_str_len = times_str.length();std::cout << "498" << endl;
+	times_str_len = times_str.length();
 	plus_str = _("plus");
-	plus_str_len = plus_str.length();std::cout << "500" << endl;
+	plus_str_len = plus_str.length();
 	minus_str = _("minus");
-	minus_str_len = minus_str.length();std::cout << "502" << endl;
+	minus_str_len = minus_str.length();
 	and_str = _("and");
 	if(and_str == "and") and_str = "";
-	and_str_len = and_str.length();std::cout << "505" << endl;
+	and_str_len = and_str.length();
 	AND_str = "AND";
-	AND_str_len = AND_str.length();std::cout << "507" << endl;
+	AND_str_len = AND_str.length();
 	or_str = _("or");
 	if(or_str == "or") or_str = "";
-	or_str_len = or_str.length();std::cout << "510" << endl;
+	or_str_len = or_str.length();
 	OR_str = "OR";
-	OR_str_len = OR_str.length();std::cout << "512" << endl;
+	OR_str_len = OR_str.length();
 	XOR_str = "XOR";
-	XOR_str_len = XOR_str.length();std::cout << "514" << endl;
+	XOR_str_len = XOR_str.length();
 
-	char *current_lc_numeric = setlocale(LC_NUMERIC, NULL);std::cout << "516" << endl;
+	char *current_lc_numeric = setlocale(LC_NUMERIC, NULL);
 	if(current_lc_numeric) saved_locale = strdup(current_lc_numeric);
-	else saved_locale = NULL;std::cout << "518" << endl;
-	struct lconv *lc = localeconv();std::cout << "519" << endl;
+	else saved_locale = NULL;
+	struct lconv *lc = localeconv();
 	if(!lc) {
 		setlocale(LC_NUMERIC, "C");
-		lc = localeconv();std::cout << "522" << endl;
+		lc = localeconv();
 	}
 	place_currency_sign_before = lc->p_cs_precedes;
 	place_currency_sign_before_negative = lc->n_cs_precedes;
@@ -533,7 +536,7 @@ Calculator::Calculator() {
 #else
 	place_currency_code_before_negative = place_currency_sign_before_negative;
 #endif
-	local_digit_group_separator = lc->thousands_sep;std::cout << "536" << endl;
+	local_digit_group_separator = lc->thousands_sep;
 	if((local_digit_group_separator.length() == 1 && local_digit_group_separator[0] < 0) || local_digit_group_separator == " ") local_digit_group_separator = " ";
 	else if(local_digit_group_separator == " ") local_digit_group_separator = " ";
 	local_digit_group_format = lc->grouping;
@@ -561,80 +564,80 @@ Calculator::Calculator() {
 
 	decimal_null_prefix = new DecimalPrefix(0, "", "");
 	binary_null_prefix = new BinaryPrefix(0, "", "");
-	m_undefined.setUndefined();std::cout << "564" << endl;
-	m_empty_vector.clearVector();std::cout << "565" << endl;
-	m_empty_matrix.clearMatrix();std::cout << "566" << endl;
-	m_zero.clear();std::cout << "567" << endl;
-	m_one.set(1, 1, 0);std::cout << "568" << endl;
-	m_minus_one.set(-1, 1, 0);std::cout << "569" << endl;
-	nr_zero.clear();std::cout << "570" << endl;
-	nr_one.set(1, 1, 0);std::cout << "571" << endl;
-	nr_two.set(2, 1, 0);std::cout << "572" << endl;
-	nr_three.set(3, 1, 0);std::cout << "573" << endl;
-	nr_half.set(1, 2, 0);std::cout << "574" << endl;
-	nr_minus_half.set(-1, 2, 0);std::cout << "575" << endl;
-	nr_one_i.setImaginaryPart(1, 1, 0);std::cout << "576" << endl;
-	nr_minus_i.setImaginaryPart(-1, 1, 0);std::cout << "577" << endl;
-	m_one_i.set(nr_one_i);std::cout << "578" << endl;
-	nr_minus_one.set(-1, 1, 0);std::cout << "579" << endl;
-	nr_plus_inf.setPlusInfinity();std::cout << "580" << endl;
-	nr_minus_inf.setMinusInfinity();std::cout << "581" << endl;
-	no_evaluation.approximation = APPROXIMATION_EXACT;std::cout << "582" << endl;
-	no_evaluation.structuring = STRUCTURING_NONE;std::cout << "583" << endl;
-	no_evaluation.sync_units = false;std::cout << "584" << endl;
+	m_undefined.setUndefined();
+	m_empty_vector.clearVector();
+	m_empty_matrix.clearMatrix();
+	m_zero.clear();
+	m_one.set(1, 1, 0);
+	m_minus_one.set(-1, 1, 0);
+	nr_zero.clear();
+	nr_one.set(1, 1, 0);
+	nr_two.set(2, 1, 0);
+	nr_three.set(3, 1, 0);
+	nr_half.set(1, 2, 0);
+	nr_minus_half.set(-1, 2, 0);
+	nr_one_i.setImaginaryPart(1, 1, 0);
+	nr_minus_i.setImaginaryPart(-1, 1, 0);
+	m_one_i.set(nr_one_i);
+	nr_minus_one.set(-1, 1, 0);
+	nr_plus_inf.setPlusInfinity();
+	nr_minus_inf.setMinusInfinity();
+	no_evaluation.approximation = APPROXIMATION_EXACT;
+	no_evaluation.structuring = STRUCTURING_NONE;
+	no_evaluation.sync_units = false;
 
 	save_printoptions.decimalpoint_sign = ".";
 	save_printoptions.comma_sign = ",";
-	save_printoptions.use_reference_names = true;std::cout << "588" << endl;
-	save_printoptions.preserve_precision = true;std::cout << "589" << endl;
-	save_printoptions.interval_display = INTERVAL_DISPLAY_INTERVAL;std::cout << "590" << endl;
-	save_printoptions.limit_implicit_multiplication = true;std::cout << "591" << endl;
-	save_printoptions.spacious = false;std::cout << "592" << endl;
+	save_printoptions.use_reference_names = true;
+	save_printoptions.preserve_precision = true;
+	save_printoptions.interval_display = INTERVAL_DISPLAY_INTERVAL;
+	save_printoptions.limit_implicit_multiplication = true;
+	save_printoptions.spacious = false;
 	save_printoptions.number_fraction_format = FRACTION_FRACTIONAL;
-	save_printoptions.short_multiplication = false;std::cout << "594" << endl;
-	save_printoptions.show_ending_zeroes = false;std::cout << "595" << endl;
-	save_printoptions.use_unit_prefixes = false;std::cout << "596" << endl;
+	save_printoptions.short_multiplication = false;
+	save_printoptions.show_ending_zeroes = false;
+	save_printoptions.use_unit_prefixes = false;
 
-	message_printoptions.interval_display = INTERVAL_DISPLAY_PLUSMINUS;std::cout << "598" << endl;
-	message_printoptions.spell_out_logical_operators = true;std::cout << "599" << endl;
+	message_printoptions.interval_display = INTERVAL_DISPLAY_PLUSMINUS;
+	message_printoptions.spell_out_logical_operators = true;
 	message_printoptions.number_fraction_format = FRACTION_FRACTIONAL;
 
-	default_user_evaluation_options.structuring = STRUCTURING_SIMPLIFY;std::cout << "602" << endl;
+	default_user_evaluation_options.structuring = STRUCTURING_SIMPLIFY;
 
-	default_assumptions = new Assumptions;std::cout << "604" << endl;
-	default_assumptions->setType(ASSUMPTION_TYPE_REAL);std::cout << "605" << endl;
-	default_assumptions->setSign(ASSUMPTION_SIGN_UNKNOWN);std::cout << "606" << endl;
+	default_assumptions = new Assumptions;
+	default_assumptions->setType(ASSUMPTION_TYPE_REAL);
+	default_assumptions->setSign(ASSUMPTION_SIGN_UNKNOWN);
 
-	u_rad = NULL;std::cout << "608" << endl; u_gra = NULL;std::cout << "608" << endl; u_deg = NULL;std::cout << "608" << endl;
+	u_rad = NULL; u_gra = NULL; u_deg = NULL;
 
-	b_save_called = false;std::cout << "610" << endl;
+	b_save_called = false;
 
 	ILLEGAL_IN_NAMES = "\a\b" + DOT_S + RESERVED OPERATORS SPACES PARENTHESISS VECTOR_WRAPS COMMAS;
 	ILLEGAL_IN_NAMES_MINUS_SPACE_STR = "\a\b" + DOT_S + RESERVED OPERATORS PARENTHESISS VECTOR_WRAPS COMMAS;
-	ILLEGAL_IN_UNITNAMES = ILLEGAL_IN_NAMES + NUMBERS;std::cout << "614" << endl;
-	b_argument_errors = true;std::cout << "615" << endl;
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "616" << endl;
-	calculator = this;std::cout << "617" << endl;
-	srand48(time(0));std::cout << "618" << endl;
+	ILLEGAL_IN_UNITNAMES = ILLEGAL_IN_NAMES + NUMBERS;
+	b_argument_errors = true;
+	current_stage = MESSAGE_STAGE_UNSET;
+	calculator = this;
+	srand48(time(0));
 
-	addBuiltinVariables();std::cout << "620" << endl;
-	addBuiltinFunctions();std::cout << "621" << endl;
-	addBuiltinUnits();std::cout << "622" << endl;
+	addBuiltinVariables();
+	addBuiltinFunctions();
+	addBuiltinUnits();
 
-	disable_errors_ref = 0;std::cout << "624" << endl;
-	b_busy = false;std::cout << "625" << endl;
-	b_gnuplot_open = false;std::cout << "626" << endl;
-	gnuplot_pipe = NULL;std::cout << "627" << endl;
+	disable_errors_ref = 0;
+	b_busy = false;
+	b_gnuplot_open = false;
+	gnuplot_pipe = NULL;
 
-	calculate_thread = new CalculateThread;std::cout << "629" << endl;
+	calculate_thread = new CalculateThread;
 }
 Calculator::Calculator(bool ignore_locale) {
 
-	b_ignore_locale = ignore_locale;std::cout << "633" << endl;
+	b_ignore_locale = ignore_locale;
 
 #ifdef ENABLE_NLS
 	if(!b_ignore_locale) {
-		bindtextdomain(GETTEXT_PACKAGE, getPackageLocaleDir().c_str());std::cout << "637" << endl;
+		bindtextdomain(GETTEXT_PACKAGE, getPackageLocaleDir().c_str());
 		bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	}
 #endif
@@ -642,53 +645,53 @@ Calculator::Calculator(bool ignore_locale) {
 	if(b_ignore_locale) {
 		char *current_lc_monetary = setlocale(LC_MONETARY, "");
 		if(current_lc_monetary) saved_locale = strdup(current_lc_monetary);
-		else saved_locale = NULL;std::cout << "645" << endl;
+		else saved_locale = NULL;
 		setlocale(LC_ALL, "C");
 		if(saved_locale) {
-			setlocale(LC_MONETARY, saved_locale);std::cout << "648" << endl;
-			free(saved_locale);std::cout << "649" << endl;
-			saved_locale = NULL;std::cout << "650" << endl;
+			setlocale(LC_MONETARY, saved_locale);
+			free(saved_locale);
+			saved_locale = NULL;
 		}
 	} else {
 		setlocale(LC_ALL, "");
 	}
 
 
-	gmp_randinit_default(randstate);std::cout << "657" << endl;
-	gmp_randseed_ui(randstate, (unsigned long int) time(NULL));std::cout << "658" << endl;
+	gmp_randinit_default(randstate);
+	gmp_randseed_ui(randstate, (unsigned long int) time(NULL));
 
-	priv = new Calculator_p;std::cout << "660" << endl;
-	priv->custom_input_base_i = 0;std::cout << "661" << endl;
-	priv->ids_i = 0;std::cout << "662" << endl;
-	priv->local_currency = NULL;std::cout << "663" << endl;
-	priv->use_binary_prefixes = 0;std::cout << "664" << endl;
+	priv = new Calculator_p;
+	priv->custom_input_base_i = 0;
+	priv->ids_i = 0;
+	priv->local_currency = NULL;
+	priv->use_binary_prefixes = 0;
 
 #ifdef HAVE_ICU
-	UErrorCode err = U_ZERO_ERROR;std::cout << "667" << endl;
-	ucm = ucasemap_open(NULL, 0, &err);std::cout << "668" << endl;
+	UErrorCode err = U_ZERO_ERROR;
+	ucm = ucasemap_open(NULL, 0, &err);
 #endif
 
-	srand(time(NULL));std::cout << "671" << endl;
+	srand(time(NULL));
 
-	exchange_rates_time[0] = 0;std::cout << "673" << endl;
-	exchange_rates_time[1] = 0;std::cout << "674" << endl;
-	exchange_rates_time[2] = 0;std::cout << "675" << endl;
-	exchange_rates_check_time[0] = 0;std::cout << "676" << endl;
-	exchange_rates_check_time[1] = 0;std::cout << "677" << endl;
-	exchange_rates_check_time[2] = 0;std::cout << "678" << endl;
-	b_exchange_rates_warning_enabled = true;std::cout << "679" << endl;
-	b_exchange_rates_used = 0;std::cout << "680" << endl;
+	exchange_rates_time[0] = 0;
+	exchange_rates_time[1] = 0;
+	exchange_rates_time[2] = 0;
+	exchange_rates_check_time[0] = 0;
+	exchange_rates_check_time[1] = 0;
+	exchange_rates_check_time[2] = 0;
+	b_exchange_rates_warning_enabled = true;
+	b_exchange_rates_used = 0;
 
-	i_aborted = 0;std::cout << "682" << endl;
-	b_controlled = false;std::cout << "683" << endl;
-	i_timeout = 0;std::cout << "684" << endl;
+	i_aborted = 0;
+	b_controlled = false;
+	i_timeout = 0;
 
-	setPrecision(DEFAULT_PRECISION);std::cout << "686" << endl;
-	b_interval = true;std::cout << "687" << endl;
-	i_stop_interval = 0;std::cout << "688" << endl;
-	i_start_interval = 0;std::cout << "689" << endl;
+	setPrecision(DEFAULT_PRECISION);
+	b_interval = true;
+	i_stop_interval = 0;
+	i_start_interval = 0;
 
-	b_var_units = true;std::cout << "691" << endl;
+	b_var_units = true;
 
 	addStringAlternative(SIGN_DIVISION, DIVISION);
 	addStringAlternative(SIGN_DIVISION_SLASH, DIVISION);
@@ -719,33 +722,33 @@ Calculator::Calculator(bool ignore_locale) {
 	addStringAlternative(SIGN_MICRO, "μ");
 
 	per_str = _("per");
-	per_str_len = per_str.length();std::cout << "722" << endl;
+	per_str_len = per_str.length();
 	times_str = _("times");
-	times_str_len = times_str.length();std::cout << "724" << endl;
+	times_str_len = times_str.length();
 	plus_str = _("plus");
-	plus_str_len = plus_str.length();std::cout << "726" << endl;
+	plus_str_len = plus_str.length();
 	minus_str = _("minus");
-	minus_str_len = minus_str.length();std::cout << "728" << endl;
+	minus_str_len = minus_str.length();
 	and_str = _("and");
 	if(and_str == "and") and_str = "";
-	and_str_len = and_str.length();std::cout << "731" << endl;
+	and_str_len = and_str.length();
 	AND_str = "AND";
-	AND_str_len = AND_str.length();std::cout << "733" << endl;
+	AND_str_len = AND_str.length();
 	or_str = _("or");
 	if(or_str == "or") or_str = "";
-	or_str_len = or_str.length();std::cout << "736" << endl;
+	or_str_len = or_str.length();
 	OR_str = "OR";
-	OR_str_len = OR_str.length();std::cout << "738" << endl;
+	OR_str_len = OR_str.length();
 	XOR_str = "XOR";
-	XOR_str_len = XOR_str.length();std::cout << "740" << endl;
+	XOR_str_len = XOR_str.length();
 
-	char *current_lc_numeric = setlocale(LC_NUMERIC, NULL);std::cout << "742" << endl;
+	char *current_lc_numeric = setlocale(LC_NUMERIC, NULL);
 	if(current_lc_numeric) saved_locale = strdup(current_lc_numeric);
-	else saved_locale = NULL;std::cout << "744" << endl;
-	struct lconv *lc = localeconv();std::cout << "745" << endl;
+	else saved_locale = NULL;
+	struct lconv *lc = localeconv();
 	if(!lc) {
 		setlocale(LC_NUMERIC, "C");
-		lc = localeconv();std::cout << "748" << endl;
+		lc = localeconv();
 	}
 	place_currency_sign_before = lc->p_cs_precedes;
 	place_currency_sign_before_negative = lc->n_cs_precedes;
@@ -759,7 +762,7 @@ Calculator::Calculator(bool ignore_locale) {
 #else
 	place_currency_code_before_negative = place_currency_sign_before_negative;
 #endif
-	local_digit_group_separator = lc->thousands_sep;std::cout << "762" << endl;
+	local_digit_group_separator = lc->thousands_sep;
 	if((local_digit_group_separator.length() == 1 && local_digit_group_separator[0] < 0) || local_digit_group_separator == " ") local_digit_group_separator = " ";
 	else if(local_digit_group_separator == " ") local_digit_group_separator = " ";
 	local_digit_group_format = lc->grouping;
@@ -787,80 +790,80 @@ Calculator::Calculator(bool ignore_locale) {
 
 	decimal_null_prefix = new DecimalPrefix(0, "", "");
 	binary_null_prefix = new BinaryPrefix(0, "", "");
-	m_undefined.setUndefined();std::cout << "790" << endl;
-	m_empty_vector.clearVector();std::cout << "791" << endl;
-	m_empty_matrix.clearMatrix();std::cout << "792" << endl;
-	m_zero.clear();std::cout << "793" << endl;
-	m_one.set(1, 1, 0);std::cout << "794" << endl;
-	m_minus_one.set(-1, 1, 0);std::cout << "795" << endl;
-	nr_zero.clear();std::cout << "796" << endl;
-	nr_one.set(1, 1, 0);std::cout << "797" << endl;
-	nr_two.set(2, 1, 0);std::cout << "798" << endl;
-	nr_three.set(3, 1, 0);std::cout << "799" << endl;
-	nr_half.set(1, 2, 0);std::cout << "800" << endl;
-	nr_minus_half.set(-1, 2, 0);std::cout << "801" << endl;
-	nr_one_i.setImaginaryPart(1, 1, 0);std::cout << "802" << endl;
-	nr_minus_i.setImaginaryPart(-1, 1, 0);std::cout << "803" << endl;
-	m_one_i.set(nr_one_i);std::cout << "804" << endl;
-	nr_minus_one.set(-1, 1, 0);std::cout << "805" << endl;
-	nr_plus_inf.setPlusInfinity();std::cout << "806" << endl;
-	nr_minus_inf.setMinusInfinity();std::cout << "807" << endl;
-	no_evaluation.approximation = APPROXIMATION_EXACT;std::cout << "808" << endl;
-	no_evaluation.structuring = STRUCTURING_NONE;std::cout << "809" << endl;
-	no_evaluation.sync_units = false;std::cout << "810" << endl;
+	m_undefined.setUndefined();
+	m_empty_vector.clearVector();
+	m_empty_matrix.clearMatrix();
+	m_zero.clear();
+	m_one.set(1, 1, 0);
+	m_minus_one.set(-1, 1, 0);
+	nr_zero.clear();
+	nr_one.set(1, 1, 0);
+	nr_two.set(2, 1, 0);
+	nr_three.set(3, 1, 0);
+	nr_half.set(1, 2, 0);
+	nr_minus_half.set(-1, 2, 0);
+	nr_one_i.setImaginaryPart(1, 1, 0);
+	nr_minus_i.setImaginaryPart(-1, 1, 0);
+	m_one_i.set(nr_one_i);
+	nr_minus_one.set(-1, 1, 0);
+	nr_plus_inf.setPlusInfinity();
+	nr_minus_inf.setMinusInfinity();
+	no_evaluation.approximation = APPROXIMATION_EXACT;
+	no_evaluation.structuring = STRUCTURING_NONE;
+	no_evaluation.sync_units = false;
 
 	save_printoptions.decimalpoint_sign = ".";
 	save_printoptions.comma_sign = ",";
-	save_printoptions.use_reference_names = true;std::cout << "814" << endl;
-	save_printoptions.preserve_precision = true;std::cout << "815" << endl;
-	save_printoptions.interval_display = INTERVAL_DISPLAY_INTERVAL;std::cout << "816" << endl;
-	save_printoptions.limit_implicit_multiplication = true;std::cout << "817" << endl;
-	save_printoptions.spacious = false;std::cout << "818" << endl;
+	save_printoptions.use_reference_names = true;
+	save_printoptions.preserve_precision = true;
+	save_printoptions.interval_display = INTERVAL_DISPLAY_INTERVAL;
+	save_printoptions.limit_implicit_multiplication = true;
+	save_printoptions.spacious = false;
 	save_printoptions.number_fraction_format = FRACTION_FRACTIONAL;
-	save_printoptions.short_multiplication = false;std::cout << "820" << endl;
-	save_printoptions.show_ending_zeroes = false;std::cout << "821" << endl;
-	save_printoptions.use_unit_prefixes = false;std::cout << "822" << endl;
+	save_printoptions.short_multiplication = false;
+	save_printoptions.show_ending_zeroes = false;
+	save_printoptions.use_unit_prefixes = false;
 
-	message_printoptions.interval_display = INTERVAL_DISPLAY_PLUSMINUS;std::cout << "824" << endl;
-	message_printoptions.spell_out_logical_operators = true;std::cout << "825" << endl;
+	message_printoptions.interval_display = INTERVAL_DISPLAY_PLUSMINUS;
+	message_printoptions.spell_out_logical_operators = true;
 	message_printoptions.number_fraction_format = FRACTION_FRACTIONAL;
 
-	default_user_evaluation_options.structuring = STRUCTURING_SIMPLIFY;std::cout << "828" << endl;
+	default_user_evaluation_options.structuring = STRUCTURING_SIMPLIFY;
 
-	default_assumptions = new Assumptions;std::cout << "830" << endl;
-	default_assumptions->setType(ASSUMPTION_TYPE_REAL);std::cout << "831" << endl;
-	default_assumptions->setSign(ASSUMPTION_SIGN_UNKNOWN);std::cout << "832" << endl;
+	default_assumptions = new Assumptions;
+	default_assumptions->setType(ASSUMPTION_TYPE_REAL);
+	default_assumptions->setSign(ASSUMPTION_SIGN_UNKNOWN);
 
-	u_rad = NULL;std::cout << "834" << endl; u_gra = NULL;std::cout << "834" << endl; u_deg = NULL;std::cout << "834" << endl;
+	u_rad = NULL; u_gra = NULL; u_deg = NULL;
 
-	b_save_called = false;std::cout << "836" << endl;
+	b_save_called = false;
 
 	ILLEGAL_IN_NAMES = "\a\b" + DOT_S + RESERVED OPERATORS SPACES PARENTHESISS VECTOR_WRAPS COMMAS;
 	ILLEGAL_IN_NAMES_MINUS_SPACE_STR = "\a\b" + DOT_S + RESERVED OPERATORS PARENTHESISS VECTOR_WRAPS COMMAS;
-	ILLEGAL_IN_UNITNAMES = ILLEGAL_IN_NAMES + NUMBERS;std::cout << "840" << endl;
-	b_argument_errors = true;std::cout << "841" << endl;
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "842" << endl;
-	calculator = this;std::cout << "843" << endl;
-	srand48(time(0));std::cout << "844" << endl;
+	ILLEGAL_IN_UNITNAMES = ILLEGAL_IN_NAMES + NUMBERS;
+	b_argument_errors = true;
+	current_stage = MESSAGE_STAGE_UNSET;
+	calculator = this;
+	srand48(time(0));
 
-	addBuiltinVariables();std::cout << "846" << endl;
-	addBuiltinFunctions();std::cout << "847" << endl;
-	addBuiltinUnits();std::cout << "848" << endl;
+	addBuiltinVariables();
+	addBuiltinFunctions();
+	addBuiltinUnits();
 
-	disable_errors_ref = 0;std::cout << "850" << endl;
-	b_busy = false;std::cout << "851" << endl;
-	b_gnuplot_open = false;std::cout << "852" << endl;
-	gnuplot_pipe = NULL;std::cout << "853" << endl;
+	disable_errors_ref = 0;
+	b_busy = false;
+	b_gnuplot_open = false;
+	gnuplot_pipe = NULL;
 
-	calculate_thread = new CalculateThread;std::cout << "855" << endl;
+	calculate_thread = new CalculateThread;
 }
 Calculator::~Calculator() {
-	closeGnuplot();std::cout << "858" << endl;
-	abort();std::cout << "859" << endl;
-	terminateThreads();std::cout << "860" << endl;
-	delete priv;std::cout << "861" << endl;
-	delete calculate_thread;std::cout << "862" << endl;
-	gmp_randclear(randstate);std::cout << "863" << endl;
+	closeGnuplot();
+	abort();
+	terminateThreads();
+	delete priv;
+	delete calculate_thread;
+	gmp_randclear(randstate);
 #ifdef HAVE_ICU
 	if(ucm) ucasemap_close(ucm);
 #endif
@@ -896,11 +899,11 @@ bool Calculator::utf8_pos_is_valid_in_name(char *pos) {
 		return false;
 	}
 	if((unsigned char) pos[0] >= 0xC0) {
-		string str;std::cout << "899" << endl;
-		str += pos[0];std::cout << "900" << endl;
+		string str;
+		str += pos[0];
 		while((unsigned char) pos[1] >= 0x80 && (unsigned char) pos[1] < 0xC0) {
-			str += pos[1];std::cout << "902" << endl;
-			pos++;std::cout << "903" << endl;
+			str += pos[1];
+			pos++;
 		}
 		return str != SIGN_DIVISION && str != SIGN_DIVISION_SLASH && str != SIGN_MULTIPLICATION && str != SIGN_MULTIDOT && str != SIGN_SMALLCIRCLE && str != SIGN_MULTIBULLET && str != SIGN_MINUS && str != SIGN_PLUS && str != SIGN_NOT_EQUAL && str != SIGN_GREATER_OR_EQUAL && str != SIGN_LESS_OR_EQUAL;
 	}
@@ -911,18 +914,18 @@ bool Calculator::showArgumentErrors() const {
 	return b_argument_errors;
 }
 void Calculator::beginTemporaryStopMessages() {
-	disable_errors_ref++;std::cout << "914" << endl;
-	stopped_errors_count.push_back(0);std::cout << "915" << endl;
-	stopped_warnings_count.push_back(0);std::cout << "916" << endl;
-	stopped_messages_count.push_back(0);std::cout << "917" << endl;
-	vector<CalculatorMessage> vcm;std::cout << "918" << endl;
-	stopped_messages.push_back(vcm);std::cout << "919" << endl;
+	disable_errors_ref++;
+	stopped_errors_count.push_back(0);
+	stopped_warnings_count.push_back(0);
+	stopped_messages_count.push_back(0);
+	vector<CalculatorMessage> vcm;
+	stopped_messages.push_back(vcm);
 }
 int Calculator::endTemporaryStopMessages(int *message_count, int *warning_count, int release_messages_if_no_equal_or_greater_than_message_type) {
 	if(disable_errors_ref <= 0) return -1;
-	disable_errors_ref--;std::cout << "923" << endl;
-	int ret = stopped_errors_count[disable_errors_ref];std::cout << "924" << endl;
-	bool release_messages = false;std::cout << "925" << endl;
+	disable_errors_ref--;
+	int ret = stopped_errors_count[disable_errors_ref];
+	bool release_messages = false;
 	if(release_messages_if_no_equal_or_greater_than_message_type >= MESSAGE_INFORMATION) {
 		if(ret > 0) release_messages = true;
 		if(release_messages_if_no_equal_or_greater_than_message_type == MESSAGE_WARNING && stopped_warnings_count[disable_errors_ref] > 0) release_messages = true;
@@ -930,30 +933,30 @@ int Calculator::endTemporaryStopMessages(int *message_count, int *warning_count,
 	}
 	if(message_count) *message_count = stopped_messages_count[disable_errors_ref];
 	if(warning_count) *warning_count = stopped_warnings_count[disable_errors_ref];
-	stopped_errors_count.pop_back();std::cout << "933" << endl;
-	stopped_warnings_count.pop_back();std::cout << "934" << endl;
-	stopped_messages_count.pop_back();std::cout << "935" << endl;
+	stopped_errors_count.pop_back();
+	stopped_warnings_count.pop_back();
+	stopped_messages_count.pop_back();
 	if(release_messages) addMessages(&stopped_messages[disable_errors_ref]);
-	stopped_messages.pop_back();std::cout << "937" << endl;
+	stopped_messages.pop_back();
 	return ret;
 }
 void Calculator::endTemporaryStopMessages(bool release_messages, vector<CalculatorMessage> *blocked_messages) {
 	if(disable_errors_ref <= 0) return;
-	disable_errors_ref--;std::cout << "942" << endl;
-	stopped_errors_count.pop_back();std::cout << "943" << endl;
-	stopped_warnings_count.pop_back();std::cout << "944" << endl;
-	stopped_messages_count.pop_back();std::cout << "945" << endl;
+	disable_errors_ref--;
+	stopped_errors_count.pop_back();
+	stopped_warnings_count.pop_back();
+	stopped_messages_count.pop_back();
 	if(blocked_messages) *blocked_messages = stopped_messages[disable_errors_ref];
 	if(release_messages) addMessages(&stopped_messages[disable_errors_ref]);
-	stopped_messages.pop_back();std::cout << "948" << endl;
+	stopped_messages.pop_back();
 }
 void Calculator::addMessages(vector<CalculatorMessage> *message_vector) {
 	for(size_t i3 = 0; i3 < message_vector->size(); i3++) {
-		string error_str = (*message_vector)[i3].message();std::cout << "952" << endl;
-		bool dup_error = false;std::cout << "953" << endl;
+		string error_str = (*message_vector)[i3].message();
+		bool dup_error = false;
 		for(size_t i = 0; i < messages.size(); i++) {
 			if(error_str == messages[i].message()) {
-				dup_error = true;std::cout << "956" << endl;
+				dup_error = true;
 				break;
 			}
 		}
@@ -962,14 +965,14 @@ void Calculator::addMessages(vector<CalculatorMessage> *message_vector) {
 				for(size_t i2 = 0; !dup_error && i2 < (size_t) disable_errors_ref; i2++) {
 					for(size_t i = 0; i < stopped_messages[i2].size(); i++) {
 						if(error_str == stopped_messages[i2][i].message()) {
-							dup_error = true;std::cout << "965" << endl;
+							dup_error = true;
 							break;
 						}
 					}
 				}
 				if(!dup_error) stopped_messages[disable_errors_ref - 1].push_back((*message_vector)[i3]);
 			} else {
-				messages.push_back((*message_vector)[i3]);std::cout << "972" << endl;
+				messages.push_back((*message_vector)[i3]);
 			}
 		}
 	}
@@ -1020,11 +1023,11 @@ bool Calculator::stillHasFunction(MathFunction *f) {
 	return true;
 }
 void Calculator::saveFunctionCalled() {
-	b_save_called = true;std::cout << "1023" << endl;
+	b_save_called = true;
 }
 bool Calculator::checkSaveFunctionCalled() {
 	if(b_save_called) {
-		b_save_called = false;std::cout << "1027" << endl;
+		b_save_called = false;
 		return true;
 	}
 	return false;
@@ -1032,7 +1035,7 @@ bool Calculator::checkSaveFunctionCalled() {
 ExpressionItem *Calculator::getActiveExpressionItem(ExpressionItem *item) {
 	if(!item) return NULL;
 	for(size_t i = 1; i <= item->countNames(); i++) {
-		ExpressionItem *item2 = getActiveExpressionItem(item->getName(i).name, item);std::cout << "1035" << endl;
+		ExpressionItem *item2 = getActiveExpressionItem(item->getName(i).name, item);
 		if(item2) {
 			return item2;
 		}
@@ -1079,13 +1082,13 @@ ExpressionItem *Calculator::getInactiveExpressionItem(string name, ExpressionIte
 }
 ExpressionItem *Calculator::getExpressionItem(string name, ExpressionItem *item) {
 	if(name.empty()) return NULL;
-	Variable *v = getVariable(name);std::cout << "1082" << endl;
+	Variable *v = getVariable(name);
 	if(v && v != item) return v;
-	MathFunction *f = getFunction(name);std::cout << "1084" << endl;
+	MathFunction *f = getFunction(name);
 	if(f && f != item) return f;
-	Unit *u = getUnit(name);std::cout << "1086" << endl;
+	Unit *u = getUnit(name);
 	if(u && u != item) return u;
-	u = getCompositeUnit(name);std::cout << "1088" << endl;
+	u = getCompositeUnit(name);
 	if(u && u != item) return u;
 	return NULL;
 }
@@ -1104,7 +1107,7 @@ MathFunction *Calculator::getFunction(size_t index) const {
 
 void Calculator::setDefaultAssumptions(Assumptions *ass) {
 	if(default_assumptions) delete default_assumptions;
-	default_assumptions = ass;std::cout << "1107" << endl;
+	default_assumptions = ass;
 }
 Assumptions *Calculator::defaultAssumptions() {
 	return default_assumptions;
@@ -1145,9 +1148,9 @@ BinaryPrefix *Calculator::getExactBinaryPrefix(int exp2, int exp) const {
 	return NULL;
 }
 Prefix *Calculator::getExactPrefix(const Number &o, int exp) const {
-	ComparisonResult c;std::cout << "1148" << endl;
+	ComparisonResult c;
 	for(size_t i = 0; i < prefixes.size(); i++) {
-		c = o.compare(prefixes[i]->value(exp));std::cout << "1150" << endl;
+		c = o.compare(prefixes[i]->value(exp));
 		if(c == COMPARISON_RESULT_EQUAL) {
 			return prefixes[i];
 		} else if(c == COMPARISON_RESULT_GREATER) {
@@ -1158,9 +1161,9 @@ Prefix *Calculator::getExactPrefix(const Number &o, int exp) const {
 }
 DecimalPrefix *Calculator::getNearestDecimalPrefix(int exp10, int exp) const {
 	if(decimal_prefixes.size() <= 0) return NULL;
-	int i = 0;std::cout << "1161" << endl;
+	int i = 0;
 	if(exp < 0) {
-		i = decimal_prefixes.size() - 1;std::cout << "1163" << endl;
+		i = decimal_prefixes.size() - 1;
 	}
 	while((exp < 0 && i >= 0) || (exp >= 0 && i < (int) decimal_prefixes.size())) {
 		if(decimal_prefixes[i]->exponent(exp) == exp10) {
@@ -1175,31 +1178,31 @@ DecimalPrefix *Calculator::getNearestDecimalPrefix(int exp10, int exp) const {
 			}
 		}
 		if(exp < 0) {
-			i--;std::cout << "1178" << endl;
+			i--;
 		} else {
-			i++;std::cout << "1180" << endl;
+			i++;
 		}
 	}
 	return decimal_prefixes[decimal_prefixes.size() - 1];
 }
 DecimalPrefix *Calculator::getOptimalDecimalPrefix(int exp10, int exp, bool all_prefixes) const {
 	if(decimal_prefixes.size() <= 0 || exp10 == 0) return NULL;
-	int i = 0;std::cout << "1187" << endl;
+	int i = 0;
 	if(exp < 0) {
-		i = decimal_prefixes.size() - 1;std::cout << "1189" << endl;
+		i = decimal_prefixes.size() - 1;
 	}
-	DecimalPrefix *p = NULL, *p_prev = NULL;std::cout << "1191" << endl;
-	int exp10_1, exp10_2;std::cout << "1192" << endl;
+	DecimalPrefix *p = NULL, *p_prev = NULL;
+	int exp10_1, exp10_2;
 	while((exp < 0 && i >= 0) || (exp >= 0 && i < (int) decimal_prefixes.size())) {
 		if(all_prefixes || decimal_prefixes[i]->exponent() % 3 == 0) {
-			p = decimal_prefixes[i];std::cout << "1195" << endl;
+			p = decimal_prefixes[i];
 			if(p_prev && (p_prev->exponent() >= 0) != (p->exponent() >= 0) && p_prev->exponent() != 0) {
 				if(exp < 0) {
-					i++;std::cout << "1198" << endl;
+					i++;
 				} else {
-					i--;std::cout << "1200" << endl;
+					i--;
 				}
-				p = decimal_null_prefix;std::cout << "1202" << endl;
+				p = decimal_null_prefix;
 			}
 			if(p->exponent(exp) == exp10) {
 				if(p == decimal_null_prefix) return NULL;
@@ -1209,14 +1212,14 @@ DecimalPrefix *Calculator::getOptimalDecimalPrefix(int exp10, int exp, bool all_
 					if(p == decimal_null_prefix) return NULL;
 					return p;
 				}
-				exp10_1 = exp10;std::cout << "1212" << endl;
+				exp10_1 = exp10;
 				if(p_prev) {
-					exp10_1 -= p_prev->exponent(exp);std::cout << "1214" << endl;
+					exp10_1 -= p_prev->exponent(exp);
 				}
-				exp10_2 = p->exponent(exp);std::cout << "1216" << endl;
-				exp10_2 -= exp10;std::cout << "1217" << endl;
-				exp10_2 *= 2;std::cout << "1218" << endl;
-				exp10_2 += 2;std::cout << "1219" << endl;
+				exp10_2 = p->exponent(exp);
+				exp10_2 -= exp10;
+				exp10_2 *= 2;
+				exp10_2 += 2;
 				if(exp10_1 < exp10_2) {
 					if(p_prev == decimal_null_prefix) return NULL;
 					return p_prev;
@@ -1224,37 +1227,37 @@ DecimalPrefix *Calculator::getOptimalDecimalPrefix(int exp10, int exp, bool all_
 					return p;
 				}
 			}
-			p_prev = p;std::cout << "1227" << endl;
+			p_prev = p;
 		}
 		if(exp < 0) {
-			i--;std::cout << "1230" << endl;
+			i--;
 		} else {
-			i++;std::cout << "1232" << endl;
+			i++;
 		}
 	}
 	return p_prev;
 }
 DecimalPrefix *Calculator::getOptimalDecimalPrefix(const Number &exp10, const Number &exp, bool all_prefixes) const {
 	if(decimal_prefixes.size() <= 0 || exp10.isZero()) return NULL;
-	int i = 0;std::cout << "1239" << endl;
-	ComparisonResult c;std::cout << "1240" << endl;
+	int i = 0;
+	ComparisonResult c;
 	if(exp.isNegative()) {
-		i = decimal_prefixes.size() - 1;std::cout << "1242" << endl;
+		i = decimal_prefixes.size() - 1;
 	}
-	DecimalPrefix *p = NULL, *p_prev = NULL;std::cout << "1244" << endl;
-	Number exp10_1, exp10_2;std::cout << "1245" << endl;
+	DecimalPrefix *p = NULL, *p_prev = NULL;
+	Number exp10_1, exp10_2;
 	while((exp.isNegative() && i >= 0) || (!exp.isNegative() && i < (int) decimal_prefixes.size())) {
 		if(all_prefixes || decimal_prefixes[i]->exponent() % 3 == 0) {
-			p = decimal_prefixes[i];std::cout << "1248" << endl;
+			p = decimal_prefixes[i];
 			if(p_prev && (p_prev->exponent() >= 0) != (p->exponent() >= 0) && p_prev->exponent() != 0) {
 				if(exp.isNegative()) {
-					i++;std::cout << "1251" << endl;
+					i++;
 				} else {
-					i--;std::cout << "1253" << endl;
+					i--;
 				}
-				p = decimal_null_prefix;std::cout << "1255" << endl;
+				p = decimal_null_prefix;
 			}
-			c = exp10.compare(p->exponent(exp));std::cout << "1257" << endl;
+			c = exp10.compare(p->exponent(exp));
 			if(c == COMPARISON_RESULT_EQUAL) {
 				if(p == decimal_null_prefix) return NULL;
 				return p;
@@ -1263,14 +1266,14 @@ DecimalPrefix *Calculator::getOptimalDecimalPrefix(const Number &exp10, const Nu
 					if(p == decimal_null_prefix) return NULL;
 					return p;
 				}
-				exp10_1 = exp10;std::cout << "1266" << endl;
+				exp10_1 = exp10;
 				if(p_prev) {
-					exp10_1 -= p_prev->exponent(exp);std::cout << "1268" << endl;
+					exp10_1 -= p_prev->exponent(exp);
 				}
-				exp10_2 = p->exponent(exp);std::cout << "1270" << endl;
-				exp10_2 -= exp10;std::cout << "1271" << endl;
-				exp10_2 *= 2;std::cout << "1272" << endl;
-				exp10_2 += 2;std::cout << "1273" << endl;
+				exp10_2 = p->exponent(exp);
+				exp10_2 -= exp10;
+				exp10_2 *= 2;
+				exp10_2 += 2;
 				if(exp10_1.isLessThan(exp10_2)) {
 					if(p_prev == decimal_null_prefix) return NULL;
 					return p_prev;
@@ -1278,12 +1281,12 @@ DecimalPrefix *Calculator::getOptimalDecimalPrefix(const Number &exp10, const Nu
 					return p;
 				}
 			}
-			p_prev = p;std::cout << "1281" << endl;
+			p_prev = p;
 		}
 		if(exp.isNegative()) {
-			i--;std::cout << "1284" << endl;
+			i--;
 		} else {
-			i++;std::cout << "1286" << endl;
+			i++;
 		}
 	}
 	return p_prev;
@@ -1292,13 +1295,13 @@ int Calculator::usesBinaryPrefixes() const {
 	return priv->use_binary_prefixes;
 }
 void Calculator::useBinaryPrefixes(int use_binary_prefixes) {
-	priv->use_binary_prefixes = use_binary_prefixes;std::cout << "1295" << endl;
+	priv->use_binary_prefixes = use_binary_prefixes;
 }
 BinaryPrefix *Calculator::getNearestBinaryPrefix(int exp2, int exp) const {
 	if(binary_prefixes.size() <= 0) return NULL;
-	int i = 0;std::cout << "1299" << endl;
+	int i = 0;
 	if(exp < 0) {
-		i = binary_prefixes.size() - 1;std::cout << "1301" << endl;
+		i = binary_prefixes.size() - 1;
 	}
 	while((exp < 0 && i >= 0) || (exp >= 0 && i < (int) binary_prefixes.size())) {
 		if(binary_prefixes[i]->exponent(exp) == exp2) {
@@ -1313,43 +1316,43 @@ BinaryPrefix *Calculator::getNearestBinaryPrefix(int exp2, int exp) const {
 			}
 		}
 		if(exp < 0) {
-			i--;std::cout << "1316" << endl;
+			i--;
 		} else {
-			i++;std::cout << "1318" << endl;
+			i++;
 		}
 	}
 	return binary_prefixes[binary_prefixes.size() - 1];
 }
 BinaryPrefix *Calculator::getOptimalBinaryPrefix(int exp2, int exp) const {
 	if(binary_prefixes.size() <= 0 || exp2 == 0) return NULL;
-	int i = -1;std::cout << "1325" << endl;
+	int i = -1;
 	if(exp < 0) {
-		i = binary_prefixes.size() - 1;std::cout << "1327" << endl;
+		i = binary_prefixes.size() - 1;
 	}
-	BinaryPrefix *p = NULL, *p_prev = NULL;std::cout << "1329" << endl;
-	int exp2_1, exp2_2;std::cout << "1330" << endl;
+	BinaryPrefix *p = NULL, *p_prev = NULL;
+	int exp2_1, exp2_2;
 	while((exp < 0 && i >= -1) || (exp >= 0 && i < (int) binary_prefixes.size())) {
 		if(i >= 0) p = binary_prefixes[i];
-		else p = binary_null_prefix;std::cout << "1333" << endl;
+		else p = binary_null_prefix;
 		if(p_prev && (p_prev->exponent() >= 0) != (p->exponent() >= 0) && p_prev->exponent() != 0) {
 			if(exp < 0) {
-				i++;std::cout << "1336" << endl;
+				i++;
 			} else {
-				i--;std::cout << "1338" << endl;
+				i--;
 			}
-			p = binary_null_prefix;std::cout << "1340" << endl;
+			p = binary_null_prefix;
 		}
 		if(p->exponent(exp) == exp2) {
 			if(p == binary_null_prefix) return NULL;
 			return p;
 		} else if(p->exponent(exp) > exp2) {
-			exp2_1 = exp2;std::cout << "1346" << endl;
+			exp2_1 = exp2;
 			if(p_prev) {
-				exp2_1 -= p_prev->exponent(exp);std::cout << "1348" << endl;
+				exp2_1 -= p_prev->exponent(exp);
 			}
-			exp2_2 = p->exponent(exp);std::cout << "1350" << endl;
-			exp2_2 -= exp2;std::cout << "1351" << endl;
-			exp2_2 += 9;std::cout << "1352" << endl;
+			exp2_2 = p->exponent(exp);
+			exp2_2 -= exp2;
+			exp2_2 += 9;
 			if(exp2_1 < exp2_2) {
 				if(p_prev == binary_null_prefix) return NULL;
 				return p_prev;
@@ -1357,39 +1360,39 @@ BinaryPrefix *Calculator::getOptimalBinaryPrefix(int exp2, int exp) const {
 				return p;
 			}
 		}
-		p_prev = p;std::cout << "1360" << endl;
+		p_prev = p;
 		if(exp < 0) {
-			i--;std::cout << "1362" << endl;
+			i--;
 		} else {
-			i++;std::cout << "1364" << endl;
+			i++;
 		}
 	}
 	return p_prev;
 }
 BinaryPrefix *Calculator::getOptimalBinaryPrefix(const Number &exp2, const Number &exp) const {
 	if(binary_prefixes.size() <= 0 || exp2.isZero()) return NULL;
-	int i = -1;std::cout << "1371" << endl;
-	ComparisonResult c;std::cout << "1372" << endl;
+	int i = -1;
+	ComparisonResult c;
 	if(exp.isNegative()) {
-		i = binary_prefixes.size() - 1;std::cout << "1374" << endl;
+		i = binary_prefixes.size() - 1;
 	}
-	BinaryPrefix *p = NULL, *p_prev = NULL;std::cout << "1376" << endl;
-	Number exp2_1, exp2_2;std::cout << "1377" << endl;
+	BinaryPrefix *p = NULL, *p_prev = NULL;
+	Number exp2_1, exp2_2;
 	while((exp.isNegative() && i >= -1) || (!exp.isNegative() && i < (int) binary_prefixes.size())) {
 		if(i >= 0) p = binary_prefixes[i];
-		else p = binary_null_prefix;std::cout << "1380" << endl;
-		c = exp2.compare(p->exponent(exp));std::cout << "1381" << endl;
+		else p = binary_null_prefix;
+		c = exp2.compare(p->exponent(exp));
 		if(c == COMPARISON_RESULT_EQUAL) {
 			if(p == binary_null_prefix) return NULL;
 			return p;
 		} else if(c == COMPARISON_RESULT_GREATER) {
-			exp2_1 = exp2;std::cout << "1386" << endl;
+			exp2_1 = exp2;
 			if(p_prev) {
-				exp2_1 -= p_prev->exponent(exp);std::cout << "1388" << endl;
+				exp2_1 -= p_prev->exponent(exp);
 			}
-			exp2_2 = p->exponent(exp);std::cout << "1390" << endl;
-			exp2_2 -= exp2;std::cout << "1391" << endl;
-			exp2_2 += 9;std::cout << "1392" << endl;
+			exp2_2 = p->exponent(exp);
+			exp2_2 -= exp2;
+			exp2_2 += 9;
 			if(exp2_1.isLessThan(exp2_2)) {
 				if(p_prev == binary_null_prefix) return NULL;
 				return p_prev;
@@ -1397,133 +1400,151 @@ BinaryPrefix *Calculator::getOptimalBinaryPrefix(const Number &exp2, const Numbe
 				return p;
 			}
 		}
-		p_prev = p;std::cout << "1400" << endl;
+		p_prev = p;
 		if(exp.isNegative()) {
-			i--;std::cout << "1402" << endl;
+			i--;
 		} else {
-			i++;std::cout << "1404" << endl;
+			i++;
 		}
 	}
 	return p_prev;
 }
 Prefix *Calculator::addPrefix(Prefix *p) {
 	if(p->type() == PREFIX_DECIMAL) {
-		decimal_prefixes.push_back((DecimalPrefix*) p);std::cout << "1411" << endl;
+		decimal_prefixes.push_back((DecimalPrefix*) p);
 	} else if(p->type() == PREFIX_BINARY) {
-		binary_prefixes.push_back((BinaryPrefix*) p);std::cout << "1413" << endl;
+		binary_prefixes.push_back((BinaryPrefix*) p);
 	}
-	prefixes.push_back(p);std::cout << "1415" << endl;
-	prefixNameChanged(p, true);std::cout << "1416" << endl;
+	prefixes.push_back(p);
+	prefixNameChanged(p, true);
 	return p;
 }
 void Calculator::prefixNameChanged(Prefix *p, bool new_item) {
-	size_t l2;std::cout << "1420" << endl;
+	size_t l2;
 	if(!new_item) delPrefixUFV(p);
 	if(!p->longName(false).empty()) {
-		l2 = p->longName(false).length();std::cout << "1423" << endl;
+		l2 = p->longName(false).length();
 		if(l2 > UFV_LENGTHS) {
-			size_t i = 0, l;std::cout << "1425" << endl;
+			size_t i = 0, l;
 			for(vector<void*>::iterator it = ufvl.begin(); ; ++it) {
-				l = 0;std::cout << "1427" << endl;
+				l = 0;
 				if(it != ufvl.end()) {
-					if(ufvl_t[i] == 'v')						l = ((Variable*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'f')						l = ((MathFunction*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'u')						l = ((Unit*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'p')						l = ((Prefix*) (*it))->shortName(false).length();
-					else if(ufvl_t[i] == 'P')						l = ((Prefix*) (*it))->longName(false).length();
-					else if(ufvl_t[i] == 'q')						l = ((Prefix*) (*it))->unicodeName(false).length();
+					if(ufvl_t[i] == 'v')
+						l = ((Variable*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'f')
+						l = ((MathFunction*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'u')
+						l = ((Unit*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'p')
+						l = ((Prefix*) (*it))->shortName(false).length();
+					else if(ufvl_t[i] == 'P')
+						l = ((Prefix*) (*it))->longName(false).length();
+					else if(ufvl_t[i] == 'q')
+						l = ((Prefix*) (*it))->unicodeName(false).length();
 				}
 				if(it == ufvl.end()) {
-					ufvl.push_back((void*) p);std::cout << "1437" << endl;
-					ufvl_t.push_back('P');std::cout << "1438" << endl;
-					ufvl_i.push_back(1);std::cout << "1439" << endl;
+					ufvl.push_back((void*) p);
+					ufvl_t.push_back('P');
+					ufvl_i.push_back(1);
 					break;
 				} else if(l <= l2) {
-					ufvl.insert(it, (void*) p);std::cout << "1442" << endl;
-					ufvl_t.insert(ufvl_t.begin() + i, 'P');std::cout << "1443" << endl;
-					ufvl_i.insert(ufvl_i.begin() + i, 1);std::cout << "1444" << endl;
+					ufvl.insert(it, (void*) p);
+					ufvl_t.insert(ufvl_t.begin() + i, 'P');
+					ufvl_i.insert(ufvl_i.begin() + i, 1);
 					break;
 				}
-				i++;std::cout << "1447" << endl;
+				i++;
 			}
 		} else if(l2 > 0) {
-			l2--;std::cout << "1450" << endl;
-			ufv[0][l2].push_back((void*) p);std::cout << "1451" << endl;
-			ufv_i[0][l2].push_back(1);std::cout << "1452" << endl;
+			l2--;
+			ufv[0][l2].push_back((void*) p);
+			ufv_i[0][l2].push_back(1);
 		}
 	}
 	if(!p->shortName(false).empty()) {
-		l2 = p->shortName(false).length();std::cout << "1456" << endl;
+		l2 = p->shortName(false).length();
 		if(l2 > UFV_LENGTHS) {
-			size_t i = 0, l;std::cout << "1458" << endl;
+			size_t i = 0, l;
 			for(vector<void*>::iterator it = ufvl.begin(); ; ++it) {
-				l = 0;std::cout << "1460" << endl;
+				l = 0;
 				if(it != ufvl.end()) {
-					if(ufvl_t[i] == 'v')						l = ((Variable*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'f')						l = ((MathFunction*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'u')						l = ((Unit*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'p')						l = ((Prefix*) (*it))->shortName(false).length();
-					else if(ufvl_t[i] == 'P')						l = ((Prefix*) (*it))->longName(false).length();
-					else if(ufvl_t[i] == 'q')						l = ((Prefix*) (*it))->unicodeName(false).length();
+					if(ufvl_t[i] == 'v')
+						l = ((Variable*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'f')
+						l = ((MathFunction*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'u')
+						l = ((Unit*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'p')
+						l = ((Prefix*) (*it))->shortName(false).length();
+					else if(ufvl_t[i] == 'P')
+						l = ((Prefix*) (*it))->longName(false).length();
+					else if(ufvl_t[i] == 'q')
+						l = ((Prefix*) (*it))->unicodeName(false).length();
 				}
 				if(it == ufvl.end()) {
-					ufvl.push_back((void*) p);std::cout << "1470" << endl;
-					ufvl_t.push_back('p');std::cout << "1471" << endl;
-					ufvl_i.push_back(1);std::cout << "1472" << endl;
+					ufvl.push_back((void*) p);
+					ufvl_t.push_back('p');
+					ufvl_i.push_back(1);
 					break;
 				} else if(l <= l2) {
-					ufvl.insert(it, (void*) p);std::cout << "1475" << endl;
-					ufvl_t.insert(ufvl_t.begin() + i, 'p');std::cout << "1476" << endl;
-					ufvl_i.insert(ufvl_i.begin() + i, 1);std::cout << "1477" << endl;
+					ufvl.insert(it, (void*) p);
+					ufvl_t.insert(ufvl_t.begin() + i, 'p');
+					ufvl_i.insert(ufvl_i.begin() + i, 1);
 					break;
 				}
-				i++;std::cout << "1480" << endl;
+				i++;
 			}
 		} else if(l2 > 0) {
-			l2--;std::cout << "1483" << endl;
-			ufv[0][l2].push_back((void*) p);std::cout << "1484" << endl;
-			ufv_i[0][l2].push_back(2);std::cout << "1485" << endl;
+			l2--;
+			ufv[0][l2].push_back((void*) p);
+			ufv_i[0][l2].push_back(2);
 		}
 	}
 	if(!p->unicodeName(false).empty()) {
-		l2 = p->unicodeName(false).length();std::cout << "1489" << endl;
+		l2 = p->unicodeName(false).length();
 		if(l2 > UFV_LENGTHS) {
-			size_t i = 0, l;std::cout << "1491" << endl;
+			size_t i = 0, l;
 			for(vector<void*>::iterator it = ufvl.begin(); ; ++it) {
-				l = 0;std::cout << "1493" << endl;
+				l = 0;
 				if(it != ufvl.end()) {
-					if(ufvl_t[i] == 'v')						l = ((Variable*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'f')						l = ((MathFunction*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'u')						l = ((Unit*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'p')						l = ((Prefix*) (*it))->shortName(false).length();
-					else if(ufvl_t[i] == 'P')						l = ((Prefix*) (*it))->longName(false).length();
-					else if(ufvl_t[i] == 'q')						l = ((Prefix*) (*it))->unicodeName(false).length();
+					if(ufvl_t[i] == 'v')
+						l = ((Variable*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'f')
+						l = ((MathFunction*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'u')
+						l = ((Unit*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'p')
+						l = ((Prefix*) (*it))->shortName(false).length();
+					else if(ufvl_t[i] == 'P')
+						l = ((Prefix*) (*it))->longName(false).length();
+					else if(ufvl_t[i] == 'q')
+						l = ((Prefix*) (*it))->unicodeName(false).length();
 				}
 				if(it == ufvl.end()) {
-					ufvl.push_back((void*) p);std::cout << "1503" << endl;
-					ufvl_t.push_back('q');std::cout << "1504" << endl;
-					ufvl_i.push_back(1);std::cout << "1505" << endl;
+					ufvl.push_back((void*) p);
+					ufvl_t.push_back('q');
+					ufvl_i.push_back(1);
 					break;
 				} else if(l <= l2) {
-					ufvl.insert(it, (void*) p);std::cout << "1508" << endl;
-					ufvl_t.insert(ufvl_t.begin() + i, 'q');std::cout << "1509" << endl;
-					ufvl_i.insert(ufvl_i.begin() + i, 1);std::cout << "1510" << endl;
+					ufvl.insert(it, (void*) p);
+					ufvl_t.insert(ufvl_t.begin() + i, 'q');
+					ufvl_i.insert(ufvl_i.begin() + i, 1);
 					break;
 				}
-				i++;std::cout << "1513" << endl;
+				i++;
 			}
 		} else if(l2 > 0) {
-			l2--;std::cout << "1516" << endl;
-			ufv[0][l2].push_back((void*) p);std::cout << "1517" << endl;
-			ufv_i[0][l2].push_back(3);std::cout << "1518" << endl;
+			l2--;
+			ufv[0][l2].push_back((void*) p);
+			ufv_i[0][l2].push_back(3);
 		}
 	}
 }
 #define PRECISION_TO_BITS(p) (((p) * 3.322) + 100)
 void Calculator::setPrecision(int precision) {
 	if(precision <= 0) precision = DEFAULT_PRECISION;
-	i_precision = precision;std::cout << "1524" << endl;
-	mpfr_set_default_prec(PRECISION_TO_BITS(i_precision));std::cout << "1525" << endl;
+	i_precision = precision;
+	mpfr_set_default_prec(PRECISION_TO_BITS(i_precision));
 }
 int Calculator::getPrecision() const {
 	return i_precision;
@@ -1531,25 +1552,25 @@ int Calculator::getPrecision() const {
 void Calculator::useIntervalArithmetic(bool use_interval_arithmetic) {b_interval = use_interval_arithmetic;}
 bool Calculator::usesIntervalArithmetic() const {return i_start_interval > 0 || (b_interval && i_stop_interval <= 0);}
 void Calculator::beginTemporaryStopIntervalArithmetic() {
-	i_stop_interval++;std::cout << "1533" << endl;
+	i_stop_interval++;
 }
 void Calculator::endTemporaryStopIntervalArithmetic() {
-	i_stop_interval--;std::cout << "1536" << endl;
+	i_stop_interval--;
 }
 void Calculator::beginTemporaryEnableIntervalArithmetic() {
-	i_start_interval++;std::cout << "1539" << endl;
+	i_start_interval++;
 }
 void Calculator::endTemporaryEnableIntervalArithmetic() {
-	i_start_interval--;std::cout << "1542" << endl;
+	i_start_interval--;
 }
 
 void Calculator::setCustomInputBase(Number nr) {
-	priv->custom_input_base = nr;std::cout << "1546" << endl;
+	priv->custom_input_base = nr;
 	if(!nr.isReal()) {
-		priv->custom_input_base_i = LONG_MAX;std::cout << "1548" << endl;
+		priv->custom_input_base_i = LONG_MAX;
 	} else {
-		nr.abs();std::cout << "1550" << endl; nr.ceil();std::cout << "1550" << endl;
-		priv->custom_input_base_i = nr.lintValue();std::cout << "1551" << endl;
+		nr.abs(); nr.ceil();
+		priv->custom_input_base_i = nr.lintValue();
 		if(priv->custom_input_base_i < 2) priv->custom_input_base_i = 2;
 	}
 }
@@ -1569,7 +1590,7 @@ string Calculator::localWhereString() const {
 void Calculator::setLocale() {
 	if(b_ignore_locale) return;
 	if(saved_locale) setlocale(LC_NUMERIC, saved_locale);
-	lconv *locale = localeconv();std::cout << "1571" << endl;
+	lconv *locale = localeconv();
 	if(strcmp(locale->decimal_point, ",") == 0) {
 		DOT_STR = ",";
 		DOT_S = ".,";
@@ -1585,12 +1606,12 @@ void Calculator::setLocale() {
 }
 void Calculator::setIgnoreLocale() {
 	if(saved_locale) {
-		free(saved_locale);std::cout << "1587" << endl;
-		saved_locale = NULL;std::cout << "1588" << endl;
+		free(saved_locale);
+		saved_locale = NULL;
 	}
-	char *current_lc_monetary = setlocale(LC_MONETARY, NULL);std::cout << "1590" << endl;
+	char *current_lc_monetary = setlocale(LC_MONETARY, NULL);
 	if(current_lc_monetary) saved_locale = strdup(current_lc_monetary);
-	else saved_locale = NULL;std::cout << "1592" << endl;
+	else saved_locale = NULL;
 	setlocale(LC_ALL, "C");
 #ifdef ENABLE_NLS
 #	ifdef _WIN32
@@ -1599,25 +1620,25 @@ void Calculator::setIgnoreLocale() {
 #	endif
 #endif
 	if(saved_locale) {
-		setlocale(LC_MONETARY, saved_locale);std::cout << "1601" << endl;
-		free(saved_locale);std::cout << "1602" << endl;
-		saved_locale = NULL;std::cout << "1603" << endl;
+		setlocale(LC_MONETARY, saved_locale);
+		free(saved_locale);
+		saved_locale = NULL;
 	}
-	b_ignore_locale = true;std::cout << "1605" << endl;
+	b_ignore_locale = true;
 	per_str = "per";
-	per_str_len = per_str.length();std::cout << "1607" << endl;
+	per_str_len = per_str.length();
 	times_str = "times";
-	times_str_len = times_str.length();std::cout << "1609" << endl;
+	times_str_len = times_str.length();
 	plus_str = "plus";
-	plus_str_len = plus_str.length();std::cout << "1611" << endl;
+	plus_str_len = plus_str.length();
 	minus_str = "minus";
-	minus_str_len = minus_str.length();std::cout << "1613" << endl;
+	minus_str_len = minus_str.length();
 	and_str = "";
-	and_str_len = 0;std::cout << "1615" << endl;
+	and_str_len = 0;
 	or_str = "";
-	or_str_len = 0;std::cout << "1617" << endl;
-	local_to = false;std::cout << "1618" << endl;
-	unsetLocale();std::cout << "1619" << endl;
+	or_str_len = 0;
+	local_to = false;
+	unsetLocale();
 }
 bool Calculator::getIgnoreLocale() {
 	return b_ignore_locale;
@@ -1647,59 +1668,59 @@ void Calculator::unsetLocale() {
 }
 
 size_t Calculator::addId(MathStructure *mstruct, bool persistent) {
-	size_t id = 0;std::cout << "1649" << endl;
+	size_t id = 0;
 	if(priv->freed_ids.size() > 0) {
-		id = priv->freed_ids.back();std::cout << "1651" << endl;
-		priv->freed_ids.pop_back();std::cout << "1652" << endl;
+		id = priv->freed_ids.back();
+		priv->freed_ids.pop_back();
 	} else {
-		priv->ids_i++;std::cout << "1654" << endl;
-		id = priv->ids_i;std::cout << "1655" << endl;
+		priv->ids_i++;
+		id = priv->ids_i;
 	}
-	priv->ids_p[id] = persistent;std::cout << "1657" << endl;
-	priv->id_structs[id] = mstruct;std::cout << "1658" << endl;
+	priv->ids_p[id] = persistent;
+	priv->id_structs[id] = mstruct;
 	return id;
 }
 size_t Calculator::parseAddId(MathFunction *f, const string &str, const ParseOptions &po, bool persistent) {
-	size_t id = 0;std::cout << "1662" << endl;
+	size_t id = 0;
 	if(priv->freed_ids.size() > 0) {
-		id = priv->freed_ids.back();std::cout << "1664" << endl;
-		priv->freed_ids.pop_back();std::cout << "1665" << endl;
+		id = priv->freed_ids.back();
+		priv->freed_ids.pop_back();
 	} else {
-		priv->ids_i++;std::cout << "1667" << endl;
-		id = priv->ids_i;std::cout << "1668" << endl;
+		priv->ids_i++;
+		id = priv->ids_i;
 	}
-	priv->ids_p[id] = persistent;std::cout << "1670" << endl;
-	priv->id_structs[id] = new MathStructure();std::cout << "1671" << endl;
-	f->parse(*priv->id_structs[id], str, po);std::cout << "1672" << endl;
+	priv->ids_p[id] = persistent;
+	priv->id_structs[id] = new MathStructure();
+	f->parse(*priv->id_structs[id], str, po);
 	return id;
 }
 size_t Calculator::parseAddIdAppend(MathFunction *f, const MathStructure &append_mstruct, const string &str, const ParseOptions &po, bool persistent) {
-	size_t id = 0;std::cout << "1676" << endl;
+	size_t id = 0;
 	if(priv->freed_ids.size() > 0) {
-		id = priv->freed_ids.back();std::cout << "1678" << endl;
-		priv->freed_ids.pop_back();std::cout << "1679" << endl;
+		id = priv->freed_ids.back();
+		priv->freed_ids.pop_back();
 	} else {
-		priv->ids_i++;std::cout << "1681" << endl;
-		id = priv->ids_i;std::cout << "1682" << endl;
+		priv->ids_i++;
+		id = priv->ids_i;
 	}
-	priv->ids_p[id] = persistent;std::cout << "1684" << endl;
-	priv->id_structs[id] = new MathStructure();std::cout << "1685" << endl;
-	f->parse(*priv->id_structs[id], str, po);std::cout << "1686" << endl;
-	priv->id_structs[id]->addChild(append_mstruct);std::cout << "1687" << endl;
+	priv->ids_p[id] = persistent;
+	priv->id_structs[id] = new MathStructure();
+	f->parse(*priv->id_structs[id], str, po);
+	priv->id_structs[id]->addChild(append_mstruct);
 	return id;
 }
 size_t Calculator::parseAddVectorId(const string &str, const ParseOptions &po, bool persistent) {
-	size_t id = 0;std::cout << "1691" << endl;
+	size_t id = 0;
 	if(priv->freed_ids.size() > 0) {
-		id = priv->freed_ids.back();std::cout << "1693" << endl;
-		priv->freed_ids.pop_back();std::cout << "1694" << endl;
+		id = priv->freed_ids.back();
+		priv->freed_ids.pop_back();
 	} else {
-		priv->ids_i++;std::cout << "1696" << endl;
-		id = priv->ids_i;std::cout << "1697" << endl;
+		priv->ids_i++;
+		id = priv->ids_i;
 	}
-	priv->ids_p[id] = persistent;std::cout << "1699" << endl;
-	priv->id_structs[id] = new MathStructure();std::cout << "1700" << endl;
-	f_vector->args(str, *priv->id_structs[id], po);std::cout << "1701" << endl;
+	priv->ids_p[id] = persistent;
+	priv->id_structs[id] = new MathStructure();
+	f_vector->args(str, *priv->id_structs[id], po);
 	return id;
 }
 MathStructure *Calculator::getId(size_t id) {
@@ -1707,10 +1728,10 @@ MathStructure *Calculator::getId(size_t id) {
 		if(priv->ids_p[id]) {
 			return new MathStructure(*priv->id_structs[id]);
 		} else {
-			MathStructure *mstruct = priv->id_structs[id];std::cout << "1709" << endl;
-			priv->freed_ids.push_back(id);std::cout << "1710" << endl;
-			priv->id_structs.erase(id);std::cout << "1711" << endl;
-			priv->ids_p.erase(id);std::cout << "1712" << endl;
+			MathStructure *mstruct = priv->id_structs[id];
+			priv->freed_ids.push_back(id);
+			priv->id_structs.erase(id);
+			priv->ids_p.erase(id);
 			return mstruct;
 		}
 	}
@@ -1719,29 +1740,29 @@ MathStructure *Calculator::getId(size_t id) {
 
 void Calculator::delId(size_t id) {
 	if(priv->ids_p.find(id) != priv->ids_p.end()) {
-		priv->freed_ids.push_back(id);std::cout << "1721" << endl;
-		priv->id_structs[id]->unref();std::cout << "1722" << endl;
-		priv->id_structs.erase(id);std::cout << "1723" << endl;
-		priv->ids_p.erase(id);std::cout << "1724" << endl;
+		priv->freed_ids.push_back(id);
+		priv->id_structs[id]->unref();
+		priv->id_structs.erase(id);
+		priv->ids_p.erase(id);
 	}
 }
 
 void Calculator::resetVariables() {
-	variables.clear();std::cout << "1729" << endl;
-	addBuiltinVariables();std::cout << "1730" << endl;
+	variables.clear();
+	addBuiltinVariables();
 }
 void Calculator::resetFunctions() {
-	functions.clear();std::cout << "1733" << endl;
-	addBuiltinFunctions();std::cout << "1734" << endl;
+	functions.clear();
+	addBuiltinFunctions();
 }
 void Calculator::resetUnits() {
-	units.clear();std::cout << "1737" << endl;
-	addBuiltinUnits();std::cout << "1738" << endl;
+	units.clear();
+	addBuiltinUnits();
 }
 void Calculator::reset() {
-	resetVariables();std::cout << "1741" << endl;
-	resetFunctions();std::cout << "1742" << endl;
-	resetUnits();std::cout << "1743" << endl;
+	resetVariables();
+	resetFunctions();
+	resetUnits();
 }
 
 #ifdef __linux__
@@ -1752,23 +1773,23 @@ void Calculator::reset() {
 class UptimeVariable : public DynamicVariable {
   private:
 	void calculate(MathStructure &m) const {
-		Number nr;std::cout << "1754" << endl;
+		Number nr;
 #	ifdef __linux__
 		std::ifstream proc_uptime("/proc/uptime", std::ios::in);
 		if(proc_uptime.is_open()) {
-			string s_uptime;std::cout << "1758" << endl;
-			getline(proc_uptime, s_uptime, ' ');std::cout << "1759" << endl;
-			nr.set(s_uptime);std::cout << "1760" << endl;
+			string s_uptime;
+			getline(proc_uptime, s_uptime, ' ');
+			nr.set(s_uptime);
 		} else {
-			struct sysinfo sf;std::cout << "1762" << endl;
+			struct sysinfo sf;
 			if(!sysinfo(&sf)) nr = (long int) sf.uptime;
 		}
 #	elif _WIN32
-		ULONGLONG i_uptime = GetTickCount64();std::cout << "1766" << endl;
-		nr.set((long int) (i_uptime % 1000), 1000);std::cout << "1767" << endl;
-		nr += (long int) (i_uptime / 1000);std::cout << "1768" << endl;
+		ULONGLONG i_uptime = GetTickCount64();
+		nr.set((long int) (i_uptime % 1000), 1000);
+		nr += (long int) (i_uptime / 1000);
 #	endif
-		m = nr;std::cout << "1770" << endl;
+		m = nr;
 		Unit *u = CALCULATOR->getUnit("s");
 		if(u) m *= u;
 	}
@@ -1807,228 +1828,228 @@ void Calculator::addBuiltinVariables() {
 	v_y = (UnknownVariable*) addVariable(new UnknownVariable("", "y", "", true, false));
 	v_z = (UnknownVariable*) addVariable(new UnknownVariable("", "z", "", true, false));
 	v_C = new UnknownVariable("", "C", "", false, true);
-	v_C->setAssumptions(new Assumptions());std::cout << "1809" << endl;
+	v_C->setAssumptions(new Assumptions());
 	v_n = (UnknownVariable*) addVariable(new UnknownVariable("", "n", "", false, true));
-	v_n->setAssumptions(new Assumptions());std::cout << "1811" << endl;
-	v_n->assumptions()->setType(ASSUMPTION_TYPE_INTEGER);std::cout << "1812" << endl;
-	v_today = (KnownVariable*) addVariable(new TodayVariable());std::cout << "1813" << endl;
-	v_yesterday = (KnownVariable*) addVariable(new YesterdayVariable());std::cout << "1814" << endl;
-	v_tomorrow = (KnownVariable*) addVariable(new TomorrowVariable());std::cout << "1815" << endl;
-	v_now = (KnownVariable*) addVariable(new NowVariable());std::cout << "1816" << endl;
+	v_n->setAssumptions(new Assumptions());
+	v_n->assumptions()->setType(ASSUMPTION_TYPE_INTEGER);
+	v_today = (KnownVariable*) addVariable(new TodayVariable());
+	v_yesterday = (KnownVariable*) addVariable(new YesterdayVariable());
+	v_tomorrow = (KnownVariable*) addVariable(new TomorrowVariable());
+	v_now = (KnownVariable*) addVariable(new NowVariable());
 #if defined __linux__ || defined _WIN32
-	addVariable(new UptimeVariable());std::cout << "1818" << endl;
+	addVariable(new UptimeVariable());
 #endif
 
 }
 
 void Calculator::addBuiltinFunctions() {
 
-	f_vector = addFunction(new VectorFunction());std::cout << "1825" << endl;
-	f_sort = addFunction(new SortFunction());std::cout << "1826" << endl;
-	f_rank = addFunction(new RankFunction());std::cout << "1827" << endl;
-	f_limits = addFunction(new LimitsFunction());std::cout << "1828" << endl;
-	//f_component = addFunction(new ComponentFunction());std::cout << "1829" << endl;
-	f_dimension = addFunction(new DimensionFunction());std::cout << "1830" << endl;
-	f_merge_vectors = addFunction(new MergeVectorsFunction());std::cout << "1831" << endl;
-	f_matrix = addFunction(new MatrixFunction());std::cout << "1832" << endl;
-	f_matrix_to_vector = addFunction(new MatrixToVectorFunction());std::cout << "1833" << endl;
-	f_area = addFunction(new AreaFunction());std::cout << "1834" << endl;
-	f_rows = addFunction(new RowsFunction());std::cout << "1835" << endl;
-	f_columns = addFunction(new ColumnsFunction());std::cout << "1836" << endl;
-	f_row = addFunction(new RowFunction());std::cout << "1837" << endl;
-	f_column = addFunction(new ColumnFunction());std::cout << "1838" << endl;
-	f_elements = addFunction(new ElementsFunction());std::cout << "1839" << endl;
-	f_element = addFunction(new ElementFunction());std::cout << "1840" << endl;
-	f_transpose = addFunction(new TransposeFunction());std::cout << "1841" << endl;
-	f_identity = addFunction(new IdentityFunction());std::cout << "1842" << endl;
-	f_determinant = addFunction(new DeterminantFunction());std::cout << "1843" << endl;
-	f_permanent = addFunction(new PermanentFunction());std::cout << "1844" << endl;
-	f_adjoint = addFunction(new AdjointFunction());std::cout << "1845" << endl;
-	f_cofactor = addFunction(new CofactorFunction());std::cout << "1846" << endl;
-	f_inverse = addFunction(new InverseFunction());std::cout << "1847" << endl;
-	f_magnitude = addFunction(new MagnitudeFunction());std::cout << "1848" << endl;
-	f_hadamard = addFunction(new HadamardFunction());std::cout << "1849" << endl;
-	f_entrywise = addFunction(new EntrywiseFunction());std::cout << "1850" << endl;
+	f_vector = addFunction(new VectorFunction());
+	f_sort = addFunction(new SortFunction());
+	f_rank = addFunction(new RankFunction());
+	f_limits = addFunction(new LimitsFunction());
+	//f_component = addFunction(new ComponentFunction());
+	f_dimension = addFunction(new DimensionFunction());
+	f_merge_vectors = addFunction(new MergeVectorsFunction());
+	f_matrix = addFunction(new MatrixFunction());
+	f_matrix_to_vector = addFunction(new MatrixToVectorFunction());
+	f_area = addFunction(new AreaFunction());
+	f_rows = addFunction(new RowsFunction());
+	f_columns = addFunction(new ColumnsFunction());
+	f_row = addFunction(new RowFunction());
+	f_column = addFunction(new ColumnFunction());
+	f_elements = addFunction(new ElementsFunction());
+	f_element = addFunction(new ElementFunction());
+	f_transpose = addFunction(new TransposeFunction());
+	f_identity = addFunction(new IdentityFunction());
+	f_determinant = addFunction(new DeterminantFunction());
+	f_permanent = addFunction(new PermanentFunction());
+	f_adjoint = addFunction(new AdjointFunction());
+	f_cofactor = addFunction(new CofactorFunction());
+	f_inverse = addFunction(new InverseFunction());
+	f_magnitude = addFunction(new MagnitudeFunction());
+	f_hadamard = addFunction(new HadamardFunction());
+	f_entrywise = addFunction(new EntrywiseFunction());
 
-	f_factorial = addFunction(new FactorialFunction());std::cout << "1852" << endl;
-	f_factorial2 = addFunction(new DoubleFactorialFunction());std::cout << "1853" << endl;
+	f_factorial = addFunction(new FactorialFunction());
+	f_factorial2 = addFunction(new DoubleFactorialFunction());
 	f_multifactorial = addFunction(new MultiFactorialFunction());
-	f_binomial = addFunction(new BinomialFunction());std::cout << "1855" << endl;
+	f_binomial = addFunction(new BinomialFunction());
 
-	f_xor = addFunction(new XorFunction());std::cout << "1857" << endl;
-	f_bitxor = addFunction(new BitXorFunction());std::cout << "1858" << endl;
-	f_even = addFunction(new EvenFunction());std::cout << "1859" << endl;
-	f_odd = addFunction(new OddFunction());std::cout << "1860" << endl;
+	f_xor = addFunction(new XorFunction());
+	f_bitxor = addFunction(new BitXorFunction());
+	f_even = addFunction(new EvenFunction());
+	f_odd = addFunction(new OddFunction());
 	f_shift = addFunction(new ShiftFunction());
-	f_bitcmp = addFunction(new BitCmpFunction());std::cout << "1862" << endl;
+	f_bitcmp = addFunction(new BitCmpFunction());
 	addFunction(new CircularShiftFunction());
 
-	f_abs = addFunction(new AbsFunction());std::cout << "1865" << endl;
-	f_signum = addFunction(new SignumFunction());std::cout << "1866" << endl;
-	f_heaviside = addFunction(new HeavisideFunction());std::cout << "1867" << endl;
-	f_dirac = addFunction(new DiracFunction());std::cout << "1868" << endl;
-	f_gcd = addFunction(new GcdFunction());std::cout << "1869" << endl;
-	f_lcm = addFunction(new LcmFunction());std::cout << "1870" << endl;
-	f_round = addFunction(new RoundFunction());std::cout << "1871" << endl;
-	f_floor = addFunction(new FloorFunction());std::cout << "1872" << endl;
-	f_ceil = addFunction(new CeilFunction());std::cout << "1873" << endl;
-	f_trunc = addFunction(new TruncFunction());std::cout << "1874" << endl;
-	f_int = addFunction(new IntFunction());std::cout << "1875" << endl;
-	f_frac = addFunction(new FracFunction());std::cout << "1876" << endl;
-	f_rem = addFunction(new RemFunction());std::cout << "1877" << endl;
-	f_mod = addFunction(new ModFunction());std::cout << "1878" << endl;
+	f_abs = addFunction(new AbsFunction());
+	f_signum = addFunction(new SignumFunction());
+	f_heaviside = addFunction(new HeavisideFunction());
+	f_dirac = addFunction(new DiracFunction());
+	f_gcd = addFunction(new GcdFunction());
+	f_lcm = addFunction(new LcmFunction());
+	f_round = addFunction(new RoundFunction());
+	f_floor = addFunction(new FloorFunction());
+	f_ceil = addFunction(new CeilFunction());
+	f_trunc = addFunction(new TruncFunction());
+	f_int = addFunction(new IntFunction());
+	f_frac = addFunction(new FracFunction());
+	f_rem = addFunction(new RemFunction());
+	f_mod = addFunction(new ModFunction());
 
-	f_polynomial_unit = addFunction(new PolynomialUnitFunction());std::cout << "1880" << endl;
-	f_polynomial_primpart = addFunction(new PolynomialPrimpartFunction());std::cout << "1881" << endl;
-	f_polynomial_content = addFunction(new PolynomialContentFunction());std::cout << "1882" << endl;
-	f_coeff = addFunction(new CoeffFunction());std::cout << "1883" << endl;
-	f_lcoeff = addFunction(new LCoeffFunction());std::cout << "1884" << endl;
-	f_tcoeff = addFunction(new TCoeffFunction());std::cout << "1885" << endl;
-	f_degree = addFunction(new DegreeFunction());std::cout << "1886" << endl;
-	f_ldegree = addFunction(new LDegreeFunction());std::cout << "1887" << endl;
+	f_polynomial_unit = addFunction(new PolynomialUnitFunction());
+	f_polynomial_primpart = addFunction(new PolynomialPrimpartFunction());
+	f_polynomial_content = addFunction(new PolynomialContentFunction());
+	f_coeff = addFunction(new CoeffFunction());
+	f_lcoeff = addFunction(new LCoeffFunction());
+	f_tcoeff = addFunction(new TCoeffFunction());
+	f_degree = addFunction(new DegreeFunction());
+	f_ldegree = addFunction(new LDegreeFunction());
 
-	f_re = addFunction(new ReFunction());std::cout << "1889" << endl;
-	f_im = addFunction(new ImFunction());std::cout << "1890" << endl;
-	f_arg = addFunction(new ArgFunction());std::cout << "1891" << endl;
-	f_numerator = addFunction(new NumeratorFunction());std::cout << "1892" << endl;
-	f_denominator = addFunction(new DenominatorFunction());std::cout << "1893" << endl;
+	f_re = addFunction(new ReFunction());
+	f_im = addFunction(new ImFunction());
+	f_arg = addFunction(new ArgFunction());
+	f_numerator = addFunction(new NumeratorFunction());
+	f_denominator = addFunction(new DenominatorFunction());
 
-	f_interval = addFunction(new IntervalFunction());std::cout << "1895" << endl;
-	f_uncertainty = addFunction(new UncertaintyFunction());std::cout << "1896" << endl;
+	f_interval = addFunction(new IntervalFunction());
+	f_uncertainty = addFunction(new UncertaintyFunction());
 
-	f_sqrt = addFunction(new SqrtFunction());std::cout << "1898" << endl;
-	f_cbrt = addFunction(new CbrtFunction());std::cout << "1899" << endl;
-	f_root = addFunction(new RootFunction());std::cout << "1900" << endl;
-	f_sq = addFunction(new SquareFunction());std::cout << "1901" << endl;
+	f_sqrt = addFunction(new SqrtFunction());
+	f_cbrt = addFunction(new CbrtFunction());
+	f_root = addFunction(new RootFunction());
+	f_sq = addFunction(new SquareFunction());
 
-	f_exp = addFunction(new ExpFunction());std::cout << "1903" << endl;
+	f_exp = addFunction(new ExpFunction());
 
-	f_ln = addFunction(new LogFunction());std::cout << "1905" << endl;
-	f_logn = addFunction(new LognFunction());std::cout << "1906" << endl;
+	f_ln = addFunction(new LogFunction());
+	f_logn = addFunction(new LognFunction());
 
-	f_lambert_w = addFunction(new LambertWFunction());std::cout << "1908" << endl;
+	f_lambert_w = addFunction(new LambertWFunction());
 
-	f_sin = addFunction(new SinFunction());std::cout << "1910" << endl;
-	f_cos = addFunction(new CosFunction());std::cout << "1911" << endl;
-	f_tan = addFunction(new TanFunction());std::cout << "1912" << endl;
-	f_asin = addFunction(new AsinFunction());std::cout << "1913" << endl;
-	f_acos = addFunction(new AcosFunction());std::cout << "1914" << endl;
-	f_atan = addFunction(new AtanFunction());std::cout << "1915" << endl;
-	f_sinh = addFunction(new SinhFunction());std::cout << "1916" << endl;
-	f_cosh = addFunction(new CoshFunction());std::cout << "1917" << endl;
-	f_tanh = addFunction(new TanhFunction());std::cout << "1918" << endl;
-	f_asinh = addFunction(new AsinhFunction());std::cout << "1919" << endl;
-	f_acosh = addFunction(new AcoshFunction());std::cout << "1920" << endl;
-	f_atanh = addFunction(new AtanhFunction());std::cout << "1921" << endl;
-	f_atan2 = addFunction(new Atan2Function());std::cout << "1922" << endl;
-	f_sinc = addFunction(new SincFunction());std::cout << "1923" << endl;
-	priv->f_cis = addFunction(new CisFunction());std::cout << "1924" << endl;
-	f_radians_to_default_angle_unit = addFunction(new RadiansToDefaultAngleUnitFunction());std::cout << "1925" << endl;
+	f_sin = addFunction(new SinFunction());
+	f_cos = addFunction(new CosFunction());
+	f_tan = addFunction(new TanFunction());
+	f_asin = addFunction(new AsinFunction());
+	f_acos = addFunction(new AcosFunction());
+	f_atan = addFunction(new AtanFunction());
+	f_sinh = addFunction(new SinhFunction());
+	f_cosh = addFunction(new CoshFunction());
+	f_tanh = addFunction(new TanhFunction());
+	f_asinh = addFunction(new AsinhFunction());
+	f_acosh = addFunction(new AcoshFunction());
+	f_atanh = addFunction(new AtanhFunction());
+	f_atan2 = addFunction(new Atan2Function());
+	f_sinc = addFunction(new SincFunction());
+	priv->f_cis = addFunction(new CisFunction());
+	f_radians_to_default_angle_unit = addFunction(new RadiansToDefaultAngleUnitFunction());
 
-	f_zeta = addFunction(new ZetaFunction());std::cout << "1927" << endl;
-	f_gamma = addFunction(new GammaFunction());std::cout << "1928" << endl;
-	f_digamma = addFunction(new DigammaFunction());std::cout << "1929" << endl;
-	f_beta = addFunction(new BetaFunction());std::cout << "1930" << endl;
-	f_airy = addFunction(new AiryFunction());std::cout << "1931" << endl;
-	f_besselj = addFunction(new BesseljFunction());std::cout << "1932" << endl;
-	f_bessely = addFunction(new BesselyFunction());std::cout << "1933" << endl;
-	f_erf = addFunction(new ErfFunction());std::cout << "1934" << endl;
-	f_erfc = addFunction(new ErfcFunction());std::cout << "1935" << endl;
+	f_zeta = addFunction(new ZetaFunction());
+	f_gamma = addFunction(new GammaFunction());
+	f_digamma = addFunction(new DigammaFunction());
+	f_beta = addFunction(new BetaFunction());
+	f_airy = addFunction(new AiryFunction());
+	f_besselj = addFunction(new BesseljFunction());
+	f_bessely = addFunction(new BesselyFunction());
+	f_erf = addFunction(new ErfFunction());
+	f_erfc = addFunction(new ErfcFunction());
 
-	f_total = addFunction(new TotalFunction());std::cout << "1937" << endl;
-	f_percentile = addFunction(new PercentileFunction());std::cout << "1938" << endl;
-	f_min = addFunction(new MinFunction());std::cout << "1939" << endl;
-	f_max = addFunction(new MaxFunction());std::cout << "1940" << endl;
-	f_mode = addFunction(new ModeFunction());std::cout << "1941" << endl;
-	f_rand = addFunction(new RandFunction());std::cout << "1942" << endl;
-	addFunction(new RandnFunction());std::cout << "1943" << endl;
-	addFunction(new RandPoissonFunction());std::cout << "1944" << endl;
+	f_total = addFunction(new TotalFunction());
+	f_percentile = addFunction(new PercentileFunction());
+	f_min = addFunction(new MinFunction());
+	f_max = addFunction(new MaxFunction());
+	f_mode = addFunction(new ModeFunction());
+	f_rand = addFunction(new RandFunction());
+	addFunction(new RandnFunction());
+	addFunction(new RandPoissonFunction());
 
-	f_date = addFunction(new DateFunction());std::cout << "1946" << endl;
-	f_datetime = addFunction(new DateTimeFunction());std::cout << "1947" << endl;
-	f_timevalue = addFunction(new TimeValueFunction());std::cout << "1948" << endl;
-	f_timestamp = addFunction(new TimestampFunction());std::cout << "1949" << endl;
-	f_stamptodate = addFunction(new TimestampToDateFunction());std::cout << "1950" << endl;
-	f_days = addFunction(new DaysFunction());std::cout << "1951" << endl;
-	f_yearfrac = addFunction(new YearFracFunction());std::cout << "1952" << endl;
-	f_week = addFunction(new WeekFunction());std::cout << "1953" << endl;
-	f_weekday = addFunction(new WeekdayFunction());std::cout << "1954" << endl;
-	f_month = addFunction(new MonthFunction());std::cout << "1955" << endl;
-	f_day = addFunction(new DayFunction());std::cout << "1956" << endl;
-	f_year = addFunction(new YearFunction());std::cout << "1957" << endl;
-	f_yearday = addFunction(new YeardayFunction());std::cout << "1958" << endl;
-	f_time = addFunction(new TimeFunction());std::cout << "1959" << endl;
-	f_add_days = addFunction(new AddDaysFunction());std::cout << "1960" << endl;
-	f_add_months = addFunction(new AddMonthsFunction());std::cout << "1961" << endl;
-	f_add_years = addFunction(new AddYearsFunction());std::cout << "1962" << endl;
+	f_date = addFunction(new DateFunction());
+	f_datetime = addFunction(new DateTimeFunction());
+	f_timevalue = addFunction(new TimeValueFunction());
+	f_timestamp = addFunction(new TimestampFunction());
+	f_stamptodate = addFunction(new TimestampToDateFunction());
+	f_days = addFunction(new DaysFunction());
+	f_yearfrac = addFunction(new YearFracFunction());
+	f_week = addFunction(new WeekFunction());
+	f_weekday = addFunction(new WeekdayFunction());
+	f_month = addFunction(new MonthFunction());
+	f_day = addFunction(new DayFunction());
+	f_year = addFunction(new YearFunction());
+	f_yearday = addFunction(new YeardayFunction());
+	f_time = addFunction(new TimeFunction());
+	f_add_days = addFunction(new AddDaysFunction());
+	f_add_months = addFunction(new AddMonthsFunction());
+	f_add_years = addFunction(new AddYearsFunction());
 
-	f_lunarphase = addFunction(new LunarPhaseFunction());std::cout << "1964" << endl;
-	f_nextlunarphase = addFunction(new NextLunarPhaseFunction());std::cout << "1965" << endl;
+	f_lunarphase = addFunction(new LunarPhaseFunction());
+	f_nextlunarphase = addFunction(new NextLunarPhaseFunction());
 
-	f_base = addFunction(new BaseFunction());std::cout << "1967" << endl;
-	f_bin = addFunction(new BinFunction());std::cout << "1968" << endl;
-	f_oct = addFunction(new OctFunction());std::cout << "1969" << endl;
-	addFunction(new DecFunction());std::cout << "1970" << endl;
-	f_hex = addFunction(new HexFunction());std::cout << "1971" << endl;
-	f_roman = addFunction(new RomanFunction());std::cout << "1972" << endl;
-	addFunction(new BijectiveFunction());std::cout << "1973" << endl;
+	f_base = addFunction(new BaseFunction());
+	f_bin = addFunction(new BinFunction());
+	f_oct = addFunction(new OctFunction());
+	addFunction(new DecFunction());
+	f_hex = addFunction(new HexFunction());
+	f_roman = addFunction(new RomanFunction());
+	addFunction(new BijectiveFunction());
 
-	f_ascii = addFunction(new AsciiFunction());std::cout << "1975" << endl;
-	f_char = addFunction(new CharFunction());std::cout << "1976" << endl;
+	f_ascii = addFunction(new AsciiFunction());
+	f_char = addFunction(new CharFunction());
 
-	f_length = addFunction(new LengthFunction());std::cout << "1978" << endl;
-	f_concatenate = addFunction(new ConcatenateFunction());std::cout << "1979" << endl;
+	f_length = addFunction(new LengthFunction());
+	f_concatenate = addFunction(new ConcatenateFunction());
 
-	f_replace = addFunction(new ReplaceFunction());std::cout << "1981" << endl;
-	f_stripunits = addFunction(new StripUnitsFunction());std::cout << "1982" << endl;
+	f_replace = addFunction(new ReplaceFunction());
+	f_stripunits = addFunction(new StripUnitsFunction());
 
-	f_genvector = addFunction(new GenerateVectorFunction());std::cout << "1984" << endl;
+	f_genvector = addFunction(new GenerateVectorFunction());
 	f_for = addFunction(new ForFunction());
-	f_sum = addFunction(new SumFunction());std::cout << "1986" << endl;
-	f_product = addFunction(new ProductFunction());std::cout << "1987" << endl;
-	f_process = addFunction(new ProcessFunction());std::cout << "1988" << endl;
-	f_process_matrix = addFunction(new ProcessMatrixFunction());std::cout << "1989" << endl;
-	f_csum = addFunction(new CustomSumFunction());std::cout << "1990" << endl;
-	f_function = addFunction(new FunctionFunction());std::cout << "1991" << endl;
-	f_select = addFunction(new SelectFunction());std::cout << "1992" << endl;
-	f_title = addFunction(new TitleFunction());std::cout << "1993" << endl;
+	f_sum = addFunction(new SumFunction());
+	f_product = addFunction(new ProductFunction());
+	f_process = addFunction(new ProcessFunction());
+	f_process_matrix = addFunction(new ProcessMatrixFunction());
+	f_csum = addFunction(new CustomSumFunction());
+	f_function = addFunction(new FunctionFunction());
+	f_select = addFunction(new SelectFunction());
+	f_title = addFunction(new TitleFunction());
 	f_if = addFunction(new IFFunction());
-	f_is_number = addFunction(new IsNumberFunction());std::cout << "1995" << endl;
-	f_is_real = addFunction(new IsRealFunction());std::cout << "1996" << endl;
-	f_is_rational = addFunction(new IsRationalFunction());std::cout << "1997" << endl;
-	f_is_integer = addFunction(new IsIntegerFunction());std::cout << "1998" << endl;
-	f_represents_number = addFunction(new RepresentsNumberFunction());std::cout << "1999" << endl;
-	f_represents_real = addFunction(new RepresentsRealFunction());std::cout << "2000" << endl;
-	f_represents_rational = addFunction(new RepresentsRationalFunction());std::cout << "2001" << endl;
-	f_represents_integer = addFunction(new RepresentsIntegerFunction());std::cout << "2002" << endl;
-	f_error = addFunction(new ErrorFunction());std::cout << "2003" << endl;
-	f_warning = addFunction(new WarningFunction());std::cout << "2004" << endl;
-	f_message = addFunction(new MessageFunction());std::cout << "2005" << endl;
+	f_is_number = addFunction(new IsNumberFunction());
+	f_is_real = addFunction(new IsRealFunction());
+	f_is_rational = addFunction(new IsRationalFunction());
+	f_is_integer = addFunction(new IsIntegerFunction());
+	f_represents_number = addFunction(new RepresentsNumberFunction());
+	f_represents_real = addFunction(new RepresentsRealFunction());
+	f_represents_rational = addFunction(new RepresentsRationalFunction());
+	f_represents_integer = addFunction(new RepresentsIntegerFunction());
+	f_error = addFunction(new ErrorFunction());
+	f_warning = addFunction(new WarningFunction());
+	f_message = addFunction(new MessageFunction());
 
-	f_save = addFunction(new SaveFunction());std::cout << "2007" << endl;
-	f_load = addFunction(new LoadFunction());std::cout << "2008" << endl;
-	f_export = addFunction(new ExportFunction());std::cout << "2009" << endl;
+	f_save = addFunction(new SaveFunction());
+	f_load = addFunction(new LoadFunction());
+	f_export = addFunction(new ExportFunction());
 
-	f_register = addFunction(new RegisterFunction());std::cout << "2011" << endl;
-	f_stack = addFunction(new StackFunction());std::cout << "2012" << endl;
+	f_register = addFunction(new RegisterFunction());
+	f_stack = addFunction(new StackFunction());
 
 	f_diff = addFunction(new DeriveFunction());
-	f_integrate = addFunction(new IntegrateFunction());std::cout << "2015" << endl;
-	addFunction(new RombergFunction());std::cout << "2016" << endl;
-	addFunction(new MonteCarloFunction());std::cout << "2017" << endl;
-	f_solve = addFunction(new SolveFunction());std::cout << "2018" << endl;
-	f_multisolve = addFunction(new SolveMultipleFunction());std::cout << "2019" << endl;
-	f_dsolve = addFunction(new DSolveFunction());std::cout << "2020" << endl;
-	f_limit = addFunction(new LimitFunction());std::cout << "2021" << endl;
+	f_integrate = addFunction(new IntegrateFunction());
+	addFunction(new RombergFunction());
+	addFunction(new MonteCarloFunction());
+	f_solve = addFunction(new SolveFunction());
+	f_multisolve = addFunction(new SolveMultipleFunction());
+	f_dsolve = addFunction(new DSolveFunction());
+	f_limit = addFunction(new LimitFunction());
 
-	f_li = addFunction(new liFunction());std::cout << "2023" << endl;
-	f_Li = addFunction(new LiFunction());std::cout << "2024" << endl;
-	f_Ei = addFunction(new EiFunction());std::cout << "2025" << endl;
-	f_Si = addFunction(new SiFunction());std::cout << "2026" << endl;
-	f_Ci = addFunction(new CiFunction());std::cout << "2027" << endl;
-	f_Shi = addFunction(new ShiFunction());std::cout << "2028" << endl;
-	f_Chi = addFunction(new ChiFunction());std::cout << "2029" << endl;
-	f_igamma = addFunction(new IGammaFunction());std::cout << "2030" << endl;
+	f_li = addFunction(new liFunction());
+	f_Li = addFunction(new LiFunction());
+	f_Ei = addFunction(new EiFunction());
+	f_Si = addFunction(new SiFunction());
+	f_Ci = addFunction(new CiFunction());
+	f_Shi = addFunction(new ShiFunction());
+	f_Chi = addFunction(new ChiFunction());
+	f_igamma = addFunction(new IGammaFunction());
 
 	if(canPlot()) f_plot = addFunction(new PlotFunction());
 
@@ -2036,10 +2057,10 @@ void Calculator::addBuiltinFunctions() {
 	if(plugin) {
 		CREATEPLUG_PROC createproc = (CREATEPLUG_PROC) dlsym(plugin, "createPlugin");
 		if (dlerror() != NULL) {
-			dlclose(plugin);std::cout << "2038" << endl;
+			dlclose(plugin);
 			printf( "dlsym error\n");
 		} else {
-			createproc();std::cout << "2041" << endl;
+			createproc();
 		}
 	} else {
 		printf( "dlopen error\n");
@@ -2049,91 +2070,91 @@ void Calculator::addBuiltinFunctions() {
 void Calculator::addBuiltinUnits() {
 	u_euro = addUnit(new Unit(_("Currency"), "EUR", "euros", "euro", "European Euros", false, true, true));
 	u_btc = addUnit(new AliasUnit(_("Currency"), "BTC", "bitcoins", "bitcoin", "Bitcoins", u_euro, "6512.84", 1, "", false, true, true));
-	u_btc->setApproximate();std::cout << "2051" << endl;
-	u_btc->setPrecision(-2);std::cout << "2052" << endl;
-	u_btc->setChanged(false);std::cout << "2053" << endl;
-	u_second = NULL;std::cout << "2054" << endl;
-	u_minute = NULL;std::cout << "2055" << endl;
-	u_hour = NULL;std::cout << "2056" << endl;
-	u_day = NULL;std::cout << "2057" << endl;
-	u_month = NULL;std::cout << "2058" << endl;
-	u_year = NULL;std::cout << "2059" << endl;
+	u_btc->setApproximate();
+	u_btc->setPrecision(-2);
+	u_btc->setChanged(false);
+	u_second = NULL;
+	u_minute = NULL;
+	u_hour = NULL;
+	u_day = NULL;
+	u_month = NULL;
+	u_year = NULL;
 }
 
 void Calculator::setVariableUnitsEnabled(bool enable_variable_units) {
-	b_var_units = enable_variable_units;std::cout << "2063" << endl;
+	b_var_units = enable_variable_units;
 }
 bool Calculator::variableUnitsEnabled() const {
 	return b_var_units;
 }
 
 void Calculator::error(bool critical, int message_category, const char *TEMPLATE, ...) {
-	va_list ap;std::cout << "2070" << endl;
-	va_start(ap, TEMPLATE);std::cout << "2071" << endl;
-	message(critical ? MESSAGE_ERROR : MESSAGE_WARNING, message_category, TEMPLATE, ap);std::cout << "2072" << endl;
-	va_end(ap);std::cout << "2073" << endl;
+	va_list ap;
+	va_start(ap, TEMPLATE);
+	message(critical ? MESSAGE_ERROR : MESSAGE_WARNING, message_category, TEMPLATE, ap);
+	va_end(ap);
 }
 void Calculator::error(bool critical, const char *TEMPLATE, ...) {
-	va_list ap;std::cout << "2076" << endl;
-	va_start(ap, TEMPLATE);std::cout << "2077" << endl;
-	message(critical ? MESSAGE_ERROR : MESSAGE_WARNING, MESSAGE_CATEGORY_NONE, TEMPLATE, ap);std::cout << "2078" << endl;
-	va_end(ap);std::cout << "2079" << endl;
+	va_list ap;
+	va_start(ap, TEMPLATE);
+	message(critical ? MESSAGE_ERROR : MESSAGE_WARNING, MESSAGE_CATEGORY_NONE, TEMPLATE, ap);
+	va_end(ap);
 }
 void Calculator::message(MessageType mtype, int message_category, const char *TEMPLATE, ...) {
-	va_list ap;std::cout << "2082" << endl;
-	va_start(ap, TEMPLATE);std::cout << "2083" << endl;
-	message(mtype, message_category, TEMPLATE, ap);std::cout << "2084" << endl;
-	va_end(ap);std::cout << "2085" << endl;
+	va_list ap;
+	va_start(ap, TEMPLATE);
+	message(mtype, message_category, TEMPLATE, ap);
+	va_end(ap);
 }
 void Calculator::message(MessageType mtype, const char *TEMPLATE, ...) {
-	va_list ap;std::cout << "2088" << endl;
-	va_start(ap, TEMPLATE);std::cout << "2089" << endl;
-	message(mtype, MESSAGE_CATEGORY_NONE, TEMPLATE, ap);std::cout << "2090" << endl;
-	va_end(ap);std::cout << "2091" << endl;
+	va_list ap;
+	va_start(ap, TEMPLATE);
+	message(mtype, MESSAGE_CATEGORY_NONE, TEMPLATE, ap);
+	va_end(ap);
 }
 void Calculator::message(MessageType mtype, int message_category, const char *TEMPLATE, va_list ap) {
 	if(disable_errors_ref > 0) {
-		stopped_messages_count[disable_errors_ref - 1]++;std::cout << "2095" << endl;
+		stopped_messages_count[disable_errors_ref - 1]++;
 		if(mtype == MESSAGE_ERROR) {
-			stopped_errors_count[disable_errors_ref - 1]++;std::cout << "2097" << endl;
+			stopped_errors_count[disable_errors_ref - 1]++;
 		} else if(mtype == MESSAGE_WARNING) {
-			stopped_warnings_count[disable_errors_ref - 1]++;std::cout << "2099" << endl;
+			stopped_warnings_count[disable_errors_ref - 1]++;
 		}
 	}
-	string error_str = TEMPLATE;std::cout << "2102" << endl;
-	size_t i = 0;std::cout << "2103" << endl;
+	string error_str = TEMPLATE;
+	size_t i = 0;
 	while(true) {
 		i = error_str.find("%", i);
 		if(i == string::npos || i + 1 == error_str.length()) break;
 		switch(error_str[i + 1]) {
 			case 's': {
-				const char *str = va_arg(ap, const char*);std::cout << "2109" << endl;
+				const char *str = va_arg(ap, const char*);
 				if(!str) {
-					i++;std::cout << "2111" << endl;
+					i++;
 				} else {
-					error_str.replace(i, 2, str);std::cout << "2113" << endl;
-					i += strlen(str);std::cout << "2114" << endl;
+					error_str.replace(i, 2, str);
+					i += strlen(str);
 				}
 				break;
 			}
 			case 'c': {
-				char c = (char) va_arg(ap, int);std::cout << "2119" << endl;
+				char c = (char) va_arg(ap, int);
 				if(c > 0) {
-					error_str.replace(i, 2, 1, c);std::cout << "2121" << endl;
+					error_str.replace(i, 2, 1, c);
 				}
-				i++;std::cout << "2123" << endl;
+				i++;
 				break;
 			}
 			default: {
-				i++;std::cout << "2127" << endl;
+				i++;
 				break;
 			}
 		}
 	}
-	bool dup_error = false;std::cout << "2132" << endl;
+	bool dup_error = false;
 	for(i = 0; i < messages.size(); i++) {
 		if(error_str == messages[i].message()) {
-			dup_error = true;std::cout << "2135" << endl;
+			dup_error = true;
 			break;
 		}
 	}
@@ -2141,7 +2162,7 @@ void Calculator::message(MessageType mtype, int message_category, const char *TE
 		for(size_t i2 = 0; !dup_error && i2 < (size_t) disable_errors_ref; i2++) {
 			for(i = 0; i < stopped_messages[i2].size(); i++) {
 				if(error_str == stopped_messages[i2][i].message()) {
-					dup_error = true;std::cout << "2143" << endl;
+					dup_error = true;
 					break;
 				}
 			}
@@ -2149,7 +2170,7 @@ void Calculator::message(MessageType mtype, int message_category, const char *TE
 	}
 	if(!dup_error) {
 		if(disable_errors_ref > 0) stopped_messages[disable_errors_ref - 1].push_back(CalculatorMessage(error_str, mtype, message_category, current_stage));
-		else messages.push_back(CalculatorMessage(error_str, mtype, message_category, current_stage));std::cout << "2151" << endl;
+		else messages.push_back(CalculatorMessage(error_str, mtype, message_category, current_stage));
 	}
 }
 CalculatorMessage* Calculator::message() {
@@ -2160,7 +2181,7 @@ CalculatorMessage* Calculator::message() {
 }
 CalculatorMessage* Calculator::nextMessage() {
 	if(!messages.empty()) {
-		messages.erase(messages.begin());std::cout << "2162" << endl;
+		messages.erase(messages.begin());
 		if(!messages.empty()) {
 			return &messages[0];
 		}
@@ -2168,7 +2189,7 @@ CalculatorMessage* Calculator::nextMessage() {
 	return NULL;
 }
 void Calculator::clearMessages() {
-	messages.clear();std::cout << "2170" << endl;
+	messages.clear();
 }
 void Calculator::cleanMessages(const MathStructure &mstruct, size_t first_message) {
 	if(first_message > 0) first_message--;
@@ -2176,43 +2197,44 @@ void Calculator::cleanMessages(const MathStructure &mstruct, size_t first_messag
 	if(mstruct.containsInterval(true, false, false, -2, true) <= 0) {
 		for(size_t i = messages.size() - 1; ; i--) {
 			if(messages[i].category() == MESSAGE_CATEGORY_WIDE_INTERVAL) {
-				messages.erase(messages.begin() + i);std::cout << "2178" << endl;
+				messages.erase(messages.begin() + i);
 			}
 			if(i == first_message) break;
 		}
 	}
 }
 void Calculator::deleteName(string name_, ExpressionItem *object) {
-	Variable *v2 = getVariable(name_);std::cout << "2185" << endl;
+	Variable *v2 = getVariable(name_);
 	if(v2 == object) {
 		return;
 	}
 	if(v2 != NULL) {
-		v2->destroy();std::cout << "2190" << endl;
+		v2->destroy();
 	} else {
-		MathFunction *f2 = getFunction(name_);std::cout << "2192" << endl;
-		if(f2 == object)			return;
+		MathFunction *f2 = getFunction(name_);
+		if(f2 == object)
+			return;
 		if(f2 != NULL) {
-			f2->destroy();std::cout << "2195" << endl;
+			f2->destroy();
 		}
 	}
-	deleteName(name_, object);std::cout << "2198" << endl;
+	deleteName(name_, object);
 }
 void Calculator::deleteUnitName(string name_, Unit *object) {
-	Unit *u2 = getUnit(name_);std::cout << "2201" << endl;
+	Unit *u2 = getUnit(name_);
 	if(u2) {
 		if(u2 != object) {
-			u2->destroy();std::cout << "2204" << endl;
+			u2->destroy();
 		}
 		return;
 	}
-	u2 = getCompositeUnit(name_);std::cout << "2208" << endl;
+	u2 = getCompositeUnit(name_);
 	if(u2) {
 		if(u2 != object) {
-			u2->destroy();std::cout << "2211" << endl;
+			u2->destroy();
 		}
 	}
-	deleteUnitName(name_, object);std::cout << "2214" << endl;
+	deleteUnitName(name_, object);
 }
 void Calculator::saveState() {
 }
@@ -2221,36 +2243,36 @@ void Calculator::restoreState() {
 void Calculator::clearBuffers() {
 	for(unordered_map<size_t, bool>::iterator it = priv->ids_p.begin(); it != priv->ids_p.end(); ++it) {
 		if(!it->second) {
-			priv->freed_ids.push_back(it->first);std::cout << "2223" << endl;
-			priv->id_structs.erase(it->first);std::cout << "2224" << endl;
-			priv->ids_p.erase(it);std::cout << "2225" << endl;
+			priv->freed_ids.push_back(it->first);
+			priv->id_structs.erase(it->first);
+			priv->ids_p.erase(it);
 		}
 	}
 }
 bool Calculator::abort() {
-	i_aborted = 1;std::cout << "2230" << endl;
+	i_aborted = 1;
 	if(!b_busy) return true;
 	if(!calculate_thread->running) {
-		b_busy = false;std::cout << "2233" << endl;
+		b_busy = false;
 	} else {
-		int msecs = 5000;std::cout << "2235" << endl;
+		int msecs = 5000;
 		while(b_busy && msecs > 0) {
-			sleep_ms(10);std::cout << "2237" << endl;
-			msecs -= 10;std::cout << "2238" << endl;
+			sleep_ms(10);
+			msecs -= 10;
 		}
 		if(b_busy) {
-			calculate_thread->cancel();std::cout << "2241" << endl;
-			stopControl();std::cout << "2242" << endl;
-			stopped_messages_count.clear();std::cout << "2243" << endl;
-			stopped_warnings_count.clear();std::cout << "2244" << endl;
-			stopped_errors_count.clear();std::cout << "2245" << endl;
-			stopped_messages.clear();std::cout << "2246" << endl;
-			disable_errors_ref = 0;std::cout << "2247" << endl;
+			calculate_thread->cancel();
+			stopControl();
+			stopped_messages_count.clear();
+			stopped_warnings_count.clear();
+			stopped_errors_count.clear();
+			stopped_messages.clear();
+			disable_errors_ref = 0;
 			if(tmp_rpn_mstruct) tmp_rpn_mstruct->unref();
-			tmp_rpn_mstruct = NULL;std::cout << "2249" << endl;
+			tmp_rpn_mstruct = NULL;
 			error(true, _("The calculation has been forcibly terminated. Please restart the application and report this as a bug."), NULL);
-			b_busy = false;std::cout << "2251" << endl;
-			calculate_thread->start();std::cout << "2252" << endl;
+			b_busy = false;
+			calculate_thread->start();
 			return false;
 		}
 	}
@@ -2263,7 +2285,7 @@ void Calculator::terminateThreads() {
 	if(calculate_thread->running) {
 		if(!calculate_thread->write(false) || !calculate_thread->write(NULL)) calculate_thread->cancel();
 		for(size_t i = 0; i < 10 && calculate_thread->running; i++) {
-			sleep_ms(1);std::cout << "2265" << endl;
+			sleep_ms(1);
 		}
 		if(calculate_thread->running) calculate_thread->cancel();
 	}
@@ -2271,55 +2293,55 @@ void Calculator::terminateThreads() {
 
 string Calculator::localizeExpression(string str, const ParseOptions &po) const {
 	if((DOT_STR == DOT && COMMA_STR == COMMA && !po.comma_as_separator) || po.base == BASE_UNICODE || (po.base == BASE_CUSTOM && priv->custom_input_base_i > 62)) return str;
-	vector<size_t> q_begin;std::cout << "2273" << endl;
-	vector<size_t> q_end;std::cout << "2274" << endl;
-	size_t i3 = 0;std::cout << "2275" << endl;
+	vector<size_t> q_begin;
+	vector<size_t> q_end;
+	size_t i3 = 0;
 	while(true) {
 		i3 = str.find_first_of("\"\'", i3);
 		if(i3 == string::npos) {
 			break;
 		}
-		q_begin.push_back(i3);std::cout << "2281" << endl;
-		i3 = str.find(str[i3], i3 + 1);std::cout << "2282" << endl;
+		q_begin.push_back(i3);
+		i3 = str.find(str[i3], i3 + 1);
 		if(i3 == string::npos) {
-			q_end.push_back(str.length() - 1);std::cout << "2284" << endl;
+			q_end.push_back(str.length() - 1);
 			break;
 		}
-		q_end.push_back(i3);std::cout << "2287" << endl;
-		i3++;std::cout << "2288" << endl;
+		q_end.push_back(i3);
+		i3++;
 	}
 	if(COMMA_STR != COMMA || po.comma_as_separator) {
-		bool b_alt_comma = po.comma_as_separator && COMMA_STR == COMMA;std::cout << "2291" << endl;
-		size_t ui = str.find(COMMA);std::cout << "2292" << endl;
+		bool b_alt_comma = po.comma_as_separator && COMMA_STR == COMMA;
+		size_t ui = str.find(COMMA);
 		while(ui != string::npos) {
-			bool b = false;std::cout << "2294" << endl;
+			bool b = false;
 			for(size_t ui2 = 0; ui2 < q_end.size(); ui2++) {
 				if(ui <= q_end[ui2] && ui >= q_begin[ui2]) {
-					ui = str.find(COMMA, q_end[ui2] + 1);std::cout << "2297" << endl;
-					b = true;std::cout << "2298" << endl;
+					ui = str.find(COMMA, q_end[ui2] + 1);
+					b = true;
 					break;
 				}
 			}
 			if(!b) {
 				str.replace(ui, strlen(COMMA), b_alt_comma ? ";" : COMMA_STR);
-				ui = str.find(COMMA, ui + (b_alt_comma ? 1 : COMMA_STR.length()));std::cout << "2304" << endl;
+				ui = str.find(COMMA, ui + (b_alt_comma ? 1 : COMMA_STR.length()));
 			}
 		}
 	}
 	if(DOT_STR != DOT) {
-		size_t ui = str.find(DOT);std::cout << "2309" << endl;
+		size_t ui = str.find(DOT);
 		while(ui != string::npos) {
-			bool b = false;std::cout << "2311" << endl;
+			bool b = false;
 			for(size_t ui2 = 0; ui2 < q_end.size(); ui2++) {
 				if(ui <= q_end[ui2] && ui >= q_begin[ui2]) {
-					ui = str.find(DOT, q_end[ui2] + 1);std::cout << "2314" << endl;
-					b = true;std::cout << "2315" << endl;
+					ui = str.find(DOT, q_end[ui2] + 1);
+					b = true;
 					break;
 				}
 			}
 			if(!b) {
-				str.replace(ui, strlen(DOT), DOT_STR);std::cout << "2320" << endl;
-				ui = str.find(DOT, ui + DOT_STR.length());std::cout << "2321" << endl;
+				str.replace(ui, strlen(DOT), DOT_STR);
+				ui = str.find(DOT, ui + DOT_STR.length());
 			}
 		}
 	}
@@ -2327,50 +2349,50 @@ string Calculator::localizeExpression(string str, const ParseOptions &po) const 
 }
 string Calculator::unlocalizeExpression(string str, const ParseOptions &po) const {
 	if((DOT_STR == DOT && COMMA_STR == COMMA && !po.comma_as_separator) || po.base == BASE_UNICODE || (po.base == BASE_CUSTOM && priv->custom_input_base_i > 62)) return str;
-	int base = po.base;std::cout << "2329" << endl;
+	int base = po.base;
 	if(base == BASE_CUSTOM) {
-		base = (int) priv->custom_input_base_i;std::cout << "2331" << endl;
+		base = (int) priv->custom_input_base_i;
 	} else if(base == BASE_BIJECTIVE_26) {
-		base = 36;std::cout << "2333" << endl;
+		base = 36;
 	} else if(base == BASE_GOLDEN_RATIO || base == BASE_SUPER_GOLDEN_RATIO || base == BASE_SQRT2) {
-		base = 2;std::cout << "2335" << endl;
+		base = 2;
 	} else if(base == BASE_PI) {
-		base = 4;std::cout << "2337" << endl;
+		base = 4;
 	} else if(base == BASE_E) {
-		base = 3;std::cout << "2339" << endl;
+		base = 3;
 	} else if(base == BASE_DUODECIMAL) {
-		base = -12;std::cout << "2341" << endl;
+		base = -12;
 	} else if(base < 2 || base > 36) {
-		base = -1;std::cout << "2343" << endl;
+		base = -1;
 	}
-	vector<size_t> q_begin;std::cout << "2345" << endl;
-	vector<size_t> q_end;std::cout << "2346" << endl;
-	size_t i3 = 0;std::cout << "2347" << endl;
+	vector<size_t> q_begin;
+	vector<size_t> q_end;
+	size_t i3 = 0;
 	while(true) {
 		i3 = str.find_first_of("\"\'", i3);
 		if(i3 == string::npos) {
 			break;
 		}
-		q_begin.push_back(i3);std::cout << "2353" << endl;
-		i3 = str.find(str[i3], i3 + 1);std::cout << "2354" << endl;
+		q_begin.push_back(i3);
+		i3 = str.find(str[i3], i3 + 1);
 		if(i3 == string::npos) {
-			q_end.push_back(str.length() - 1);std::cout << "2356" << endl;
+			q_end.push_back(str.length() - 1);
 			break;
 		}
-		q_end.push_back(i3);std::cout << "2359" << endl;
-		i3++;std::cout << "2360" << endl;
+		q_end.push_back(i3);
+		i3++;
 	}
 	if(DOT_STR != DOT) {
 		if(DOT_STR == COMMA && str.find(COMMA_STR) == string::npos && base > 0 && base <= 10) {
-			bool b_vector = (str.find(LEFT_VECTOR_WRAP) != string::npos && !po.dot_as_separator);std::cout << "2364" << endl;
-			bool b_dot = (str.find(DOT) != string::npos);std::cout << "2365" << endl;
-			size_t ui = str.find_first_of(b_vector ? DOT COMMA : COMMA);std::cout << "2366" << endl;
-			size_t ui2 = 0;std::cout << "2367" << endl;
+			bool b_vector = (str.find(LEFT_VECTOR_WRAP) != string::npos && !po.dot_as_separator);
+			bool b_dot = (str.find(DOT) != string::npos);
+			size_t ui = str.find_first_of(b_vector ? DOT COMMA : COMMA);
+			size_t ui2 = 0;
 			while(ui != string::npos) {
 				for(; ui2 < q_end.size(); ui2++) {
 					if(ui >= q_begin[ui2]) {
 						if(ui <= q_end[ui2]) {
-							ui = str.find_first_of(b_vector ? DOT COMMA : COMMA, q_end[ui2] + 1);std::cout << "2372" << endl;
+							ui = str.find_first_of(b_vector ? DOT COMMA : COMMA, q_end[ui2] + 1);
 							if(ui == string::npos) break;
 						}
 					} else {
@@ -2379,28 +2401,28 @@ string Calculator::unlocalizeExpression(string str, const ParseOptions &po) cons
 				}
 				if(ui == string::npos) break;
 				if(ui > 0) {
-					size_t ui3 = str.find_last_not_of(SPACES, ui - 1);std::cout << "2381" << endl;
+					size_t ui3 = str.find_last_not_of(SPACES, ui - 1);
 					if(ui3 != string::npos && ((str[ui3] > 'a' && str[ui3] < 'z') || (str[ui3] > 'A' && str[ui3] < 'Z')) && is_not_number(str[ui3], base)) return str;
 				}
 				if(ui != str.length() - 1) {
-					size_t ui3 = str.find_first_not_of(SPACES, ui + 1);std::cout << "2385" << endl;
+					size_t ui3 = str.find_first_not_of(SPACES, ui + 1);
 					if(ui3 != string::npos && is_not_number(str[ui3], base)) return str;
 					if(b_vector || !b_dot) {
-						ui3 = str.find_first_not_of(SPACES NUMBERS, ui3 + 1);std::cout << "2388" << endl;
+						ui3 = str.find_first_not_of(SPACES NUMBERS, ui3 + 1);
 						if(ui3 != string::npos && (str[ui3] == COMMA_CH || (b_vector && str[ui3] == DOT_CH))) return str;
 					}
 				}
-				ui = str.find(b_vector ? DOT COMMA : COMMA, ui + 1);std::cout << "2392" << endl;
+				ui = str.find(b_vector ? DOT COMMA : COMMA, ui + 1);
 			}
 		}
 		if(po.dot_as_separator) {
-			size_t ui = str.find(DOT);std::cout << "2396" << endl;
-			size_t ui2 = 0;std::cout << "2397" << endl;
+			size_t ui = str.find(DOT);
+			size_t ui2 = 0;
 			while(ui != string::npos) {
 				for(; ui2 < q_end.size(); ui2++) {
 					if(ui >= q_begin[ui2]) {
 						if(ui <= q_end[ui2]) {
-							ui = str.find(DOT, q_end[ui2] + 1);std::cout << "2402" << endl;
+							ui = str.find(DOT, q_end[ui2] + 1);
 							if(ui == string::npos) break;
 						}
 					} else {
@@ -2408,17 +2430,17 @@ string Calculator::unlocalizeExpression(string str, const ParseOptions &po) cons
 					}
 				}
 				if(ui == string::npos) break;
-				str.replace(ui, strlen(DOT), SPACE);std::cout << "2410" << endl;
-				ui = str.find(DOT, ui + strlen(SPACE));std::cout << "2411" << endl;
+				str.replace(ui, strlen(DOT), SPACE);
+				ui = str.find(DOT, ui + strlen(SPACE));
 			}
 		}
-		size_t ui2 = 0;std::cout << "2414" << endl;
-		size_t ui = str.find(DOT_STR);std::cout << "2415" << endl;
+		size_t ui2 = 0;
+		size_t ui = str.find(DOT_STR);
 		while(ui != string::npos) {
 			for(; ui2 < q_end.size(); ui2++) {
 				if(ui >= q_begin[ui2]) {
 					if(ui <= q_end[ui2]) {
-						ui = str.find(DOT_STR, q_end[ui2] + 1);std::cout << "2420" << endl;
+						ui = str.find(DOT_STR, q_end[ui2] + 1);
 						if(ui == string::npos) break;
 					}
 				} else {
@@ -2426,20 +2448,20 @@ string Calculator::unlocalizeExpression(string str, const ParseOptions &po) cons
 				}
 			}
 			if(ui == string::npos) break;
-			str.replace(ui, DOT_STR.length(), DOT);std::cout << "2428" << endl;
-			ui = str.find(DOT_STR, ui + strlen(DOT));std::cout << "2429" << endl;
+			str.replace(ui, DOT_STR.length(), DOT);
+			ui = str.find(DOT_STR, ui + strlen(DOT));
 		}
 	}
 	if(COMMA_STR != COMMA || po.comma_as_separator) {
-		bool b_alt_comma = po.comma_as_separator && COMMA_STR == COMMA;std::cout << "2433" << endl;
+		bool b_alt_comma = po.comma_as_separator && COMMA_STR == COMMA;
 		if(po.comma_as_separator) {
-			size_t ui = str.find(COMMA);std::cout << "2435" << endl;
-			size_t ui2 = 0;std::cout << "2436" << endl;
+			size_t ui = str.find(COMMA);
+			size_t ui2 = 0;
 			while(ui != string::npos) {
 				for(; ui2 < q_end.size(); ui2++) {
 					if(ui >= q_begin[ui2]) {
 						if(ui <= q_end[ui2]) {
-							ui = str.find(COMMA, q_end[ui2] + 1);std::cout << "2441" << endl;
+							ui = str.find(COMMA, q_end[ui2] + 1);
 							if(ui == string::npos) break;
 						}
 					} else {
@@ -2447,11 +2469,11 @@ string Calculator::unlocalizeExpression(string str, const ParseOptions &po) cons
 					}
 				}
 				if(ui == string::npos) break;
-				str.erase(ui, strlen(COMMA));std::cout << "2449" << endl;
-				ui = str.find(COMMA, ui);std::cout << "2450" << endl;
+				str.erase(ui, strlen(COMMA));
+				ui = str.find(COMMA, ui);
 			}
 		}
-		size_t ui2 = 0;std::cout << "2453" << endl;
+		size_t ui2 = 0;
 		size_t ui = str.find(b_alt_comma ? ";" : COMMA_STR);
 		while(ui != string::npos) {
 			for(; ui2 < q_end.size(); ui2++) {
@@ -2465,7 +2487,7 @@ string Calculator::unlocalizeExpression(string str, const ParseOptions &po) cons
 				}
 			}
 			if(ui == string::npos) break;
-			str.replace(ui, b_alt_comma ? 1 : COMMA_STR.length(), COMMA);std::cout << "2467" << endl;
+			str.replace(ui, b_alt_comma ? 1 : COMMA_STR.length(), COMMA);
 			ui = str.find(b_alt_comma ? ";" : COMMA_STR, ui + strlen(COMMA));
 		}
 	}
@@ -2478,130 +2500,130 @@ bool Calculator::calculateRPNRegister(size_t index, int msecs, const EvaluationO
 }
 
 bool Calculator::calculateRPN(MathStructure *mstruct, int command, size_t index, int msecs, const EvaluationOptions &eo, int function_arguments) {
-	b_busy = true;std::cout << "2480" << endl;
+	b_busy = true;
 	if(!calculate_thread->running && !calculate_thread->start()) {mstruct->setAborted(); return false;}
-	bool had_msecs = msecs > 0;std::cout << "2482" << endl;
-	tmp_evaluationoptions = eo;std::cout << "2483" << endl;
-	tmp_proc_command = command;std::cout << "2484" << endl;
-	tmp_rpnindex = index;std::cout << "2485" << endl;
-	tmp_rpn_mstruct = mstruct;std::cout << "2486" << endl;
-	tmp_proc_registers = function_arguments;std::cout << "2487" << endl;
+	bool had_msecs = msecs > 0;
+	tmp_evaluationoptions = eo;
+	tmp_proc_command = command;
+	tmp_rpnindex = index;
+	tmp_rpn_mstruct = mstruct;
+	tmp_proc_registers = function_arguments;
 	if(!calculate_thread->write(false)) {calculate_thread->cancel(); mstruct->setAborted(); return false;}
 	if(!calculate_thread->write((void*) mstruct)) {calculate_thread->cancel(); mstruct->setAborted(); return false;}
 	while(msecs > 0 && b_busy) {
-		sleep_ms(10);std::cout << "2491" << endl;
-		msecs -= 10;std::cout << "2492" << endl;
+		sleep_ms(10);
+		msecs -= 10;
 	}
 	if(had_msecs && b_busy) {
-		abort();std::cout << "2495" << endl;
+		abort();
 		return false;
 	}
 	return true;
 }
 bool Calculator::calculateRPN(string str, int command, size_t index, int msecs, const EvaluationOptions &eo, MathStructure *parsed_struct, MathStructure *to_struct, bool make_to_division, int function_arguments) {
-	MathStructure *mstruct = new MathStructure();std::cout << "2501" << endl;
-	b_busy = true;std::cout << "2502" << endl;
+	MathStructure *mstruct = new MathStructure();
+	b_busy = true;
 	if(!calculate_thread->running && !calculate_thread->start()) {mstruct->setAborted(); return false;}
-	bool had_msecs = msecs > 0;std::cout << "2504" << endl;
-	expression_to_calculate = str;std::cout << "2505" << endl;
-	tmp_evaluationoptions = eo;std::cout << "2506" << endl;
-	tmp_proc_command = command;std::cout << "2507" << endl;
-	tmp_rpnindex = index;std::cout << "2508" << endl;
-	tmp_rpn_mstruct = mstruct;std::cout << "2509" << endl;
-	tmp_parsedstruct = parsed_struct;std::cout << "2510" << endl;
-	tmp_tostruct = to_struct;std::cout << "2511" << endl;
-	tmp_maketodivision = make_to_division;std::cout << "2512" << endl;
-	tmp_proc_registers = function_arguments;std::cout << "2513" << endl;
+	bool had_msecs = msecs > 0;
+	expression_to_calculate = str;
+	tmp_evaluationoptions = eo;
+	tmp_proc_command = command;
+	tmp_rpnindex = index;
+	tmp_rpn_mstruct = mstruct;
+	tmp_parsedstruct = parsed_struct;
+	tmp_tostruct = to_struct;
+	tmp_maketodivision = make_to_division;
+	tmp_proc_registers = function_arguments;
 	if(!calculate_thread->write(true)) {calculate_thread->cancel(); mstruct->setAborted(); return false;}
 	if(!calculate_thread->write((void*) mstruct)) {calculate_thread->cancel(); mstruct->setAborted(); return false;}
 	while(msecs > 0 && b_busy) {
-		sleep_ms(10);std::cout << "2517" << endl;
-		msecs -= 10;std::cout << "2518" << endl;
+		sleep_ms(10);
+		msecs -= 10;
 	}
 	if(had_msecs && b_busy) {
-		abort();std::cout << "2521" << endl;
+		abort();
 		return false;
 	}
 	return true;
 }
 
 bool Calculator::calculateRPN(MathOperation op, int msecs, const EvaluationOptions &eo, MathStructure *parsed_struct) {
-	MathStructure *mstruct;std::cout << "2528" << endl;
+	MathStructure *mstruct;
 	if(rpn_stack.size() == 0) {
-		mstruct = new MathStructure();std::cout << "2530" << endl;
-		mstruct->add(m_zero, op);std::cout << "2531" << endl;
+		mstruct = new MathStructure();
+		mstruct->add(m_zero, op);
 		if(parsed_struct) parsed_struct->clear();
 	} else if(rpn_stack.size() == 1) {
 		if(parsed_struct) {
-			parsed_struct->set(*rpn_stack.back());std::cout << "2535" << endl;
+			parsed_struct->set(*rpn_stack.back());
 			if(op == OPERATION_SUBTRACT) {
 				parsed_struct->transform(STRUCT_NEGATE);
 			} else if(op == OPERATION_DIVIDE) {
 				parsed_struct->transform(STRUCT_INVERSE);
 			} else {
-				parsed_struct->add(*rpn_stack.back(), op);std::cout << "2541" << endl;
+				parsed_struct->add(*rpn_stack.back(), op);
 			}
 		}
 		if(op == OPERATION_SUBTRACT) {
-			mstruct = new MathStructure();std::cout << "2545" << endl;
+			mstruct = new MathStructure();
 		} else if(op == OPERATION_DIVIDE) {
-			mstruct = new MathStructure(1, 1, 0);std::cout << "2547" << endl;
+			mstruct = new MathStructure(1, 1, 0);
 		} else {
-			mstruct = new MathStructure(*rpn_stack.back());std::cout << "2549" << endl;
+			mstruct = new MathStructure(*rpn_stack.back());
 		}
-		mstruct->add(*rpn_stack.back(), op);std::cout << "2551" << endl;
+		mstruct->add(*rpn_stack.back(), op);
 	} else {
 		if(parsed_struct) {
-			parsed_struct->set(*rpn_stack[rpn_stack.size() - 2]);std::cout << "2554" << endl;
+			parsed_struct->set(*rpn_stack[rpn_stack.size() - 2]);
 			if(op == OPERATION_SUBTRACT) {
 				parsed_struct->transform(STRUCT_ADDITION, *rpn_stack.back());
 				(*parsed_struct)[1].transform(STRUCT_NEGATE);
 			} else if(op == OPERATION_DIVIDE) {
 				parsed_struct->transform(STRUCT_DIVISION, *rpn_stack.back());
 			} else {
-				parsed_struct->add(*rpn_stack.back(), op);std::cout << "2561" << endl;
+				parsed_struct->add(*rpn_stack.back(), op);
 			}
 		}
-		mstruct = new MathStructure(*rpn_stack[rpn_stack.size() - 2]);std::cout << "2564" << endl;
-		mstruct->add(*rpn_stack.back(), op);std::cout << "2565" << endl;
+		mstruct = new MathStructure(*rpn_stack[rpn_stack.size() - 2]);
+		mstruct->add(*rpn_stack.back(), op);
 	}
 	return calculateRPN(mstruct, PROC_RPN_OPERATION_2, 0, msecs, eo);
 }
 bool Calculator::calculateRPN(MathFunction *f, int msecs, const EvaluationOptions &eo, MathStructure *parsed_struct) {
-	MathStructure *mstruct = new MathStructure(f, NULL);std::cout << "2570" << endl;
-	int iregs = 0;std::cout << "2571" << endl;
+	MathStructure *mstruct = new MathStructure(f, NULL);
+	int iregs = 0;
 	if(f->args() != 0) {
-		size_t i = f->minargs();std::cout << "2573" << endl;
-		bool fill_vector = (i > 0 && f->getArgumentDefinition(i) && f->getArgumentDefinition(i)->type() == ARGUMENT_TYPE_VECTOR);std::cout << "2574" << endl;
+		size_t i = f->minargs();
+		bool fill_vector = (i > 0 && f->getArgumentDefinition(i) && f->getArgumentDefinition(i)->type() == ARGUMENT_TYPE_VECTOR);
 		if(fill_vector && rpn_stack.size() < i) fill_vector = false;
 		if(fill_vector && rpn_stack.size() > 0 && rpn_stack.back()->isVector()) fill_vector = false;
 		if(fill_vector) {
-			i = rpn_stack.size();std::cout << "2578" << endl;
+			i = rpn_stack.size();
 		} else if(i < 1) {
-			i = 1;std::cout << "2580" << endl;
+			i = 1;
 		}
 		for(; i > 0; i--) {
 			if(i > rpn_stack.size()) {
 				error(false, _("Stack is empty. Filling remaining function arguments with zeroes."), NULL);
-				mstruct->addChild(m_zero);std::cout << "2585" << endl;
+				mstruct->addChild(m_zero);
 			} else {
 				if(fill_vector && rpn_stack.size() - i == (size_t) f->minargs() - 1) mstruct->addChild(m_empty_vector);
 				if(fill_vector && rpn_stack.size() - i >= (size_t) f->minargs() - 1) mstruct->getChild(f->minargs())->addChild(*rpn_stack[rpn_stack.size() - i]);
-				else mstruct->addChild(*rpn_stack[rpn_stack.size() - i]);std::cout << "2589" << endl;
-				iregs++;std::cout << "2590" << endl;
+				else mstruct->addChild(*rpn_stack[rpn_stack.size() - i]);
+				iregs++;
 			}
 			if(!fill_vector && f->getArgumentDefinition(i) && f->getArgumentDefinition(i)->type() == ARGUMENT_TYPE_ANGLE) {
 				switch(eo.parse_options.angle_unit) {
 					case ANGLE_UNIT_DEGREES: {
-						(*mstruct)[i - 1].multiply(getDegUnit());std::cout << "2595" << endl;
+						(*mstruct)[i - 1].multiply(getDegUnit());
 						break;
 					}
 					case ANGLE_UNIT_GRADIANS: {
-						(*mstruct)[i - 1].multiply(getGraUnit());std::cout << "2599" << endl;
+						(*mstruct)[i - 1].multiply(getGraUnit());
 						break;
 					}
 					case ANGLE_UNIT_RADIANS: {
-						(*mstruct)[i - 1].multiply(getRadUnit());std::cout << "2603" << endl;
+						(*mstruct)[i - 1].multiply(getRadUnit());
 						break;
 					}
 					default: {}
@@ -2609,124 +2631,124 @@ bool Calculator::calculateRPN(MathFunction *f, int msecs, const EvaluationOption
 			}
 		}
 		if(fill_vector) mstruct->childrenUpdated();
-		f->appendDefaultValues(*mstruct);std::cout << "2611" << endl;
+		f->appendDefaultValues(*mstruct);
 	}
 	if(parsed_struct) parsed_struct->set(*mstruct);
 	return calculateRPN(mstruct, PROC_RPN_OPERATION_F, 0, msecs, eo, iregs);
 }
 bool Calculator::calculateRPNBitwiseNot(int msecs, const EvaluationOptions &eo, MathStructure *parsed_struct) {
-	MathStructure *mstruct;std::cout << "2617" << endl;
+	MathStructure *mstruct;
 	if(rpn_stack.size() == 0) {
-		mstruct = new MathStructure();std::cout << "2619" << endl;
-		mstruct->setBitwiseNot();std::cout << "2620" << endl;
+		mstruct = new MathStructure();
+		mstruct->setBitwiseNot();
 	} else {
-		mstruct = new MathStructure(*rpn_stack.back());std::cout << "2622" << endl;
-		mstruct->setBitwiseNot();std::cout << "2623" << endl;
+		mstruct = new MathStructure(*rpn_stack.back());
+		mstruct->setBitwiseNot();
 	}
 	if(parsed_struct) parsed_struct->set(*mstruct);
 	return calculateRPN(mstruct, PROC_RPN_OPERATION_1, 0, msecs, eo);
 }
 bool Calculator::calculateRPNLogicalNot(int msecs, const EvaluationOptions &eo, MathStructure *parsed_struct) {
-	MathStructure *mstruct;std::cout << "2629" << endl;
+	MathStructure *mstruct;
 	if(rpn_stack.size() == 0) {
-		mstruct = new MathStructure();std::cout << "2631" << endl;
-		mstruct->setLogicalNot();std::cout << "2632" << endl;
+		mstruct = new MathStructure();
+		mstruct->setLogicalNot();
 	} else {
-		mstruct = new MathStructure(*rpn_stack.back());std::cout << "2634" << endl;
-		mstruct->setLogicalNot();std::cout << "2635" << endl;
+		mstruct = new MathStructure(*rpn_stack.back());
+		mstruct->setLogicalNot();
 	}
 	if(parsed_struct) parsed_struct->set(*rpn_stack.back());
 	return calculateRPN(mstruct, PROC_RPN_OPERATION_1, 0, msecs, eo);
 }
 MathStructure *Calculator::calculateRPN(MathOperation op, const EvaluationOptions &eo, MathStructure *parsed_struct) {
-	current_stage = MESSAGE_STAGE_PARSING;std::cout << "2641" << endl;
-	MathStructure *mstruct;std::cout << "2642" << endl;
+	current_stage = MESSAGE_STAGE_PARSING;
+	MathStructure *mstruct;
 	if(rpn_stack.size() == 0) {
-		mstruct = new MathStructure();std::cout << "2644" << endl;
-		mstruct->add(m_zero, op);std::cout << "2645" << endl;
+		mstruct = new MathStructure();
+		mstruct->add(m_zero, op);
 		if(parsed_struct) parsed_struct->clear();
 	} else if(rpn_stack.size() == 1) {
 		if(parsed_struct) {
-			parsed_struct->clear();std::cout << "2649" << endl;
+			parsed_struct->clear();
 			if(op == OPERATION_SUBTRACT) {
 				parsed_struct->transform(STRUCT_ADDITION, *rpn_stack.back());
 				(*parsed_struct)[1].transform(STRUCT_NEGATE);
 			} else if(op == OPERATION_DIVIDE) {
 				parsed_struct->transform(STRUCT_DIVISION, *rpn_stack.back());
 			} else {
-				parsed_struct->add(*rpn_stack.back(), op);std::cout << "2656" << endl;
+				parsed_struct->add(*rpn_stack.back(), op);
 			}
 		}
-		mstruct = new MathStructure();std::cout << "2659" << endl;
-		mstruct->add(*rpn_stack.back(), op);std::cout << "2660" << endl;
+		mstruct = new MathStructure();
+		mstruct->add(*rpn_stack.back(), op);
 	} else {
 		if(parsed_struct) {
-			parsed_struct->set(*rpn_stack[rpn_stack.size() - 2]);std::cout << "2663" << endl;
+			parsed_struct->set(*rpn_stack[rpn_stack.size() - 2]);
 			if(op == OPERATION_SUBTRACT) {
 				parsed_struct->transform(STRUCT_ADDITION, *rpn_stack.back());
 				(*parsed_struct)[1].transform(STRUCT_NEGATE);
 			} else if(op == OPERATION_DIVIDE) {
 				parsed_struct->transform(STRUCT_DIVISION, *rpn_stack.back());
 			} else {
-				parsed_struct->add(*rpn_stack.back(), op);std::cout << "2670" << endl;
+				parsed_struct->add(*rpn_stack.back(), op);
 			}
 		}
-		mstruct = new MathStructure(*rpn_stack[rpn_stack.size() - 2]);std::cout << "2673" << endl;
-		mstruct->add(*rpn_stack.back(), op);std::cout << "2674" << endl;
+		mstruct = new MathStructure(*rpn_stack[rpn_stack.size() - 2]);
+		mstruct->add(*rpn_stack.back(), op);
 	}
-	current_stage = MESSAGE_STAGE_CALCULATION;std::cout << "2676" << endl;
-	mstruct->eval(eo);std::cout << "2677" << endl;
-	current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "2678" << endl;
-	autoConvert(*mstruct, *mstruct, eo);std::cout << "2679" << endl;
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "2680" << endl;
+	current_stage = MESSAGE_STAGE_CALCULATION;
+	mstruct->eval(eo);
+	current_stage = MESSAGE_STAGE_CONVERSION;
+	autoConvert(*mstruct, *mstruct, eo);
+	current_stage = MESSAGE_STAGE_UNSET;
 	if(rpn_stack.size() > 1) {
-		rpn_stack.back()->unref();std::cout << "2682" << endl;
-		rpn_stack.erase(rpn_stack.begin() + (rpn_stack.size() - 1));std::cout << "2683" << endl;
+		rpn_stack.back()->unref();
+		rpn_stack.erase(rpn_stack.begin() + (rpn_stack.size() - 1));
 	}
 	if(rpn_stack.size() > 0) {
-		rpn_stack.back()->unref();std::cout << "2686" << endl;
-		rpn_stack.back() = mstruct;std::cout << "2687" << endl;
+		rpn_stack.back()->unref();
+		rpn_stack.back() = mstruct;
 	} else {
-		rpn_stack.push_back(mstruct);std::cout << "2689" << endl;
+		rpn_stack.push_back(mstruct);
 	}
 	return rpn_stack.back();
 }
 MathStructure *Calculator::calculateRPN(MathFunction *f, const EvaluationOptions &eo, MathStructure *parsed_struct) {
-	current_stage = MESSAGE_STAGE_PARSING;std::cout << "2694" << endl;
-	MathStructure *mstruct = new MathStructure(f, NULL);std::cout << "2695" << endl;
-	size_t iregs = 0;std::cout << "2696" << endl;
+	current_stage = MESSAGE_STAGE_PARSING;
+	MathStructure *mstruct = new MathStructure(f, NULL);
+	size_t iregs = 0;
 	if(f->args() != 0) {
-		size_t i = f->minargs();std::cout << "2698" << endl;
-		bool fill_vector = (i > 0 && f->getArgumentDefinition(i) && f->getArgumentDefinition(i)->type() == ARGUMENT_TYPE_VECTOR);std::cout << "2699" << endl;
+		size_t i = f->minargs();
+		bool fill_vector = (i > 0 && f->getArgumentDefinition(i) && f->getArgumentDefinition(i)->type() == ARGUMENT_TYPE_VECTOR);
 		if(fill_vector && rpn_stack.size() < i) fill_vector = false;
 		if(fill_vector && rpn_stack.size() > 0 && rpn_stack.back()->isVector()) fill_vector = false;
 		if(fill_vector) {
-			i = rpn_stack.size();std::cout << "2703" << endl;
+			i = rpn_stack.size();
 		} else if(i < 1) {
-			i = 1;std::cout << "2705" << endl;
+			i = 1;
 		}
 		for(; i > 0; i--) {
 			if(i > rpn_stack.size()) {
 				error(false, _("Stack is empty. Filling remaining function arguments with zeroes."), NULL);
-				mstruct->addChild(m_zero);std::cout << "2710" << endl;
+				mstruct->addChild(m_zero);
 			} else {
 				if(fill_vector && rpn_stack.size() - i == (size_t) f->minargs() - 1) mstruct->addChild(m_empty_vector);
 				if(fill_vector && rpn_stack.size() - i >= (size_t) f->minargs() - 1) mstruct->getChild(f->minargs())->addChild(*rpn_stack[rpn_stack.size() - i]);
-				else mstruct->addChild(*rpn_stack[rpn_stack.size() - i]);std::cout << "2714" << endl;
-				iregs++;std::cout << "2715" << endl;
+				else mstruct->addChild(*rpn_stack[rpn_stack.size() - i]);
+				iregs++;
 			}
 			if(!fill_vector && f->getArgumentDefinition(i) && f->getArgumentDefinition(i)->type() == ARGUMENT_TYPE_ANGLE) {
 				switch(eo.parse_options.angle_unit) {
 					case ANGLE_UNIT_DEGREES: {
-						(*mstruct)[i - 1].multiply(getDegUnit());std::cout << "2720" << endl;
+						(*mstruct)[i - 1].multiply(getDegUnit());
 						break;
 					}
 					case ANGLE_UNIT_GRADIANS: {
-						(*mstruct)[i - 1].multiply(getGraUnit());std::cout << "2724" << endl;
+						(*mstruct)[i - 1].multiply(getGraUnit());
 						break;
 					}
 					case ANGLE_UNIT_RADIANS: {
-						(*mstruct)[i - 1].multiply(getRadUnit());std::cout << "2728" << endl;
+						(*mstruct)[i - 1].multiply(getRadUnit());
 						break;
 					}
 					default: {}
@@ -2734,72 +2756,72 @@ MathStructure *Calculator::calculateRPN(MathFunction *f, const EvaluationOptions
 			}
 		}
 		if(fill_vector) mstruct->childrenUpdated();
-		f->appendDefaultValues(*mstruct);std::cout << "2736" << endl;
+		f->appendDefaultValues(*mstruct);
 	}
 	if(parsed_struct) parsed_struct->set(*mstruct);
-	current_stage = MESSAGE_STAGE_CALCULATION;std::cout << "2739" << endl;
-	mstruct->eval(eo);std::cout << "2740" << endl;
-	current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "2741" << endl;
-	autoConvert(*mstruct, *mstruct, eo);std::cout << "2742" << endl;
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "2743" << endl;
+	current_stage = MESSAGE_STAGE_CALCULATION;
+	mstruct->eval(eo);
+	current_stage = MESSAGE_STAGE_CONVERSION;
+	autoConvert(*mstruct, *mstruct, eo);
+	current_stage = MESSAGE_STAGE_UNSET;
 	if(iregs == 0) {
-		rpn_stack.push_back(mstruct);std::cout << "2745" << endl;
+		rpn_stack.push_back(mstruct);
 	} else {
 		for(size_t i = 0; i < iregs - 1 && rpn_stack.size() > 1; i++) {
-			rpn_stack.back()->unref();std::cout << "2748" << endl;
-			rpn_stack.pop_back();std::cout << "2749" << endl;
-			deleteRPNRegister(1);std::cout << "2750" << endl;
+			rpn_stack.back()->unref();
+			rpn_stack.pop_back();
+			deleteRPNRegister(1);
 		}
-		rpn_stack.back()->unref();std::cout << "2752" << endl;
-		rpn_stack.back() = mstruct;std::cout << "2753" << endl;
+		rpn_stack.back()->unref();
+		rpn_stack.back() = mstruct;
 	}
 	return rpn_stack.back();
 }
 MathStructure *Calculator::calculateRPNBitwiseNot(const EvaluationOptions &eo, MathStructure *parsed_struct) {
-	current_stage = MESSAGE_STAGE_PARSING;std::cout << "2758" << endl;
-	MathStructure *mstruct;std::cout << "2759" << endl;
+	current_stage = MESSAGE_STAGE_PARSING;
+	MathStructure *mstruct;
 	if(rpn_stack.size() == 0) {
-		mstruct = new MathStructure();std::cout << "2761" << endl;
-		mstruct->setBitwiseNot();std::cout << "2762" << endl;
+		mstruct = new MathStructure();
+		mstruct->setBitwiseNot();
 	} else {
-		mstruct = new MathStructure(*rpn_stack.back());std::cout << "2764" << endl;
-		mstruct->setBitwiseNot();std::cout << "2765" << endl;
+		mstruct = new MathStructure(*rpn_stack.back());
+		mstruct->setBitwiseNot();
 	}
 	if(parsed_struct) parsed_struct->set(*mstruct);
-	current_stage = MESSAGE_STAGE_CALCULATION;std::cout << "2768" << endl;
-	mstruct->eval(eo);std::cout << "2769" << endl;
-	current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "2770" << endl;
-	autoConvert(*mstruct, *mstruct, eo);std::cout << "2771" << endl;
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "2772" << endl;
+	current_stage = MESSAGE_STAGE_CALCULATION;
+	mstruct->eval(eo);
+	current_stage = MESSAGE_STAGE_CONVERSION;
+	autoConvert(*mstruct, *mstruct, eo);
+	current_stage = MESSAGE_STAGE_UNSET;
 	if(rpn_stack.size() == 0) {
-		rpn_stack.push_back(mstruct);std::cout << "2774" << endl;
+		rpn_stack.push_back(mstruct);
 	} else {
-		rpn_stack.back()->unref();std::cout << "2776" << endl;
-		rpn_stack.back() = mstruct;std::cout << "2777" << endl;
+		rpn_stack.back()->unref();
+		rpn_stack.back() = mstruct;
 	}
 	return rpn_stack.back();
 }
 MathStructure *Calculator::calculateRPNLogicalNot(const EvaluationOptions &eo, MathStructure *parsed_struct) {
-	current_stage = MESSAGE_STAGE_PARSING;std::cout << "2782" << endl;
-	MathStructure *mstruct;std::cout << "2783" << endl;
+	current_stage = MESSAGE_STAGE_PARSING;
+	MathStructure *mstruct;
 	if(rpn_stack.size() == 0) {
-		mstruct = new MathStructure();std::cout << "2785" << endl;
-		mstruct->setLogicalNot();std::cout << "2786" << endl;
+		mstruct = new MathStructure();
+		mstruct->setLogicalNot();
 	} else {
-		mstruct = new MathStructure(*rpn_stack.back());std::cout << "2788" << endl;
-		mstruct->setLogicalNot();std::cout << "2789" << endl;
+		mstruct = new MathStructure(*rpn_stack.back());
+		mstruct->setLogicalNot();
 	}
 	if(parsed_struct) parsed_struct->set(*mstruct);
-	current_stage = MESSAGE_STAGE_CALCULATION;std::cout << "2792" << endl;
-	mstruct->eval(eo);std::cout << "2793" << endl;
-	current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "2794" << endl;
-	autoConvert(*mstruct, *mstruct, eo);std::cout << "2795" << endl;
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "2796" << endl;
+	current_stage = MESSAGE_STAGE_CALCULATION;
+	mstruct->eval(eo);
+	current_stage = MESSAGE_STAGE_CONVERSION;
+	autoConvert(*mstruct, *mstruct, eo);
+	current_stage = MESSAGE_STAGE_UNSET;
 	if(rpn_stack.size() == 0) {
-		rpn_stack.push_back(mstruct);std::cout << "2798" << endl;
+		rpn_stack.push_back(mstruct);
 	} else {
-		rpn_stack.back()->unref();std::cout << "2800" << endl;
-		rpn_stack.back() = mstruct;std::cout << "2801" << endl;
+		rpn_stack.back()->unref();
+		rpn_stack.back() = mstruct;
 	}
 	return rpn_stack.back();
 }
@@ -2807,31 +2829,31 @@ bool Calculator::RPNStackEnter(MathStructure *mstruct, int msecs, const Evaluati
 	return calculateRPN(mstruct, PROC_RPN_ADD, 0, msecs, eo);
 }
 bool Calculator::RPNStackEnter(string str, int msecs, const EvaluationOptions &eo, MathStructure *parsed_struct, MathStructure *to_struct, bool make_to_division) {
-	remove_blank_ends(str);std::cout << "2809" << endl;
+	remove_blank_ends(str);
 	if(str.empty() && rpn_stack.size() > 0) {
-		rpn_stack.push_back(new MathStructure(*rpn_stack.back()));std::cout << "2811" << endl;
+		rpn_stack.push_back(new MathStructure(*rpn_stack.back()));
 		return true;
 	}
 	return calculateRPN(str, PROC_RPN_ADD, 0, msecs, eo, parsed_struct, to_struct, make_to_division);
 }
 void Calculator::RPNStackEnter(MathStructure *mstruct, bool eval, const EvaluationOptions &eo) {
 	if(eval) {
-		current_stage = MESSAGE_STAGE_CALCULATION;std::cout << "2818" << endl;
-		mstruct->eval(eo);std::cout << "2819" << endl;
-		current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "2820" << endl;
-		autoConvert(*mstruct, *mstruct, eo);std::cout << "2821" << endl;
-		current_stage = MESSAGE_STAGE_UNSET;std::cout << "2822" << endl;
+		current_stage = MESSAGE_STAGE_CALCULATION;
+		mstruct->eval(eo);
+		current_stage = MESSAGE_STAGE_CONVERSION;
+		autoConvert(*mstruct, *mstruct, eo);
+		current_stage = MESSAGE_STAGE_UNSET;
 	}
-	rpn_stack.push_back(mstruct);std::cout << "2824" << endl;
+	rpn_stack.push_back(mstruct);
 }
 void Calculator::RPNStackEnter(string str, const EvaluationOptions &eo, MathStructure *parsed_struct, MathStructure *to_struct, bool make_to_division) {
-	remove_blank_ends(str);std::cout << "2827" << endl;
+	remove_blank_ends(str);
 	if(str.empty() && rpn_stack.size() > 0) rpn_stack.push_back(new MathStructure(*rpn_stack.back()));
-	else rpn_stack.push_back(new MathStructure(calculate(str, eo, parsed_struct, to_struct, make_to_division)));std::cout << "2829" << endl;
+	else rpn_stack.push_back(new MathStructure(calculate(str, eo, parsed_struct, to_struct, make_to_division)));
 }
 bool Calculator::setRPNRegister(size_t index, MathStructure *mstruct, int msecs, const EvaluationOptions &eo) {
 	if(mstruct == NULL) {
-		deleteRPNRegister(index);std::cout << "2833" << endl;
+		deleteRPNRegister(index);
 		return true;
 	}
 	if(index <= 0 || index > rpn_stack.size()) return false;
@@ -2843,37 +2865,37 @@ bool Calculator::setRPNRegister(size_t index, string str, int msecs, const Evalu
 }
 void Calculator::setRPNRegister(size_t index, MathStructure *mstruct, bool eval, const EvaluationOptions &eo) {
 	if(mstruct == NULL) {
-		deleteRPNRegister(index);std::cout << "2845" << endl;
+		deleteRPNRegister(index);
 		return;
 	}
 	if(eval) {
-		current_stage = MESSAGE_STAGE_CALCULATION;std::cout << "2849" << endl;
-		mstruct->eval(eo);std::cout << "2850" << endl;
-		current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "2851" << endl;
-		autoConvert(*mstruct, *mstruct, eo);std::cout << "2852" << endl;
-		current_stage = MESSAGE_STAGE_UNSET;std::cout << "2853" << endl;
+		current_stage = MESSAGE_STAGE_CALCULATION;
+		mstruct->eval(eo);
+		current_stage = MESSAGE_STAGE_CONVERSION;
+		autoConvert(*mstruct, *mstruct, eo);
+		current_stage = MESSAGE_STAGE_UNSET;
 	}
 	if(index <= 0 || index > rpn_stack.size()) return;
-	index = rpn_stack.size() - index;std::cout << "2856" << endl;
-	rpn_stack[index]->unref();std::cout << "2857" << endl;
-	rpn_stack[index] = mstruct;std::cout << "2858" << endl;
+	index = rpn_stack.size() - index;
+	rpn_stack[index]->unref();
+	rpn_stack[index] = mstruct;
 }
 void Calculator::setRPNRegister(size_t index, string str, const EvaluationOptions &eo, MathStructure *parsed_struct, MathStructure *to_struct, bool make_to_division) {
 	if(index <= 0 || index > rpn_stack.size()) return;
-	index = rpn_stack.size() - index;std::cout << "2862" << endl;
-	MathStructure *mstruct = new MathStructure(calculate(str, eo, parsed_struct, to_struct, make_to_division));std::cout << "2863" << endl;
-	rpn_stack[index]->unref();std::cout << "2864" << endl;
-	rpn_stack[index] = mstruct;std::cout << "2865" << endl;
+	index = rpn_stack.size() - index;
+	MathStructure *mstruct = new MathStructure(calculate(str, eo, parsed_struct, to_struct, make_to_division));
+	rpn_stack[index]->unref();
+	rpn_stack[index] = mstruct;
 }
 void Calculator::deleteRPNRegister(size_t index) {
 	if(index <= 0 || index > rpn_stack.size()) return;
-	index = rpn_stack.size() - index;std::cout << "2869" << endl;
-	rpn_stack[index]->unref();std::cout << "2870" << endl;
-	rpn_stack.erase(rpn_stack.begin() + index);std::cout << "2871" << endl;
+	index = rpn_stack.size() - index;
+	rpn_stack[index]->unref();
+	rpn_stack.erase(rpn_stack.begin() + index);
 }
 MathStructure *Calculator::getRPNRegister(size_t index) const {
 	if(index > 0 && index <= rpn_stack.size()) {
-		index = rpn_stack.size() - index;std::cout << "2875" << endl;
+		index = rpn_stack.size() - index;
 		return rpn_stack[index];
 	}
 	return NULL;
@@ -2883,50 +2905,50 @@ size_t Calculator::RPNStackSize() const {
 }
 void Calculator::clearRPNStack() {
 	for(size_t i = 0; i < rpn_stack.size(); i++) {
-		rpn_stack[i]->unref();std::cout << "2885" << endl;
+		rpn_stack[i]->unref();
 	}
-	rpn_stack.clear();std::cout << "2887" << endl;
+	rpn_stack.clear();
 }
 void Calculator::moveRPNRegister(size_t old_index, size_t new_index) {
 	if(old_index == new_index) return;
 	if(old_index > 0 && old_index <= rpn_stack.size()) {
-		old_index = rpn_stack.size() - old_index;std::cout << "2892" << endl;
-		MathStructure *mstruct = rpn_stack[old_index];std::cout << "2893" << endl;
+		old_index = rpn_stack.size() - old_index;
+		MathStructure *mstruct = rpn_stack[old_index];
 		if(new_index > rpn_stack.size()) {
-			new_index = 0;std::cout << "2895" << endl;
+			new_index = 0;
 		} else if(new_index <= 1) {
-			rpn_stack.push_back(mstruct);std::cout << "2897" << endl;
-			rpn_stack.erase(rpn_stack.begin() + old_index);std::cout << "2898" << endl;
+			rpn_stack.push_back(mstruct);
+			rpn_stack.erase(rpn_stack.begin() + old_index);
 			return;
 		} else {
-			new_index = rpn_stack.size() - new_index;std::cout << "2901" << endl;
+			new_index = rpn_stack.size() - new_index;
 		}
 		if(new_index > old_index) {
-			rpn_stack.erase(rpn_stack.begin() + old_index);std::cout << "2904" << endl;
-			rpn_stack.insert(rpn_stack.begin() + new_index, mstruct);std::cout << "2905" << endl;
+			rpn_stack.erase(rpn_stack.begin() + old_index);
+			rpn_stack.insert(rpn_stack.begin() + new_index, mstruct);
 		} else if(new_index < old_index) {
-			rpn_stack.insert(rpn_stack.begin() + new_index, mstruct);std::cout << "2907" << endl;
-			rpn_stack.erase(rpn_stack.begin() + (old_index + 1));std::cout << "2908" << endl;
+			rpn_stack.insert(rpn_stack.begin() + new_index, mstruct);
+			rpn_stack.erase(rpn_stack.begin() + (old_index + 1));
 		}
 	}
 }
 void Calculator::moveRPNRegisterUp(size_t index) {
 	if(index > 1 && index <= rpn_stack.size()) {
-		index = rpn_stack.size() - index;std::cout << "2914" << endl;
-		MathStructure *mstruct = rpn_stack[index];std::cout << "2915" << endl;
-		rpn_stack.erase(rpn_stack.begin() + index);std::cout << "2916" << endl;
-		index++;std::cout << "2917" << endl;
+		index = rpn_stack.size() - index;
+		MathStructure *mstruct = rpn_stack[index];
+		rpn_stack.erase(rpn_stack.begin() + index);
+		index++;
 		if(index == rpn_stack.size()) rpn_stack.push_back(mstruct);
-		else rpn_stack.insert(rpn_stack.begin() + index, mstruct);std::cout << "2919" << endl;
+		else rpn_stack.insert(rpn_stack.begin() + index, mstruct);
 	}
 }
 void Calculator::moveRPNRegisterDown(size_t index) {
 	if(index > 0 && index < rpn_stack.size()) {
-		index = rpn_stack.size() - index;std::cout << "2924" << endl;
-		MathStructure *mstruct = rpn_stack[index];std::cout << "2925" << endl;
-		rpn_stack.erase(rpn_stack.begin() + index);std::cout << "2926" << endl;
-		index--;std::cout << "2927" << endl;
-		rpn_stack.insert(rpn_stack.begin() + index, mstruct);std::cout << "2928" << endl;
+		index = rpn_stack.size() - index;
+		MathStructure *mstruct = rpn_stack[index];
+		rpn_stack.erase(rpn_stack.begin() + index);
+		index--;
+		rpn_stack.insert(rpn_stack.begin() + index, mstruct);
 	}
 }
 
@@ -2955,127 +2977,127 @@ int has_information_unit(const MathStructure &m, bool top = true) {
 #define EQUALS_IGNORECASE_AND_LOCAL(x,y,z)	(equalsIgnoreCase(x, y) || equalsIgnoreCase(x, z))
 string Calculator::calculateAndPrint(string str, int msecs, const EvaluationOptions &eo, const PrintOptions &po) {
 	if(msecs > 0) startControl(msecs);
-	PrintOptions printops = po;std::cout << "2956" << endl;
-	EvaluationOptions evalops = eo;std::cout << "2957" << endl;
-	MathStructure mstruct;std::cout << "2958" << endl;
+	PrintOptions printops = po;
+	EvaluationOptions evalops = eo;
+	MathStructure mstruct;
 	bool do_bases = false, do_factors = false, do_fraction = false, do_pfe = false, do_calendars = false, do_expand = false, do_binary_prefixes = false, complex_angle_form = false;
-	string from_str = str, to_str;std::cout << "2960" << endl;
-	Number base_save;std::cout << "2961" << endl;
+	string from_str = str, to_str;
+	Number base_save;
 	if(printops.base == BASE_CUSTOM) base_save = customOutputBase();
-	int save_bin = priv->use_binary_prefixes;std::cout << "2963" << endl;
+	int save_bin = priv->use_binary_prefixes;
 	if(separateToExpression(from_str, to_str, evalops, true)) {
-		remove_duplicate_blanks(to_str);std::cout << "2965" << endl;
-		string to_str1, to_str2;std::cout << "2966" << endl;
-		size_t ispace = to_str.find_first_of(SPACES);std::cout << "2967" << endl;
+		remove_duplicate_blanks(to_str);
+		string to_str1, to_str2;
+		size_t ispace = to_str.find_first_of(SPACES);
 		if(ispace != string::npos) {
-			to_str1 = to_str.substr(0, ispace);std::cout << "2969" << endl;
-			remove_blank_ends(to_str1);std::cout << "2970" << endl;
-			to_str2 = to_str.substr(ispace + 1);std::cout << "2971" << endl;
-			remove_blank_ends(to_str2);std::cout << "2972" << endl;
+			to_str1 = to_str.substr(0, ispace);
+			remove_blank_ends(to_str1);
+			to_str2 = to_str.substr(ispace + 1);
+			remove_blank_ends(to_str2);
 		}
 		if(equalsIgnoreCase(to_str, "hex") || EQUALS_IGNORECASE_AND_LOCAL(to_str, "hexadecimal", _("hexadecimal"))) {
-			str = from_str;std::cout << "2975" << endl;
-			printops.base = BASE_HEXADECIMAL;std::cout << "2976" << endl;
+			str = from_str;
+			printops.base = BASE_HEXADECIMAL;
 		} else if(equalsIgnoreCase(to_str, "bin") || EQUALS_IGNORECASE_AND_LOCAL(to_str, "binary", _("binary"))) {
-			str = from_str;std::cout << "2978" << endl;
-			printops.base = BASE_BINARY;std::cout << "2979" << endl;
+			str = from_str;
+			printops.base = BASE_BINARY;
 		} else if(equalsIgnoreCase(to_str, "dec") || EQUALS_IGNORECASE_AND_LOCAL(to_str, "decimal", _("decimal"))) {
-			str = from_str;std::cout << "2981" << endl;
-			printops.base = BASE_DECIMAL;std::cout << "2982" << endl;
+			str = from_str;
+			printops.base = BASE_DECIMAL;
 		} else if(equalsIgnoreCase(to_str, "oct") || EQUALS_IGNORECASE_AND_LOCAL(to_str, "octal", _("octal"))) {
-			str = from_str;std::cout << "2984" << endl;
-			printops.base = BASE_OCTAL;std::cout << "2985" << endl;
+			str = from_str;
+			printops.base = BASE_OCTAL;
 		} else if(equalsIgnoreCase(to_str, "duo") || EQUALS_IGNORECASE_AND_LOCAL(to_str, "duodecimal", _("duodecimal"))) {
-			str = from_str;std::cout << "2987" << endl;
-			printops.base = BASE_DUODECIMAL;std::cout << "2988" << endl;
+			str = from_str;
+			printops.base = BASE_DUODECIMAL;
 		} else if(equalsIgnoreCase(to_str, "roman") || equalsIgnoreCase(to_str, _("roman"))) {
-			str = from_str;std::cout << "2990" << endl;
-			printops.base = BASE_ROMAN_NUMERALS;std::cout << "2991" << endl;
+			str = from_str;
+			printops.base = BASE_ROMAN_NUMERALS;
 		} else if(equalsIgnoreCase(to_str, "bijective") || equalsIgnoreCase(to_str, _("bijective"))) {
-			str = from_str;std::cout << "2993" << endl;
-			printops.base = BASE_BIJECTIVE_26;std::cout << "2994" << endl;
+			str = from_str;
+			printops.base = BASE_BIJECTIVE_26;
 		} else if(equalsIgnoreCase(to_str, "sexa") || equalsIgnoreCase(to_str, "sexagesimal") || equalsIgnoreCase(to_str, _("sexagesimal"))) {
-			str = from_str;std::cout << "2996" << endl;
-			printops.base = BASE_SEXAGESIMAL;std::cout << "2997" << endl;
+			str = from_str;
+			printops.base = BASE_SEXAGESIMAL;
 		} else if(equalsIgnoreCase(to_str, "time") || equalsIgnoreCase(to_str, _("time"))) {
-			str = from_str;std::cout << "2999" << endl;
-			printops.base = BASE_TIME;std::cout << "3000" << endl;
+			str = from_str;
+			printops.base = BASE_TIME;
 		} else if(equalsIgnoreCase(to_str, "unicode")) {
-			str = from_str;std::cout << "3002" << endl;
-			printops.base = BASE_UNICODE;std::cout << "3003" << endl;
+			str = from_str;
+			printops.base = BASE_UNICODE;
 		} else if(equalsIgnoreCase(to_str, "utc") || equalsIgnoreCase(to_str, "gmt")) {
-			str = from_str;std::cout << "3005" << endl;
-			printops.time_zone = TIME_ZONE_UTC;std::cout << "3006" << endl;
+			str = from_str;
+			printops.time_zone = TIME_ZONE_UTC;
 		} else if(to_str.length() > 3 && (equalsIgnoreCase(to_str.substr(0, 3), "utc") || equalsIgnoreCase(to_str.substr(0, 3), "gmt"))) {
-			to_str = to_str.substr(3);std::cout << "3008" << endl;
-			remove_blanks(to_str);std::cout << "3009" << endl;
-			bool b_minus = false;std::cout << "3010" << endl;
+			to_str = to_str.substr(3);
+			remove_blanks(to_str);
+			bool b_minus = false;
 			if(to_str[0] == '+') {
-				to_str.erase(0, 1);std::cout << "3012" << endl;
+				to_str.erase(0, 1);
 			} else if(to_str[0] == '-') {
-				b_minus = true;std::cout << "3014" << endl;
-				to_str.erase(0, 1);std::cout << "3015" << endl;
+				b_minus = true;
+				to_str.erase(0, 1);
 			} else if(to_str.find(SIGN_MINUS) == 0) {
-				b_minus = true;std::cout << "3017" << endl;
-				to_str.erase(0, strlen(SIGN_MINUS));std::cout << "3018" << endl;
+				b_minus = true;
+				to_str.erase(0, strlen(SIGN_MINUS));
 			}
-			unsigned int tzh = 0, tzm = 0;std::cout << "3020" << endl;
-			int itz = 0;std::cout << "3021" << endl;
+			unsigned int tzh = 0, tzm = 0;
+			int itz = 0;
 			if(!to_str.empty() && sscanf(to_str.c_str(), "%2u:%2u", &tzh, &tzm) > 0) {
-				itz = tzh * 60 + tzm;std::cout << "3023" << endl;
+				itz = tzh * 60 + tzm;
 				if(b_minus) itz = -itz;
 			} else {
 				error(true, _("Time zone parsing failed."), NULL);
 			}
-			printops.time_zone = TIME_ZONE_CUSTOM;std::cout << "3028" << endl;
-			printops.custom_time_zone = itz;std::cout << "3029" << endl;
-			str = from_str;std::cout << "3030" << endl;
+			printops.time_zone = TIME_ZONE_CUSTOM;
+			printops.custom_time_zone = itz;
+			str = from_str;
 		} else if(to_str == "CET") {
-			printops.time_zone = TIME_ZONE_CUSTOM;std::cout << "3032" << endl;
-			printops.custom_time_zone = 60;std::cout << "3033" << endl;
-			str = from_str;std::cout << "3034" << endl;
+			printops.time_zone = TIME_ZONE_CUSTOM;
+			printops.custom_time_zone = 60;
+			str = from_str;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "rectangular", _("rectangular")) || EQUALS_IGNORECASE_AND_LOCAL(to_str, "cartesian", _("cartesian")) || str == "rect") {
-			str = from_str;std::cout << "3036" << endl;
+			str = from_str;
 			evalops.complex_number_form = COMPLEX_NUMBER_FORM_RECTANGULAR;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "exponential", _("exponential")) || to_str == "exp") {
-			str = from_str;std::cout << "3039" << endl;
+			str = from_str;
 			evalops.complex_number_form = COMPLEX_NUMBER_FORM_EXPONENTIAL;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "polar", _("polar"))) {
-			str = from_str;std::cout << "3042" << endl;
+			str = from_str;
 			evalops.complex_number_form = COMPLEX_NUMBER_FORM_POLAR;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "angle", _("angle")) || EQUALS_IGNORECASE_AND_LOCAL(to_str, "phasor", _("phasor"))) {
-			str = from_str;std::cout << "3045" << endl;
+			str = from_str;
 			evalops.complex_number_form = COMPLEX_NUMBER_FORM_CIS;
 			complex_angle_form = true;
 		} else if(to_str == "cis") {
-			str = from_str;std::cout << "3049" << endl;
+			str = from_str;
 			evalops.complex_number_form = COMPLEX_NUMBER_FORM_CIS;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "fraction", _("fraction"))) {
-			str = from_str;std::cout << "3052" << endl;
-			do_fraction = true;std::cout << "3053" << endl;
+			str = from_str;
+			do_fraction = true;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "factors", _("factors")) || equalsIgnoreCase(to_str, "factor")) {
-			str = from_str;std::cout << "3055" << endl;
-			evalops.structuring = STRUCTURING_FACTORIZE;std::cout << "3056" << endl;
-			do_factors = true;std::cout << "3057" << endl;
+			str = from_str;
+			evalops.structuring = STRUCTURING_FACTORIZE;
+			do_factors = true;
 		}  else if(equalsIgnoreCase(to_str, "partial fraction") || equalsIgnoreCase(to_str, _("partial fraction"))) {
-			str = from_str;std::cout << "3059" << endl;
-			do_pfe = true;std::cout << "3060" << endl;
+			str = from_str;
+			do_pfe = true;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "bases", _("bases"))) {
-			do_bases = true;std::cout << "3062" << endl;
-			str = from_str;std::cout << "3063" << endl;
+			do_bases = true;
+			str = from_str;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "calendars", _("calendars"))) {
-			do_calendars = true;std::cout << "3065" << endl;
-			str = from_str;std::cout << "3066" << endl;
+			do_calendars = true;
+			str = from_str;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "optimal", _("optimal"))) {
-			str = from_str;std::cout << "3068" << endl;
-			evalops.parse_options.units_enabled = true;std::cout << "3069" << endl;
-			evalops.auto_post_conversion = POST_CONVERSION_OPTIMAL_SI;std::cout << "3070" << endl;
+			str = from_str;
+			evalops.parse_options.units_enabled = true;
+			evalops.auto_post_conversion = POST_CONVERSION_OPTIMAL_SI;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "base", _("base"))) {
-			str = from_str;std::cout << "3072" << endl;
-			evalops.parse_options.units_enabled = true;std::cout << "3073" << endl;
-			evalops.auto_post_conversion = POST_CONVERSION_BASE;std::cout << "3074" << endl;
+			str = from_str;
+			evalops.parse_options.units_enabled = true;
+			evalops.auto_post_conversion = POST_CONVERSION_BASE;
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str1, "base", _("base"))) {
-			str = from_str;std::cout << "3076" << endl;
+			str = from_str;
 			if(to_str2 == "b26" || to_str2 == "B26") printops.base = BASE_BIJECTIVE_26;
 			else if(equalsIgnoreCase(to_str2, "golden") || equalsIgnoreCase(to_str2, "golden ratio") || to_str2 == "φ") printops.base = BASE_GOLDEN_RATIO;
 			else if(equalsIgnoreCase(to_str2, "unicode")) printops.base = BASE_UNICODE;
@@ -3084,137 +3106,137 @@ string Calculator::calculateAndPrint(string str, int msecs, const EvaluationOpti
 			else if(to_str2 == "e") printops.base = BASE_E;
 			else if(to_str2 == "sqrt(2)" || to_str2 == "sqrt 2" || to_str2 == "sqrt2" || to_str2 == "√2") printops.base = BASE_SQRT2;
 			else {
-				EvaluationOptions eo = evalops;std::cout << "3085" << endl;
-				eo.parse_options.base = 10;std::cout << "3086" << endl;
-				MathStructure m = calculate(to_str2, eo);std::cout << "3087" << endl;
+				EvaluationOptions eo = evalops;
+				eo.parse_options.base = 10;
+				MathStructure m = calculate(to_str2, eo);
 				if(m.isInteger() && m.number() >= 2 && m.number() <= 36) {
-					printops.base = m.number().intValue();std::cout << "3089" << endl;
+					printops.base = m.number().intValue();
 				} else {
-					printops.base = BASE_CUSTOM;std::cout << "3091" << endl;
-					base_save = customOutputBase();std::cout << "3092" << endl;
-					setCustomOutputBase(m.number());std::cout << "3093" << endl;
+					printops.base = BASE_CUSTOM;
+					base_save = customOutputBase();
+					setCustomOutputBase(m.number());
 				}
 			}
 		} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "mixed", _("mixed"))) {
-			str = from_str;std::cout << "3097" << endl;
-			evalops.parse_options.units_enabled = true;std::cout << "3098" << endl;
-			evalops.auto_post_conversion = POST_CONVERSION_NONE;std::cout << "3099" << endl;
-			evalops.mixed_units_conversion = MIXED_UNITS_CONVERSION_FORCE_INTEGER;std::cout << "3100" << endl;
+			str = from_str;
+			evalops.parse_options.units_enabled = true;
+			evalops.auto_post_conversion = POST_CONVERSION_NONE;
+			evalops.mixed_units_conversion = MIXED_UNITS_CONVERSION_FORCE_INTEGER;
 		} else {
-			evalops.parse_options.units_enabled = true;std::cout << "3102" << endl;
+			evalops.parse_options.units_enabled = true;
 			if(to_str[0] == '?' || (to_str.length() > 1 && to_str[1] == '?' && (to_str[0] == 'a' || to_str[0] == 'd'))) {
-				printops.use_unit_prefixes = true;std::cout << "3104" << endl;
+				printops.use_unit_prefixes = true;
 				printops.use_prefixes_for_currencies = true;
 				printops.use_prefixes_for_all_units = true;
 				if(to_str[0] == 'a') printops.use_all_prefixes = true;
 				else if(to_str[0] == 'd') priv->use_binary_prefixes = 0;
 			} else if(to_str.length() > 1 && to_str[1] == '?' && to_str[0] == 'b') {
-				do_binary_prefixes = true;std::cout << "3110" << endl;
+				do_binary_prefixes = true;
 			}
 		}
 	} else {
-		size_t i = str.find_first_of(SPACES LEFT_PARENTHESIS);std::cout << "3114" << endl;
+		size_t i = str.find_first_of(SPACES LEFT_PARENTHESIS);
 		if(i != string::npos) {
-			to_str = str.substr(0, i);std::cout << "3116" << endl;
+			to_str = str.substr(0, i);
 			if(to_str == "factor" || EQUALS_IGNORECASE_AND_LOCAL(to_str, "factorize", _("factorize"))) {
-				str = str.substr(i + 1);std::cout << "3118" << endl;
-				do_factors = true;std::cout << "3119" << endl;
-				evalops.structuring = STRUCTURING_FACTORIZE;std::cout << "3120" << endl;
+				str = str.substr(i + 1);
+				do_factors = true;
+				evalops.structuring = STRUCTURING_FACTORIZE;
 			} else if(EQUALS_IGNORECASE_AND_LOCAL(to_str, "expand", _("expand"))) {
-				str = str.substr(i + 1);std::cout << "3122" << endl;
-				evalops.structuring = STRUCTURING_SIMPLIFY;std::cout << "3123" << endl;
-				do_expand = true;std::cout << "3124" << endl;
+				str = str.substr(i + 1);
+				evalops.structuring = STRUCTURING_SIMPLIFY;
+				do_expand = true;
 			}
 		}
 	}
 
-	mstruct = calculate(str, evalops);std::cout << "3129" << endl;
+	mstruct = calculate(str, evalops);
 
 	if(do_factors) {
-		mstruct.integerFactorize();std::cout << "3132" << endl;
+		mstruct.integerFactorize();
 	} else if(do_expand) {
-		mstruct.expand(evalops, false);std::cout << "3134" << endl;
+		mstruct.expand(evalops, false);
 	}
 	if(do_pfe) mstruct.expandPartialFractions(evalops);
 
-	printops.allow_factorization = printops.allow_factorization || evalops.structuring == STRUCTURING_FACTORIZE || do_factors;std::cout << "3138" << endl;
+	printops.allow_factorization = printops.allow_factorization || evalops.structuring == STRUCTURING_FACTORIZE || do_factors;
 
 	if(do_calendars && mstruct.isDateTime()) {
 		str = "";
-		bool b_fail;std::cout << "3142" << endl;
-		long int y, m, d;std::cout << "3143" << endl;
-#define PRINT_CALENDAR(x, c) if(!str.empty()) {str += "\n";} str += x; str += " ";b_fail = !dateToCalendar(*mstruct.datetime(), y, m, d, c); if(b_fail) {str += _("failed");} else {str += i2s(d); str += " "; str += monthName(m, c, true); str += " "; str += i2s(y);}
+		bool b_fail;
+		long int y, m, d;
+#define PRINT_CALENDAR(x, c) if(!str.empty()) {str += "\n";} str += x; str += " "; b_fail = !dateToCalendar(*mstruct.datetime(), y, m, d, c); if(b_fail) {str += _("failed");} else {str += i2s(d); str += " "; str += monthName(m, c, true); str += " "; str += i2s(y);}
 		PRINT_CALENDAR(string(_("Gregorian:")), CALENDAR_GREGORIAN);
 		PRINT_CALENDAR(string(_("Hebrew:")), CALENDAR_HEBREW);
 		PRINT_CALENDAR(string(_("Islamic:")), CALENDAR_ISLAMIC);
 		PRINT_CALENDAR(string(_("Persian:")), CALENDAR_PERSIAN);
 		PRINT_CALENDAR(string(_("Indian national:")), CALENDAR_INDIAN);
 		PRINT_CALENDAR(string(_("Chinese:")), CALENDAR_CHINESE);
-		long int cy, yc, st, br;std::cout << "3151" << endl;
-		chineseYearInfo(y, cy, yc, st, br);std::cout << "3152" << endl;
+		long int cy, yc, st, br;
+		chineseYearInfo(y, cy, yc, st, br);
 		if(!b_fail) {str += " ("; str += chineseStemName(st); str += string(" "); str += chineseBranchName(br); str += ")";}
 		PRINT_CALENDAR(string(_("Julian:")), CALENDAR_JULIAN);
 		PRINT_CALENDAR(string(_("Revised julian:")), CALENDAR_MILANKOVIC);
 		PRINT_CALENDAR(string(_("Coptic:")), CALENDAR_COPTIC);
 		PRINT_CALENDAR(string(_("Ethiopian:")), CALENDAR_ETHIOPIAN);
-		stopControl();std::cout << "3158" << endl;
+		stopControl();
 		return str;
 	} else if(do_bases) {
-		printops.base = BASE_BINARY;std::cout << "3161" << endl;
-		str = print(mstruct, 0, printops);std::cout << "3162" << endl;
+		printops.base = BASE_BINARY;
+		str = print(mstruct, 0, printops);
 		str += " = ";
-		printops.base = BASE_OCTAL;std::cout << "3164" << endl;
-		str += print(mstruct, 0, printops);std::cout << "3165" << endl;
+		printops.base = BASE_OCTAL;
+		str += print(mstruct, 0, printops);
 		str += " = ";
-		printops.base = BASE_DECIMAL;std::cout << "3167" << endl;
-		str += print(mstruct, 0, printops);std::cout << "3168" << endl;
+		printops.base = BASE_DECIMAL;
+		str += print(mstruct, 0, printops);
 		str += " = ";
-		printops.base = BASE_HEXADECIMAL;std::cout << "3170" << endl;
-		str += print(mstruct, 0, printops);std::cout << "3171" << endl;
-		stopControl();std::cout << "3172" << endl;
+		printops.base = BASE_HEXADECIMAL;
+		str += print(mstruct, 0, printops);
+		stopControl();
 		return str;
 	} else if(do_fraction) {
 		if(mstruct.isNumber()) printops.number_fraction_format = FRACTION_COMBINED;
 		else printops.number_fraction_format = FRACTION_FRACTIONAL;
 	} else if(do_binary_prefixes) {
 		int i = has_information_unit(mstruct);
-		printops.use_unit_prefixes = true;std::cout << "3179" << endl;
-		priv->use_binary_prefixes = (i > 0 ? 1 : 2);std::cout << "3180" << endl;
+		printops.use_unit_prefixes = true;
+		priv->use_binary_prefixes = (i > 0 ? 1 : 2);
 		if(i == 1) {
-			printops.use_denominator_prefix = false;std::cout << "3182" << endl;
+			printops.use_denominator_prefix = false;
 		} else if(i > 1) {
-			printops.use_denominator_prefix = true;std::cout << "3184" << endl;
+			printops.use_denominator_prefix = true;
 		} else {
 			printops.use_prefixes_for_currencies = true;
 			printops.use_prefixes_for_all_units = true;
 		}
 	}
-	mstruct.removeDefaultAngleUnit(evalops);std::cout << "3190" << endl;
+	mstruct.removeDefaultAngleUnit(evalops);
 	mstruct.format(printops);
-	str = mstruct.print(printops);std::cout << "3192" << endl;
+	str = mstruct.print(printops);
 	if(complex_angle_form) gsub(" cis ", "∠", str);
-	stopControl();std::cout << "3194" << endl;
+	stopControl();
 	if(printops.base == BASE_CUSTOM) setCustomOutputBase(base_save);
-	priv->use_binary_prefixes = save_bin;std::cout << "3196" << endl;
+	priv->use_binary_prefixes = save_bin;
 	return str;
 }
 bool Calculator::calculate(MathStructure *mstruct, string str, int msecs, const EvaluationOptions &eo, MathStructure *parsed_struct, MathStructure *to_struct, bool make_to_division) {
 	mstruct->set(string(_("calculating...")), false, true);
-	b_busy = true;std::cout << "3201" << endl;
+	b_busy = true;
 	if(!calculate_thread->running && !calculate_thread->start()) {mstruct->setAborted(); return false;}
-	bool had_msecs = msecs > 0;std::cout << "3203" << endl;
-	expression_to_calculate = str;std::cout << "3204" << endl;
-	tmp_evaluationoptions = eo;std::cout << "3205" << endl;
-	tmp_proc_command = PROC_NO_COMMAND;std::cout << "3206" << endl;
-	tmp_rpn_mstruct = NULL;std::cout << "3207" << endl;
-	tmp_parsedstruct = parsed_struct;std::cout << "3208" << endl;
-	tmp_tostruct = to_struct;std::cout << "3209" << endl;
-	tmp_maketodivision = make_to_division;std::cout << "3210" << endl;
+	bool had_msecs = msecs > 0;
+	expression_to_calculate = str;
+	tmp_evaluationoptions = eo;
+	tmp_proc_command = PROC_NO_COMMAND;
+	tmp_rpn_mstruct = NULL;
+	tmp_parsedstruct = parsed_struct;
+	tmp_tostruct = to_struct;
+	tmp_maketodivision = make_to_division;
 	if(!calculate_thread->write(true)) {calculate_thread->cancel(); mstruct->setAborted(); return false;}
 	if(!calculate_thread->write((void*) mstruct)) {calculate_thread->cancel(); mstruct->setAborted(); return false;}
 	while(msecs > 0 && b_busy) {
-		sleep_ms(10);std::cout << "3214" << endl;
-		msecs -= 10;std::cout << "3215" << endl;
+		sleep_ms(10);
+		msecs -= 10;
 	}
 	if(had_msecs && b_busy) {
 		if(!abort()) mstruct->setAborted();
@@ -3223,23 +3245,23 @@ bool Calculator::calculate(MathStructure *mstruct, string str, int msecs, const 
 	return true;
 }
 bool Calculator::calculate(MathStructure *mstruct, int msecs, const EvaluationOptions &eo, string to_str) {
-	b_busy = true;std::cout << "3224" << endl;
+	b_busy = true;
 	if(!calculate_thread->running && !calculate_thread->start()) {mstruct->setAborted(); return false;}
-	bool had_msecs = msecs > 0;std::cout << "3226" << endl;
+	bool had_msecs = msecs > 0;
 	expression_to_calculate = "";
-	tmp_evaluationoptions = eo;std::cout << "3228" << endl;
-	tmp_proc_command = PROC_NO_COMMAND;std::cout << "3229" << endl;
-	tmp_rpn_mstruct = NULL;std::cout << "3230" << endl;
-	tmp_parsedstruct = NULL;std::cout << "3231" << endl;
+	tmp_evaluationoptions = eo;
+	tmp_proc_command = PROC_NO_COMMAND;
+	tmp_rpn_mstruct = NULL;
+	tmp_parsedstruct = NULL;
 	if(!to_str.empty()) tmp_tostruct = new MathStructure(to_str);
-	else tmp_tostruct = NULL;std::cout << "3233" << endl;
-	tmp_tostruct = NULL;std::cout << "3234" << endl;
-	tmp_maketodivision = false;std::cout << "3235" << endl;
+	else tmp_tostruct = NULL;
+	tmp_tostruct = NULL;
+	tmp_maketodivision = false;
 	if(!calculate_thread->write(false)) {calculate_thread->cancel(); mstruct->setAborted(); return false;}
 	if(!calculate_thread->write((void*) mstruct)) {calculate_thread->cancel(); mstruct->setAborted(); return false;}
 	while(msecs > 0 && b_busy) {
-		sleep_ms(10);std::cout << "3239" << endl;
-		msecs -= 10;std::cout << "3240" << endl;
+		sleep_ms(10);
+		msecs -= 10;
 	}
 	if(had_msecs && b_busy) {
 		if(!abort()) mstruct->setAborted();
@@ -3249,13 +3271,13 @@ bool Calculator::calculate(MathStructure *mstruct, int msecs, const EvaluationOp
 }
 bool Calculator::hasToExpression(const string &str, bool allow_empty_from) const {
 	if(str.empty()) return false;
-	size_t i = str.length() - 1, i2 = i;std::cout << "3250" << endl;
-	int l = 2;std::cout << "3251" << endl;
+	size_t i = str.length() - 1, i2 = i;
+	int l = 2;
 	while(i != 0) {
 		i2 = str.rfind(_("to"), i - 1);
 		i = str.rfind("to", i - 1);
 		if(i2 != string::npos && (i == string::npos || i < i2)) {l = strlen(_("to")); i = i2;}
-		else l = 2;std::cout << "3256" << endl;
+		else l = 2;
 		if(i == string::npos) break;
 		if(((i > 0 && is_in(SPACES, str[i - 1])) || (allow_empty_from && i == 0)) && i + l < str.length() && is_in(SPACES, str[i + l])) return true;
 	}
@@ -3264,13 +3286,13 @@ bool Calculator::hasToExpression(const string &str, bool allow_empty_from) const
 bool Calculator::hasToExpression(const string &str, bool allow_empty_from, const EvaluationOptions &eo) const {
 	if(eo.parse_options.base == BASE_UNICODE || (eo.parse_options.base == BASE_CUSTOM && priv->custom_input_base_i > 62)) return false;
 	if(str.empty()) return false;
-	size_t i = str.length() - 1, i2 = i;std::cout << "3265" << endl;
-	int l = 2;std::cout << "3266" << endl;
+	size_t i = str.length() - 1, i2 = i;
+	int l = 2;
 	while(i != 0) {
 		i2 = str.rfind(_("to"), i - 1);
 		i = str.rfind("to", i - 1);
 		if(i2 != string::npos && (i == string::npos || i < i2)) {l = strlen(_("to")); i = i2;}
-		else l = 2;std::cout << "3271" << endl;
+		else l = 2;
 		if(i == string::npos) break;
 		if(((i > 0 && is_in(SPACES, str[i - 1])) || (allow_empty_from && i == 0)) && i + l < str.length() && is_in(SPACES, str[i + l])) return true;
 	}
@@ -3280,31 +3302,31 @@ bool Calculator::separateToExpression(string &str, string &to_str, const Evaluat
 	if(eo.parse_options.base == BASE_UNICODE || (eo.parse_options.base == BASE_CUSTOM && priv->custom_input_base_i > 62)) return false;
 	to_str = "";
 	if(str.empty()) return false;
-	size_t i = str.length() - 1, i2 = i;std::cout << "3281" << endl;
-	int l = 2;std::cout << "3282" << endl;
+	size_t i = str.length() - 1, i2 = i;
+	int l = 2;
 	while(i != 0) {
 		i2 = str.rfind(_("to"), i - 1);
 		i = str.rfind("to", i - 1);
 		if(i2 != string::npos && (i == string::npos || i < i2)) {l = strlen(_("to")); i = i2;}
-		else l = 2;std::cout << "3287" << endl;
+		else l = 2;
 		if(i == string::npos) break;
 		if(((i > 0 && is_in(SPACES, str[i - 1])) || (allow_empty_from && i == 0)) && i + l < str.length() && is_in(SPACES, str[i + l])) {
-			to_str = str.substr(i + l , str.length() - i - l);std::cout << "3290" << endl;
+			to_str = str.substr(i + l , str.length() - i - l);
 			if(to_str.empty()) return false;
-			remove_blank_ends(to_str);std::cout << "3292" << endl;
+			remove_blank_ends(to_str);
 			if(!to_str.empty()) {
 				if(to_str.rfind(SIGN_MINUS, 0) == 0) {
-					to_str.replace(0, strlen(SIGN_MINUS), MINUS);std::cout << "3295" << endl;
+					to_str.replace(0, strlen(SIGN_MINUS), MINUS);
 				}
 				if(!keep_modifiers && (to_str[0] == '0' || to_str[0] == '?' || to_str[0] == '+' || to_str[0] == '-')) {
-					to_str = to_str.substr(1, str.length() - 1);std::cout << "3298" << endl;
-					remove_blank_ends(to_str);std::cout << "3299" << endl;
+					to_str = to_str.substr(1, str.length() - 1);
+					remove_blank_ends(to_str);
 				} else if(!keep_modifiers && to_str.length() > 1 && to_str[1] == '?' && (to_str[0] == 'b' || to_str[0] == 'a' || to_str[0] == 'd')) {
-					to_str = to_str.substr(2, str.length() - 2);std::cout << "3301" << endl;
-					remove_blank_ends(to_str);std::cout << "3302" << endl;
+					to_str = to_str.substr(2, str.length() - 2);
+					remove_blank_ends(to_str);
 				}
 			}
-			str = str.substr(0, i);std::cout << "3305" << endl;
+			str = str.substr(0, i);
 			return true;
 		}
 	}
@@ -3313,14 +3335,14 @@ bool Calculator::separateToExpression(string &str, string &to_str, const Evaluat
 bool Calculator::hasWhereExpression(const string &str, const EvaluationOptions &eo) const {
 	if(eo.parse_options.base == BASE_UNICODE || (eo.parse_options.base == BASE_CUSTOM && priv->custom_input_base_i > 62)) return false;
 	if(str.empty()) return false;
-	size_t i = str.length() - 1, i2 = i;std::cout << "3314" << endl;
-	int l = 2;std::cout << "3315" << endl;
+	size_t i = str.length() - 1, i2 = i;
+	int l = 2;
 	while(i != 0) {
 		//"where"-operator
 		i2 = str.rfind(_("where"), i - 1);
 		i = str.rfind("where", i - 1);
 		if(i2 != string::npos && (i == string::npos || i < i2)) {l = strlen(_("where")); i = i2;}
-		else l = 2;std::cout << "3321" << endl;
+		else l = 2;
 		if(i == string::npos) break;
 		if(i > 0 && is_in(SPACES, str[i - 1]) && i + l < str.length() && is_in(SPACES, str[i + l])) return true;
 	}
@@ -3330,32 +3352,32 @@ bool Calculator::hasWhereExpression(const string &str, const EvaluationOptions &
 bool Calculator::separateWhereExpression(string &str, string &to_str, const EvaluationOptions &eo) const {
 	if(eo.parse_options.base == BASE_UNICODE || (eo.parse_options.base == BASE_CUSTOM && priv->custom_input_base_i > 62)) return false;
 	to_str = "";
-	size_t i = 0;std::cout << "3331" << endl;
+	size_t i = 0;
 	if((i = str.rfind("/.", str.length() - 2)) != string::npos && i != str.length() - 2 && eo.parse_options.base >= 2 && eo.parse_options.base <= 10 && (str[i + 2] < '0' || str[i + 2] > '9')) {
-		to_str = str.substr(i + 2 , str.length() - i - 2);std::cout << "3333" << endl;
+		to_str = str.substr(i + 2 , str.length() - i - 2);
 	} else {
-		i = str.length() - 1;std::cout << "3335" << endl;
-		size_t i2 = i;std::cout << "3336" << endl;
-		int l = 5;std::cout << "3337" << endl;
+		i = str.length() - 1;
+		size_t i2 = i;
+		int l = 5;
 		while(i != 0) {
 			i2 = str.rfind(_("where"), i - 1);
 			i = str.rfind("where", i - 1);
 			if(i2 != string::npos && (i == string::npos || i < i2)) {l = strlen(_("where")); i = i2;}
-			else l = 5;std::cout << "3342" << endl;
+			else l = 5;
 			if(i == string::npos) break;
 			if(i > 0 && is_in(SPACES, str[i - 1]) && i + l < str.length() && is_in(SPACES, str[i + l])) {
-				to_str = str.substr(i + l , str.length() - i - l);std::cout << "3345" << endl;
+				to_str = str.substr(i + l , str.length() - i - l);
 				break;
 			}
 		}
 	}
 	if(!to_str.empty()) {
-		remove_blank_ends(to_str);std::cout << "3351" << endl;
-		str = str.substr(0, i);std::cout << "3352" << endl;
-		parseSigns(str);std::cout << "3353" << endl;
+		remove_blank_ends(to_str);
+		str = str.substr(0, i);
+		parseSigns(str);
 		if(str.find("&&") == string::npos) {
-			int par = 0;std::cout << "3355" << endl;
-			int bra = 0;std::cout << "3356" << endl;
+			int par = 0;
+			int bra = 0;
 			for(size_t i = 0; i < str.length(); i++) {
 				switch(str[i]) {
 					case '(': {par++; break;}
@@ -3364,8 +3386,8 @@ bool Calculator::separateWhereExpression(string &str, string &to_str, const Eval
 					case ']': {if(bra > 0) bra--; break;}
 					case COMMA_CH: {
 						if(par == 0 && bra == 0) {
-							str.replace(i, 1, LOGICAL_AND);std::cout << "3365" << endl;
-							i++;std::cout << "3366" << endl;
+							str.replace(i, 1, LOGICAL_AND);
+							i++;
 						}
 						break;
 					}
@@ -3385,14 +3407,14 @@ extern bool replace_f_interval(MathStructure &mstruct, const EvaluationOptions &
 bool calculate_rand(MathStructure &mstruct, const EvaluationOptions &eo) {
 	if(mstruct.isFunction() && mstruct.function() == CALCULATOR->f_rand) {
 		mstruct.unformat(eo);
-		mstruct.calculateFunctions(eo, false);std::cout << "3386" << endl;
+		mstruct.calculateFunctions(eo, false);
 		return true;
 	}
-	bool ret = false;std::cout << "3389" << endl;
+	bool ret = false;
 	for(size_t i = 0; i < mstruct.size(); i++) {
 		if(calculate_rand(mstruct[i], eo)) {
-			ret = true;std::cout << "3392" << endl;
-			mstruct.childUpdated(i + 1);std::cout << "3393" << endl;
+			ret = true;
+			mstruct.childUpdated(i + 1);
 		}
 	}
 	return ret;
@@ -3400,17 +3422,17 @@ bool calculate_rand(MathStructure &mstruct, const EvaluationOptions &eo) {
 bool calculate_ans(MathStructure &mstruct, const EvaluationOptions &eo) {
 	if(mstruct.isFunction() && (mstruct.function()->hasName("answer") || mstruct.function()->hasName("expression"))) {
 		mstruct.unformat(eo);
-		mstruct.calculateFunctions(eo, false);std::cout << "3401" << endl;
+		mstruct.calculateFunctions(eo, false);
 		return true;
 	} else if(mstruct.isVariable() && mstruct.variable()->isKnown() && (mstruct.variable()->referenceName() == "ans" || (mstruct.variable()->referenceName().length() == 4 && mstruct.variable()->referenceName().substr(0, 3) == "ans" && is_in(NUMBERS, mstruct.variable()->referenceName()[3])))) {
-		mstruct.set(((KnownVariable*) mstruct.variable())->get(), true);std::cout << "3404" << endl;
+		mstruct.set(((KnownVariable*) mstruct.variable())->get(), true);
 		return true;
 	}
-	bool ret = false;std::cout << "3407" << endl;
+	bool ret = false;
 	for(size_t i = 0; i < mstruct.size(); i++) {
 		if(calculate_ans(mstruct[i], eo)) {
-			mstruct.childUpdated(i + 1);std::cout << "3410" << endl;
-			ret = true;std::cout << "3411" << endl;
+			mstruct.childUpdated(i + 1);
+			ret = true;
 		}
 	}
 	return ret;
@@ -3419,22 +3441,22 @@ bool handle_where_expression(MathStructure &m, MathStructure &mstruct, const Eva
 	if(m.isComparison()) {
 		if(m.comparisonType() == COMPARISON_EQUALS) {
 			if(m[0].size() > 0 && do_eval) {
-				MathStructure m2(m);std::cout << "3420" << endl;
-				MathStructure xvar = m[0].find_x_var();std::cout << "3421" << endl;
-				EvaluationOptions eo2 = eo;std::cout << "3422" << endl;
-				eo2.isolate_x = true;std::cout << "3423" << endl;
+				MathStructure m2(m);
+				MathStructure xvar = m[0].find_x_var();
+				EvaluationOptions eo2 = eo;
+				eo2.isolate_x = true;
 				if(!xvar.isUndefined()) eo2.isolate_var = &xvar;
-				m2.eval(eo2);std::cout << "3425" << endl;
+				m2.eval(eo2);
 				if(m2.isComparison()) return handle_where_expression(m2, mstruct, eo, vars, varms, false, false);
 			}
 			if(m[0].isFunction() && m[1].isFunction() && (m[0].size() == 0 || (empty_func && m[0].function()->minargs() == 0)) && (m[1].size() == 0 || (empty_func && m[1].function()->minargs() == 0))) {
 				if(!replace_function(mstruct, m[0].function(), m[1].function(), eo)) CALCULATOR->error(false, _("Original value (%s) was not found."), (m[0].function()->name() + "()").c_str(), NULL);
 			} else {
-				calculate_rand(m[1], eo);std::cout << "3431" << endl;
+				calculate_rand(m[1], eo);
 				if(mstruct.countOccurrences(m[0]) > 1 && m[1].containsInterval(true, false, false, 0, true)) {
-					MathStructure mv(m[1]);std::cout << "3433" << endl;
-					replace_f_interval(mv, eo);std::cout << "3434" << endl;
-					replace_intervals_f(mv);std::cout << "3435" << endl;
+					MathStructure mv(m[1]);
+					replace_f_interval(mv, eo);
+					replace_intervals_f(mv);
 					if(!mstruct.replace(m[0], mv)) CALCULATOR->error(false, _("Original value (%s) was not found."), format_and_print(m[0]).c_str(), NULL);
 				} else {
 					if(!mstruct.replace(m[0], m[1])) CALCULATOR->error(false, _("Original value (%s) was not found."), format_and_print(m[0]).c_str(), NULL);
@@ -3444,10 +3466,10 @@ bool handle_where_expression(MathStructure &m, MathStructure &mstruct, const Eva
 		} else if(m[0].isSymbolic() || (m[0].isVariable() && !m[0].variable()->isKnown())) {
 			if(!m[1].isNumber()) m[1].eval(eo);
 			if(m[1].isNumber() && !m[1].number().hasImaginaryPart()) {
-				Assumptions *ass = NULL;std::cout << "3445" << endl;
+				Assumptions *ass = NULL;
 				for(size_t i = 0; i < varms.size(); i++) {
 					if(varms[i] == m[0]) {
-						ass = vars[0]->assumptions();std::cout << "3448" << endl;
+						ass = vars[0]->assumptions();
 						break;
 					}
 				}
@@ -3455,28 +3477,28 @@ bool handle_where_expression(MathStructure &m, MathStructure &mstruct, const Eva
 					if(ass) {
 						if(m.comparisonType() == COMPARISON_EQUALS_GREATER) {
 							if(!ass->min() || (*ass->min() < m[1].number())) {
-								ass->setMin(&m[1].number());std::cout << "3456" << endl; ass->setIncludeEqualsMin(true);std::cout << "3456" << endl;
+								ass->setMin(&m[1].number()); ass->setIncludeEqualsMin(true);
 								return true;
 							} else if(*ass->min() >= m[1].number()) {
 								return true;
 							}
 						} else if(m.comparisonType() == COMPARISON_EQUALS_LESS) {
 							if(!ass->max() || (*ass->max() > m[1].number())) {
-								ass->setMax(&m[1].number());std::cout << "3463" << endl; ass->setIncludeEqualsMax(true);std::cout << "3463" << endl;
+								ass->setMax(&m[1].number()); ass->setIncludeEqualsMax(true);
 								return true;
 							} else if(*ass->max() <= m[1].number()) {
 								return true;
 							}
 						} else if(m.comparisonType() == COMPARISON_GREATER) {
 							if(!ass->min() || (ass->includeEqualsMin() && *ass->min() <= m[1].number()) || (!ass->includeEqualsMin() && *ass->min() < m[1].number())) {
-								ass->setMin(&m[1].number());std::cout << "3470" << endl; ass->setIncludeEqualsMin(false);std::cout << "3470" << endl;
+								ass->setMin(&m[1].number()); ass->setIncludeEqualsMin(false);
 								return true;
 							} else if((ass->includeEqualsMin() && *ass->min() > m[1].number()) || (!ass->includeEqualsMin() && *ass->min() >= m[1].number())) {
 								return true;
 							}
 						} else if(m.comparisonType() == COMPARISON_LESS) {
 							if(!ass->max() || (ass->includeEqualsMax() && *ass->max() >= m[1].number()) || (!ass->includeEqualsMax() && *ass->max() > m[1].number())) {
-								ass->setMax(&m[1].number());std::cout << "3477" << endl; ass->setIncludeEqualsMax(false);std::cout << "3477" << endl;
+								ass->setMax(&m[1].number()); ass->setIncludeEqualsMax(false);
 								return true;
 							} else if((ass->includeEqualsMax() && *ass->max() < m[1].number()) || (!ass->includeEqualsMax() && *ass->max() <= m[1].number())) {
 								return true;
@@ -3484,7 +3506,7 @@ bool handle_where_expression(MathStructure &m, MathStructure &mstruct, const Eva
 						}
 					} else {
 						UnknownVariable *var = new UnknownVariable("", format_and_print(m[0]));
-						ass = new Assumptions();std::cout << "3485" << endl;
+						ass = new Assumptions();
 						if(m[1].isZero()) {
 							if(m.comparisonType() == COMPARISON_EQUALS_GREATER) ass->setSign(ASSUMPTION_SIGN_NONNEGATIVE);
 							else if(m.comparisonType() == COMPARISON_EQUALS_LESS) ass->setSign(ASSUMPTION_SIGN_NONPOSITIVE);
@@ -3497,25 +3519,25 @@ bool handle_where_expression(MathStructure &m, MathStructure &mstruct, const Eva
 							else if(m.comparisonType() == COMPARISON_GREATER) {ass->setMin(&m[1].number()); ass->setIncludeEqualsMin(false);}
 							else if(m.comparisonType() == COMPARISON_LESS) {ass->setMax(&m[1].number()); ass->setIncludeEqualsMax(false);}
 						}
-						var->setAssumptions(ass);std::cout << "3498" << endl;
-						vars.push_back(var);std::cout << "3499" << endl;
-						varms.push_back(m[0]);std::cout << "3500" << endl;
-						MathStructure u_var(var);std::cout << "3501" << endl;
+						var->setAssumptions(ass);
+						vars.push_back(var);
+						varms.push_back(m[0]);
+						MathStructure u_var(var);
 						if(!mstruct.replace(m[0], u_var)) CALCULATOR->error(false, _("Original value (%s) was not found."), format_and_print(m[0]).c_str(), NULL);
 						return true;
 					}
 				}
 			}
 		} else if(do_eval) {
-			MathStructure xvar = m[0].find_x_var();std::cout << "3508" << endl;
-			EvaluationOptions eo2 = eo;std::cout << "3509" << endl;
-			eo2.isolate_x = true;std::cout << "3510" << endl;
+			MathStructure xvar = m[0].find_x_var();
+			EvaluationOptions eo2 = eo;
+			eo2.isolate_x = true;
 			if(!xvar.isUndefined()) eo2.isolate_var = &xvar;
-			m.eval(eo2);std::cout << "3512" << endl;
+			m.eval(eo2);
 			return handle_where_expression(m, mstruct, eo, vars, varms, false, false);
 		}
 	} else if(m.isLogicalAnd()) {
-		bool ret = true;std::cout << "3516" << endl;
+		bool ret = true;
 		for(size_t i = 0; i < m.size(); i++) {
 			if(!handle_where_expression(m[i], mstruct, eo, vars, varms, empty_func, do_eval)) ret = false;
 		}
@@ -3526,102 +3548,102 @@ bool handle_where_expression(MathStructure &m, MathStructure &mstruct, const Eva
 }
 MathStructure Calculator::calculate(string str, const EvaluationOptions &eo, MathStructure *parsed_struct, MathStructure *to_struct, bool make_to_division) {
 
-	string str2, str_where;std::cout << "3527" << endl;
+	string str2, str_where;
 
 	if(make_to_division) separateToExpression(str, str2, eo, true);
-	separateWhereExpression(str, str_where, eo);std::cout << "3530" << endl;
+	separateWhereExpression(str, str_where, eo);
 
-	Unit *u = NULL;std::cout << "3532" << endl;
+	Unit *u = NULL;
 	if(to_struct) {
 		if(str2.empty()) {
 			if(to_struct->isSymbolic() && !to_struct->symbol().empty()) {
-				str2 = to_struct->symbol();std::cout << "3536" << endl;
-				remove_blank_ends(str2);std::cout << "3537" << endl;
+				str2 = to_struct->symbol();
+				remove_blank_ends(str2);
 			} else if(to_struct->isUnit()) {
-				u = to_struct->unit();std::cout << "3539" << endl;
+				u = to_struct->unit();
 			}
 		}
-		to_struct->setUndefined();std::cout << "3542" << endl;
+		to_struct->setUndefined();
 	}
 
 	// ok
-	MathStructure mstruct;std::cout << "3546" << endl;
+	MathStructure mstruct;
 
-	current_stage = MESSAGE_STAGE_PARSING;std::cout << "3548" << endl;
-	size_t n_messages = messages.size();std::cout << "3549" << endl;
-	parse(&mstruct, str, eo.parse_options);std::cout << "3550" << endl;
+	current_stage = MESSAGE_STAGE_PARSING;
+	size_t n_messages = messages.size();
+	parse(&mstruct, str, eo.parse_options);
 	// not ok
 	if(parsed_struct) {
-		beginTemporaryStopMessages();std::cout << "3553" << endl;
-		ParseOptions po = eo.parse_options;std::cout << "3554" << endl;
+		beginTemporaryStopMessages();
+		ParseOptions po = eo.parse_options;
 		po.preserve_format = true;
-		parse(parsed_struct, str, po);std::cout << "3556" << endl;
-		endTemporaryStopMessages();std::cout << "3557" << endl;
+		parse(parsed_struct, str, po);
+		endTemporaryStopMessages();
 	}
 
 
-	vector<UnknownVariable*> vars;std::cout << "3561" << endl;
-	vector<MathStructure> varms;std::cout << "3562" << endl;
+	vector<UnknownVariable*> vars;
+	vector<MathStructure> varms;
 	if(!str_where.empty()) {
-		MathStructure where_struct;std::cout << "3564" << endl;
-		parse(&where_struct, str_where, eo.parse_options);std::cout << "3565" << endl;
-		current_stage = MESSAGE_STAGE_CALCULATION;std::cout << "3566" << endl;
-		calculate_ans(mstruct, eo);std::cout << "3567" << endl;
-		string str_test = str_where;std::cout << "3568" << endl;
-		remove_blanks(str_test);std::cout << "3569" << endl;
+		MathStructure where_struct;
+		parse(&where_struct, str_where, eo.parse_options);
+		current_stage = MESSAGE_STAGE_CALCULATION;
+		calculate_ans(mstruct, eo);
+		string str_test = str_where;
+		remove_blanks(str_test);
 		bool empty_func = str_test.find("()=") != string::npos;
 		if(mstruct.isComparison() || (mstruct.isFunction() && mstruct.function() == CALCULATOR->f_solve && mstruct.size() >= 1 && mstruct[0].isComparison())) {
-			beginTemporaryStopMessages();std::cout << "3572" << endl;
-			MathStructure mbak(mstruct);std::cout << "3573" << endl;
+			beginTemporaryStopMessages();
+			MathStructure mbak(mstruct);
 			if(handle_where_expression(where_struct, mstruct, eo, vars, varms, empty_func)) {
-				endTemporaryStopMessages(true);std::cout << "3575" << endl;
+				endTemporaryStopMessages(true);
 			} else {
-				endTemporaryStopMessages();std::cout << "3577" << endl;
-				mstruct = mbak;std::cout << "3578" << endl;
+				endTemporaryStopMessages();
+				mstruct = mbak;
 				if(mstruct.isComparison()) mstruct.transform(STRUCT_LOGICAL_AND, where_struct);
 				else {mstruct[0].transform(STRUCT_LOGICAL_AND, where_struct); mstruct.childUpdated(1);}
 			}
 		} else {
 			if(eo.approximation == APPROXIMATION_EXACT) {
-				EvaluationOptions eo2 = eo;std::cout << "3584" << endl;
-				eo2.approximation = APPROXIMATION_TRY_EXACT;std::cout << "3585" << endl;
-				handle_where_expression(where_struct, mstruct, eo2, vars, varms, empty_func);std::cout << "3586" << endl;
+				EvaluationOptions eo2 = eo;
+				eo2.approximation = APPROXIMATION_TRY_EXACT;
+				handle_where_expression(where_struct, mstruct, eo2, vars, varms, empty_func);
 			} else {
-				handle_where_expression(where_struct, mstruct, eo, vars, varms, empty_func);std::cout << "3588" << endl;
+				handle_where_expression(where_struct, mstruct, eo, vars, varms, empty_func);
 			}
 		}
 	}
 
     // not ok
 
-	current_stage = MESSAGE_STAGE_CALCULATION;std::cout << "3595" << endl;
+	current_stage = MESSAGE_STAGE_CALCULATION;
 
-	mstruct.eval(eo);std::cout << "3597" << endl;
+	mstruct.eval(eo);
 
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "3599" << endl;
+	current_stage = MESSAGE_STAGE_UNSET;
 
 	if(!aborted()) {
-		bool b_units = mstruct.containsType(STRUCT_UNIT, true);std::cout << "3602" << endl;
+		bool b_units = mstruct.containsType(STRUCT_UNIT, true);
 		if(b_units && u) {
-			current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "3604" << endl;
+			current_stage = MESSAGE_STAGE_CONVERSION;
 			if(to_struct) to_struct->set(u);
-			mstruct.set(convert(mstruct, u, eo, false, false));std::cout << "3606" << endl;
+			mstruct.set(convert(mstruct, u, eo, false, false));
 			if(eo.mixed_units_conversion != MIXED_UNITS_CONVERSION_NONE) mstruct.set(convertToMixedUnits(mstruct, eo));
 		} else if(!str2.empty()) {
-			mstruct.set(convert(mstruct, str2, eo));std::cout << "3609" << endl;
+			mstruct.set(convert(mstruct, str2, eo));
 		} else if(b_units) {
-			current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "3611" << endl;
+			current_stage = MESSAGE_STAGE_CONVERSION;
 			switch(eo.auto_post_conversion) {
 				case POST_CONVERSION_OPTIMAL: {
-					mstruct.set(convertToOptimalUnit(mstruct, eo, false));std::cout << "3614" << endl;
+					mstruct.set(convertToOptimalUnit(mstruct, eo, false));
 					break;
 				}
 				case POST_CONVERSION_BASE: {
-					mstruct.set(convertToBaseUnits(mstruct, eo));std::cout << "3618" << endl;
+					mstruct.set(convertToBaseUnits(mstruct, eo));
 					break;
 				}
 				case POST_CONVERSION_OPTIMAL_SI: {
-					mstruct.set(convertToOptimalUnit(mstruct, eo, true));std::cout << "3622" << endl;
+					mstruct.set(convertToOptimalUnit(mstruct, eo, true));
 					break;
 				}
 				default: {}
@@ -3630,13 +3652,13 @@ MathStructure Calculator::calculate(string str, const EvaluationOptions &eo, Mat
 		}
 	}
 
-	cleanMessages(mstruct, n_messages + 1);std::cout << "3631" << endl;
+	cleanMessages(mstruct, n_messages + 1);
 
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "3633" << endl;
+	current_stage = MESSAGE_STAGE_UNSET;
 
 	for(size_t i = 0; i < vars.size(); i++) {
-		mstruct.replace(vars[i], varms[i]);std::cout << "3636" << endl;
-		vars[i]->destroy();std::cout << "3637" << endl;
+		mstruct.replace(vars[i], varms[i]);
+		vars[i]->destroy();
 	}
 
 	return mstruct;
@@ -3644,27 +3666,27 @@ MathStructure Calculator::calculate(string str, const EvaluationOptions &eo, Mat
 }
 MathStructure Calculator::calculate(const MathStructure &mstruct_to_calculate, const EvaluationOptions &eo, string to_str) {
 
-	remove_blank_ends(to_str);std::cout << "3645" << endl;
-	MathStructure mstruct(mstruct_to_calculate);std::cout << "3646" << endl;
-	current_stage = MESSAGE_STAGE_CALCULATION;std::cout << "3647" << endl;
-	size_t n_messages = messages.size();std::cout << "3648" << endl;
-	mstruct.eval(eo);std::cout << "3649" << endl;
+	remove_blank_ends(to_str);
+	MathStructure mstruct(mstruct_to_calculate);
+	current_stage = MESSAGE_STAGE_CALCULATION;
+	size_t n_messages = messages.size();
+	mstruct.eval(eo);
 
-	current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "3651" << endl;
+	current_stage = MESSAGE_STAGE_CONVERSION;
 	if(!to_str.empty()) {
-		mstruct.set(convert(mstruct, to_str, eo));std::cout << "3653" << endl;
+		mstruct.set(convert(mstruct, to_str, eo));
 	} else {
 		switch(eo.auto_post_conversion) {
 			case POST_CONVERSION_OPTIMAL: {
-				mstruct.set(convertToOptimalUnit(mstruct, eo, false));std::cout << "3657" << endl;
+				mstruct.set(convertToOptimalUnit(mstruct, eo, false));
 				break;
 			}
 			case POST_CONVERSION_BASE: {
-				mstruct.set(convertToBaseUnits(mstruct, eo));std::cout << "3661" << endl;
+				mstruct.set(convertToBaseUnits(mstruct, eo));
 				break;
 			}
 			case POST_CONVERSION_OPTIMAL_SI: {
-				mstruct.set(convertToOptimalUnit(mstruct, eo, true));std::cout << "3665" << endl;
+				mstruct.set(convertToOptimalUnit(mstruct, eo, true));
 				break;
 			}
 			default: {}
@@ -3672,18 +3694,18 @@ MathStructure Calculator::calculate(const MathStructure &mstruct_to_calculate, c
 		if(eo.mixed_units_conversion != MIXED_UNITS_CONVERSION_NONE) mstruct.set(convertToMixedUnits(mstruct, eo));
 	}
 
-	cleanMessages(mstruct, n_messages + 1);std::cout << "3673" << endl;
+	cleanMessages(mstruct, n_messages + 1);
 
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "3675" << endl;
+	current_stage = MESSAGE_STAGE_UNSET;
 	return mstruct;
 }
 
 string Calculator::print(const MathStructure &mstruct, int msecs, const PrintOptions &po) {
-	startControl(msecs);std::cout << "3680" << endl;
-	MathStructure mstruct2(mstruct);std::cout << "3681" << endl;
+	startControl(msecs);
+	MathStructure mstruct2(mstruct);
 	mstruct2.format(po);
-	string print_result = mstruct2.print(po);std::cout << "3683" << endl;
-	stopControl();std::cout << "3684" << endl;
+	string print_result = mstruct2.print(po);
+	stopControl();
 	return print_result;
 }
 string Calculator::printMathStructureTimeOut(const MathStructure &mstruct, int msecs, const PrintOptions &po) {
@@ -3694,127 +3716,127 @@ MathStructure Calculator::convertToMixedUnits(const MathStructure &mstruct, cons
 	if(eo.mixed_units_conversion == MIXED_UNITS_CONVERSION_NONE) return mstruct;
 	if(!mstruct.isMultiplication()) return mstruct;
 	if(mstruct.size() != 2) return mstruct;
-	size_t n_messages = messages.size();std::cout << "3695" << endl;
+	size_t n_messages = messages.size();
 	if(mstruct[1].isUnit() && (!mstruct[1].prefix() || mstruct[1].prefix() == decimal_null_prefix) && mstruct[0].isNumber()) {
-		Prefix *p = mstruct[1].prefix();std::cout << "3697" << endl;
-		MathStructure mstruct_new(mstruct);std::cout << "3698" << endl;
-		Unit *u = mstruct[1].unit();std::cout << "3699" << endl;
-		Number nr = mstruct[0].number();std::cout << "3700" << endl;
+		Prefix *p = mstruct[1].prefix();
+		MathStructure mstruct_new(mstruct);
+		Unit *u = mstruct[1].unit();
+		Number nr = mstruct[0].number();
 		if(!nr.isReal()) return mstruct;
 		if(nr.isOne()) return mstruct;
 		if(u->subtype() == SUBTYPE_COMPOSITE_UNIT) return mstruct;
-		bool negated = false;std::cout << "3704" << endl;
+		bool negated = false;
 		if(nr.isNegative()) {
-			nr.negate();std::cout << "3706" << endl;
-			negated = true;std::cout << "3707" << endl;
+			nr.negate();
+			negated = true;
 		}
-		bool accept_obsolete = (u->subtype() == SUBTYPE_ALIAS_UNIT && abs(((AliasUnit*) u)->mixWithBase()) > 1);std::cout << "3709" << endl;
-		Unit *original_u = u;std::cout << "3710" << endl;
-		Unit *last_nonobsolete_u = u;std::cout << "3711" << endl;
-		Number last_nonobsolete_nr = nr;std::cout << "3712" << endl;
-		Number nr_one(1, 1);std::cout << "3713" << endl;
-		Number nr_ten(10, 1);std::cout << "3714" << endl;
+		bool accept_obsolete = (u->subtype() == SUBTYPE_ALIAS_UNIT && abs(((AliasUnit*) u)->mixWithBase()) > 1);
+		Unit *original_u = u;
+		Unit *last_nonobsolete_u = u;
+		Number last_nonobsolete_nr = nr;
+		Number nr_one(1, 1);
+		Number nr_ten(10, 1);
 		while(eo.mixed_units_conversion > MIXED_UNITS_CONVERSION_DOWNWARDS && nr.isGreaterThan(nr_one)) {
-			Unit *best_u = NULL;std::cout << "3716" << endl;
-			Number best_nr;std::cout << "3717" << endl;
-			int best_priority = 0;std::cout << "3718" << endl;
+			Unit *best_u = NULL;
+			Number best_nr;
+			int best_priority = 0;
 			for(size_t i = 0; i < units.size(); i++) {
-				Unit *ui = units[i];std::cout << "3720" << endl;
+				Unit *ui = units[i];
 				if(ui->subtype() == SUBTYPE_ALIAS_UNIT && ((AliasUnit*) ui)->firstBaseUnit() == u  && ((AliasUnit*) ui)->firstBaseExponent() == 1) {
-					AliasUnit *aui = (AliasUnit*) ui;std::cout << "3722" << endl;
-					int priority_i = aui->mixWithBase();std::cout << "3723" << endl;
+					AliasUnit *aui = (AliasUnit*) ui;
+					int priority_i = aui->mixWithBase();
 					if(((priority_i > 0 && (!best_u || priority_i <= best_priority)) || (best_priority == 0 && priority_i == 0 && ((eo.mixed_units_conversion == MIXED_UNITS_CONVERSION_FORCE_INTEGER && aui->expression().find_first_not_of(NUMBERS) == string::npos) || eo.mixed_units_conversion == MIXED_UNITS_CONVERSION_FORCE_ALL))) && (aui->mixWithBaseMinimum() <= 1 || nr.isGreaterThanOrEqualTo(aui->mixWithBaseMinimum()))) {
-						MathStructure mstruct_nr(nr);std::cout << "3725" << endl;
-						MathStructure m_exp(m_one);std::cout << "3726" << endl;
-						aui->convertFromFirstBaseUnit(mstruct_nr, m_exp);std::cout << "3727" << endl;
-						mstruct_nr.eval(eo);std::cout << "3728" << endl;
+						MathStructure mstruct_nr(nr);
+						MathStructure m_exp(m_one);
+						aui->convertFromFirstBaseUnit(mstruct_nr, m_exp);
+						mstruct_nr.eval(eo);
 						if(mstruct_nr.isNumber() && m_exp.isOne() && mstruct_nr.number().isLessThan(nr) && mstruct_nr.number().isGreaterThanOrEqualTo(nr_one) && (!best_u || mstruct_nr.number().isLessThan(best_nr))) {
-							best_u = ui;std::cout << "3730" << endl;
-							best_nr = mstruct_nr.number();std::cout << "3731" << endl;
-							best_priority = priority_i;std::cout << "3732" << endl;
+							best_u = ui;
+							best_nr = mstruct_nr.number();
+							best_priority = priority_i;
 						}
 					}
 				}
 			}
 			if(!best_u) break;
-			u = best_u;std::cout << "3738" << endl;
-			nr = best_nr;std::cout << "3739" << endl;
+			u = best_u;
+			nr = best_nr;
 			if(accept_obsolete || best_priority <= 1) {
-				last_nonobsolete_u = u;std::cout << "3741" << endl;
-				last_nonobsolete_nr = nr;std::cout << "3742" << endl;
+				last_nonobsolete_u = u;
+				last_nonobsolete_nr = nr;
 			}
 		}
-		u = last_nonobsolete_u;std::cout << "3745" << endl;
-		nr = last_nonobsolete_nr;std::cout << "3746" << endl;
+		u = last_nonobsolete_u;
+		nr = last_nonobsolete_nr;
 		if(u != original_u) {
 			if(negated) last_nonobsolete_nr.negate();
-			mstruct_new[0].set(last_nonobsolete_nr);std::cout << "3749" << endl;
-			mstruct_new[1].set(u, p);std::cout << "3750" << endl;
+			mstruct_new[0].set(last_nonobsolete_nr);
+			mstruct_new[1].set(u, p);
 		}
 		while(u->subtype() == SUBTYPE_ALIAS_UNIT && ((AliasUnit*) u)->firstBaseUnit()->subtype() != SUBTYPE_COMPOSITE_UNIT && ((AliasUnit*) u)->firstBaseExponent() == 1 && (((AliasUnit*) u)->mixWithBase() != 0 || eo.mixed_units_conversion == MIXED_UNITS_CONVERSION_FORCE_ALL || (eo.mixed_units_conversion == MIXED_UNITS_CONVERSION_FORCE_INTEGER && ((AliasUnit*) u)->expression().find_first_not_of(NUMBERS) == string::npos)) && !nr.isInteger() && !nr.isZero()) {
-			Number int_nr(nr);std::cout << "3753" << endl;
-			int_nr.trunc();std::cout << "3754" << endl;
+			Number int_nr(nr);
+			int_nr.trunc();
 			if(eo.mixed_units_conversion == MIXED_UNITS_CONVERSION_DOWNWARDS_KEEP && int_nr.isZero()) break;
-			nr -= int_nr;std::cout << "3756" << endl;
-			MathStructure mstruct_nr(nr);std::cout << "3757" << endl;
-			MathStructure m_exp(m_one);std::cout << "3758" << endl;
-			((AliasUnit*) u)->convertToFirstBaseUnit(mstruct_nr, m_exp);std::cout << "3759" << endl;
-			mstruct_nr.eval(eo);std::cout << "3760" << endl;
+			nr -= int_nr;
+			MathStructure mstruct_nr(nr);
+			MathStructure m_exp(m_one);
+			((AliasUnit*) u)->convertToFirstBaseUnit(mstruct_nr, m_exp);
+			mstruct_nr.eval(eo);
 			while(!accept_obsolete && ((AliasUnit*) u)->firstBaseUnit()->subtype() == SUBTYPE_ALIAS_UNIT && abs(((AliasUnit*) ((AliasUnit*) u)->firstBaseUnit())->mixWithBase()) > 1) {
-				u = ((AliasUnit*) u)->firstBaseUnit();std::cout << "3762" << endl;
+				u = ((AliasUnit*) u)->firstBaseUnit();
 				if(((AliasUnit*) u)->firstBaseExponent() == 1 && (((AliasUnit*) u)->mixWithBase() != 0 || eo.mixed_units_conversion == MIXED_UNITS_CONVERSION_FORCE_ALL || (eo.mixed_units_conversion == MIXED_UNITS_CONVERSION_FORCE_INTEGER && ((AliasUnit*) u)->expression().find_first_not_of(NUMBERS) == string::npos))) {
-					((AliasUnit*) u)->convertToFirstBaseUnit(mstruct_nr, m_exp);std::cout << "3764" << endl;
-					mstruct_nr.eval(eo);std::cout << "3765" << endl;
+					((AliasUnit*) u)->convertToFirstBaseUnit(mstruct_nr, m_exp);
+					mstruct_nr.eval(eo);
 					if(!mstruct_nr.isNumber() || !m_exp.isOne()) break;
 				} else {
-					mstruct_nr.setUndefined();std::cout << "3768" << endl;
+					mstruct_nr.setUndefined();
 					break;
 				}
 			}
 			if(!mstruct_nr.isNumber() || !m_exp.isOne()) break;
 			if(eo.mixed_units_conversion == MIXED_UNITS_CONVERSION_FORCE_ALL && mstruct_nr.number().isLessThanOrEqualTo(nr)) break;
-			u = ((AliasUnit*) u)->firstBaseUnit();std::cout << "3774" << endl;
-			nr = mstruct_nr.number();std::cout << "3775" << endl;
-			MathStructure mstruct_term;std::cout << "3776" << endl;
+			u = ((AliasUnit*) u)->firstBaseUnit();
+			nr = mstruct_nr.number();
+			MathStructure mstruct_term;
 			if(negated) {
-				Number pos_nr(nr);std::cout << "3778" << endl;
-				pos_nr.negate();std::cout << "3779" << endl;
-				mstruct_term.set(pos_nr);std::cout << "3780" << endl;
+				Number pos_nr(nr);
+				pos_nr.negate();
+				mstruct_term.set(pos_nr);
 			} else {
-				mstruct_term.set(nr);std::cout << "3782" << endl;
+				mstruct_term.set(nr);
 			}
-			mstruct_term *= MathStructure(u, p);std::cout << "3784" << endl;
+			mstruct_term *= MathStructure(u, p);
 			if(int_nr.isZero()) {
 				if(mstruct_new.isAddition()) mstruct_new[mstruct_new.size() - 1].set(mstruct_term);
-				else mstruct_new.set(mstruct_term);std::cout << "3787" << endl;
+				else mstruct_new.set(mstruct_term);
 			} else {
 				if(negated) int_nr.negate();
 				if(mstruct_new.isAddition()) mstruct_new[mstruct_new.size() - 1][0].set(int_nr);
-				else mstruct_new[0].set(int_nr);std::cout << "3791" << endl;
-				mstruct_new.add(mstruct_term, true);std::cout << "3792" << endl;
+				else mstruct_new[0].set(int_nr);
+				mstruct_new.add(mstruct_term, true);
 			}
 		}
-		cleanMessages(mstruct_new, n_messages + 1);std::cout << "3795" << endl;
+		cleanMessages(mstruct_new, n_messages + 1);
 		return mstruct_new;
 	}
 	return mstruct;
 }
 
 MathStructure Calculator::convert(double value, Unit *from_unit, Unit *to_unit, const EvaluationOptions &eo) {
-	size_t n_messages = messages.size();std::cout << "3802" << endl;
-	MathStructure mstruct(value);std::cout << "3803" << endl;
-	mstruct *= from_unit;std::cout << "3804" << endl;
-	mstruct.eval(eo);std::cout << "3805" << endl;
+	size_t n_messages = messages.size();
+	MathStructure mstruct(value);
+	mstruct *= from_unit;
+	mstruct.eval(eo);
 	if(eo.approximation == APPROXIMATION_EXACT) {
-		EvaluationOptions eo2 = eo;std::cout << "3807" << endl;
-		eo2.approximation = APPROXIMATION_TRY_EXACT;std::cout << "3808" << endl;
-		mstruct.convert(to_unit, true, NULL, false, eo2);std::cout << "3809" << endl;
+		EvaluationOptions eo2 = eo;
+		eo2.approximation = APPROXIMATION_TRY_EXACT;
+		mstruct.convert(to_unit, true, NULL, false, eo2);
 	} else {
-		mstruct.convert(to_unit, true, NULL, false, eo);std::cout << "3811" << endl;
+		mstruct.convert(to_unit, true, NULL, false, eo);
 	}
-	mstruct.divide(to_unit, true);std::cout << "3813" << endl;
-	mstruct.eval(eo);std::cout << "3814" << endl;
-	cleanMessages(mstruct, n_messages + 1);std::cout << "3815" << endl;
+	mstruct.divide(to_unit, true);
+	mstruct.eval(eo);
+	cleanMessages(mstruct, n_messages + 1);
 	return mstruct;
 
 }
@@ -3822,118 +3844,118 @@ MathStructure Calculator::convert(string str, Unit *from_unit, Unit *to_unit, in
 	return convertTimeOut(str, from_unit, to_unit, msecs, eo);
 }
 MathStructure Calculator::convertTimeOut(string str, Unit *from_unit, Unit *to_unit, int msecs, const EvaluationOptions &eo) {
-	MathStructure mstruct;std::cout << "3823" << endl;
-	parse(&mstruct, str, eo.parse_options);std::cout << "3824" << endl;
-	mstruct *= from_unit;std::cout << "3825" << endl;
-	b_busy = true;std::cout << "3826" << endl;
+	MathStructure mstruct;
+	parse(&mstruct, str, eo.parse_options);
+	mstruct *= from_unit;
+	b_busy = true;
 	if(!calculate_thread->running && !calculate_thread->start()) return mstruct;
-	bool had_msecs = msecs > 0;std::cout << "3828" << endl;
-	tmp_evaluationoptions = eo;std::cout << "3829" << endl;
-	tmp_proc_command = PROC_NO_COMMAND;std::cout << "3830" << endl;
-	bool b_parse = false;std::cout << "3831" << endl;
+	bool had_msecs = msecs > 0;
+	tmp_evaluationoptions = eo;
+	tmp_proc_command = PROC_NO_COMMAND;
+	bool b_parse = false;
 	if(!calculate_thread->write(b_parse)) {calculate_thread->cancel(); return mstruct;}
-	void *x = (void*) &mstruct;std::cout << "3833" << endl;
+	void *x = (void*) &mstruct;
 	if(!calculate_thread->write(x)) {calculate_thread->cancel(); return mstruct;}
 	while(msecs > 0 && b_busy) {
-		sleep_ms(10);std::cout << "3836" << endl;
-		msecs -= 10;std::cout << "3837" << endl;
+		sleep_ms(10);
+		msecs -= 10;
 	}
 	if(had_msecs && b_busy) {
-		abort();std::cout << "3840" << endl;
-		mstruct.setAborted();std::cout << "3841" << endl;
+		abort();
+		mstruct.setAborted();
 		return mstruct;
 	}
 	if(eo.approximation == APPROXIMATION_EXACT) {
-		EvaluationOptions eo2 = eo;std::cout << "3845" << endl;
-		eo2.approximation = APPROXIMATION_TRY_EXACT;std::cout << "3846" << endl;
-		mstruct.convert(to_unit, true, NULL, false, eo2);std::cout << "3847" << endl;
+		EvaluationOptions eo2 = eo;
+		eo2.approximation = APPROXIMATION_TRY_EXACT;
+		mstruct.convert(to_unit, true, NULL, false, eo2);
 	} else {
-		mstruct.convert(to_unit, true, NULL, false, eo);std::cout << "3849" << endl;
+		mstruct.convert(to_unit, true, NULL, false, eo);
 	}
-	mstruct.divide(to_unit, true);std::cout << "3851" << endl;
-	b_busy = true;std::cout << "3852" << endl;
+	mstruct.divide(to_unit, true);
+	b_busy = true;
 	if(!calculate_thread->write(b_parse)) {calculate_thread->cancel(); return mstruct;}
-	x = (void*) &mstruct;std::cout << "3854" << endl;
+	x = (void*) &mstruct;
 	if(!calculate_thread->write(x)) {calculate_thread->cancel(); return mstruct;}
 	while(msecs > 0 && b_busy) {
-		sleep_ms(10);std::cout << "3857" << endl;
-		msecs -= 10;std::cout << "3858" << endl;
+		sleep_ms(10);
+		msecs -= 10;
 	}
 	if(had_msecs && b_busy) {
-		abort();std::cout << "3861" << endl;
-		mstruct.setAborted();std::cout << "3862" << endl;
+		abort();
+		mstruct.setAborted();
 	}
 	return mstruct;
 }
 MathStructure Calculator::convert(string str, Unit *from_unit, Unit *to_unit, const EvaluationOptions &eo) {
-	size_t n_messages = messages.size();std::cout << "3867" << endl;
-	MathStructure mstruct;std::cout << "3868" << endl;
-	parse(&mstruct, str, eo.parse_options);std::cout << "3869" << endl;
-	mstruct *= from_unit;std::cout << "3870" << endl;
-	mstruct.eval(eo);std::cout << "3871" << endl;
+	size_t n_messages = messages.size();
+	MathStructure mstruct;
+	parse(&mstruct, str, eo.parse_options);
+	mstruct *= from_unit;
+	mstruct.eval(eo);
 	if(eo.approximation == APPROXIMATION_EXACT) {
-		EvaluationOptions eo2 = eo;std::cout << "3873" << endl;
-		eo2.approximation = APPROXIMATION_TRY_EXACT;std::cout << "3874" << endl;
-		mstruct.convert(to_unit, true, NULL, false, eo2);std::cout << "3875" << endl;
+		EvaluationOptions eo2 = eo;
+		eo2.approximation = APPROXIMATION_TRY_EXACT;
+		mstruct.convert(to_unit, true, NULL, false, eo2);
 	} else {
-		mstruct.convert(to_unit, true, NULL, false, eo);std::cout << "3877" << endl;
+		mstruct.convert(to_unit, true, NULL, false, eo);
 	}
-	mstruct.divide(to_unit, true);std::cout << "3879" << endl;
-	mstruct.eval(eo);std::cout << "3880" << endl;
-	cleanMessages(mstruct, n_messages + 1);std::cout << "3881" << endl;
+	mstruct.divide(to_unit, true);
+	mstruct.eval(eo);
+	cleanMessages(mstruct, n_messages + 1);
 	return mstruct;
 }
 MathStructure Calculator::convert(const MathStructure &mstruct, KnownVariable *to_var, const EvaluationOptions &eo) {
 	if(mstruct.contains(to_var, true) > 0) return mstruct;
-	size_t n_messages = messages.size();std::cout << "3886" << endl;
+	size_t n_messages = messages.size();
 	if(b_var_units && !to_var->unit().empty() && to_var->isExpression()) {
 		CompositeUnit cu("", "temporary_composite_convert", "", to_var->unit());
 		if(cu.countUnits() > 0) {
 			AliasUnit au("", "temporary_alias_convert", "", "", "", &cu, to_var->expression());
-			bool unc_rel = false;std::cout << "3891" << endl;
+			bool unc_rel = false;
 			if(!to_var->uncertainty(&unc_rel).empty()) au.setUncertainty(to_var->uncertainty(), unc_rel);
-			au.setApproximate(to_var->isApproximate());std::cout << "3893" << endl;
-			au.setPrecision(to_var->precision());std::cout << "3894" << endl;
-			MathStructure mstruct_new(convert(mstruct, &au, eo, false, false));std::cout << "3895" << endl;
+			au.setApproximate(to_var->isApproximate());
+			au.setPrecision(to_var->precision());
+			MathStructure mstruct_new(convert(mstruct, &au, eo, false, false));
 			if(mstruct_new.contains(&au)) {
-				mstruct_new.replace(&au, to_var);std::cout << "3897" << endl;
+				mstruct_new.replace(&au, to_var);
 				return mstruct_new;
 			}
 		}
 	}
-	MathStructure mstruct_new(mstruct);std::cout << "3902" << endl;
-	mstruct_new /= to_var->get();std::cout << "3903" << endl;
-	mstruct_new.eval(eo);std::cout << "3904" << endl;
-	mstruct_new *= to_var;std::cout << "3905" << endl;
-	cleanMessages(mstruct, n_messages + 1);std::cout << "3906" << endl;
+	MathStructure mstruct_new(mstruct);
+	mstruct_new /= to_var->get();
+	mstruct_new.eval(eo);
+	mstruct_new *= to_var;
+	cleanMessages(mstruct, n_messages + 1);
 	return mstruct_new;
 }
 MathStructure Calculator::convert(const MathStructure &mstruct, Unit *to_unit, const EvaluationOptions &eo, bool always_convert, bool convert_to_mixed_units) {
 	if(!mstruct.containsType(STRUCT_UNIT, true)) return mstruct;
-	CompositeUnit *cu = NULL;std::cout << "3911" << endl;
+	CompositeUnit *cu = NULL;
 	if(to_unit->subtype() == SUBTYPE_COMPOSITE_UNIT) cu = (CompositeUnit*) to_unit;
 	if(cu && cu->countUnits() == 0) return mstruct;
-	MathStructure mstruct_new(mstruct);std::cout << "3914" << endl;
-	size_t n_messages = messages.size();std::cout << "3915" << endl;
+	MathStructure mstruct_new(mstruct);
+	size_t n_messages = messages.size();
 	if(to_unit->hasNonlinearRelationTo(to_unit->baseUnit()) && to_unit->baseUnit()->subtype() == SUBTYPE_COMPOSITE_UNIT) {
-		mstruct_new = convert(mstruct, to_unit->baseUnit(), eo, always_convert, convert_to_mixed_units);std::cout << "3917" << endl;
-		mstruct_new.calculateDivide(((CompositeUnit*) to_unit->baseUnit())->generateMathStructure(false, eo.keep_prefixes), eo);std::cout << "3918" << endl;
-		to_unit->convertFromBaseUnit(mstruct_new);std::cout << "3919" << endl;
-		mstruct_new.eval(eo);std::cout << "3920" << endl;
-		mstruct_new.multiply(MathStructure(to_unit, eo.keep_prefixes ? decimal_null_prefix : NULL));std::cout << "3921" << endl;
-		EvaluationOptions eo2 = eo;std::cout << "3922" << endl;
-		eo2.sync_units = false;std::cout << "3923" << endl;
-		eo2.keep_prefixes = true;std::cout << "3924" << endl;
-		mstruct_new.eval(eo2);std::cout << "3925" << endl;
-		cleanMessages(mstruct, n_messages + 1);std::cout << "3926" << endl;
+		mstruct_new = convert(mstruct, to_unit->baseUnit(), eo, always_convert, convert_to_mixed_units);
+		mstruct_new.calculateDivide(((CompositeUnit*) to_unit->baseUnit())->generateMathStructure(false, eo.keep_prefixes), eo);
+		to_unit->convertFromBaseUnit(mstruct_new);
+		mstruct_new.eval(eo);
+		mstruct_new.multiply(MathStructure(to_unit, eo.keep_prefixes ? decimal_null_prefix : NULL));
+		EvaluationOptions eo2 = eo;
+		eo2.sync_units = false;
+		eo2.keep_prefixes = true;
+		mstruct_new.eval(eo2);
+		cleanMessages(mstruct, n_messages + 1);
 		return mstruct_new;
 	}
-	//bool b_simple = !cu && (to_unit->subtype() != SUBTYPE_ALIAS_UNIT || (((AliasUnit*) to_unit)->baseUnit()->subtype() != SUBTYPE_COMPOSITE_UNIT && ((AliasUnit*) to_unit)->baseExponent() == 1));std::cout << "3929" << endl;
+	//bool b_simple = !cu && (to_unit->subtype() != SUBTYPE_ALIAS_UNIT || (((AliasUnit*) to_unit)->baseUnit()->subtype() != SUBTYPE_COMPOSITE_UNIT && ((AliasUnit*) to_unit)->baseExponent() == 1));
 
-	bool b_changed = false;std::cout << "3931" << endl;
+	bool b_changed = false;
 	if(mstruct_new.isAddition()) {
 		if(aborted()) return mstruct;
-		mstruct_new.factorizeUnits();std::cout << "3934" << endl;
+		mstruct_new.factorizeUnits();
 		if(!b_changed && !mstruct_new.equals(mstruct, true, true)) b_changed = true;
 	}
 
@@ -3942,38 +3964,38 @@ MathStructure Calculator::convert(const MathStructure &mstruct, Unit *to_unit, c
 			for(size_t i = 0; i < mstruct_new.size(); i++) {
 				if(aborted()) return mstruct;
 				if(!mstruct_new.isFunction() || !mstruct_new.function()->getArgumentDefinition(i + 1) || mstruct_new.function()->getArgumentDefinition(i + 1)->type() != ARGUMENT_TYPE_ANGLE) {
-					mstruct_new[i] = convert(mstruct_new[i], to_unit, eo, false, convert_to_mixed_units);std::cout << "3943" << endl;
+					mstruct_new[i] = convert(mstruct_new[i], to_unit, eo, false, convert_to_mixed_units);
 					if(!b_changed && !mstruct_new.equals(mstruct[i], true, true)) b_changed = true;
 				}
 			}
 			if(b_changed) {
-				mstruct_new.childrenUpdated();std::cout << "3948" << endl;
-				EvaluationOptions eo2 = eo;std::cout << "3949" << endl;
-				//eo2.calculate_functions = false;std::cout << "3950" << endl;
-				eo2.sync_units = false;std::cout << "3951" << endl;
-				eo2.keep_prefixes = true;std::cout << "3952" << endl;
-				mstruct_new.eval(eo2);std::cout << "3953" << endl;
-				cleanMessages(mstruct, n_messages + 1);std::cout << "3954" << endl;
+				mstruct_new.childrenUpdated();
+				EvaluationOptions eo2 = eo;
+				//eo2.calculate_functions = false;
+				eo2.sync_units = false;
+				eo2.keep_prefixes = true;
+				mstruct_new.eval(eo2);
+				cleanMessages(mstruct, n_messages + 1);
 			}
 			return mstruct_new;
 		}
 	} else {
-		EvaluationOptions eo2 = eo;std::cout << "3959" << endl;
-		eo2.keep_prefixes = true;std::cout << "3960" << endl;
-		bool b = false;std::cout << "3961" << endl;
+		EvaluationOptions eo2 = eo;
+		eo2.keep_prefixes = true;
+		bool b = false;
 		if(eo.approximation == APPROXIMATION_EXACT) eo2.approximation = APPROXIMATION_TRY_EXACT;
 		if(mstruct_new.convert(to_unit, true, NULL, false, eo2, eo.keep_prefixes ? decimal_null_prefix : NULL) || always_convert) {
-			b = true;std::cout << "3964" << endl;
+			b = true;
 		} else {
-			CompositeUnit *cu2 = cu;std::cout << "3966" << endl;
+			CompositeUnit *cu2 = cu;
 			if(to_unit->subtype() == SUBTYPE_ALIAS_UNIT && ((AliasUnit*) to_unit)->baseUnit()->subtype() == SUBTYPE_COMPOSITE_UNIT) {
-				cu2 = (CompositeUnit*) ((AliasUnit*) to_unit)->baseUnit();std::cout << "3968" << endl;
+				cu2 = (CompositeUnit*) ((AliasUnit*) to_unit)->baseUnit();
 			}
 			if(cu2) {
 				switch(mstruct_new.type()) {
 					case STRUCT_UNIT: {
 						if(cu2->containsRelativeTo(mstruct_new.unit())) {
-							b = true;std::cout << "3974" << endl;
+							b = true;
 						}
 						break;
 					}
@@ -3981,17 +4003,17 @@ MathStructure Calculator::convert(const MathStructure &mstruct, Unit *to_unit, c
 						for(size_t i = 1; i <= mstruct_new.countChildren(); i++) {
 							if(aborted()) return mstruct;
 							if(mstruct_new.getChild(i)->isUnit() && cu2->containsRelativeTo(mstruct_new.getChild(i)->unit())) {
-								b = true;std::cout << "3982" << endl;
+								b = true;
 							}
 							if(mstruct_new.getChild(i)->isPower() && mstruct_new.getChild(i)->base()->isUnit() && cu2->containsRelativeTo(mstruct_new.getChild(i)->base()->unit())) {
-								b = true;std::cout << "3985" << endl;
+								b = true;
 							}
 						}
 						break;
 					}
 					case STRUCT_POWER: {
 						if(mstruct_new.base()->isUnit() && cu2->containsRelativeTo(mstruct_new.base()->unit())) {
-							b = true;std::cout << "3992" << endl;
+							b = true;
 						}
 						break;
 					}
@@ -4000,42 +4022,42 @@ MathStructure Calculator::convert(const MathStructure &mstruct, Unit *to_unit, c
 			}
 		}
 		if(b) {
-			eo2.approximation = eo.approximation;std::cout << "4001" << endl;
-			eo2.sync_units = true;std::cout << "4002" << endl;
-			eo2.keep_prefixes = false;std::cout << "4003" << endl;
-			MathStructure mbak(mstruct_new);std::cout << "4004" << endl;
-			mstruct_new.divide(MathStructure(to_unit, NULL));std::cout << "4005" << endl;
-			mstruct_new.eval(eo2);std::cout << "4006" << endl;
+			eo2.approximation = eo.approximation;
+			eo2.sync_units = true;
+			eo2.keep_prefixes = false;
+			MathStructure mbak(mstruct_new);
+			mstruct_new.divide(MathStructure(to_unit, NULL));
+			mstruct_new.eval(eo2);
 			if(mstruct_new.containsType(STRUCT_UNIT)) {
-				mbak.inverse();std::cout << "4008" << endl;
-				mbak.divide(MathStructure(to_unit, NULL));std::cout << "4009" << endl;
-				mbak.eval(eo2);std::cout << "4010" << endl;
+				mbak.inverse();
+				mbak.divide(MathStructure(to_unit, NULL));
+				mbak.eval(eo2);
 				if(!mbak.containsType(STRUCT_UNIT)) mstruct_new = mbak;
 			}
 
 			if(cu) {
-				MathStructure mstruct_cu(cu->generateMathStructure(false, eo.keep_prefixes));std::cout << "4015" << endl;
-				Prefix *p = NULL;std::cout << "4016" << endl;
-				size_t i = 1;std::cout << "4017" << endl;
-				Unit *u = cu->get(i, NULL, &p);std::cout << "4018" << endl;
+				MathStructure mstruct_cu(cu->generateMathStructure(false, eo.keep_prefixes));
+				Prefix *p = NULL;
+				size_t i = 1;
+				Unit *u = cu->get(i, NULL, &p);
 				while(u) {
-					mstruct_new.setPrefixForUnit(u, p);std::cout << "4020" << endl;
-					i++;std::cout << "4021" << endl;
-					u = cu->get(i, NULL, &p);std::cout << "4022" << endl;
+					mstruct_new.setPrefixForUnit(u, p);
+					i++;
+					u = cu->get(i, NULL, &p);
 				}
-				mstruct_new.multiply(mstruct_cu);std::cout << "4024" << endl;
+				mstruct_new.multiply(mstruct_cu);
 			} else {
-				mstruct_new.multiply(MathStructure(to_unit, eo.keep_prefixes ? decimal_null_prefix : NULL));std::cout << "4026" << endl;
+				mstruct_new.multiply(MathStructure(to_unit, eo.keep_prefixes ? decimal_null_prefix : NULL));
 			}
 
-			eo2.sync_units = false;std::cout << "4029" << endl;
-			eo2.keep_prefixes = true;std::cout << "4030" << endl;
-			mstruct_new.eval(eo2);std::cout << "4031" << endl;
+			eo2.sync_units = false;
+			eo2.keep_prefixes = true;
+			mstruct_new.eval(eo2);
 
-			cleanMessages(mstruct, n_messages + 1);std::cout << "4033" << endl;
+			cleanMessages(mstruct, n_messages + 1);
 
 			if(convert_to_mixed_units && eo2.mixed_units_conversion != MIXED_UNITS_CONVERSION_NONE) {
-				eo2.mixed_units_conversion = MIXED_UNITS_CONVERSION_DOWNWARDS_KEEP;std::cout << "4036" << endl;
+				eo2.mixed_units_conversion = MIXED_UNITS_CONVERSION_DOWNWARDS_KEEP;
 				return convertToMixedUnits(mstruct_new, eo2);
 			} else {
 				return mstruct_new;
@@ -4048,18 +4070,18 @@ MathStructure Calculator::convert(const MathStructure &mstruct, Unit *to_unit, c
 }
 MathStructure Calculator::convertToBaseUnits(const MathStructure &mstruct, const EvaluationOptions &eo) {
 	if(!mstruct.containsType(STRUCT_UNIT, true)) return mstruct;
-	size_t n_messages = messages.size();std::cout << "4049" << endl;
-	MathStructure mstruct_new(mstruct);std::cout << "4050" << endl;
-	mstruct_new.convertToBaseUnits(true, NULL, true, eo);std::cout << "4051" << endl;
+	size_t n_messages = messages.size();
+	MathStructure mstruct_new(mstruct);
+	mstruct_new.convertToBaseUnits(true, NULL, true, eo);
 	if(!mstruct_new.equals(mstruct, true, true)) {
-		EvaluationOptions eo2 = eo;std::cout << "4053" << endl;
-		eo2.approximation = eo.approximation;std::cout << "4054" << endl;
-		eo2.keep_prefixes = false;std::cout << "4055" << endl;
-		eo2.isolate_x = false;std::cout << "4056" << endl;
-		eo2.test_comparisons = false;std::cout << "4057" << endl;
-		//eo2.calculate_functions = false;std::cout << "4058" << endl;
-		mstruct_new.eval(eo2);std::cout << "4059" << endl;
-		cleanMessages(mstruct, n_messages + 1);std::cout << "4060" << endl;
+		EvaluationOptions eo2 = eo;
+		eo2.approximation = eo.approximation;
+		eo2.keep_prefixes = false;
+		eo2.isolate_x = false;
+		eo2.test_comparisons = false;
+		//eo2.calculate_functions = false;
+		mstruct_new.eval(eo2);
+		cleanMessages(mstruct, n_messages + 1);
 	}
 	return mstruct_new;
 }
@@ -4067,33 +4089,33 @@ Unit *Calculator::findMatchingUnit(const MathStructure &mstruct) {
 	switch(mstruct.type()) {
 		case STRUCT_POWER: {
 			if(mstruct.base()->isUnit() && mstruct.exponent()->isNumber() && mstruct.exponent()->number().isInteger() && mstruct.exponent()->number() < 10 && mstruct.exponent()->number() > -10) {
-				Unit *u_base = mstruct.base()->unit();std::cout << "4068" << endl;
-				int exp = mstruct.exponent()->number().intValue();std::cout << "4069" << endl;
+				Unit *u_base = mstruct.base()->unit();
+				int exp = mstruct.exponent()->number().intValue();
 				if(u_base->subtype() == SUBTYPE_ALIAS_UNIT) {
-					u_base = u_base->baseUnit();std::cout << "4071" << endl;
-					exp *= ((AliasUnit*) u_base)->baseExponent();std::cout << "4072" << endl;
+					u_base = u_base->baseUnit();
+					exp *= ((AliasUnit*) u_base)->baseExponent();
 				}
 				for(size_t i = 0; i < units.size(); i++) {
-					Unit *u = units[i];std::cout << "4075" << endl;
+					Unit *u = units[i];
 					if(u->subtype() == SUBTYPE_ALIAS_UNIT && u->baseUnit() == u_base && ((AliasUnit*) u)->baseExponent() == exp) {
 						return u;
 					}
 				}
 				CompositeUnit *cu = new CompositeUnit("", "temporary_find_matching_unit");
-				cu->add(u_base, exp);std::cout << "4081" << endl;
-				Unit *u = getOptimalUnit(cu);std::cout << "4082" << endl;
+				cu->add(u_base, exp);
+				Unit *u = getOptimalUnit(cu);
 				if(u != cu && !u->isRegistered()) {
-					delete u;std::cout << "4084" << endl;
+					delete u;
 				} else if(u != cu) {
-					MathStructure mtest(mstruct);std::cout << "4086" << endl;
-					mtest.divide(u);std::cout << "4087" << endl;
-					mtest.eval();std::cout << "4088" << endl;
+					MathStructure mtest(mstruct);
+					mtest.divide(u);
+					mtest.eval();
 					if(mtest.isNumber()) {
-						delete cu;std::cout << "4090" << endl;
+						delete cu;
 						return u;
 					}
 				}
-				delete cu;std::cout << "4094" << endl;
+				delete cu;
 			}
 			return findMatchingUnit(mstruct[0]);
 		}
@@ -4107,17 +4129,17 @@ Unit *Calculator::findMatchingUnit(const MathStructure &mstruct) {
 			CompositeUnit *cu = new CompositeUnit("", "temporary_find_matching_unit");
 			for(size_t i = 1; i <= mstruct.countChildren(); i++) {
 				if(mstruct.getChild(i)->isUnit()) {
-					cu->add(mstruct.getChild(i)->unit()->baseUnit());std::cout << "4108" << endl;
+					cu->add(mstruct.getChild(i)->unit()->baseUnit());
 				} else if(mstruct.getChild(i)->isPower() && mstruct.getChild(i)->base()->isUnit() && mstruct.getChild(i)->exponent()->isNumber() && mstruct.getChild(i)->exponent()->number().isInteger()) {
-					cu->add(mstruct.getChild(i)->base()->unit()->baseUnit(), mstruct.getChild(i)->exponent()->number().intValue());std::cout << "4110" << endl;
+					cu->add(mstruct.getChild(i)->base()->unit()->baseUnit(), mstruct.getChild(i)->exponent()->number().intValue());
 				}
 			}
 			if(cu->countUnits() == 1) {
-				int exp = 1;std::cout << "4114" << endl;
-				Unit *u_base = cu->get(1, &exp);std::cout << "4115" << endl;
+				int exp = 1;
+				Unit *u_base = cu->get(1, &exp);
 				if(exp == 1) return u_base;
 				for(size_t i = 0; i < units.size(); i++) {
-					Unit *u = units[i];std::cout << "4118" << endl;
+					Unit *u = units[i];
 					if(u->subtype() == SUBTYPE_ALIAS_UNIT && u->baseUnit() == u_base && ((AliasUnit*) u)->baseExponent() == exp) {
 						return u;
 					}
@@ -4125,67 +4147,67 @@ Unit *Calculator::findMatchingUnit(const MathStructure &mstruct) {
 			}
 			if(cu->countUnits() > 1) {
 				for(size_t i = 0; i < units.size(); i++) {
-					Unit *u = units[i];std::cout << "4126" << endl;
+					Unit *u = units[i];
 					if(u->subtype() == SUBTYPE_COMPOSITE_UNIT) {
 						if(((CompositeUnit*) u)->countUnits() == cu->countUnits()) {
-							bool b = true;std::cout << "4129" << endl;
+							bool b = true;
 							for(size_t i2 = 1; i2 <= cu->countUnits(); i2++) {
-								int exp1 = 1, exp2 = 1;std::cout << "4131" << endl;
-								Unit *ui1 = cu->get(i2, &exp1);std::cout << "4132" << endl;
-								b = false;std::cout << "4133" << endl;
+								int exp1 = 1, exp2 = 1;
+								Unit *ui1 = cu->get(i2, &exp1);
+								b = false;
 								for(size_t i3 = 1; i3 <= cu->countUnits(); i3++) {
-									Unit *ui2 = ((CompositeUnit*) u)->get(i3, &exp2);std::cout << "4135" << endl;
+									Unit *ui2 = ((CompositeUnit*) u)->get(i3, &exp2);
 									if(ui1 == ui2->baseUnit()) {
-										b = (exp1 == exp2);std::cout << "4137" << endl;
+										b = (exp1 == exp2);
 										break;
 									}
 								}
 								if(!b) break;
 							}
 							if(b) {
-								delete cu;std::cout << "4144" << endl;
+								delete cu;
 								return u;
 							}
 						}
 					}
 				}
 			}
-			Unit *u = getOptimalUnit(cu);std::cout << "4151" << endl;
+			Unit *u = getOptimalUnit(cu);
 			if(u != cu && !u->isRegistered()) {
 				if(cu->countUnits() > 1 && u->subtype() == SUBTYPE_COMPOSITE_UNIT) {
-					MathStructure m_u = ((CompositeUnit*) u)->generateMathStructure();std::cout << "4154" << endl;
+					MathStructure m_u = ((CompositeUnit*) u)->generateMathStructure();
 					if(m_u != cu->generateMathStructure()) {
-						Unit *u2 = findMatchingUnit(m_u);std::cout << "4156" << endl;
+						Unit *u2 = findMatchingUnit(m_u);
 						if(u2) {
-							MathStructure mtest(mstruct);std::cout << "4158" << endl;
-							mtest.divide(u2);std::cout << "4159" << endl;
-							mtest.eval();std::cout << "4160" << endl;
+							MathStructure mtest(mstruct);
+							mtest.divide(u2);
+							mtest.eval();
 							if(mtest.isNumber()) {
-								delete cu;std::cout << "4162" << endl;
-								delete u;std::cout << "4163" << endl;
+								delete cu;
+								delete u;
 								return u2;
 							}
 						}
 					}
 				}
-				delete u;std::cout << "4169" << endl;
+				delete u;
 			} else if(u != cu) {
-				MathStructure mtest(mstruct);std::cout << "4171" << endl;
-				mtest.divide(u);std::cout << "4172" << endl;
-				mtest.eval();std::cout << "4173" << endl;
+				MathStructure mtest(mstruct);
+				mtest.divide(u);
+				mtest.eval();
 				if(mtest.isNumber()) {
-					delete cu;std::cout << "4175" << endl;
+					delete cu;
 					return u;
 				}
 			}
-			delete cu;std::cout << "4179" << endl;
+			delete cu;
 			break;
 		}
 		default: {
 			for(size_t i = 0; i < mstruct.size(); i++) {
 				if(aborted()) return NULL;
 				if(!mstruct.isFunction() || !mstruct.function()->getArgumentDefinition(i + 1) || mstruct.function()->getArgumentDefinition(i + 1)->type() != ARGUMENT_TYPE_ANGLE) {
-					Unit *u = findMatchingUnit(mstruct[i]);std::cout << "4186" << endl;
+					Unit *u = findMatchingUnit(mstruct[i]);
 					if(u) return u;
 				}
 			}
@@ -4199,17 +4221,17 @@ Unit *Calculator::getOptimalUnit(Unit *u, bool allow_only_div, bool convert_to_l
 	switch(u->subtype()) {
 		case SUBTYPE_BASE_UNIT: {
 			if(convert_to_local_currency && u->isCurrency()) {
-				Unit *u_local_currency = getLocalCurrency();std::cout << "4200" << endl;
+				Unit *u_local_currency = getLocalCurrency();
 				if(u_local_currency) return u_local_currency;
 			}
 			return u;
 		}
 		case SUBTYPE_ALIAS_UNIT: {
-			AliasUnit *au = (AliasUnit*) u;std::cout << "4206" << endl;
+			AliasUnit *au = (AliasUnit*) u;
 			if(au->baseExponent() == 1 && au->baseUnit()->subtype() == SUBTYPE_BASE_UNIT) {
 				if(au->isCurrency()) {
 					if(!convert_to_local_currency) return u;
-					Unit *u_local_currency = getLocalCurrency();std::cout << "4210" << endl;
+					Unit *u_local_currency = getLocalCurrency();
 					if(u_local_currency) return u_local_currency;
 				}
 				return (Unit*) au->baseUnit();
@@ -4220,171 +4242,171 @@ Unit *Calculator::getOptimalUnit(Unit *u, bool allow_only_div, bool convert_to_l
 			}
 		}
 		case SUBTYPE_COMPOSITE_UNIT: {
-			CompositeUnit *cu = (CompositeUnit*) u;std::cout << "4221" << endl;
-			int exp, b_exp;std::cout << "4222" << endl;
-			int points = 0;std::cout << "4223" << endl;
-			bool minus = false;std::cout << "4224" << endl;
-			bool has_positive = false;std::cout << "4225" << endl;
-			int new_points;std::cout << "4226" << endl;
-			int new_points_m;std::cout << "4227" << endl;
-			int max_points = 0;std::cout << "4228" << endl;
+			CompositeUnit *cu = (CompositeUnit*) u;
+			int exp, b_exp;
+			int points = 0;
+			bool minus = false;
+			bool has_positive = false;
+			int new_points;
+			int new_points_m;
+			int max_points = 0;
 			for(size_t i = 1; i <= cu->countUnits(); i++) {
-				cu->get(i, &exp);std::cout << "4230" << endl;
+				cu->get(i, &exp);
 				if(exp < 0) {
-					max_points -= exp;std::cout << "4232" << endl;
+					max_points -= exp;
 				} else {
-					max_points += exp;std::cout << "4234" << endl;
-					has_positive = true;std::cout << "4235" << endl;
+					max_points += exp;
+					has_positive = true;
 				}
 			}
 			for(size_t i = 0; i < units.size(); i++) {
 				if(units[i]->subtype() == SUBTYPE_COMPOSITE_UNIT) {
-					CompositeUnit *cu2 = (CompositeUnit*) units[i];std::cout << "4240" << endl;
+					CompositeUnit *cu2 = (CompositeUnit*) units[i];
 					if(cu == cu2 && !cu2->isHidden()) {
-						points = max_points - 1;std::cout << "4242" << endl;
+						points = max_points - 1;
 					} else if(!cu2->isHidden() && cu2->isSIUnit() && cu2->countUnits() == cu->countUnits()) {
-						bool b_match = true;std::cout << "4244" << endl;
+						bool b_match = true;
 						for(size_t i2 = 1; i2 <= cu->countUnits(); i2++) {
-							int exp2;std::cout << "4246" << endl;
+							int exp2;
 							if(cu->get(i2, &exp) != cu2->get(i2, &exp2) || exp != exp2) {
-								b_match = false;std::cout << "4248" << endl;
+								b_match = false;
 								break;
 							}
 						}
 						if(b_match) {
-							points = max_points - 1;std::cout << "4253" << endl;
+							points = max_points - 1;
 							break;
 						}
 					}
 				}
 			}
-			Unit *best_u = NULL;std::cout << "4259" << endl;
-			Unit *bu, *u2;std::cout << "4260" << endl;
-			AliasUnit *au;std::cout << "4261" << endl;
+			Unit *best_u = NULL;
+			Unit *bu, *u2;
+			AliasUnit *au;
 			for(size_t i = 0; i < units.size(); i++) {
-				u2 = units[i];std::cout << "4263" << endl;
+				u2 = units[i];
 				if(u2->subtype() == SUBTYPE_BASE_UNIT && (points == 0 || (points == 1 && minus))) {
 					for(size_t i2 = 1; i2 <= cu->countUnits(); i2++) {
 						if(cu->get(i2, &exp)->baseUnit() == u2 && !cu->get(i2)->hasNonlinearRelationTo(u2)) {
-							points = 1;std::cout << "4267" << endl;
-							best_u = u2;std::cout << "4268" << endl;
-							minus = !has_positive && (exp < 0);std::cout << "4269" << endl;
+							points = 1;
+							best_u = u2;
+							minus = !has_positive && (exp < 0);
 							break;
 						}
 					}
 				} else if(!u2->isSIUnit()) {
 				} else if(u2->subtype() == SUBTYPE_ALIAS_UNIT) {
-					au = (AliasUnit*) u2;std::cout << "4275" << endl;
-					bu = (Unit*) au->baseUnit();std::cout << "4276" << endl;
-					b_exp = au->baseExponent();std::cout << "4277" << endl;
-					new_points = 0;std::cout << "4278" << endl;
-					new_points_m = 0;std::cout << "4279" << endl;
+					au = (AliasUnit*) u2;
+					bu = (Unit*) au->baseUnit();
+					b_exp = au->baseExponent();
+					new_points = 0;
+					new_points_m = 0;
 					if((b_exp != 1 || bu->subtype() == SUBTYPE_COMPOSITE_UNIT) && !au->hasNonlinearRelationTo(bu)) {
 						if(bu->subtype() == SUBTYPE_BASE_UNIT) {
 							for(size_t i2 = 1; i2 <= cu->countUnits(); i2++) {
 								if(cu->get(i2, &exp) == bu) {
-									bool m = false;std::cout << "4284" << endl;
+									bool m = false;
 									if(b_exp < 0 && exp < 0) {
-										b_exp = -b_exp;std::cout << "4286" << endl;
-										exp = -exp;std::cout << "4287" << endl;
+										b_exp = -b_exp;
+										exp = -exp;
 									} else if(b_exp < 0) {
-										b_exp = -b_exp;std::cout << "4289" << endl;
-										m = true;std::cout << "4290" << endl;
+										b_exp = -b_exp;
+										m = true;
 									} else if(exp < 0) {
-										exp = -exp;std::cout << "4292" << endl;
-										m = true;std::cout << "4293" << endl;
+										exp = -exp;
+										m = true;
 									}
-									new_points = exp - b_exp;std::cout << "4295" << endl;
+									new_points = exp - b_exp;
 									if(new_points < 0) {
-										new_points = -new_points;std::cout << "4297" << endl;
+										new_points = -new_points;
 									}
-									new_points = exp - new_points;std::cout << "4299" << endl;
+									new_points = exp - new_points;
 									if(!allow_only_div && m && new_points >= max_points) {
-										new_points = -1;std::cout << "4301" << endl;
+										new_points = -1;
 									}
 									if(new_points > points || (!m && minus && new_points == points)) {
-										points = new_points;std::cout << "4304" << endl;
-										minus = m;std::cout << "4305" << endl;
-										best_u = au;std::cout << "4306" << endl;
+										points = new_points;
+										minus = m;
+										best_u = au;
 									}
 									break;
 								}
 							}
 						} else if(au->firstBaseExponent() != 1 || au->firstBaseUnit()->subtype() == SUBTYPE_COMPOSITE_UNIT) {
-							MathStructure cu_mstruct = ((CompositeUnit*) bu)->generateMathStructure();std::cout << "4312" << endl;
+							MathStructure cu_mstruct = ((CompositeUnit*) bu)->generateMathStructure();
 							if(b_exp != 1) {
 								if(cu_mstruct.isMultiplication()) {
 									for(size_t i2 = 0; i2 < cu_mstruct.size(); i2++) {
 										if(cu_mstruct[i2].isPower()) cu_mstruct[i2][1].number() *= b_exp;
-										else cu_mstruct[i2].raise(b_exp);std::cout << "4317" << endl;
+										else cu_mstruct[i2].raise(b_exp);
 									}
 								} else if(cu_mstruct.isPower()) {
-									cu_mstruct[1].number() *= b_exp;std::cout << "4320" << endl;
+									cu_mstruct[1].number() *= b_exp;
 								} else {
-									cu_mstruct.raise(b_exp);std::cout << "4322" << endl;
+									cu_mstruct.raise(b_exp);
 								}
 							}
-							cu_mstruct = convertToBaseUnits(cu_mstruct);std::cout << "4325" << endl;
+							cu_mstruct = convertToBaseUnits(cu_mstruct);
 							if(cu_mstruct.isMultiplication()) {
 								for(size_t i2 = 1; i2 <= cu_mstruct.countChildren(); i2++) {
-									bu = NULL;std::cout << "4328" << endl;
+									bu = NULL;
 									if(cu_mstruct.getChild(i2)->isUnit()) {
-										bu = cu_mstruct.getChild(i2)->unit();std::cout << "4330" << endl;
-										b_exp = 1;std::cout << "4331" << endl;
+										bu = cu_mstruct.getChild(i2)->unit();
+										b_exp = 1;
 									} else if(cu_mstruct.getChild(i2)->isPower() && cu_mstruct.getChild(i2)->base()->isUnit() && cu_mstruct.getChild(i2)->exponent()->isNumber() && cu_mstruct.getChild(i2)->exponent()->number().isInteger()) {
-										bu = cu_mstruct.getChild(i2)->base()->unit();std::cout << "4333" << endl;
-										b_exp = cu_mstruct.getChild(i2)->exponent()->number().intValue();std::cout << "4334" << endl;
+										bu = cu_mstruct.getChild(i2)->base()->unit();
+										b_exp = cu_mstruct.getChild(i2)->exponent()->number().intValue();
 									}
 									if(bu) {
-										bool b = false;std::cout << "4337" << endl;
+										bool b = false;
 										for(size_t i3 = 1; i3 <= cu->countUnits(); i3++) {
 											if(cu->get(i3, &exp) == bu) {
-												b = true;std::cout << "4340" << endl;
-												bool m = false;std::cout << "4341" << endl;
+												b = true;
+												bool m = false;
 												if(exp < 0 && b_exp > 0) {
-													new_points -= b_exp;std::cout << "4343" << endl;
-													exp = -exp;std::cout << "4344" << endl;
-													m = true;std::cout << "4345" << endl;
+													new_points -= b_exp;
+													exp = -exp;
+													m = true;
 												} else if(exp > 0 && b_exp < 0) {
-													new_points += b_exp;std::cout << "4347" << endl;
-													b_exp = -b_exp;std::cout << "4348" << endl;
-													m = true;std::cout << "4349" << endl;
+													new_points += b_exp;
+													b_exp = -b_exp;
+													m = true;
 												} else {
 													if(b_exp < 0) new_points_m += b_exp;
-													else new_points_m -= b_exp;std::cout << "4352" << endl;
+													else new_points_m -= b_exp;
 												}
 												if(exp < 0) {
-													exp = -exp;std::cout << "4355" << endl;
-													b_exp = -b_exp;std::cout << "4356" << endl;
+													exp = -exp;
+													b_exp = -b_exp;
 												}
 												if(exp >= b_exp) {
 													if(m) new_points_m += exp - (exp - b_exp);
-													else new_points += exp - (exp - b_exp);std::cout << "4360" << endl;
+													else new_points += exp - (exp - b_exp);
 												} else {
 													if(m) new_points_m += exp - (b_exp - exp);
-													else new_points += exp - (b_exp - exp);std::cout << "4363" << endl;
+													else new_points += exp - (b_exp - exp);
 												}
 												break;
 											}
 										}
 										if(!b) {
 											if(b_exp < 0) b_exp = -b_exp;
-											new_points -= b_exp;std::cout << "4370" << endl;
-											new_points_m -= b_exp;std::cout << "4371" << endl;
+											new_points -= b_exp;
+											new_points_m -= b_exp;
 										}
 									}
 								}
 								if(!allow_only_div && new_points_m >= max_points) {
-									new_points_m = -1;std::cout << "4376" << endl;
+									new_points_m = -1;
 								}
 								if(new_points > points && new_points >= new_points_m) {
-									minus = false;std::cout << "4379" << endl;
-									points = new_points;std::cout << "4380" << endl;
-									best_u = au;std::cout << "4381" << endl;
+									minus = false;
+									points = new_points;
+									best_u = au;
 								} else if(new_points_m > points || (new_points_m == points && minus)) {
-									minus = true;std::cout << "4383" << endl;
-									points = new_points_m;std::cout << "4384" << endl;
-									best_u = au;std::cout << "4385" << endl;
+									minus = true;
+									points = new_points_m;
+									best_u = au;
 								}
 							}
 						}
@@ -4393,46 +4415,46 @@ Unit *Calculator::getOptimalUnit(Unit *u, bool allow_only_div, bool convert_to_l
 				if(points >= max_points && !minus) break;
 			}
 			if(!best_u) return u;
-			best_u = getOptimalUnit(best_u, false, convert_to_local_currency);std::cout << "4394" << endl;
+			best_u = getOptimalUnit(best_u, false, convert_to_local_currency);
 			if(points > 1 && points < max_points - 1) {
 				CompositeUnit *cu_new = new CompositeUnit("", "temporary_composite_convert");
 				bool return_cu = minus;
 				if(minus) {
-					cu_new->add(best_u, -1);std::cout << "4399" << endl;
+					cu_new->add(best_u, -1);
 				} else {
-					cu_new->add(best_u);std::cout << "4401" << endl;
+					cu_new->add(best_u);
 				}
-				MathStructure cu_mstruct = ((CompositeUnit*) u)->generateMathStructure();std::cout << "4403" << endl;
+				MathStructure cu_mstruct = ((CompositeUnit*) u)->generateMathStructure();
 				if(minus) cu_mstruct *= best_u;
-				else cu_mstruct /= best_u;std::cout << "4405" << endl;
-				cu_mstruct = convertToBaseUnits(cu_mstruct);std::cout << "4406" << endl;
+				else cu_mstruct /= best_u;
+				cu_mstruct = convertToBaseUnits(cu_mstruct);
 				CompositeUnit *cu2 = new CompositeUnit("", "temporary_composite_convert_to_optimal_unit");
-				bool b = false;std::cout << "4408" << endl;
+				bool b = false;
 				for(size_t i = 1; i <= cu_mstruct.countChildren(); i++) {
 					if(cu_mstruct.getChild(i)->isUnit()) {
-						b = true;std::cout << "4411" << endl;
-						cu2->add(cu_mstruct.getChild(i)->unit());std::cout << "4412" << endl;
+						b = true;
+						cu2->add(cu_mstruct.getChild(i)->unit());
 					} else if(cu_mstruct.getChild(i)->isPower() && cu_mstruct.getChild(i)->base()->isUnit() && cu_mstruct.getChild(i)->exponent()->isNumber() && cu_mstruct.getChild(i)->exponent()->number().isInteger()) {
 						if(cu_mstruct.getChild(i)->exponent()->number().isGreaterThan(10) || cu_mstruct.getChild(i)->exponent()->number().isLessThan(-10)) {
 							if(aborted() || cu_mstruct.getChild(i)->exponent()->number().isGreaterThan(1000) || cu_mstruct.getChild(i)->exponent()->number().isLessThan(-1000)) {
-								b = false;std::cout << "4416" << endl;
+								b = false;
 								break;
 							}
 						}
-						b = true;std::cout << "4420" << endl;
-						cu2->add(cu_mstruct.getChild(i)->base()->unit(), cu_mstruct.getChild(i)->exponent()->number().intValue());std::cout << "4421" << endl;
+						b = true;
+						cu2->add(cu_mstruct.getChild(i)->base()->unit(), cu_mstruct.getChild(i)->exponent()->number().intValue());
 					}
 				}
 				if(b) {
-					Unit *u2 = getOptimalUnit(cu2, true, convert_to_local_currency);std::cout << "4425" << endl;
-					b = false;std::cout << "4426" << endl;
+					Unit *u2 = getOptimalUnit(cu2, true, convert_to_local_currency);
+					b = false;
 					if(u2->subtype() == SUBTYPE_COMPOSITE_UNIT) {
 						for(size_t i3 = 1; i3 <= ((CompositeUnit*) u2)->countUnits(); i3++) {
-							Unit *cu_unit = ((CompositeUnit*) u2)->get(i3, &exp);std::cout << "4429" << endl;
+							Unit *cu_unit = ((CompositeUnit*) u2)->get(i3, &exp);
 							for(size_t i4 = 1; i4 <= cu_new->countUnits(); i4++) {
 								if(cu_new->get(i4, &b_exp) == cu_unit) {
-									b = true;std::cout << "4432" << endl;
-									cu_new->setExponent(i4, b_exp + exp);std::cout << "4433" << endl;
+									b = true;
+									cu_new->setExponent(i4, b_exp + exp);
 									break;
 								}
 							}
@@ -4443,8 +4465,8 @@ Unit *Calculator::getOptimalUnit(Unit *u, bool allow_only_div, bool convert_to_l
 						return_cu = true;
 						for(size_t i3 = 1; i3 <= cu_new->countUnits(); i3++) {
 							if(cu_new->get(i3, &exp) == u2) {
-								b = true;std::cout << "4444" << endl;
-								cu_new->setExponent(i3, exp + 1);std::cout << "4445" << endl;
+								b = true;
+								cu_new->setExponent(i3, exp + 1);
 								break;
 							}
 						}
@@ -4452,17 +4474,17 @@ Unit *Calculator::getOptimalUnit(Unit *u, bool allow_only_div, bool convert_to_l
 					}
 					if(!u2->isRegistered() && u2 != cu2) delete u2;
 				}
-				delete cu2;std::cout << "4453" << endl;
+				delete cu2;
 				if(return_cu) {
 					return cu_new;
 				} else {
-					delete cu_new;std::cout << "4457" << endl;
+					delete cu_new;
 					return best_u;
 				}
 			}
 			if(minus) {
 				CompositeUnit *cu_new = new CompositeUnit("", "temporary_composite_convert");
-				cu_new->add(best_u, -1);std::cout << "4463" << endl;
+				cu_new->add(best_u, -1);
 				return cu_new;
 			} else {
 				return best_u;
@@ -4473,95 +4495,95 @@ Unit *Calculator::getOptimalUnit(Unit *u, bool allow_only_div, bool convert_to_l
 }
 MathStructure Calculator::convertToBestUnit(const MathStructure &mstruct, const EvaluationOptions &eo, bool convert_to_si_units) {return convertToOptimalUnit(mstruct, eo, convert_to_si_units);}
 MathStructure Calculator::convertToOptimalUnit(const MathStructure &mstruct, const EvaluationOptions &eo, bool convert_to_si_units) {
-	EvaluationOptions eo2 = eo;std::cout << "4474" << endl;
-	//eo2.calculate_functions = false;std::cout << "4475" << endl;
-	eo2.sync_units = false;std::cout << "4476" << endl;
-	eo2.isolate_x = false;std::cout << "4477" << endl;
-	eo2.test_comparisons = false;std::cout << "4478" << endl;
+	EvaluationOptions eo2 = eo;
+	//eo2.calculate_functions = false;
+	eo2.sync_units = false;
+	eo2.isolate_x = false;
+	eo2.test_comparisons = false;
 	switch(mstruct.type()) {
 		case STRUCT_POWER: {
 			if(mstruct.base()->isUnit() && mstruct.exponent()->isNumber() && mstruct.exponent()->number().isRational() && !mstruct.exponent()->number().isZero()) {
-				MathStructure mstruct_new(mstruct);std::cout << "4482" << endl;
-				int old_points = 0;std::cout << "4483" << endl;
-				bool overflow = false;std::cout << "4484" << endl;
+				MathStructure mstruct_new(mstruct);
+				int old_points = 0;
+				bool overflow = false;
 				if(mstruct_new.exponent()->isInteger()) old_points = mstruct_new.exponent()->number().intValue(&overflow);
-				else old_points = mstruct_new.exponent()->number().numerator().intValue(&overflow) + mstruct_new.exponent()->number().denominator().intValue() * (mstruct_new.exponent()->number().isNegative() ? -1 : 1);std::cout << "4486" << endl;
+				else old_points = mstruct_new.exponent()->number().numerator().intValue(&overflow) + mstruct_new.exponent()->number().denominator().intValue() * (mstruct_new.exponent()->number().isNegative() ? -1 : 1);
 				if(overflow) return mstruct_new;
-				bool old_minus = false;std::cout << "4488" << endl;
+				bool old_minus = false;
 				if(old_points < 0) {
-					old_points = -old_points;std::cout << "4490" << endl;
-					old_minus = true;std::cout << "4491" << endl;
+					old_points = -old_points;
+					old_minus = true;
 				}
-				bool is_si_units = mstruct_new.base()->unit()->isSIUnit();std::cout << "4493" << endl;
+				bool is_si_units = mstruct_new.base()->unit()->isSIUnit();
 				if(mstruct_new.base()->unit()->baseUnit()->subtype() == SUBTYPE_COMPOSITE_UNIT) {
-					mstruct_new.convertToBaseUnits(true, NULL, true, eo2, true);std::cout << "4495" << endl;
+					mstruct_new.convertToBaseUnits(true, NULL, true, eo2, true);
 					if(mstruct_new.equals(mstruct, true, true)) {
 						return mstruct_new;
 					} else {
-						mstruct_new.eval(eo2);std::cout << "4499" << endl;
+						mstruct_new.eval(eo2);
 					}
-					mstruct_new = convertToOptimalUnit(mstruct_new, eo, convert_to_si_units);std::cout << "4501" << endl;
+					mstruct_new = convertToOptimalUnit(mstruct_new, eo, convert_to_si_units);
 					if(mstruct_new.equals(mstruct, true, true)) return mstruct_new;
 				} else {
 					CompositeUnit *cu = new CompositeUnit("", "temporary_composite_convert_to_optimal_unit");
-					cu->add(mstruct_new.base()->unit(), mstruct_new.exponent()->number().numerator().intValue());std::cout << "4505" << endl;
-					Unit *u = getOptimalUnit(cu, false, eo.local_currency_conversion);std::cout << "4506" << endl;
+					cu->add(mstruct_new.base()->unit(), mstruct_new.exponent()->number().numerator().intValue());
+					Unit *u = getOptimalUnit(cu, false, eo.local_currency_conversion);
 					if(u == cu) {
-						delete cu;std::cout << "4508" << endl;
+						delete cu;
 						return mstruct_new;
 					}
 					if(eo.approximation == APPROXIMATION_EXACT && cu->hasApproximateRelationTo(u, true)) {
 						if(!u->isRegistered()) delete u;
-						delete cu;std::cout << "4513" << endl;
+						delete cu;
 						return mstruct_new;
 					}
-					delete cu;std::cout << "4516" << endl;
-					mstruct_new = convert(mstruct_new, u, eo, true);std::cout << "4517" << endl;
+					delete cu;
+					mstruct_new = convert(mstruct_new, u, eo, true);
 					if(!u->isRegistered()) delete u;
 				}
-				int new_points = 0;std::cout << "4520" << endl;
-				bool new_is_si_units = true;std::cout << "4521" << endl;
-				bool new_minus = true;std::cout << "4522" << endl;
-				bool is_currency = false;std::cout << "4523" << endl;
+				int new_points = 0;
+				bool new_is_si_units = true;
+				bool new_minus = true;
+				bool is_currency = false;
 				if(mstruct_new.isMultiplication()) {
 					for(size_t i = 1; i <= mstruct_new.countChildren(); i++) {
 						if(mstruct_new.getChild(i)->isUnit()) {
 							if(new_is_si_units && !mstruct_new.getChild(i)->unit()->isSIUnit()) new_is_si_units = false;
-							is_currency = mstruct_new.getChild(i)->unit()->isCurrency();std::cout << "4528" << endl;
-							new_points++;std::cout << "4529" << endl;
-							new_minus = false;std::cout << "4530" << endl;
+							is_currency = mstruct_new.getChild(i)->unit()->isCurrency();
+							new_points++;
+							new_minus = false;
 						} else if(mstruct_new.getChild(i)->isPower() && mstruct_new.getChild(i)->base()->isUnit() && mstruct_new.getChild(i)->exponent()->isNumber() && mstruct_new.getChild(i)->exponent()->number().isRational()) {
-							int points = 0;std::cout << "4532" << endl;
+							int points = 0;
 							if(mstruct_new.getChild(i)->exponent()->isInteger()) points = mstruct_new.getChild(i)->exponent()->number().intValue();
-							else points = mstruct_new.getChild(i)->exponent()->number().numerator().intValue() + mstruct_new.getChild(i)->exponent()->number().denominator().intValue() * (mstruct_new.getChild(i)->exponent()->number().isNegative() ? -1 : 1);std::cout << "4534" << endl;
+							else points = mstruct_new.getChild(i)->exponent()->number().numerator().intValue() + mstruct_new.getChild(i)->exponent()->number().denominator().intValue() * (mstruct_new.getChild(i)->exponent()->number().isNegative() ? -1 : 1);
 							if(new_is_si_units && !mstruct_new.getChild(i)->base()->unit()->isSIUnit()) new_is_si_units = false;
-							is_currency = mstruct_new.getChild(i)->base()->unit()->isCurrency();std::cout << "4536" << endl;
+							is_currency = mstruct_new.getChild(i)->base()->unit()->isCurrency();
 							if(points < 0) {
-								new_points -= points;std::cout << "4538" << endl;
+								new_points -= points;
 							} else {
-								new_points += points;std::cout << "4540" << endl;
-								new_minus = false;std::cout << "4541" << endl;
+								new_points += points;
+								new_minus = false;
 							}
 
 						}
 					}
 				} else if(mstruct_new.isPower() && mstruct_new.base()->isUnit() && mstruct_new.exponent()->isNumber() && mstruct_new.exponent()->number().isRational()) {
-					int points = 0;std::cout << "4547" << endl;
+					int points = 0;
 					if(mstruct_new.exponent()->isInteger()) points = mstruct_new.exponent()->number().intValue();
-					else points = mstruct_new.exponent()->number().numerator().intValue() + mstruct_new.exponent()->number().denominator().intValue() * (mstruct_new.exponent()->number().isNegative() ? -1 : 1);std::cout << "4549" << endl;
+					else points = mstruct_new.exponent()->number().numerator().intValue() + mstruct_new.exponent()->number().denominator().intValue() * (mstruct_new.exponent()->number().isNegative() ? -1 : 1);
 					if(new_is_si_units && !mstruct_new.base()->unit()->isSIUnit()) new_is_si_units = false;
-					is_currency = mstruct_new.base()->unit()->isCurrency();std::cout << "4551" << endl;
+					is_currency = mstruct_new.base()->unit()->isCurrency();
 					if(points < 0) {
-						new_points = -points;std::cout << "4553" << endl;
+						new_points = -points;
 					} else {
-						new_points = points;std::cout << "4555" << endl;
-						new_minus = false;std::cout << "4556" << endl;
+						new_points = points;
+						new_minus = false;
 					}
 				} else if(mstruct_new.isUnit()) {
 					if(!mstruct_new.unit()->isSIUnit()) new_is_si_units = false;
-					is_currency = mstruct_new.unit()->isCurrency();std::cout << "4560" << endl;
-					new_points = 1;std::cout << "4561" << endl;
-					new_minus = false;std::cout << "4562" << endl;
+					is_currency = mstruct_new.unit()->isCurrency();
+					new_points = 1;
+					new_minus = false;
 				}
 				if(new_points == 0) return mstruct;
 				if((new_points > old_points && (!convert_to_si_units || is_si_units || !new_is_si_units)) || (new_points == old_points && (new_minus || !old_minus) && (!is_currency || !eo.local_currency_conversion) && (!convert_to_si_units || !new_is_si_units))) return mstruct;
@@ -4581,27 +4603,27 @@ MathStructure Calculator::convertToOptimalUnit(const MathStructure &mstruct, con
 		case STRUCT_VECTOR: {}
 		case STRUCT_ADDITION: {
 			if(!mstruct.containsType(STRUCT_UNIT, true)) return mstruct;
-			MathStructure mstruct_new(mstruct);std::cout << "4582" << endl;
-			bool b = false;std::cout << "4583" << endl;
+			MathStructure mstruct_new(mstruct);
+			bool b = false;
 			for(size_t i = 0; i < mstruct_new.size(); i++) {
 				if(aborted()) return mstruct;
 				if(!mstruct_new.isFunction() || !mstruct_new.function()->getArgumentDefinition(i + 1) || mstruct_new.function()->getArgumentDefinition(i + 1)->type() != ARGUMENT_TYPE_ANGLE) {
-					mstruct_new[i] = convertToOptimalUnit(mstruct_new[i], eo, convert_to_si_units);std::cout << "4587" << endl;
+					mstruct_new[i] = convertToOptimalUnit(mstruct_new[i], eo, convert_to_si_units);
 					if(!b && !mstruct_new[i].equals(mstruct[i], true, true)) b = true;
 				}
 			}
 			if(b) {
-				mstruct_new.childrenUpdated();std::cout << "4592" << endl;
+				mstruct_new.childrenUpdated();
 				if(mstruct.isAddition()) mstruct_new.eval(eo2);
 			}
 			return mstruct_new;
 		}
 		case STRUCT_UNIT: {
 			if((!mstruct.unit()->isCurrency() || !eo.local_currency_conversion) && (!convert_to_si_units || mstruct.unit()->isSIUnit())) return mstruct;
-			Unit *u = getOptimalUnit(mstruct.unit(), false, eo.local_currency_conversion);std::cout << "4599" << endl;
+			Unit *u = getOptimalUnit(mstruct.unit(), false, eo.local_currency_conversion);
 			if(u != mstruct.unit()) {
 				if((u->isSIUnit() || (u->isCurrency() && eo.local_currency_conversion)) && (eo.approximation != APPROXIMATION_EXACT || !mstruct.unit()->hasApproximateRelationTo(u, true))) {
-					MathStructure mstruct_new = convert(mstruct, u, eo, true);std::cout << "4602" << endl;
+					MathStructure mstruct_new = convert(mstruct, u, eo, true);
 					if(!u->isRegistered()) delete u;
 					return mstruct_new;
 				}
@@ -4611,34 +4633,34 @@ MathStructure Calculator::convertToOptimalUnit(const MathStructure &mstruct, con
 		}
 		case STRUCT_MULTIPLICATION: {
 			if(!mstruct.containsType(STRUCT_UNIT, true)) return mstruct;
-			int old_points = 0;std::cout << "4612" << endl;
-			bool old_minus = true;std::cout << "4613" << endl;
-			bool is_si_units = true;std::cout << "4614" << endl;
-			bool is_currency = false;std::cout << "4615" << endl;
-			bool child_updated = false;std::cout << "4616" << endl;
-			MathStructure mstruct_old(mstruct);std::cout << "4617" << endl;
+			int old_points = 0;
+			bool old_minus = true;
+			bool is_si_units = true;
+			bool is_currency = false;
+			bool child_updated = false;
+			MathStructure mstruct_old(mstruct);
 			for(size_t i = 1; i <= mstruct_old.countChildren(); i++) {
 				if(aborted()) return mstruct_old;
 				if(mstruct_old.getChild(i)->isUnit()) {
 					if(is_si_units && !mstruct_old.getChild(i)->unit()->isSIUnit()) is_si_units = false;
-					is_currency = mstruct_old.getChild(i)->unit()->isCurrency();std::cout << "4622" << endl;
-					old_points++;std::cout << "4623" << endl;
-					old_minus = false;std::cout << "4624" << endl;
+					is_currency = mstruct_old.getChild(i)->unit()->isCurrency();
+					old_points++;
+					old_minus = false;
 				} else if(mstruct_old.getChild(i)->isPower() && mstruct_old.getChild(i)->base()->isUnit() && mstruct_old.getChild(i)->exponent()->isNumber() && mstruct_old.getChild(i)->exponent()->number().isRational()) {
-					int points = 0;std::cout << "4626" << endl;
+					int points = 0;
 					if(mstruct_old.getChild(i)->exponent()->number().isInteger()) points = mstruct_old.getChild(i)->exponent()->number().intValue();
-					else points = mstruct_old.getChild(i)->exponent()->number().numerator().intValue() + mstruct_old.getChild(i)->exponent()->number().denominator().intValue() * (mstruct_old.getChild(i)->exponent()->number().isNegative() ? -1 : 1);std::cout << "4628" << endl;;std::cout << "4628" << endl;
+					else points = mstruct_old.getChild(i)->exponent()->number().numerator().intValue() + mstruct_old.getChild(i)->exponent()->number().denominator().intValue() * (mstruct_old.getChild(i)->exponent()->number().isNegative() ? -1 : 1);;
 					if(is_si_units && !mstruct_old.getChild(i)->base()->unit()->isSIUnit()) is_si_units = false;
-						is_currency = mstruct_old.getChild(i)->base()->unit()->isCurrency();std::cout << "4630" << endl;
+						is_currency = mstruct_old.getChild(i)->base()->unit()->isCurrency();
 					if(points < 0) {
-						old_points -= points;std::cout << "4632" << endl;
+						old_points -= points;
 					} else {
-						old_points += points;std::cout << "4634" << endl;
-						old_minus = false;std::cout << "4635" << endl;
+						old_points += points;
+						old_minus = false;
 					}
 				} else if(mstruct_old.getChild(i)->size() > 0 && !aborted()) {
-					mstruct_old[i - 1] = convertToOptimalUnit(mstruct_old[i - 1], eo, convert_to_si_units);std::cout << "4638" << endl;
-					mstruct_old.childUpdated(i);std::cout << "4639" << endl;
+					mstruct_old[i - 1] = convertToOptimalUnit(mstruct_old[i - 1], eo, convert_to_si_units);
+					mstruct_old.childUpdated(i);
 					if(!mstruct_old[i - 1].equals(mstruct[i - 1], true, true)) child_updated = true;
 				}
 			}
@@ -4646,44 +4668,44 @@ MathStructure Calculator::convertToOptimalUnit(const MathStructure &mstruct, con
 			if((!is_currency || !eo.local_currency_conversion) && (!convert_to_si_units || is_si_units) && old_points <= 1 && !old_minus) {
 				return mstruct_old;
 			}
-			MathStructure mstruct_new(mstruct_old);std::cout << "4647" << endl;
-			mstruct_new.convertToBaseUnits(true, NULL, true, eo2, true);std::cout << "4648" << endl;
+			MathStructure mstruct_new(mstruct_old);
+			mstruct_new.convertToBaseUnits(true, NULL, true, eo2, true);
 			if(!mstruct_new.equals(mstruct, true, true)) {
-				mstruct_new.eval(eo2);std::cout << "4650" << endl;
+				mstruct_new.eval(eo2);
 			}
 			if(mstruct_new.type() != STRUCT_MULTIPLICATION) {
 				if(!mstruct_new.containsInterval(true, true, false, 1, true) && !aborted()) mstruct_new = convertToOptimalUnit(mstruct_new, eo, convert_to_si_units);
 			} else {
 				CompositeUnit *cu = new CompositeUnit("", "temporary_composite_convert_to_optimal_unit");
-				bool b = false;std::cout << "4656" << endl;
-				child_updated = false;std::cout << "4657" << endl;
+				bool b = false;
+				child_updated = false;
 				for(size_t i = 1; i <= mstruct_new.countChildren(); i++) {
 					if(aborted()) return mstruct_old;
 					if(mstruct_new.getChild(i)->isUnit()) {
-						b = true;std::cout << "4661" << endl;
-						cu->add(mstruct_new.getChild(i)->unit());std::cout << "4662" << endl;
+						b = true;
+						cu->add(mstruct_new.getChild(i)->unit());
 					} else if(mstruct_new.getChild(i)->isPower() && mstruct_new.getChild(i)->base()->isUnit() && mstruct_new.getChild(i)->exponent()->isNumber() && mstruct_new.getChild(i)->exponent()->number().isInteger()) {
-						b = true;std::cout << "4664" << endl;
-						cu->add(mstruct_new.getChild(i)->base()->unit(), mstruct_new.getChild(i)->exponent()->number().intValue());std::cout << "4665" << endl;
+						b = true;
+						cu->add(mstruct_new.getChild(i)->base()->unit(), mstruct_new.getChild(i)->exponent()->number().intValue());
 					} else if(mstruct_new.getChild(i)->size() > 0 && !mstruct_new.getChild(i)->containsInterval(true, true, false, 1, true) && !aborted()) {
-						MathStructure m_i_old(mstruct_new[i - 1]);std::cout << "4667" << endl;
-						mstruct_new[i - 1] = convertToOptimalUnit(mstruct_new[i - 1], eo, convert_to_si_units);std::cout << "4668" << endl;
-						mstruct_new.childUpdated(i);std::cout << "4669" << endl;
+						MathStructure m_i_old(mstruct_new[i - 1]);
+						mstruct_new[i - 1] = convertToOptimalUnit(mstruct_new[i - 1], eo, convert_to_si_units);
+						mstruct_new.childUpdated(i);
 						if(!mstruct_new[i - 1].equals(m_i_old, true, true)) child_updated = true;
 					}
 				}
-				bool is_converted = false;std::cout << "4673" << endl;
+				bool is_converted = false;
 				if(b) {
-					Unit *u = getOptimalUnit(cu, false, eo.local_currency_conversion);std::cout << "4675" << endl;
+					Unit *u = getOptimalUnit(cu, false, eo.local_currency_conversion);
 					if(u != cu) {
 						if(eo.approximation != APPROXIMATION_EXACT || !cu->hasApproximateRelationTo(u, true)) {
-							mstruct_new = convert(mstruct_new, u, eo, true);std::cout << "4678" << endl;
-							is_converted = true;std::cout << "4679" << endl;
+							mstruct_new = convert(mstruct_new, u, eo, true);
+							is_converted = true;
 						}
 						if(!u->isRegistered()) delete u;
 					}
 				}
-				delete cu;std::cout << "4684" << endl;
+				delete cu;
 				if((!b || !is_converted) && (!convert_to_si_units || is_si_units)) {
 					return mstruct_old;
 				}
@@ -4691,49 +4713,49 @@ MathStructure Calculator::convertToOptimalUnit(const MathStructure &mstruct, con
 			}
 			if((eo.approximation == APPROXIMATION_EXACT && !mstruct_old.isApproximate()) && (mstruct_new.isApproximate() || (mstruct_old.containsInterval(true, true, false, 0, true) <= 0 && mstruct_new.containsInterval(true, true, false, 0, true) > 0))) return mstruct_old;
 			if(mstruct_new.equals(mstruct_old, true, true)) return mstruct_old;
-			int new_points = 0;std::cout << "4692" << endl;
-			bool new_minus = true;std::cout << "4693" << endl;
-			bool new_is_si_units = true;std::cout << "4694" << endl;
-			bool new_is_currency = false;std::cout << "4695" << endl;
+			int new_points = 0;
+			bool new_minus = true;
+			bool new_is_si_units = true;
+			bool new_is_currency = false;
 			if(mstruct_new.isMultiplication()) {
 				for(size_t i = 1; i <= mstruct_new.countChildren(); i++) {
 					if(aborted()) return mstruct_old;
 					if(mstruct_new.getChild(i)->isUnit()) {
 						if(new_is_si_units && !mstruct_new.getChild(i)->unit()->isSIUnit()) new_is_si_units = false;
-						new_is_currency = mstruct_new.getChild(i)->unit()->isCurrency();std::cout << "4701" << endl;
-						new_points++;std::cout << "4702" << endl;
-						new_minus = false;std::cout << "4703" << endl;
+						new_is_currency = mstruct_new.getChild(i)->unit()->isCurrency();
+						new_points++;
+						new_minus = false;
 					} else if(mstruct_new.getChild(i)->isPower() && mstruct_new.getChild(i)->base()->isUnit() && mstruct_new.getChild(i)->exponent()->isNumber() && mstruct_new.getChild(i)->exponent()->number().isRational()) {
-						int points = 0;std::cout << "4705" << endl;
+						int points = 0;
 						if(mstruct_new.getChild(i)->exponent()->number().isInteger()) points = mstruct_new.getChild(i)->exponent()->number().intValue();
-						else points = mstruct_new.getChild(i)->exponent()->number().numerator().intValue() + mstruct_new.getChild(i)->exponent()->number().denominator().intValue() * (mstruct_new.getChild(i)->exponent()->number().isNegative() ? -1 : 1);std::cout << "4707" << endl;
+						else points = mstruct_new.getChild(i)->exponent()->number().numerator().intValue() + mstruct_new.getChild(i)->exponent()->number().denominator().intValue() * (mstruct_new.getChild(i)->exponent()->number().isNegative() ? -1 : 1);
 						if(new_is_si_units && !mstruct_new.getChild(i)->base()->unit()->isSIUnit()) new_is_si_units = false;
-						new_is_currency = mstruct_new.getChild(i)->base()->unit()->isCurrency();std::cout << "4709" << endl;
+						new_is_currency = mstruct_new.getChild(i)->base()->unit()->isCurrency();
 						if(points < 0) {
-							new_points -= points;std::cout << "4711" << endl;
+							new_points -= points;
 						} else {
-							new_points += points;std::cout << "4713" << endl;
-							new_minus = false;std::cout << "4714" << endl;
+							new_points += points;
+							new_minus = false;
 						}
 					}
 				}
 			} else if(mstruct_new.isPower() && mstruct_new.base()->isUnit() && mstruct_new.exponent()->isNumber() && mstruct_new.exponent()->number().isRational()) {
-				int points = 0;std::cout << "4719" << endl;
+				int points = 0;
 				if(mstruct_new.exponent()->number().isInteger()) points = mstruct_new.exponent()->number().intValue();
-				else points = mstruct_new.exponent()->number().numerator().intValue() + mstruct_new.exponent()->number().denominator().intValue() * (mstruct_new.exponent()->number().isNegative() ? -1 : 1);std::cout << "4721" << endl;
+				else points = mstruct_new.exponent()->number().numerator().intValue() + mstruct_new.exponent()->number().denominator().intValue() * (mstruct_new.exponent()->number().isNegative() ? -1 : 1);
 				if(new_is_si_units && !mstruct_new.base()->unit()->isSIUnit()) new_is_si_units = false;
-				new_is_currency = mstruct_new.base()->unit()->isCurrency();std::cout << "4723" << endl;
+				new_is_currency = mstruct_new.base()->unit()->isCurrency();
 				if(points < 0) {
-					new_points = -points;std::cout << "4725" << endl;
+					new_points = -points;
 				} else {
-					new_points = points;std::cout << "4727" << endl;
-					new_minus = false;std::cout << "4728" << endl;
+					new_points = points;
+					new_minus = false;
 				}
 			} else if(mstruct_new.isUnit()) {
 				if(!mstruct_new.unit()->isSIUnit()) new_is_si_units = false;
-				new_is_currency = mstruct_new.unit()->isCurrency();std::cout << "4732" << endl;
-				new_points = 1;std::cout << "4733" << endl;
-				new_minus = false;std::cout << "4734" << endl;
+				new_is_currency = mstruct_new.unit()->isCurrency();
+				new_points = 1;
+				new_minus = false;
 			}
 			if(new_points == 0) return mstruct_old;
 			if((new_points > old_points && (!convert_to_si_units || is_si_units || !new_is_si_units)) || (new_points == old_points && (new_minus || !old_minus) && (!new_is_currency || !eo.local_currency_conversion) && (!convert_to_si_units || !new_is_si_units))) return mstruct_old;
@@ -4748,38 +4770,38 @@ MathStructure Calculator::convertToCompositeUnit(const MathStructure &mstruct, C
 }
 MathStructure Calculator::convert(const MathStructure &mstruct_to_convert, string str2, const EvaluationOptions &eo, MathStructure *to_struct) {
 	if(to_struct) to_struct->setUndefined();
-	remove_blank_ends(str2);std::cout << "4749" << endl;
+	remove_blank_ends(str2);
 	if(str2.empty()) return mstruct_to_convert;
-	current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "4751" << endl;
-	int do_prefix = 0;std::cout << "4752" << endl;
+	current_stage = MESSAGE_STAGE_CONVERSION;
+	int do_prefix = 0;
 	if(str2.length() > 1 && str2[1] == '?' && (str2[0] == 'b' || str2[0] == 'a' || str2[0] == 'd')) {
-		do_prefix = 2;std::cout << "4754" << endl;
+		do_prefix = 2;
 	} else if(str2[0] == '?') {
-		do_prefix = 1;std::cout << "4756" << endl;
+		do_prefix = 1;
 	}
-	EvaluationOptions eo2 = eo;std::cout << "4758" << endl;
-	eo2.keep_prefixes = !do_prefix;std::cout << "4759" << endl;
+	EvaluationOptions eo2 = eo;
+	eo2.keep_prefixes = !do_prefix;
 	if(str2[0] == '-') eo2.mixed_units_conversion = MIXED_UNITS_CONVERSION_NONE;
 	else if(str2[0] == '+') eo2.mixed_units_conversion = MIXED_UNITS_CONVERSION_FORCE_INTEGER;
 	else if(eo2.mixed_units_conversion != MIXED_UNITS_CONVERSION_NONE) eo2.mixed_units_conversion = MIXED_UNITS_CONVERSION_DOWNWARDS_KEEP;
 	if(do_prefix || str2[0] == '0' || str2[0] == '+' || str2[0] == '-') {
-		str2 = str2.substr(do_prefix > 1 ? 2 : 1, str2.length() - (do_prefix > 1 ? 2 : 1));std::cout << "4764" << endl;
-		remove_blank_ends(str2);std::cout << "4765" << endl;
+		str2 = str2.substr(do_prefix > 1 ? 2 : 1, str2.length() - (do_prefix > 1 ? 2 : 1));
+		remove_blank_ends(str2);
 		if(str2.empty()) {
-			current_stage = MESSAGE_STAGE_UNSET;std::cout << "4767" << endl;
+			current_stage = MESSAGE_STAGE_UNSET;
 			return convertToMixedUnits(mstruct_to_convert, eo2);
 		}
 	}
-	MathStructure mstruct;std::cout << "4771" << endl;
-	bool b = false;std::cout << "4772" << endl;
-	Unit *u = getUnit(str2);std::cout << "4773" << endl;
+	MathStructure mstruct;
+	bool b = false;
+	Unit *u = getUnit(str2);
 	if(!u) u = getCompositeUnit(str2);
-	Variable *v = NULL;std::cout << "4775" << endl;
+	Variable *v = NULL;
 	if(!u) v = getVariable(str2);
 	if(!u && !v) {
 		for(size_t i = 0; i < signs.size(); i++) {
 			if(str2 == signs[i]) {
-				u = getUnit(real_signs[i]);std::cout << "4780" << endl;
+				u = getUnit(real_signs[i]);
 				if(!u) v = getVariable(real_signs[i]);
 				break;
 			}
@@ -4788,39 +4810,39 @@ MathStructure Calculator::convert(const MathStructure &mstruct_to_convert, strin
 	if(v && !v->isKnown()) v = NULL;
 	if(u) {
 		if(to_struct) to_struct->set(u);
-		mstruct.set(convert(mstruct_to_convert, u, eo2, false, false));std::cout << "4789" << endl;
-		b = true;std::cout << "4790" << endl;
+		mstruct.set(convert(mstruct_to_convert, u, eo2, false, false));
+		b = true;
 	} else if(v) {
 		if(to_struct) to_struct->set(v);
-		mstruct.set(convert(mstruct_to_convert, (KnownVariable*) v, eo2));std::cout << "4793" << endl;
-		b = true;std::cout << "4794" << endl;
+		mstruct.set(convert(mstruct_to_convert, (KnownVariable*) v, eo2));
+		b = true;
 	} else {
-		current_stage = MESSAGE_STAGE_CONVERSION_PARSING;std::cout << "4796" << endl;
+		current_stage = MESSAGE_STAGE_CONVERSION_PARSING;
 		CompositeUnit cu("", "temporary_composite_convert", "", str2);
 		if(cu.countUnits() == 2 && cu.get(1)->referenceName() == "g" && cu.get(2)->referenceName() == "m" && str2.substr(0, 2) == "kg") {
-			int exp;std::cout << "4799" << endl; Prefix *p;std::cout << "4799" << endl;
+			int exp; Prefix *p;
 			if(cu.get(1, &exp, &p) && exp == 1 && p && p->value() == 1000 && cu.get(2, &exp, &p) && exp == -2) {
 				Unit *u = getUnit("pond");
 				if(u) {
-					MathStructure mtest(convertToBaseUnits(mstruct_to_convert, eo));std::cout << "4803" << endl;
-					mtest.sort();std::cout << "4804" << endl;
+					MathStructure mtest(convertToBaseUnits(mstruct_to_convert, eo));
+					mtest.sort();
 					if(mtest.isMultiplication() && mtest.size() >= 3 && mtest[mtest.size() - 3].isUnit() && mtest[mtest.size() - 3].unit()->referenceName() == "g" && mtest[mtest.size() - 2].isPower() && mtest[mtest.size() - 2][1].isMinusOne() && mtest[mtest.size() - 2][0].isUnit() && mtest[mtest.size() - 2][0].unit()->referenceName() == "m" && mtest[mtest.size() - 1].isPower() && mtest[mtest.size() - 1][1] == Number(-2, 1) && mtest[mtest.size() - 1][0].isUnit() && mtest[mtest.size() - 1][0].unit()->referenceName() == "s") {
 						str2.replace(1, 2, "pond");
-						cu.setBaseExpression(str2);std::cout << "4807" << endl;
+						cu.setBaseExpression(str2);
 					}
 				}
 			}
 		}
-		current_stage = MESSAGE_STAGE_CONVERSION;std::cout << "4812" << endl;
+		current_stage = MESSAGE_STAGE_CONVERSION;
 		if(to_struct) to_struct->set(cu.generateMathStructure());
 		if(cu.countUnits() > 0) {
-			mstruct.set(convert(mstruct_to_convert, &cu, eo2, false, false));std::cout << "4815" << endl;
-			b = true;std::cout << "4816" << endl;
+			mstruct.set(convert(mstruct_to_convert, &cu, eo2, false, false));
+			b = true;
 		}
 	}
 	if(!b) return mstruct_to_convert;
 	if(!v && eo2.mixed_units_conversion != MIXED_UNITS_CONVERSION_NONE) mstruct.set(convertToMixedUnits(mstruct, eo2));
-	current_stage = MESSAGE_STAGE_UNSET;std::cout << "4821" << endl;
+	current_stage = MESSAGE_STAGE_UNSET;
 	return mstruct;
 }
 Unit* Calculator::addUnit(Unit *u, bool force, bool check_names) {
@@ -4830,90 +4852,90 @@ Unit* Calculator::addUnit(Unit *u, bool force, bool check_names) {
 		}
 	}
 	if(!u->isLocal() && units.size() > 0 && units[units.size() - 1]->isLocal()) {
-		units.insert(units.begin(), u);std::cout << "4831" << endl;
+		units.insert(units.begin(), u);
 	} else {
-		units.push_back(u);std::cout << "4833" << endl;
+		units.push_back(u);
 	}
-	unitNameChanged(u, true);std::cout << "4835" << endl;
+	unitNameChanged(u, true);
 	for(vector<Unit*>::iterator it = deleted_units.begin(); it != deleted_units.end(); ++it) {
 		if(*it == u) {
-			deleted_units.erase(it);std::cout << "4838" << endl;
+			deleted_units.erase(it);
 			break;
 		}
 	}
-	u->setRegistered(true);std::cout << "4842" << endl;
-	u->setChanged(false);std::cout << "4843" << endl;
+	u->setRegistered(true);
+	u->setChanged(false);
 	return u;
 }
 void Calculator::delPrefixUFV(Prefix *object) {
-	int i = 0;std::cout << "4847" << endl;
+	int i = 0;
 	for(vector<void*>::iterator it = ufvl.begin(); ; ++it) {
 		del_ufvl:
 		if(it == ufvl.end()) {
 			break;
 		}
 		if(*it == object) {
-			it = ufvl.erase(it);std::cout << "4854" << endl;
-			ufvl_t.erase(ufvl_t.begin() + i);std::cout << "4855" << endl;
-			ufvl_i.erase(ufvl_i.begin() + i);std::cout << "4856" << endl;
+			it = ufvl.erase(it);
+			ufvl_t.erase(ufvl_t.begin() + i);
+			ufvl_i.erase(ufvl_i.begin() + i);
 			if(it == ufvl.end()) break;
-			goto del_ufvl;std::cout << "4858" << endl;
+			goto del_ufvl;
 		}
-		i++;std::cout << "4860" << endl;
+		i++;
 	}
 	for(size_t i2 = 0; i2 < UFV_LENGTHS; i2++) {
-		i = 0;std::cout << "4863" << endl;
+		i = 0;
 		for(vector<void*>::iterator it = ufv[0][i2].begin(); ; ++it) {
 			del_ufv:
 			if(it == ufv[0][i2].end()) {
 				break;
 			}
 			if(*it == object) {
-				it = ufv[0][i2].erase(it);std::cout << "4870" << endl;
-				ufv_i[0][i2].erase(ufv_i[0][i2].begin() + i);std::cout << "4871" << endl;
+				it = ufv[0][i2].erase(it);
+				ufv_i[0][i2].erase(ufv_i[0][i2].begin() + i);
 				if(it == ufv[0][i2].end()) break;
-				goto del_ufv;std::cout << "4873" << endl;
+				goto del_ufv;
 			}
-			i++;std::cout << "4875" << endl;
+			i++;
 		}
 	}
 }
 void Calculator::delUFV(ExpressionItem *object) {
-	int i = 0;std::cout << "4880" << endl;
+	int i = 0;
 	for(vector<void*>::iterator it = ufvl.begin(); ; ++it) {
 		del_ufvl:
 		if(it == ufvl.end()) {
 			break;
 		}
 		if(*it == object) {
-			it = ufvl.erase(it);std::cout << "4887" << endl;
-			ufvl_t.erase(ufvl_t.begin() + i);std::cout << "4888" << endl;
-			ufvl_i.erase(ufvl_i.begin() + i);std::cout << "4889" << endl;
+			it = ufvl.erase(it);
+			ufvl_t.erase(ufvl_t.begin() + i);
+			ufvl_i.erase(ufvl_i.begin() + i);
 			if(it == ufvl.end()) break;
-			goto del_ufvl;std::cout << "4891" << endl;
+			goto del_ufvl;
 		}
-		i++;std::cout << "4893" << endl;
+		i++;
 	}
-	int i3 = 0;std::cout << "4895" << endl;
+	int i3 = 0;
 	switch(object->type()) {
 		case TYPE_FUNCTION: {i3 = 1; break;}
 		case TYPE_UNIT: {i3 = 2; break;}
 		case TYPE_VARIABLE: {i3 = 3; break;}
 	}
 	for(size_t i2 = 0; i2 < UFV_LENGTHS; i2++) {
-		i = 0;std::cout << "4902" << endl;
+		i = 0;
 		for(vector<void*>::iterator it = ufv[i3][i2].begin(); ; ++it) {
 			del_ufv:
 			if(it == ufv[i3][i2].end()) {
 				break;
 			}
 			if(*it == object) {
-				it = ufv[i3][i2].erase(it);std::cout << "4909" << endl;
-				ufv_i[i3][i2].erase(ufv_i[i3][i2].begin() + i);std::cout << "4910" << endl;
+				it = ufv[i3][i2].erase(it);
+				ufv_i[i3][i2].erase(ufv_i[i3][i2].begin() + i);
 				if(it == ufv[i3][i2].end()) break;
-				goto del_ufv;std::cout << "4912" << endl;
+				goto del_ufv;
 			}
-			i++;std::cout << "4914" << endl;
+			i++;
 		}
 	}
 }
@@ -4937,10 +4959,10 @@ Unit* Calculator::getActiveUnit(string name_) {
 }
 Unit* Calculator::getLocalCurrency() {
 	if(priv->local_currency) return priv->local_currency;
-	struct lconv *lc = localeconv();std::cout << "4938" << endl;
+	struct lconv *lc = localeconv();
 	if(lc) {
-		string local_currency = lc->int_curr_symbol;std::cout << "4940" << endl;
-		remove_blank_ends(local_currency);std::cout << "4941" << endl;
+		string local_currency = lc->int_curr_symbol;
+		remove_blank_ends(local_currency);
 		if(!local_currency.empty()) {
 			if(local_currency.length() > 3) local_currency = local_currency.substr(0, 3);
 			return getActiveUnit(local_currency);
@@ -4949,7 +4971,7 @@ Unit* Calculator::getLocalCurrency() {
 	return NULL;
 }
 void Calculator::setLocalCurrency(Unit *u) {
-	priv->local_currency = u;std::cout << "4950" << endl;
+	priv->local_currency = u;
 }
 Unit* Calculator::getCompositeUnit(string internal_name_) {
 	if(internal_name_.empty()) return NULL;
@@ -4968,38 +4990,38 @@ Variable* Calculator::addVariable(Variable *v, bool force, bool check_names) {
 		}
 	}
 	if(!v->isLocal() && variables.size() > 0 && variables[variables.size() - 1]->isLocal()) {
-		variables.insert(variables.begin(), v);std::cout << "4969" << endl;
+		variables.insert(variables.begin(), v);
 	} else {
-		variables.push_back(v);std::cout << "4971" << endl;
+		variables.push_back(v);
 	}
-	variableNameChanged(v, true);std::cout << "4973" << endl;
+	variableNameChanged(v, true);
 	for(vector<Variable*>::iterator it = deleted_variables.begin(); it != deleted_variables.end(); ++it) {
 		if(*it == v) {
-			deleted_variables.erase(it);std::cout << "4976" << endl;
+			deleted_variables.erase(it);
 			break;
 		}
 	}
-	v->setRegistered(true);std::cout << "4980" << endl;
-	v->setChanged(false);std::cout << "4981" << endl;
+	v->setRegistered(true);
+	v->setChanged(false);
 	return v;
 }
 void Calculator::expressionItemDeactivated(ExpressionItem *item) {
-	delUFV(item);std::cout << "4985" << endl;
+	delUFV(item);
 }
 void Calculator::expressionItemActivated(ExpressionItem *item) {
-	ExpressionItem *item2 = getActiveExpressionItem(item);std::cout << "4988" << endl;
+	ExpressionItem *item2 = getActiveExpressionItem(item);
 	if(item2) {
-		item2->setActive(false);std::cout << "4990" << endl;
+		item2->setActive(false);
 	}
-	nameChanged(item);std::cout << "4992" << endl;
+	nameChanged(item);
 }
 void Calculator::expressionItemDeleted(ExpressionItem *item) {
 	switch(item->type()) {
 		case TYPE_VARIABLE: {
 			for(vector<Variable*>::iterator it = variables.begin(); it != variables.end(); ++it) {
 				if(*it == item) {
-					variables.erase(it);std::cout << "4999" << endl;
-					deleted_variables.push_back((Variable*) item);std::cout << "5000" << endl;
+					variables.erase(it);
+					deleted_variables.push_back((Variable*) item);
 					break;
 				}
 			}
@@ -5008,15 +5030,15 @@ void Calculator::expressionItemDeleted(ExpressionItem *item) {
 		case TYPE_FUNCTION: {
 			for(vector<MathFunction*>::iterator it = functions.begin(); it != functions.end(); ++it) {
 				if(*it == item) {
-					functions.erase(it);std::cout << "5009" << endl;
-					deleted_functions.push_back((MathFunction*) item);std::cout << "5010" << endl;
+					functions.erase(it);
+					deleted_functions.push_back((MathFunction*) item);
 					break;
 				}
 			}
 			if(item->subtype() == SUBTYPE_DATA_SET) {
 				for(vector<DataSet*>::iterator it = data_sets.begin(); it != data_sets.end(); ++it) {
 					if(*it == item) {
-						data_sets.erase(it);std::cout << "5017" << endl;
+						data_sets.erase(it);
 						break;
 					}
 				}
@@ -5026,8 +5048,8 @@ void Calculator::expressionItemDeleted(ExpressionItem *item) {
 		case TYPE_UNIT: {
 			for(vector<Unit*>::iterator it = units.begin(); it != units.end(); ++it) {
 				if(*it == item) {
-					units.erase(it);std::cout << "5027" << endl;
-					deleted_units.push_back((Unit*) item);std::cout << "5028" << endl;
+					units.erase(it);
+					deleted_units.push_back((Unit*) item);
 					break;
 				}
 			}
@@ -5048,68 +5070,77 @@ void Calculator::expressionItemDeleted(ExpressionItem *item) {
 			}
 		}
 	}
-	delUFV(item);std::cout << "5049" << endl;
+	delUFV(item);
 }
 void Calculator::nameChanged(ExpressionItem *item, bool new_item) {
 	if(!item->isActive() || item->countNames() == 0) return;
 	if(item->type() == TYPE_UNIT && ((Unit*) item)->subtype() == SUBTYPE_COMPOSITE_UNIT) {
 		return;
 	}
-	size_t l2;std::cout << "5056" << endl;
+	size_t l2;
 	if(!new_item) delUFV(item);
 	for(size_t i2 = 1; i2 <= item->countNames(); i2++) {
-		l2 = item->getName(i2).name.length();std::cout << "5059" << endl;
+		l2 = item->getName(i2).name.length();
 		if(l2 > UFV_LENGTHS) {
-			size_t i = 0, l = 0;std::cout << "5061" << endl;
+			size_t i = 0, l = 0;
 			for(vector<void*>::iterator it = ufvl.begin(); ; ++it) {
 				if(it != ufvl.end()) {
-					if(ufvl_t[i] == 'v')						l = ((Variable*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'f')						l = ((MathFunction*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'u')						l = ((Unit*) (*it))->getName(ufvl_i[i]).name.length();
-					else if(ufvl_t[i] == 'p')						l = ((Prefix*) (*it))->shortName(false).length();
-					else if(ufvl_t[i] == 'P')						l = ((Prefix*) (*it))->longName(false).length();
-					else if(ufvl_t[i] == 'q')						l = ((Prefix*) (*it))->unicodeName(false).length();
+					if(ufvl_t[i] == 'v')
+						l = ((Variable*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'f')
+						l = ((MathFunction*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'u')
+						l = ((Unit*) (*it))->getName(ufvl_i[i]).name.length();
+					else if(ufvl_t[i] == 'p')
+						l = ((Prefix*) (*it))->shortName(false).length();
+					else if(ufvl_t[i] == 'P')
+						l = ((Prefix*) (*it))->longName(false).length();
+					else if(ufvl_t[i] == 'q')
+						l = ((Prefix*) (*it))->unicodeName(false).length();
 				}
 				if(it == ufvl.end()) {
-					ufvl.push_back((void*) item);std::cout << "5072" << endl;
+					ufvl.push_back((void*) item);
 					switch(item->type()) {
 						case TYPE_VARIABLE: {ufvl_t.push_back('v'); break;}
 						case TYPE_FUNCTION: {ufvl_t.push_back('f'); break;}
 						case TYPE_UNIT: {ufvl_t.push_back('u'); break;}
 					}
-					ufvl_i.push_back(i2);std::cout << "5078" << endl;
+					ufvl_i.push_back(i2);
 					break;
 				} else {
 					if(l < l2
-					|| (item->type() == TYPE_VARIABLE && l == l2 && ufvl_t[i] == 'v')					|| (item->type() == TYPE_FUNCTION && l == l2 && (ufvl_t[i] != 'p' && ufvl_t[i] != 'P' && ufvl_t[i] != 'q'))					|| (item->type() == TYPE_UNIT && l == l2 && (ufvl_t[i] != 'p' && ufvl_t[i] != 'P' && ufvl_t[i] != 'q' && ufvl_t[i] != 'f'))					) {
-						ufvl.insert(it, (void*) item);std::cout << "5083" << endl;
+					|| (item->type() == TYPE_VARIABLE && l == l2 && ufvl_t[i] == 'v')
+					|| (item->type() == TYPE_FUNCTION && l == l2 && (ufvl_t[i] != 'p' && ufvl_t[i] != 'P' && ufvl_t[i] != 'q'))
+					|| (item->type() == TYPE_UNIT && l == l2 && (ufvl_t[i] != 'p' && ufvl_t[i] != 'P' && ufvl_t[i] != 'q' && ufvl_t[i] != 'f'))
+					) {
+						ufvl.insert(it, (void*) item);
 						switch(item->type()) {
 							case TYPE_VARIABLE: {ufvl_t.insert(ufvl_t.begin() + i, 'v'); break;}
 							case TYPE_FUNCTION: {ufvl_t.insert(ufvl_t.begin() + i, 'f'); break;}
 							case TYPE_UNIT: {ufvl_t.insert(ufvl_t.begin() + i, 'u'); break;}
 						}
-						ufvl_i.insert(ufvl_i.begin() + i, i2);std::cout << "5089" << endl;
+						ufvl_i.insert(ufvl_i.begin() + i, i2);
 						break;
 					}
 				}
-				i++;std::cout << "5093" << endl;
+				i++;
 			}
 		} else if(l2 > 0) {
-			l2--;std::cout << "5096" << endl;
+			l2--;
 			switch(item->type()) {
 				case TYPE_VARIABLE: {
-					ufv[3][l2].push_back((void*) item);std::cout << "5099" << endl;
-					ufv_i[3][l2].push_back(i2);std::cout << "5100" << endl;
+					ufv[3][l2].push_back((void*) item);
+					ufv_i[3][l2].push_back(i2);
 					break;
 				}
 				case TYPE_FUNCTION:  {
-					ufv[1][l2].push_back((void*) item);std::cout << "5104" << endl;
-					ufv_i[1][l2].push_back(i2);std::cout << "5105" << endl;
+					ufv[1][l2].push_back((void*) item);
+					ufv_i[1][l2].push_back(i2);
 					break;
 				}
 				case TYPE_UNIT:  {
-					ufv[2][l2].push_back((void*) item);std::cout << "5109" << endl;
-					ufv_i[2][l2].push_back(i2);std::cout << "5110" << endl;
+					ufv[2][l2].push_back((void*) item);
+					ufv_i[2][l2].push_back(i2);
 					break;
 				}
 			}
@@ -5117,13 +5148,13 @@ void Calculator::nameChanged(ExpressionItem *item, bool new_item) {
 	}
 }
 void Calculator::variableNameChanged(Variable *v, bool new_item) {
-	nameChanged(v, new_item);std::cout << "5118" << endl;
+	nameChanged(v, new_item);
 }
 void Calculator::functionNameChanged(MathFunction *f, bool new_item) {
-	nameChanged(f, new_item);std::cout << "5121" << endl;
+	nameChanged(f, new_item);
 }
 void Calculator::unitNameChanged(Unit *u, bool new_item) {
-	nameChanged(u, new_item);std::cout << "5124" << endl;
+	nameChanged(u, new_item);
 }
 
 Variable* Calculator::getVariable(string name_) {
@@ -5166,24 +5197,24 @@ MathFunction* Calculator::addFunction(MathFunction *f, bool force, bool check_na
 		}
 	}
 	if(!f->isLocal() && functions.size() > 0 && functions[functions.size() - 1]->isLocal()) {
-		functions.insert(functions.begin(), f);std::cout << "5167" << endl;
+		functions.insert(functions.begin(), f);
 	} else {
-		functions.push_back(f);std::cout << "5169" << endl;
+		functions.push_back(f);
 	}
-	functionNameChanged(f, true);std::cout << "5171" << endl;
+	functionNameChanged(f, true);
 	for(vector<MathFunction*>::iterator it = deleted_functions.begin(); it != deleted_functions.end(); ++it) {
 		if(*it == f) {
-			deleted_functions.erase(it);std::cout << "5174" << endl;
+			deleted_functions.erase(it);
 			break;
 		}
 	}
-	f->setRegistered(true);std::cout << "5178" << endl;
-	f->setChanged(false);std::cout << "5179" << endl;
+	f->setRegistered(true);
+	f->setChanged(false);
 	return f;
 }
 DataSet* Calculator::addDataSet(DataSet *dc, bool force, bool check_names) {
 	addFunction(dc, force, check_names);
-	data_sets.push_back(dc);std::cout << "5184" << endl;
+	data_sets.push_back(dc);
 	return dc;
 }
 DataSet* Calculator::getDataSet(size_t index) {
@@ -5264,11 +5295,11 @@ bool Calculator::unitNameIsValid(const string &name_, int version_numbers[3], bo
 bool Calculator::variableNameIsValid(const char *name_, int version_numbers[3], bool is_user_defs) {
 	if(strlen(name_) == 0) return false;
 	if(is_in(NUMBERS, name_[0])) return false;
-	bool b = false;std::cout << "5264" << endl;
+	bool b = false;
 	for(size_t i = 0; name_[i] != '\0'; i++) {
 		if(is_in(ILLEGAL_IN_NAMES, name_[i])) {
 			if(is_user_defs && VERSION_BEFORE(0, 8, 1) && name_[i] == BITWISE_NOT_CH) {
-				b = true;std::cout << "5268" << endl;
+				b = true;
 			} else {
 				return false;
 			}
@@ -5282,11 +5313,11 @@ bool Calculator::variableNameIsValid(const char *name_, int version_numbers[3], 
 bool Calculator::functionNameIsValid(const char *name_, int version_numbers[3], bool is_user_defs) {
 	if(strlen(name_) == 0) return false;
 	if(is_in(NUMBERS, name_[0])) return false;
-	bool b = false;std::cout << "5282" << endl;
+	bool b = false;
 	for(size_t i = 0; name_[i] != '\0'; i++) {
 		if(is_in(ILLEGAL_IN_NAMES, name_[i])) {
 			if(is_user_defs && VERSION_BEFORE(0, 8, 1) && name_[i] == BITWISE_NOT_CH) {
-				b = true;std::cout << "5286" << endl;
+				b = true;
 			} else {
 				return false;
 			}
@@ -5299,11 +5330,11 @@ bool Calculator::functionNameIsValid(const char *name_, int version_numbers[3], 
 }
 bool Calculator::unitNameIsValid(const char *name_, int version_numbers[3], bool is_user_defs) {
 	if(strlen(name_) == 0) return false;
-	bool b = false;std::cout << "5299" << endl;
+	bool b = false;
 	for(size_t i = 0; name_[i] != '\0'; i++) {
 		if(is_in(ILLEGAL_IN_UNITNAMES, name_[i])) {
 			if(is_user_defs && VERSION_BEFORE(0, 8, 1) && name_[i] == BITWISE_NOT_CH) {
-				b = true;std::cout << "5303" << endl;
+				b = true;
 			} else {
 				return false;
 			}
@@ -5316,15 +5347,16 @@ bool Calculator::unitNameIsValid(const char *name_, int version_numbers[3], bool
 }
 string Calculator::convertToValidVariableName(string name_) {
 	if(name_.empty()) return "var_1";
-	size_t i = 0;std::cout << "5316" << endl;
+	size_t i = 0;
 	while(true) {
-		i = name_.find_first_of(ILLEGAL_IN_NAMES_MINUS_SPACE_STR, i);std::cout << "5318" << endl;
-		if(i == string::npos)			break;
-		name_.erase(name_.begin() + i);std::cout << "5320" << endl;
+		i = name_.find_first_of(ILLEGAL_IN_NAMES_MINUS_SPACE_STR, i);
+		if(i == string::npos)
+			break;
+		name_.erase(name_.begin() + i);
 	}
-	gsub(SPACE, UNDERSCORE, name_);std::cout << "5322" << endl;
+	gsub(SPACE, UNDERSCORE, name_);
 	while(is_in(NUMBERS, name_[0])) {
-		name_.erase(name_.begin());std::cout << "5324" << endl;
+		name_.erase(name_.begin());
 	}
 	return name_;
 }
@@ -5334,14 +5366,15 @@ string Calculator::convertToValidFunctionName(string name_) {
 }
 string Calculator::convertToValidUnitName(string name_) {
 	if(name_.empty()) return "new_unit";
-	size_t i = 0;std::cout << "5334" << endl;
-	string stmp = ILLEGAL_IN_NAMES_MINUS_SPACE_STR + NUMBERS;std::cout << "5335" << endl;
+	size_t i = 0;
+	string stmp = ILLEGAL_IN_NAMES_MINUS_SPACE_STR + NUMBERS;
 	while(true) {
-		i = name_.find_first_of(stmp, i);std::cout << "5337" << endl;
-		if(i == string::npos)			break;
-		name_.erase(name_.begin() + i);std::cout << "5339" << endl;
+		i = name_.find_first_of(stmp, i);
+		if(i == string::npos)
+			break;
+		name_.erase(name_.begin() + i);
 	}
-	gsub(SPACE, UNDERSCORE, name_);std::cout << "5341" << endl;
+	gsub(SPACE, UNDERSCORE, name_);
 	return name_;
 }
 bool Calculator::nameTaken(string name, ExpressionItem *object) {
@@ -5416,12 +5449,12 @@ bool Calculator::functionNameTaken(string name, MathFunction *object) {
 	return false;
 }
 bool Calculator::unitIsUsedByOtherUnits(const Unit *u) const {
-	const Unit *u2;std::cout << "5416" << endl;
+	const Unit *u2;
 	for(size_t i = 0; i < units.size(); i++) {
 		if(units[i] != u) {
-			u2 = units[i];std::cout << "5419" << endl;
+			u2 = units[i];
 			while(u2->subtype() == SUBTYPE_ALIAS_UNIT) {
-				u2 = ((AliasUnit*) u2)->firstBaseUnit();std::cout << "5421" << endl;
+				u2 = ((AliasUnit*) u2)->firstBaseUnit();
 				if(u2 == u) {
 					return true;
 				}
@@ -5451,39 +5484,39 @@ bool compare_name(const string &name, const string &str, const size_t &name_leng
 }
 size_t compare_name_no_case(const string &name, const string &str, const size_t &name_length, const size_t &str_index, int base) {
 	if(name_length == 0) return 0;
-	size_t is = str_index;std::cout << "5451" << endl;
+	size_t is = str_index;
 	for(size_t i = 0; i < name_length; i++, is++) {
 		if(is >= str.length()) return 0;
 		if((name[i] < 0 && i + 1 < name_length) || (str[is] < 0 && is + 1 < str.length())) {
-			size_t i2 = 1, is2 = 1;std::cout << "5455" << endl;
+			size_t i2 = 1, is2 = 1;
 			if(name[i] < 0) {
 				while(i2 + i < name_length && name[i2 + i] < 0) {
-					i2++;std::cout << "5458" << endl;
+					i2++;
 				}
 			}
 			if(str[is] < 0) {
 				while(is2 + is < str.length() && str[is2 + is] < 0) {
-					is2++;std::cout << "5463" << endl;
+					is2++;
 				}
 			}
-			bool isequal = (i2 == is2);std::cout << "5466" << endl;
+			bool isequal = (i2 == is2);
 			if(isequal) {
 				for(size_t i3 = 0; i3 < i2; i3++) {
 					if(str[is + i3] != name[i + i3]) {
-						isequal = false;std::cout << "5470" << endl;
+						isequal = false;
 						break;
 					}
 				}
 			}
 			if(!isequal) {
-				char *gstr1 = utf8_strdown(name.c_str() + (sizeof(char) * i), i2);std::cout << "5476" << endl;
-				char *gstr2 = utf8_strdown(str.c_str() + (sizeof(char) * (is)), is2);std::cout << "5477" << endl;
+				char *gstr1 = utf8_strdown(name.c_str() + (sizeof(char) * i), i2);
+				char *gstr2 = utf8_strdown(str.c_str() + (sizeof(char) * (is)), is2);
 				if(!gstr1 || !gstr2) return 0;
 				if(strcmp(gstr1, gstr2) != 0) {free(gstr1); free(gstr2); return 0;}
-				free(gstr1);std::cout << "5480" << endl; free(gstr2);std::cout << "5480" << endl;
+				free(gstr1); free(gstr2);
 			}
-			i += i2 - 1;std::cout << "5482" << endl;
-			is += is2 - 1;std::cout << "5483" << endl;
+			i += i2 - 1;
+			is += is2 - 1;
 		} else if(name[i] != str[is] && !((name[i] >= 'a' && name[i] <= 'z') && name[i] - 32 == str[is]) && !((name[i] <= 'Z' && name[i] >= 'A') && name[i] + 32 == str[is])) {
 			return 0;
 		}
@@ -5504,31 +5537,31 @@ const char *internal_signs[] = {SIGN_PLUSMINUS, "\b", "+/-", "\b", "⊻", "\a", 
 #define DUODECIMAL_CHARS "EX"
 
 void Calculator::parseSigns(string &str, bool convert_to_internal_representation) const {
-	vector<size_t> q_begin;std::cout << "5504" << endl;
-	vector<size_t> q_end;std::cout << "5505" << endl;
-	size_t quote_index = 0;std::cout << "5506" << endl;
+	vector<size_t> q_begin;
+	vector<size_t> q_end;
+	size_t quote_index = 0;
 	while(true) {
 		quote_index = str.find_first_of("\"\'", quote_index);
 		if(quote_index == string::npos) {
 			break;
 		}
-		q_begin.push_back(quote_index);std::cout << "5512" << endl;
-		quote_index = str.find(str[quote_index], quote_index + 1);std::cout << "5513" << endl;
+		q_begin.push_back(quote_index);
+		quote_index = str.find(str[quote_index], quote_index + 1);
 		if(quote_index == string::npos) {
-			q_end.push_back(str.length() - 1);std::cout << "5515" << endl;
+			q_end.push_back(str.length() - 1);
 			break;
 		}
-		q_end.push_back(quote_index);std::cout << "5518" << endl;
-		quote_index++;std::cout << "5519" << endl;
+		q_end.push_back(quote_index);
+		quote_index++;
 	}
 	for(size_t i = 0; i < signs.size(); i++) {
-		size_t ui = str.find(signs[i]);std::cout << "5522" << endl;
-		size_t ui2 = 0;std::cout << "5523" << endl;
+		size_t ui = str.find(signs[i]);
+		size_t ui2 = 0;
 		while(ui != string::npos) {
 			for(size_t ui2 = 0; ui2 < q_end.size(); ui2++) {
 				if(ui >= q_begin[ui2]) {
 					if(ui <= q_end[ui2]) {
-						ui = str.find(signs[i], q_end[ui2] + 1);std::cout << "5528" << endl;
+						ui = str.find(signs[i], q_end[ui2] + 1);
 						if(ui == string::npos) break;
 					}
 				} else {
@@ -5541,16 +5574,16 @@ void Calculator::parseSigns(string &str, bool convert_to_internal_representation
 				q_begin[ui3] += index_shift;
 				q_end[ui3] += index_shift;
 			}
-			str.replace(ui, signs[i].length(), real_signs[i]);std::cout << "5541" << endl;
-			ui = str.find(signs[i], ui + real_signs[i].length());std::cout << "5542" << endl;
+			str.replace(ui, signs[i].length(), real_signs[i]);
+			ui = str.find(signs[i], ui + real_signs[i].length());
 		}
 	}
 
-	size_t prev_ui = string::npos, space_n = 0;std::cout << "5546" << endl;
+	size_t prev_ui = string::npos, space_n = 0;
 	while(true) {
 		size_t ui = str.find("\xe2\x81", prev_ui == string::npos ? 0 : prev_ui);
 		if(ui != string::npos && (ui == str.length() - 2 || (str[ui + 2] != -80 && (str[ui + 2] < -76 || str[ui + 2] > -71)))) ui = string::npos;
-		size_t ui2 = str.find('\xc2', prev_ui == string::npos ? 0 : prev_ui);std::cout << "5550" << endl;
+		size_t ui2 = str.find('\xc2', prev_ui == string::npos ? 0 : prev_ui);
 		if(ui2 != string::npos && (ui2 == str.length() - 1 || (str[ui2 + 1] != -71 && str[ui2 + 1] != -77 && str[ui2 + 1] != -78))) ui2 = string::npos;
 		if(ui2 != string::npos && (ui == string::npos || ui2 < ui)) ui = ui2;
 		if(ui != string::npos) {
@@ -5558,7 +5591,7 @@ void Calculator::parseSigns(string &str, bool convert_to_internal_representation
 				if(ui <= q_end[ui3] && ui >= q_begin[ui3]) {
 					ui = str.find("\xe2\x81", q_end[ui3] + 1);
 					if(ui != string::npos && (ui == str.length() - 2 || (str[ui + 2] != -80 && (str[ui + 2] < -76 || str[ui + 2] > -71)))) ui = string::npos;
-					ui2 = str.find('\xc2', q_end[ui3] + 1);std::cout << "5558" << endl;
+					ui2 = str.find('\xc2', q_end[ui3] + 1);
 					if(ui2 != string::npos && (ui2 == str.length() - 1 || (str[ui2 + 1] != -71 && str[ui2 + 1] != -77 && str[ui2 + 1] != -78))) ui2 = string::npos;
 					if(ui2 != string::npos && (ui == string::npos || ui2 < ui)) ui = ui2;
 					if(ui == string::npos) break;
@@ -5589,18 +5622,18 @@ void Calculator::parseSigns(string &str, bool convert_to_internal_representation
 			else if(str[ui + 2] == -71) str.replace(ui, 3, ui == prev_ui ? "9)" : "^(9)");
 		}
 		if(ui == prev_ui) {
-			str.erase(prev_ui - space_n - 1, 1);std::cout << "5589" << endl;
-			prev_ui = ui + 1;std::cout << "5590" << endl;
+			str.erase(prev_ui - space_n - 1, 1);
+			prev_ui = ui + 1;
 		} else {
-			prev_ui = ui + 4;std::cout << "5592" << endl;
+			prev_ui = ui + 4;
 		}
-		space_n = 0;std::cout << "5594" << endl;
+		space_n = 0;
 		while(prev_ui + 1 < str.length() && str[prev_ui] == SPACE_CH) {
-			space_n++;std::cout << "5596" << endl;
-			prev_ui++;std::cout << "5597" << endl;
+			space_n++;
+			prev_ui++;
 		}
 	}
-	prev_ui = string::npos;std::cout << "5600" << endl;
+	prev_ui = string::npos;
 	while(true) {
 		size_t ui = str.find("\xe2\x85", prev_ui == string::npos ? 0 : prev_ui);
 		if(ui != string::npos && (ui == str.length() - 2 || str[ui + 2] < -112 || str[ui + 2] > -98)) ui = string::npos;
@@ -5614,9 +5647,9 @@ void Calculator::parseSigns(string &str, bool convert_to_internal_representation
 			}
 		}
 		if(ui == string::npos) break;
-		space_n = 0;std::cout << "5614" << endl;
+		space_n = 0;
 		while(ui > 0 && ui - 1 - space_n != 0 && str[ui - 1 - space_n] == SPACE_CH) space_n++;
-		bool b_add = (ui > 0 && is_in(NUMBER_ELEMENTS, str[ui - 1 - space_n]));std::cout << "5616" << endl;
+		bool b_add = (ui > 0 && is_in(NUMBER_ELEMENTS, str[ui - 1 - space_n]));
 		int index_shift = (b_add ? 6 : 5) - 3;
 		if(str[ui + 2] == -110) index_shift++;
 		for(size_t ui2 = 0; ui2 < q_begin.size(); ui2++) {
@@ -5641,25 +5674,25 @@ void Calculator::parseSigns(string &str, bool convert_to_internal_representation
 		else if(str[ui + 2] == -111) str.replace(ui, 3, b_add ? "+(1/9)" : "(1/9)");
 		else if(str[ui + 2] == -112) str.replace(ui, 3, b_add ? "+(1/7)" : "(1/7)");
 		if(b_add) prev_ui = ui + 6;
-		else prev_ui = ui + 5;std::cout << "5641" << endl;
+		else prev_ui = ui + 5;
 	}
-	prev_ui = string::npos;std::cout << "5643" << endl;
+	prev_ui = string::npos;
 	while(true) {
-		size_t ui = str.find('\xc2', prev_ui == string::npos ? 0 : prev_ui);std::cout << "5645" << endl;
+		size_t ui = str.find('\xc2', prev_ui == string::npos ? 0 : prev_ui);
 		if(ui != string::npos && (ui == str.length() - 1 || (str[ui + 1] != -66 && str[ui + 1] != -67 && str[ui + 1] != -68))) ui = string::npos;
 		if(ui != string::npos) {
 			for(size_t ui3 = 0; ui3 < q_end.size(); ui3++) {
 				if(ui <= q_end[ui3] && ui >= q_begin[ui3]) {
-					ui = str.find('\xc2', q_end[ui3] + 1);std::cout << "5650" << endl;
+					ui = str.find('\xc2', q_end[ui3] + 1);
 					if(ui != string::npos && (ui == str.length() - 1 || (str[ui + 1] != -66 && str[ui + 1] != -67 && str[ui + 1] != -68))) ui = string::npos;
 					if(ui == string::npos) break;
 				}
 			}
 		}
 		if(ui == string::npos) break;
-		space_n = 0;std::cout << "5657" << endl;
+		space_n = 0;
 		while(ui > 0 && ui - 1 - space_n != 0 && str[ui - 1 - space_n] == SPACE_CH) space_n++;
-		bool b_add = (ui > 0 && is_in(NUMBER_ELEMENTS, str[ui - 1 - space_n]));std::cout << "5659" << endl;
+		bool b_add = (ui > 0 && is_in(NUMBER_ELEMENTS, str[ui - 1 - space_n]));
 		int index_shift = (b_add ? 6 : 5) - 2;
 		for(size_t ui2 = 0; ui2 < q_begin.size(); ui2++) {
 			if(q_begin[ui2] >= ui) {
@@ -5671,19 +5704,19 @@ void Calculator::parseSigns(string &str, bool convert_to_internal_representation
 		else if(str[ui + 1] == -67) str.replace(ui, 2, b_add ? "+(1/2)" : "(1/2)");
 		else if(str[ui + 1] == -68) str.replace(ui, 2, b_add ? "+(1/4)" : "(1/4)");
 		if(b_add) prev_ui = ui + 6;
-		else prev_ui = ui + 5;std::cout << "5671" << endl;
+		else prev_ui = ui + 5;
 	}
 	if(convert_to_internal_representation) {
-		remove_blank_ends(str);std::cout << "5674" << endl;
-		remove_duplicate_blanks(str);std::cout << "5675" << endl;
+		remove_blank_ends(str);
+		remove_duplicate_blanks(str);
 		for(size_t i = 0; i < INTERNAL_SIGNS_COUNT; i += 2) {
-			size_t ui = str.find(internal_signs[i]);std::cout << "5677" << endl;
-			size_t ui2 = 0;std::cout << "5678" << endl;
+			size_t ui = str.find(internal_signs[i]);
+			size_t ui2 = 0;
 			while(ui != string::npos) {
 				for(; ui2 < q_end.size(); ui2++) {
 					if(ui >= q_begin[ui2]) {
 						if(ui <= q_end[ui2]) {
-							ui = str.find(internal_signs[i], q_end[ui2] + 1);std::cout << "5683" << endl;
+							ui = str.find(internal_signs[i], q_end[ui2] + 1);
 							if(ui == string::npos) break;
 						}
 					} else {
@@ -5696,8 +5729,8 @@ void Calculator::parseSigns(string &str, bool convert_to_internal_representation
 					q_begin[ui3] += index_shift;
 					q_end[ui3] += index_shift;
 				}
-				str.replace(ui, strlen(internal_signs[i]), internal_signs[i + 1]);std::cout << "5696" << endl;
-				ui = str.find(internal_signs[i], ui + strlen(internal_signs[i + 1]));std::cout << "5697" << endl;
+				str.replace(ui, strlen(internal_signs[i]), internal_signs[i + 1]);
+				ui = str.find(internal_signs[i], ui + strlen(internal_signs[i + 1]));
 			}
 		}
 	}
@@ -5706,70 +5739,70 @@ void Calculator::parseSigns(string &str, bool convert_to_internal_representation
 
 MathStructure Calculator::parse(string str, const ParseOptions &po) {
 
-	MathStructure mstruct;std::cout << "5706" << endl;
-	parse(&mstruct, str, po);std::cout << "5707" << endl;
+	MathStructure mstruct;
+	parse(&mstruct, str, po);
 	return mstruct;
 
 }
 
 void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &parseoptions) {
 
-	ParseOptions po = parseoptions;std::cout << "5714" << endl;
-	MathStructure *unended_function = po.unended_function;std::cout << "5715" << endl;
-	po.unended_function = NULL;std::cout << "5716" << endl;
+	ParseOptions po = parseoptions;
+	MathStructure *unended_function = po.unended_function;
+	po.unended_function = NULL;
 
 	if(po.base == BASE_UNICODE || (po.base == BASE_CUSTOM && priv->custom_input_base_i > 62)) {
-		mstruct->set(Number(str, po));std::cout << "5719" << endl;
+		mstruct->set(Number(str, po));
 		return;
 	}
-	int base = po.base;std::cout << "5722" << endl;
+	int base = po.base;
 	if(base == BASE_CUSTOM) {
-		base = (int) priv->custom_input_base_i;std::cout << "5724" << endl;
+		base = (int) priv->custom_input_base_i;
 	} else if(base == BASE_GOLDEN_RATIO || base == BASE_SUPER_GOLDEN_RATIO || base == BASE_SQRT2) {
-		base = 2;std::cout << "5726" << endl;
+		base = 2;
 	} else if(base == BASE_PI) {
-		base = 4;std::cout << "5728" << endl;
+		base = 4;
 	} else if(base == BASE_E) {
-		base = 3;std::cout << "5730" << endl;
+		base = 3;
 	} else if(base == BASE_DUODECIMAL) {
-		base = -12;std::cout << "5732" << endl;
+		base = -12;
 	} else if(base < 2 || base > 36) {
-		base = -1;std::cout << "5734" << endl;
+		base = -1;
 	}
 
 
 
-	mstruct->clear();std::cout << "5739" << endl;
+	mstruct->clear();
 
-	const string *name = NULL;std::cout << "5741" << endl;
-	string stmp, stmp2;std::cout << "5742" << endl;
+	const string *name = NULL;
+	string stmp, stmp2;
 
-	bool b_prime_quote = true;std::cout << "5744" << endl;
+	bool b_prime_quote = true;
 
-	size_t i_degree = str.find(SIGN_DEGREE);std::cout << "5746" << endl;
+	size_t i_degree = str.find(SIGN_DEGREE);
 	if(i_degree != string::npos && i_degree < str.length() - strlen(SIGN_DEGREE) && is_not_in(NOT_IN_NAMES INTERNAL_OPERATORS NUMBER_ELEMENTS, str[i_degree + strlen(SIGN_DEGREE)])) i_degree = string::npos;
 
 	if(base != -1 && base <= BASE_HEXADECIMAL) {
 		if(i_degree == string::npos) {
-			size_t i_quote = str.find('\'', 0);std::cout << "5751" << endl;
+			size_t i_quote = str.find('\'', 0);
 			size_t i_dquote = str.find('\"', 0);
 			if(i_quote == 0 || i_dquote == 0) {
-				b_prime_quote = false;std::cout << "5754" << endl;
+				b_prime_quote = false;
 			} else if((i_quote != string::npos && i_quote < str.length() - 1 && str.find('\'', i_quote + 1) != string::npos) || (i_quote != string::npos && i_dquote == i_quote + 1) || (i_dquote != string::npos && i_dquote < str.length() - 1 && str.find('\"', i_dquote + 1) != string::npos)) {
-				b_prime_quote = false;std::cout << "5756" << endl;
+				b_prime_quote = false;
 				while(i_dquote != string::npos) {
-					i_quote = str.rfind('\'', i_dquote - 1);std::cout << "5758" << endl;
+					i_quote = str.rfind('\'', i_dquote - 1);
 					if(i_quote != string::npos) {
-						size_t i_prev = str.find_last_not_of(SPACES, i_quote - 1);std::cout << "5760" << endl;
+						size_t i_prev = str.find_last_not_of(SPACES, i_quote - 1);
 						if(i_prev != string::npos && is_in(NUMBER_ELEMENTS, str[i_prev])) {
 							if(is_in(NUMBER_ELEMENTS, str[str.find_first_not_of(SPACES, i_quote + 1)]) && str.find_first_not_of(SPACES NUMBER_ELEMENTS, i_quote + 1) == i_dquote) {
 								if(i_prev == 0) {
-									b_prime_quote = true;std::cout << "5764" << endl;
+									b_prime_quote = true;
 									break;
 								} else {
-									i_prev = str.find_last_not_of(NUMBER_ELEMENTS, i_prev - 1);std::cout << "5767" << endl;
+									i_prev = str.find_last_not_of(NUMBER_ELEMENTS, i_prev - 1);
 									if(i_prev == string::npos || (str[i_prev] != '\"' && str[i_prev] != '\'')) {
-										b_prime_quote = true;std::cout << "5769" << endl;
+										b_prime_quote = true;
 										break;
 									}
 								}
@@ -5786,205 +5819,205 @@ void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &p
 		}
 	}
 
-	parseSigns(str, true);std::cout << "5786" << endl;
+	parseSigns(str, true);
 
 	for(size_t str_index = 0; str_index < str.length(); str_index++) {
 		if(str[str_index] == '\"' || str[str_index] == '\'') {
 			if(str_index == str.length() - 1) {
-				str.erase(str_index, 1);std::cout << "5791" << endl;
+				str.erase(str_index, 1);
 			} else {
-				size_t i = str.find(str[str_index], str_index + 1);std::cout << "5793" << endl;
-				size_t name_length;std::cout << "5794" << endl;
+				size_t i = str.find(str[str_index], str_index + 1);
+				size_t name_length;
 				if(i == string::npos) {
-					i = str.length();std::cout << "5796" << endl;
-					name_length = i - str_index;std::cout << "5797" << endl;
+					i = str.length();
+					name_length = i - str_index;
 				} else {
-					name_length = i - str_index + 1;std::cout << "5799" << endl;
+					name_length = i - str_index + 1;
 				}
-				stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "5801" << endl;
-				MathStructure *mstruct = new MathStructure(str.substr(str_index + 1, i - str_index - 1));std::cout << "5802" << endl;
-				stmp += i2s(addId(mstruct));std::cout << "5803" << endl;
-				stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "5804" << endl;
-				str.replace(str_index, name_length, stmp);std::cout << "5805" << endl;
-				str_index += stmp.length() - 1;std::cout << "5806" << endl;
+				stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+				MathStructure *mstruct = new MathStructure(str.substr(str_index + 1, i - str_index - 1));
+				stmp += i2s(addId(mstruct));
+				stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+				str.replace(str_index, name_length, stmp);
+				str_index += stmp.length() - 1;
 			}
 		}
 	}
 
 
 	if(po.brackets_as_parentheses) {
-		gsub(LEFT_VECTOR_WRAP, LEFT_PARENTHESIS, str);std::cout << "5813" << endl;
-		gsub(RIGHT_VECTOR_WRAP, RIGHT_PARENTHESIS, str);std::cout << "5814" << endl;
+		gsub(LEFT_VECTOR_WRAP, LEFT_PARENTHESIS, str);
+		gsub(RIGHT_VECTOR_WRAP, RIGHT_PARENTHESIS, str);
 	}
 
 
-	size_t isave = 0;std::cout << "5818" << endl;
+	size_t isave = 0;
 	if((isave = str.find(":=", 1)) != string::npos) {
-		string name = str.substr(0, isave);std::cout << "5820" << endl;
-		string value = str.substr(isave + 2, str.length() - (isave + 2));std::cout << "5821" << endl;
-		str = value;std::cout << "5822" << endl;
-		str += COMMA;std::cout << "5823" << endl;
-		str += name;std::cout << "5824" << endl;
-		f_save->parse(*mstruct, str, po);std::cout << "5825" << endl;
+		string name = str.substr(0, isave);
+		string value = str.substr(isave + 2, str.length() - (isave + 2));
+		str = value;
+		str += COMMA;
+		str += name;
+		f_save->parse(*mstruct, str, po);
 		return;
 	}
 
 	if(po.default_dataset != NULL && str.length() > 1) {
-		size_t str_index = str.find(DOT_CH, 1);std::cout << "5830" << endl;
+		size_t str_index = str.find(DOT_CH, 1);
 		while(str_index != string::npos) {
 			if(str_index + 1 < str.length() && ((is_not_number(str[str_index + 1], base) && is_not_in(INTERNAL_OPERATORS NOT_IN_NAMES, str[str_index + 1]) && is_not_in(INTERNAL_OPERATORS NOT_IN_NAMES, str[str_index - 1])) || (is_not_in(INTERNAL_OPERATORS NOT_IN_NAMES, str[str_index + 1]) && is_not_number(str[str_index - 1], base) && is_not_in(INTERNAL_OPERATORS NOT_IN_NAMES, str[str_index - 1])))) {
-				size_t dot_index = str.find_first_of(NOT_IN_NAMES INTERNAL_OPERATORS DOT, str_index + 1);std::cout << "5833" << endl;
+				size_t dot_index = str.find_first_of(NOT_IN_NAMES INTERNAL_OPERATORS DOT, str_index + 1);
 				if(dot_index != string::npos && str[dot_index] == DOT_CH) {
-					str_index = dot_index;std::cout << "5835" << endl;
+					str_index = dot_index;
 				} else {
-					size_t property_index = str.find_last_of(NOT_IN_NAMES INTERNAL_OPERATORS, str_index - 1);std::cout << "5837" << endl;
+					size_t property_index = str.find_last_of(NOT_IN_NAMES INTERNAL_OPERATORS, str_index - 1);
 					if(property_index == string::npos) {
-						str.insert(0, 1, '.');std::cout << "5839" << endl;
-						str.insert(0, po.default_dataset->referenceName());std::cout << "5840" << endl;
-						str_index += po.default_dataset->referenceName().length() + 1;std::cout << "5841" << endl;
+						str.insert(0, 1, '.');
+						str.insert(0, po.default_dataset->referenceName());
+						str_index += po.default_dataset->referenceName().length() + 1;
 					} else {
-						str.insert(property_index + 1, 1, '.');std::cout << "5843" << endl;
-						str.insert(property_index + 1, po.default_dataset->referenceName());std::cout << "5844" << endl;
-						str_index += po.default_dataset->referenceName().length() + 1;std::cout << "5845" << endl;
+						str.insert(property_index + 1, 1, '.');
+						str.insert(property_index + 1, po.default_dataset->referenceName());
+						str_index += po.default_dataset->referenceName().length() + 1;
 					}
 				}
 			}
-			str_index = str.find(DOT_CH, str_index + 1);std::cout << "5849" << endl;
+			str_index = str.find(DOT_CH, str_index + 1);
 		}
 	}
 
 	//remove spaces in numbers
-	size_t space_i = 0;std::cout << "5854" << endl;
+	size_t space_i = 0;
 	if(!po.rpn) {
-		space_i = str.find(SPACE_CH, 0);std::cout << "5856" << endl;
+		space_i = str.find(SPACE_CH, 0);
 		while(space_i != string::npos) {
 			if(is_in(NUMBERS INTERNAL_NUMBER_CHARS DOT, str[space_i + 1]) && is_in(NUMBERS INTERNAL_NUMBER_CHARS DOT, str[space_i - 1])) {
-				str.erase(space_i, 1);std::cout << "5859" << endl;
-				space_i--;std::cout << "5860" << endl;
+				str.erase(space_i, 1);
+				space_i--;
 			}
-			space_i = str.find(SPACE_CH, space_i + 1);std::cout << "5862" << endl;
+			space_i = str.find(SPACE_CH, space_i + 1);
 		}
 	}
 
 	if(base != -1 && base <= BASE_HEXADECIMAL) {
-		bool b_degree = (i_degree != string::npos);std::cout << "5867" << endl;
+		bool b_degree = (i_degree != string::npos);
 		size_t i_quote = str.find("′");
 		size_t i_dquote = str.find("″");
 		while(i_quote != string::npos || i_dquote != string::npos) {
-			size_t i_op = 0;std::cout << "5871" << endl;
+			size_t i_op = 0;
 			if(i_quote == string::npos || i_dquote < i_quote) {
-				bool b = false;std::cout << "5873" << endl;
+				bool b = false;
 				if(b_degree) {
-					i_degree = str.rfind(SIGN_DEGREE, i_dquote - 1);std::cout << "5875" << endl;
+					i_degree = str.rfind(SIGN_DEGREE, i_dquote - 1);
 					if(i_degree != string::npos && i_degree > 0 && i_degree < i_dquote) {
-						size_t i_op = str.find_first_not_of(SPACE, i_degree + strlen(SIGN_DEGREE));std::cout << "5877" << endl;
+						size_t i_op = str.find_first_not_of(SPACE, i_degree + strlen(SIGN_DEGREE));
 						if(i_op != string::npos) {
-							i_op = str.find_first_not_of(SPACE, i_degree + strlen(SIGN_DEGREE));std::cout << "5879" << endl;
+							i_op = str.find_first_not_of(SPACE, i_degree + strlen(SIGN_DEGREE));
 							if(is_in(NUMBER_ELEMENTS, str[i_op])) i_op = str.find_first_not_of(NUMBER_ELEMENTS SPACE, i_op);
-							else i_op = 0;std::cout << "5881" << endl;
+							else i_op = 0;
 						}
-						size_t i_prev = string::npos;std::cout << "5883" << endl;
+						size_t i_prev = string::npos;
 						if(i_op == i_dquote) {
-							i_prev = str.find_last_not_of(SPACE, i_degree - 1);std::cout << "5885" << endl;
+							i_prev = str.find_last_not_of(SPACE, i_degree - 1);
 							if(i_prev != string::npos) {
 								if(is_in(NUMBER_ELEMENTS, str[i_prev])) {
-									i_prev = str.find_last_not_of(NUMBER_ELEMENTS SPACE, i_prev);std::cout << "5888" << endl;
+									i_prev = str.find_last_not_of(NUMBER_ELEMENTS SPACE, i_prev);
 									if(i_prev == string::npos) i_prev = 0;
-									else i_prev++;std::cout << "5890" << endl;
+									else i_prev++;
 								} else {
-									i_prev = string::npos;std::cout << "5892" << endl;
+									i_prev = string::npos;
 								}
 							}
 						}
 						if(i_prev != string::npos) {
-							str.insert(i_prev, LEFT_PARENTHESIS);std::cout << "5897" << endl;
-							i_degree++;std::cout << "5898" << endl;
-							i_op++;std::cout << "5899" << endl;
+							str.insert(i_prev, LEFT_PARENTHESIS);
+							i_degree++;
+							i_op++;
 							str.replace(i_op, strlen("″"), "arcsec" RIGHT_PARENTHESIS);
 							str.replace(i_degree, strlen(SIGN_DEGREE), "deg" PLUS);
-							b = true;std::cout << "5902" << endl;
+							b = true;
 						}
 					}
 				}
 				if(!b) {
 					if(str.length() >= i_dquote + strlen("″") && is_in(NUMBERS, str[i_dquote + strlen("″")])) str.insert(i_dquote + strlen("″"), " ");
 					str.replace(i_dquote, strlen("″"), b_degree ? "arcsec" : "in");
-					i_op = i_dquote;std::cout << "5909" << endl;
+					i_op = i_dquote;
 				}
 			} else {
-				bool b = false;std::cout << "5912" << endl;
+				bool b = false;
 				if(b_degree) {
-					i_degree = str.rfind(SIGN_DEGREE, i_quote - 1);std::cout << "5914" << endl;
+					i_degree = str.rfind(SIGN_DEGREE, i_quote - 1);
 					if(i_degree != string::npos && i_degree > 0 && i_degree < i_quote) {
-						size_t i_op = str.find_first_not_of(SPACE, i_degree + strlen(SIGN_DEGREE));std::cout << "5916" << endl;
+						size_t i_op = str.find_first_not_of(SPACE, i_degree + strlen(SIGN_DEGREE));
 						if(i_op != string::npos) {
-							i_op = str.find_first_not_of(SPACE, i_degree + strlen(SIGN_DEGREE));std::cout << "5918" << endl;
+							i_op = str.find_first_not_of(SPACE, i_degree + strlen(SIGN_DEGREE));
 							if(is_in(NUMBER_ELEMENTS, str[i_op])) i_op = str.find_first_not_of(NUMBER_ELEMENTS SPACE, i_op);
-							else i_op = 0;std::cout << "5920" << endl;
+							else i_op = 0;
 						}
-						size_t i_prev = string::npos;std::cout << "5922" << endl;
+						size_t i_prev = string::npos;
 						if(i_op == i_quote) {
-							i_prev = str.find_last_not_of(SPACE, i_degree - 1);std::cout << "5924" << endl;
+							i_prev = str.find_last_not_of(SPACE, i_degree - 1);
 							if(i_prev != string::npos) {
 								if(is_in(NUMBER_ELEMENTS, str[i_prev])) {
-									i_prev = str.find_last_not_of(NUMBER_ELEMENTS SPACE, i_prev);std::cout << "5927" << endl;
+									i_prev = str.find_last_not_of(NUMBER_ELEMENTS SPACE, i_prev);
 									if(i_prev == string::npos) i_prev = 0;
-									else i_prev++;std::cout << "5929" << endl;
+									else i_prev++;
 								} else {
-									i_prev = string::npos;std::cout << "5931" << endl;
+									i_prev = string::npos;
 								}
 							}
 						}
 						if(i_prev != string::npos) {
-							str.insert(i_prev, LEFT_PARENTHESIS);std::cout << "5936" << endl;
-							i_degree++;std::cout << "5937" << endl;
-							i_quote++;std::cout << "5938" << endl;
-							i_op++;std::cout << "5939" << endl;
+							str.insert(i_prev, LEFT_PARENTHESIS);
+							i_degree++;
+							i_quote++;
+							i_op++;
 							if(i_dquote != string::npos) {
-								i_dquote++;std::cout << "5941" << endl;
+								i_dquote++;
 								size_t i_op2 = str.find_first_not_of(SPACE, i_quote + strlen("′"));
 								if(i_op2 != string::npos && is_in(NUMBER_ELEMENTS, str[i_op2])) i_op2 = str.find_first_not_of(NUMBER_ELEMENTS SPACE, i_op2);
-								else i_op2 = 0;std::cout << "5944" << endl;
+								else i_op2 = 0;
 								if(i_op2 == i_dquote) {
 									str.replace(i_dquote, strlen("″"), "arcsec" RIGHT_PARENTHESIS);
-									i_op = i_op2;std::cout << "5947" << endl;
+									i_op = i_op2;
 								}
 							}
 							str.replace(i_quote, strlen("′"), i_op == i_quote ? "arcmin" RIGHT_PARENTHESIS : "arcmin" PLUS);
 							str.replace(i_degree, strlen(SIGN_DEGREE), "deg" PLUS);
-							b = true;std::cout << "5952" << endl;
+							b = true;
 						}
 					}
 				}
 				if(!b) {
 					i_op = str.find_first_not_of(SPACE, i_quote + strlen("′"));
 					if(i_op != string::npos && is_in(NUMBER_ELEMENTS, str[i_op])) i_op = str.find_first_not_of(NUMBER_ELEMENTS SPACE, i_op);
-					else i_op = 0;std::cout << "5959" << endl;
-					size_t i_prev = string::npos;std::cout << "5960" << endl;
+					else i_op = 0;
+					size_t i_prev = string::npos;
 					if(((!b_degree && i_op == string::npos) || i_op == i_dquote) && i_quote != 0) {
-						i_prev = str.find_last_not_of(SPACE, i_quote - 1);std::cout << "5962" << endl;
+						i_prev = str.find_last_not_of(SPACE, i_quote - 1);
 						if(i_prev != string::npos) {
 							if(is_in(NUMBER_ELEMENTS, str[i_prev])) {
-								i_prev = str.find_last_not_of(NUMBER_ELEMENTS SPACE, i_prev);std::cout << "5965" << endl;
+								i_prev = str.find_last_not_of(NUMBER_ELEMENTS SPACE, i_prev);
 								if(i_prev == string::npos) i_prev = 0;
-								else i_prev++;std::cout << "5967" << endl;
+								else i_prev++;
 							} else {
-								i_prev = string::npos;std::cout << "5969" << endl;
+								i_prev = string::npos;
 							}
 						}
 					}
 					if(i_prev != string::npos) {
-						str.insert(i_prev, LEFT_PARENTHESIS);std::cout << "5974" << endl;
-						i_quote++;std::cout << "5975" << endl;
+						str.insert(i_prev, LEFT_PARENTHESIS);
+						i_quote++;
 						if(i_op == string::npos) str += b_degree ? "arcsec" RIGHT_PARENTHESIS : "in" RIGHT_PARENTHESIS;
 						else str.replace(i_op + 1, strlen("″"), b_degree ? "arcsec" RIGHT_PARENTHESIS : "in" RIGHT_PARENTHESIS);
 						str.replace(i_quote, strlen("′"), b_degree ? "arcmin" PLUS : "ft" PLUS);
 						if(i_op == string::npos) break;
-						i_op++;std::cout << "5980" << endl;
+						i_op++;
 					} else {
 						if(str.length() >= i_quote + strlen("′") && is_in(NUMBERS, str[i_quote + strlen("′")])) str.insert(i_quote + strlen("′"), " ");
 						str.replace(i_quote, strlen("′"), b_degree ? "arcmin" : "ft");
-						i_op = i_quote;std::cout << "5984" << endl;
+						i_op = i_quote;
 					}
 				}
 			}
@@ -5998,12 +6031,12 @@ void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &p
 	while(i_mod != string::npos) {
 		if(po.rpn) {
 			if(i_mod == 0 || is_not_in(OPERATORS "\\" INTERNAL_OPERATORS SPACE, str[i_mod - 1])) {
-				str.replace(i_mod, 1, v_percent->referenceName());std::cout << "5998" << endl;
-				i_mod += v_percent->referenceName().length() - 1;std::cout << "5999" << endl;
+				str.replace(i_mod, 1, v_percent->referenceName());
+				i_mod += v_percent->referenceName().length() - 1;
 			}
 		} else if(i_mod == 0 || i_mod == str.length() - 1 || (is_in(RIGHT_PARENTHESIS RIGHT_VECTOR_WRAP COMMA OPERATORS "%\a\b", str[i_mod + 1]) && str[i_mod + 1] != BITWISE_NOT_CH && str[i_mod + 1] != NOT_CH) || is_in(LEFT_PARENTHESIS LEFT_VECTOR_WRAP COMMA OPERATORS "\a\b", str[i_mod - 1])) {
-			str.replace(i_mod, 1, v_percent->referenceName());std::cout << "6002" << endl;
-			i_mod += v_percent->referenceName().length() - 1;std::cout << "6003" << endl;
+			str.replace(i_mod, 1, v_percent->referenceName());
+			i_mod += v_percent->referenceName().length() - 1;
 		}
 		i_mod = str.find("%", i_mod + 1);
 	}
@@ -6016,171 +6049,171 @@ void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &p
 
 	for(size_t str_index = 0; str_index < str.length(); str_index++) {
 		if(str[str_index] == LEFT_VECTOR_WRAP_CH) {
-			int i4 = 1;std::cout << "6016" << endl;
-			size_t i3 = str_index;std::cout << "6017" << endl;
+			int i4 = 1;
+			size_t i3 = str_index;
 			while(true) {
-				i3 = str.find_first_of(LEFT_VECTOR_WRAP RIGHT_VECTOR_WRAP, i3 + 1);std::cout << "6019" << endl;
+				i3 = str.find_first_of(LEFT_VECTOR_WRAP RIGHT_VECTOR_WRAP, i3 + 1);
 				if(i3 == string::npos) {
 					for(; i4 > 0; i4--) {
-						str += RIGHT_VECTOR_WRAP;std::cout << "6022" << endl;
+						str += RIGHT_VECTOR_WRAP;
 					}
-					i3 = str.length() - 1;std::cout << "6024" << endl;
+					i3 = str.length() - 1;
 				} else if(str[i3] == LEFT_VECTOR_WRAP_CH) {
-					i4++;std::cout << "6026" << endl;
+					i4++;
 				} else if(str[i3] == RIGHT_VECTOR_WRAP_CH) {
-					i4--;std::cout << "6028" << endl;
+					i4--;
 					if(i4 > 0) {
-						size_t i5 = str.find_first_not_of(SPACE, i3 + 1);std::cout << "6030" << endl;
+						size_t i5 = str.find_first_not_of(SPACE, i3 + 1);
 						if(i5 != string::npos && str[i5] == LEFT_VECTOR_WRAP_CH) {
-							str.insert(i5, COMMA);std::cout << "6032" << endl;
+							str.insert(i5, COMMA);
 						}
 					}
 				}
 				if(i4 == 0) {
-					stmp2 = str.substr(str_index + 1, i3 - str_index - 1);std::cout << "6037" << endl;
-					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6038" << endl;
-					stmp += i2s(parseAddVectorId(stmp2, po));std::cout << "6039" << endl;
-					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6040" << endl;
-					str.replace(str_index, i3 + 1 - str_index, stmp);std::cout << "6041" << endl;
-					str_index += stmp.length() - 1;std::cout << "6042" << endl;
+					stmp2 = str.substr(str_index + 1, i3 - str_index - 1);
+					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+					stmp += i2s(parseAddVectorId(stmp2, po));
+					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+					str.replace(str_index, i3 + 1 - str_index, stmp);
+					str_index += stmp.length() - 1;
 					break;
 				}
 			}
 		} else if(str[str_index] == '\\' && str_index + 1 < str.length() && (is_not_in(NOT_IN_NAMES INTERNAL_OPERATORS NUMBERS, str[str_index + 1]) || (!po.rpn && str_index > 0 && is_in(NUMBERS SPACE PLUS MINUS BITWISE_NOT NOT LEFT_PARENTHESIS, str[str_index + 1])))) {
 			if(is_in(NUMBERS SPACE PLUS MINUS BITWISE_NOT NOT LEFT_PARENTHESIS, str[str_index + 1])) {
 				str.replace(str_index, 1, "//");
-				str_index++;std::cout << "6049" << endl;
+				str_index++;
 			} else {
-				stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6051" << endl;
-				size_t l = 1;std::cout << "6052" << endl;
+				stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+				size_t l = 1;
 				if(str[str_index + l] < 0) {
 					do {
-						l++;std::cout << "6055" << endl;
+						l++;
 					} while(str_index + l < str.length() && str[str_index + l] < 0 && (unsigned char) str[str_index + l] < 0xC0);
-					l--;std::cout << "6057" << endl;
+					l--;
 				}
-				MathStructure *mstruct = new MathStructure(str.substr(str_index + 1, l));std::cout << "6059" << endl;
-				stmp += i2s(addId(mstruct));std::cout << "6060" << endl;
-				stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6061" << endl;
-				str.replace(str_index, l + 1, stmp);std::cout << "6062" << endl;
-				str_index += stmp.length() - l;std::cout << "6063" << endl;
+				MathStructure *mstruct = new MathStructure(str.substr(str_index + 1, l));
+				stmp += i2s(addId(mstruct));
+				stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+				str.replace(str_index, l + 1, stmp);
+				str_index += stmp.length() - l;
 			}
 		} else if(str[str_index] == '!' && po.functions_enabled) {
 			if(str_index > 0 && (str.length() - str_index == 1 || str[str_index + 1] != EQUALS_CH)) {
 				stmp2 = "";
-				size_t i5 = str.find_last_not_of(SPACE, str_index - 1);std::cout << "6068" << endl;
-				size_t i3;std::cout << "6069" << endl;
+				size_t i5 = str.find_last_not_of(SPACE, str_index - 1);
+				size_t i3;
 				if(i5 == string::npos) {
 				} else if(str[i5] == RIGHT_PARENTHESIS_CH) {
 					if(i5 == 0) {
-						stmp2 = str.substr(0, i5 + 1);std::cout << "6073" << endl;
+						stmp2 = str.substr(0, i5 + 1);
 					} else {
-						i3 = i5 - 1;std::cout << "6075" << endl;
-						size_t i4 = 1;std::cout << "6076" << endl;
+						i3 = i5 - 1;
+						size_t i4 = 1;
 						while(true) {
-							i3 = str.find_last_of(LEFT_PARENTHESIS RIGHT_PARENTHESIS, i3);std::cout << "6078" << endl;
+							i3 = str.find_last_of(LEFT_PARENTHESIS RIGHT_PARENTHESIS, i3);
 							if(i3 == string::npos) {
-								stmp2 = str.substr(0, i5 + 1);std::cout << "6080" << endl;
+								stmp2 = str.substr(0, i5 + 1);
 								break;
 							}
 							if(str[i3] == RIGHT_PARENTHESIS_CH) {
-								i4++;std::cout << "6084" << endl;
+								i4++;
 							} else {
-								i4--;std::cout << "6086" << endl;
+								i4--;
 								if(i4 == 0) {
-									stmp2 = str.substr(i3, i5 + 1 - i3);std::cout << "6088" << endl;
+									stmp2 = str.substr(i3, i5 + 1 - i3);
 									break;
 								}
 							}
 							if(i3 == 0) {
-								stmp2 = str.substr(0, i5 + 1);std::cout << "6093" << endl;
+								stmp2 = str.substr(0, i5 + 1);
 								break;
 							}
-							i3--;std::cout << "6096" << endl;
+							i3--;
 						}
 					}
 				} else if(str[i5] == ID_WRAP_RIGHT_CH && (i3 = str.find_last_of(ID_WRAP_LEFT, i5 - 1)) != string::npos) {
-					stmp2 = str.substr(i3, i5 + 1 - i3);std::cout << "6100" << endl;
+					stmp2 = str.substr(i3, i5 + 1 - i3);
 				} else if(is_not_in(RESERVED OPERATORS INTERNAL_OPERATORS SPACES VECTOR_WRAPS PARENTHESISS COMMAS, str[i5])) {
-					i3 = str.find_last_of(RESERVED OPERATORS INTERNAL_OPERATORS SPACES VECTOR_WRAPS PARENTHESISS COMMAS, i5);std::cout << "6102" << endl;
+					i3 = str.find_last_of(RESERVED OPERATORS INTERNAL_OPERATORS SPACES VECTOR_WRAPS PARENTHESISS COMMAS, i5);
 					if(i3 == string::npos) {
-						stmp2 = str.substr(0, i5 + 1);std::cout << "6104" << endl;
+						stmp2 = str.substr(0, i5 + 1);
 					} else {
-						stmp2 = str.substr(i3 + 1, i5 - i3);std::cout << "6106" << endl;
+						stmp2 = str.substr(i3 + 1, i5 - i3);
 					}
 				}
 				if(!stmp2.empty()) {
-					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6110" << endl;
+					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
 					int ifac = 1;
-					i3 = str_index + 1;std::cout << "6112" << endl;
-					size_t i4 = i3;std::cout << "6113" << endl;
+					i3 = str_index + 1;
+					size_t i4 = i3;
 					while((i3 = str.find_first_not_of(SPACE, i3)) != string::npos && str[i3] == '!') {
 						ifac++;
-						i3++;std::cout << "6116" << endl;
-						i4 = i3;std::cout << "6117" << endl;
+						i3++;
+						i4 = i3;
 					}
 					if(ifac == 2) stmp += i2s(parseAddId(f_factorial2, stmp2, po));
 					else if(ifac == 1) stmp += i2s(parseAddId(f_factorial, stmp2, po));
 					else stmp += i2s(parseAddIdAppend(f_multifactorial, MathStructure(ifac, 1, 0), stmp2, po));
-					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6122" << endl;
-					str.replace(i5 - stmp2.length() + 1, stmp2.length() + i4 - i5 - 1, stmp);std::cout << "6123" << endl;
-					str_index = stmp.length() + i5 - stmp2.length();std::cout << "6124" << endl;
+					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+					str.replace(i5 - stmp2.length() + 1, stmp2.length() + i4 - i5 - 1, stmp);
+					str_index = stmp.length() + i5 - stmp2.length();
 				}
 			}
 		} else if(!po.rpn && (str[str_index] == 'c' || str[str_index] == 'C') && str.length() > str_index + 6 && str[str_index + 5] == SPACE_CH && (str_index == 0 || is_in(OPERATORS INTERNAL_OPERATORS PARENTHESISS, str[str_index - 1])) && compare_name_no_case("compl", str, 5, str_index, base)) {
-			str.replace(str_index, 6, BITWISE_NOT);std::cout << "6128" << endl;
+			str.replace(str_index, 6, BITWISE_NOT);
 		} else if(str[str_index] == SPACE_CH) {
-			size_t i = str.find(SPACE, str_index + 1);std::cout << "6130" << endl;
+			size_t i = str.find(SPACE, str_index + 1);
 			if(po.rpn && i == string::npos) i = str.length();
 			if(i != string::npos) {
-				i -= str_index + 1;std::cout << "6133" << endl;
-				size_t il = 0;std::cout << "6134" << endl;
+				i -= str_index + 1;
+				size_t il = 0;
 				if(i == per_str_len && (il = compare_name_no_case(per_str, str, per_str_len, str_index + 1, base))) {
-					str.replace(str_index + 1, il, DIVISION);std::cout << "6136" << endl;
-					str_index++;std::cout << "6137" << endl;
+					str.replace(str_index + 1, il, DIVISION);
+					str_index++;
 				} else if(i == times_str_len && (il = compare_name_no_case(times_str, str, times_str_len, str_index + 1, base))) {
-					str.replace(str_index + 1, il, MULTIPLICATION);std::cout << "6139" << endl;
-					str_index++;std::cout << "6140" << endl;
+					str.replace(str_index + 1, il, MULTIPLICATION);
+					str_index++;
 				} else if(i == plus_str_len && (il = compare_name_no_case(plus_str, str, plus_str_len, str_index + 1, base))) {
-					str.replace(str_index + 1, il, PLUS);std::cout << "6142" << endl;
-					str_index++;std::cout << "6143" << endl;
+					str.replace(str_index + 1, il, PLUS);
+					str_index++;
 				} else if(i == minus_str_len && (il = compare_name_no_case(minus_str, str, minus_str_len, str_index + 1, base))) {
-					str.replace(str_index + 1, il, MINUS);std::cout << "6145" << endl;
-					str_index++;std::cout << "6146" << endl;
+					str.replace(str_index + 1, il, MINUS);
+					str_index++;
 				} else if(and_str_len > 0 && i == and_str_len && (il = compare_name_no_case(and_str, str, and_str_len, str_index + 1, base))) {
-					str.replace(str_index + 1, il, LOGICAL_AND);std::cout << "6148" << endl;
-					str_index += 2;std::cout << "6149" << endl;
+					str.replace(str_index + 1, il, LOGICAL_AND);
+					str_index += 2;
 				} else if(i == AND_str_len && (il = compare_name_no_case(AND_str, str, AND_str_len, str_index + 1, base))) {
-					str.replace(str_index + 1, il, LOGICAL_AND);std::cout << "6151" << endl;
-					str_index += 2;std::cout << "6152" << endl;
+					str.replace(str_index + 1, il, LOGICAL_AND);
+					str_index += 2;
 				} else if(or_str_len > 0 && i == or_str_len && (il = compare_name_no_case(or_str, str, or_str_len, str_index + 1, base))) {
-					str.replace(str_index + 1, il, LOGICAL_OR);std::cout << "6154" << endl;
-					str_index += 2;std::cout << "6155" << endl;
+					str.replace(str_index + 1, il, LOGICAL_OR);
+					str_index += 2;
 				} else if(i == OR_str_len && (il = compare_name_no_case(OR_str, str, OR_str_len, str_index + 1, base))) {
-					str.replace(str_index + 1, il, LOGICAL_OR);std::cout << "6157" << endl;
-					str_index += 2;std::cout << "6158" << endl;
+					str.replace(str_index + 1, il, LOGICAL_OR);
+					str_index += 2;
 				} else if(i == XOR_str_len && (il = compare_name_no_case(XOR_str, str, XOR_str_len, str_index + 1, base))) {
 					str.replace(str_index + 1, il, "\a");
-					str_index++;std::cout << "6161" << endl;
+					str_index++;
 				} else if(i == 5 && (il = compare_name_no_case("bitor", str, 5, str_index + 1, base))) {
-					str.replace(str_index + 1, il, BITWISE_OR);std::cout << "6163" << endl;
-					str_index++;std::cout << "6164" << endl;
+					str.replace(str_index + 1, il, BITWISE_OR);
+					str_index++;
 				} else if(i == 6 && (il = compare_name_no_case("bitand", str, 6, str_index + 1, base))) {
-					str.replace(str_index + 1, il, BITWISE_AND);std::cout << "6166" << endl;
-					str_index++;std::cout << "6167" << endl;
+					str.replace(str_index + 1, il, BITWISE_AND);
+					str_index++;
 				} else if(i == 3 && (il = compare_name_no_case("mod", str, 3, str_index + 1, base))) {
 					str.replace(str_index + 1, il, "\%\%");
-					str_index += 2;std::cout << "6170" << endl;
+					str_index += 2;
 				} else if(i == 3 && (il = compare_name_no_case("rem", str, 3, str_index + 1, base))) {
 					str.replace(str_index + 1, il, "%");
-					str_index++;std::cout << "6173" << endl;
+					str_index++;
 				} else if(i == 3 && (il = compare_name_no_case("div", str, 3, str_index + 1, base))) {
 					if(po.rpn) {
 						str.replace(str_index + 1, il, "\\");
-						str_index++;std::cout << "6177" << endl;
+						str_index++;
 					} else {
 						str.replace(str_index + 1, il, "//");
-						str_index += 2;std::cout << "6180" << endl;
+						str_index += 2;
 					}
 				}
 			}
@@ -6190,278 +6223,278 @@ void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &p
 			if(str_index + 2 < str.length() && (str[str_index + 1] == 'x' || str[str_index + 1] == 'X') && is_in(NUMBER_ELEMENTS "abcdefABCDEF", str[str_index + 2])) {
 				//hexadecimal number 0x...
 				if(po.base == BASE_HEXADECIMAL) {
-					str.erase(str_index, 2);std::cout << "6190" << endl;
+					str.erase(str_index, 2);
 				} else {
-					size_t i;std::cout << "6192" << endl;
+					size_t i;
 					if(po.rpn) i = str.find_first_not_of(NUMBER_ELEMENTS "abcdefABCDEF", str_index + 2);
 					else i = str.find_first_not_of(SPACE NUMBER_ELEMENTS "abcdefABCDEF", str_index + 2);
-					size_t name_length;std::cout << "6195" << endl;
+					size_t name_length;
 					if(i == string::npos) i = str.length();
 					while(str[i - 1] == SPACE_CH) i--;
-					name_length = i - str_index;std::cout << "6198" << endl;
-					ParseOptions po_hex = po;std::cout << "6199" << endl;
-					po_hex.base = BASE_HEXADECIMAL;std::cout << "6200" << endl;
-					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6201" << endl;
-					MathStructure *mstruct = new MathStructure(Number(str.substr(str_index, i - str_index), po_hex));std::cout << "6202" << endl;
-					stmp += i2s(addId(mstruct));std::cout << "6203" << endl;
-					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6204" << endl;
-					str.replace(str_index, name_length, stmp);std::cout << "6205" << endl;
-					str_index += stmp.length() - 1;std::cout << "6206" << endl;
+					name_length = i - str_index;
+					ParseOptions po_hex = po;
+					po_hex.base = BASE_HEXADECIMAL;
+					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+					MathStructure *mstruct = new MathStructure(Number(str.substr(str_index, i - str_index), po_hex));
+					stmp += i2s(addId(mstruct));
+					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+					str.replace(str_index, name_length, stmp);
+					str_index += stmp.length() - 1;
 				}
 
 			} else if(base <= 12 && str_index + 2 < str.length() && (str[str_index + 1] == 'b' || str[str_index + 1] == 'B') && is_in("01", str[str_index + 2])) {
 				//binary number 0b...
 				if(po.base == BASE_BINARY) {
-					str.erase(str_index, 2);std::cout << "6212" << endl;
+					str.erase(str_index, 2);
 				} else {
-					size_t i;std::cout << "6214" << endl;
+					size_t i;
 					if(po.rpn) i = str.find_first_not_of(NUMBER_ELEMENTS, str_index + 2);
-					else i = str.find_first_not_of(SPACE NUMBER_ELEMENTS, str_index + 2);std::cout << "6216" << endl;
-					size_t name_length;std::cout << "6217" << endl;
+					else i = str.find_first_not_of(SPACE NUMBER_ELEMENTS, str_index + 2);
+					size_t name_length;
 					if(i == string::npos) i = str.length();
 					while(str[i - 1] == SPACE_CH) i--;
-					name_length = i - str_index;std::cout << "6220" << endl;
-					ParseOptions po_bin = po;std::cout << "6221" << endl;
-					po_bin.base = BASE_BINARY;std::cout << "6222" << endl;
-					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6223" << endl;
-					MathStructure *mstruct = new MathStructure(Number(str.substr(str_index, i - str_index), po_bin));std::cout << "6224" << endl;
-					stmp += i2s(addId(mstruct));std::cout << "6225" << endl;
-					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6226" << endl;
-					str.replace(str_index, name_length, stmp);std::cout << "6227" << endl;
-					str_index += stmp.length() - 1;std::cout << "6228" << endl;
+					name_length = i - str_index;
+					ParseOptions po_bin = po;
+					po_bin.base = BASE_BINARY;
+					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+					MathStructure *mstruct = new MathStructure(Number(str.substr(str_index, i - str_index), po_bin));
+					stmp += i2s(addId(mstruct));
+					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+					str.replace(str_index, name_length, stmp);
+					str_index += stmp.length() - 1;
 				}
 			} else if(base <= 24 && str_index + 2 < str.length() && (str[str_index + 1] == 'o' || str[str_index + 1] == 'O') && is_in(NUMBERS, str[str_index + 2])) {
 				//octal number 0o...
 				if(po.base == BASE_OCTAL) {
-					str.erase(str_index, 2);std::cout << "6233" << endl;
+					str.erase(str_index, 2);
 				} else {
-					size_t i;std::cout << "6235" << endl;
+					size_t i;
 					if(po.rpn) i = str.find_first_not_of(NUMBER_ELEMENTS, str_index + 2);
-					else i = str.find_first_not_of(SPACE NUMBER_ELEMENTS, str_index + 2);std::cout << "6237" << endl;
-					size_t name_length;std::cout << "6238" << endl;
+					else i = str.find_first_not_of(SPACE NUMBER_ELEMENTS, str_index + 2);
+					size_t name_length;
 					if(i == string::npos) i = str.length();
 					while(str[i - 1] == SPACE_CH) i--;
-					name_length = i - str_index;std::cout << "6241" << endl;
-					ParseOptions po_oct = po;std::cout << "6242" << endl;
-					po_oct.base = BASE_OCTAL;std::cout << "6243" << endl;
-					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6244" << endl;
-					MathStructure *mstruct = new MathStructure(Number(str.substr(str_index, i - str_index), po_oct));std::cout << "6245" << endl;
-					stmp += i2s(addId(mstruct));std::cout << "6246" << endl;
-					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6247" << endl;
-					str.replace(str_index, name_length, stmp);std::cout << "6248" << endl;
-					str_index += stmp.length() - 1;std::cout << "6249" << endl;
+					name_length = i - str_index;
+					ParseOptions po_oct = po;
+					po_oct.base = BASE_OCTAL;
+					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+					MathStructure *mstruct = new MathStructure(Number(str.substr(str_index, i - str_index), po_oct));
+					stmp += i2s(addId(mstruct));
+					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+					str.replace(str_index, name_length, stmp);
+					str_index += stmp.length() - 1;
 				}
 			}
 		} else if(is_not_in(NUMBERS INTERNAL_OPERATORS NOT_IN_NAMES, str[str_index])) {
-			bool p_mode = false;std::cout << "6253" << endl;
-			void *best_p_object = NULL;std::cout << "6254" << endl;
-			Prefix *best_p = NULL;std::cout << "6255" << endl;
-			size_t best_pl = 0;std::cout << "6256" << endl;
-			size_t best_pnl = 0;std::cout << "6257" << endl;
+			bool p_mode = false;
+			void *best_p_object = NULL;
+			Prefix *best_p = NULL;
+			size_t best_pl = 0;
+			size_t best_pnl = 0;
 			bool moved_forward = false;
-			const string *found_function_name = NULL;std::cout << "6259" << endl;
-			bool case_sensitive = false;std::cout << "6260" << endl;
-			size_t found_function_name_length = 0;std::cout << "6261" << endl;
-			void *found_function = NULL, *object = NULL;std::cout << "6262" << endl;
-			int vt2 = -1;std::cout << "6263" << endl;
-			size_t ufv_index;std::cout << "6264" << endl;
-			size_t name_length;std::cout << "6265" << endl;
-			size_t vt3 = 0;std::cout << "6266" << endl;
-			char ufvt = 0;std::cout << "6267" << endl;
-			size_t last_name_char = str.find_first_of(NOT_IN_NAMES INTERNAL_OPERATORS, str_index + 1);std::cout << "6268" << endl;
+			const string *found_function_name = NULL;
+			bool case_sensitive = false;
+			size_t found_function_name_length = 0;
+			void *found_function = NULL, *object = NULL;
+			int vt2 = -1;
+			size_t ufv_index;
+			size_t name_length;
+			size_t vt3 = 0;
+			char ufvt = 0;
+			size_t last_name_char = str.find_first_of(NOT_IN_NAMES INTERNAL_OPERATORS, str_index + 1);
 			if(last_name_char == string::npos) {
-				last_name_char = str.length() - 1;std::cout << "6270" << endl;
+				last_name_char = str.length() - 1;
 			} else {
-				last_name_char--;std::cout << "6272" << endl;
+				last_name_char--;
 			}
-			size_t last_unit_char = str.find_last_not_of(NUMBERS, last_name_char);std::cout << "6274" << endl;
-			size_t name_chars_left = last_name_char - str_index + 1;std::cout << "6275" << endl;
-			size_t unit_chars_left = last_unit_char - str_index + 1;std::cout << "6276" << endl;
+			size_t last_unit_char = str.find_last_not_of(NUMBERS, last_name_char);
+			size_t name_chars_left = last_name_char - str_index + 1;
+			size_t unit_chars_left = last_unit_char - str_index + 1;
 			if(name_chars_left <= UFV_LENGTHS) {
-				ufv_index = name_chars_left - 1;std::cout << "6278" << endl;
-				vt2 = 0;std::cout << "6279" << endl;
+				ufv_index = name_chars_left - 1;
+				vt2 = 0;
 			} else {
-				ufv_index = 0;std::cout << "6281" << endl;
+				ufv_index = 0;
 			}
-			Prefix *p = NULL;std::cout << "6283" << endl;
+			Prefix *p = NULL;
 			while(vt2 < 4) {
-				name = NULL;std::cout << "6285" << endl;
-				p = NULL;std::cout << "6286" << endl;
+				name = NULL;
+				p = NULL;
 				switch(vt2) {
 					case -1: {
 						if(ufv_index < ufvl.size()) {
 							switch(ufvl_t[ufv_index]) {
 								case 'v': {
 									if(po.variables_enabled && !p_mode) {
-										name = &((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).name;std::cout << "6293" << endl;
-										case_sensitive = ((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).case_sensitive;std::cout << "6294" << endl;
-										name_length = name->length();std::cout << "6295" << endl;
+										name = &((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).name;
+										case_sensitive = ((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).case_sensitive;
+										name_length = name->length();
 										if(name_length < found_function_name_length) {
-											name = NULL;std::cout << "6297" << endl;
+											name = NULL;
 										} else if(po.limit_implicit_multiplication) {
 											if(name_length != name_chars_left && name_length != unit_chars_left) name = NULL;
 										} else if(name_length > name_chars_left) {
-											name = NULL;std::cout << "6301" << endl;
+											name = NULL;
 										}
 									}
 									break;
 								}
 								case 'f': {
 									if(po.functions_enabled && !found_function_name && !p_mode) {
-										name = &((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).name;std::cout << "6308" << endl;
-										case_sensitive = ((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).case_sensitive;std::cout << "6309" << endl;
-										name_length = name->length();std::cout << "6310" << endl;
+										name = &((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).name;
+										case_sensitive = ((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).case_sensitive;
+										name_length = name->length();
 										if(po.limit_implicit_multiplication) {
 											if(name_length != name_chars_left && name_length != unit_chars_left) name = NULL;
 										} else if(name_length > name_chars_left || name_length < found_function_name_length) {
-											name = NULL;std::cout << "6314" << endl;
+											name = NULL;
 										}
 									}
 									break;
 								}
 								case 'u': {
 									if(po.units_enabled && !p_mode) {
-										name = &((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).name;std::cout << "6321" << endl;
-										case_sensitive = ((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).case_sensitive;std::cout << "6322" << endl;
-										name_length = name->length();std::cout << "6323" << endl;
+										name = &((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).name;
+										case_sensitive = ((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).case_sensitive;
+										name_length = name->length();
 										if(name_length < found_function_name_length) {
-											name = NULL;std::cout << "6325" << endl;
+											name = NULL;
 										} else if(po.limit_implicit_multiplication || ((ExpressionItem*) ufvl[ufv_index])->getName(ufvl_i[ufv_index]).plural) {
 											if(name_length != unit_chars_left) name = NULL;
 										} else if(name_length > unit_chars_left) {
-											name = NULL;std::cout << "6329" << endl;
+											name = NULL;
 										}
 									}
 									break;
 								}
 								case 'p': {
 									if(!p && po.units_enabled) {
-										name = &((Prefix*) ufvl[ufv_index])->shortName();std::cout << "6336" << endl;
-										name_length = name->length();std::cout << "6337" << endl;
+										name = &((Prefix*) ufvl[ufv_index])->shortName();
+										name_length = name->length();
 										if(name_length >= unit_chars_left || name_length < found_function_name_length) {
-											name = NULL;std::cout << "6339" << endl;
+											name = NULL;
 										}
 									}
-									case_sensitive = true;std::cout << "6342" << endl;
+									case_sensitive = true;
 									break;
 								}
 								case 'P': {
 									if(!p && po.units_enabled) {
-										name = &((Prefix*) ufvl[ufv_index])->longName();std::cout << "6347" << endl;
-										name_length = name->length();std::cout << "6348" << endl;
+										name = &((Prefix*) ufvl[ufv_index])->longName();
+										name_length = name->length();
 										if(name_length >= unit_chars_left || name_length < found_function_name_length) {
-											name = NULL;std::cout << "6350" << endl;
+											name = NULL;
 										}
 									}
-									case_sensitive = false;std::cout << "6353" << endl;
+									case_sensitive = false;
 									break;
 								}
 								case 'q': {
 									if(!p && po.units_enabled) {
-										name = &((Prefix*) ufvl[ufv_index])->unicodeName();std::cout << "6358" << endl;
-										name_length = name->length();std::cout << "6359" << endl;
+										name = &((Prefix*) ufvl[ufv_index])->unicodeName();
+										name_length = name->length();
 										if(name_length >= unit_chars_left || name_length < found_function_name_length) {
-											name = NULL;std::cout << "6361" << endl;
+											name = NULL;
 										}
 									}
-									case_sensitive = true;std::cout << "6364" << endl;
+									case_sensitive = true;
 									break;
 								}
 							}
-							ufvt = ufvl_t[ufv_index];std::cout << "6368" << endl;
-							object = ufvl[ufv_index];std::cout << "6369" << endl;
-							ufv_index++;std::cout << "6370" << endl;
+							ufvt = ufvl_t[ufv_index];
+							object = ufvl[ufv_index];
+							ufv_index++;
 							break;
 						} else {
 							if(found_function_name) {
-								vt2 = 4;std::cout << "6374" << endl;
+								vt2 = 4;
 								break;
 							}
-							vt2 = 0;std::cout << "6377" << endl;
-							vt3 = 0;std::cout << "6378" << endl;
+							vt2 = 0;
+							vt3 = 0;
 							if(po.limit_implicit_multiplication && unit_chars_left <= UFV_LENGTHS) {
-								ufv_index = unit_chars_left - 1;std::cout << "6380" << endl;
+								ufv_index = unit_chars_left - 1;
 							} else {
-								ufv_index = UFV_LENGTHS - 1;std::cout << "6382" << endl;
+								ufv_index = UFV_LENGTHS - 1;
 							}
 						}
 					}
 					case 0: {
 						if(po.units_enabled && ufv_index < unit_chars_left - 1 && vt3 < ufv[vt2][ufv_index].size()) {
-							object = ufv[vt2][ufv_index][vt3];std::cout << "6388" << endl;
+							object = ufv[vt2][ufv_index][vt3];
 							switch(ufv_i[vt2][ufv_index][vt3]) {
 								case 1: {
-									ufvt = 'P';std::cout << "6391" << endl;
-									name = &((Prefix*) object)->longName();std::cout << "6392" << endl;
-									name_length = name->length();std::cout << "6393" << endl;
-									case_sensitive = false;std::cout << "6394" << endl;
+									ufvt = 'P';
+									name = &((Prefix*) object)->longName();
+									name_length = name->length();
+									case_sensitive = false;
 									break;
 								}
 								case 2: {
-									ufvt = 'p';std::cout << "6398" << endl;
-									name = &((Prefix*) object)->shortName();std::cout << "6399" << endl;
-									name_length = name->length();std::cout << "6400" << endl;
-									case_sensitive = true;std::cout << "6401" << endl;
+									ufvt = 'p';
+									name = &((Prefix*) object)->shortName();
+									name_length = name->length();
+									case_sensitive = true;
 									break;
 								}
 								case 3: {
-									ufvt = 'q';std::cout << "6405" << endl;
-									name = &((Prefix*) object)->unicodeName();std::cout << "6406" << endl;
-									name_length = name->length();std::cout << "6407" << endl;
-									case_sensitive = true;std::cout << "6408" << endl;
+									ufvt = 'q';
+									name = &((Prefix*) object)->unicodeName();
+									name_length = name->length();
+									case_sensitive = true;
 									break;
 								}
 							}
-							vt3++;std::cout << "6412" << endl;
+							vt3++;
 							break;
 						}
-						vt2 = 1;std::cout << "6415" << endl;
-						vt3 = 0;std::cout << "6416" << endl;
+						vt2 = 1;
+						vt3 = 0;
 					}
 					case 1: {
 						if(!found_function_name && po.functions_enabled && !p_mode && (!po.limit_implicit_multiplication || ufv_index + 1 == unit_chars_left || ufv_index + 1 == name_chars_left) && vt3 < ufv[vt2][ufv_index].size()) {
-							object = ufv[vt2][ufv_index][vt3];std::cout << "6420" << endl;
-							ufvt = 'f';std::cout << "6421" << endl;
-							name = &((MathFunction*) object)->getName(ufv_i[vt2][ufv_index][vt3]).name;std::cout << "6422" << endl;
-							name_length = name->length();std::cout << "6423" << endl;
-							case_sensitive = ((MathFunction*) object)->getName(ufv_i[vt2][ufv_index][vt3]).case_sensitive;std::cout << "6424" << endl;
-							vt3++;std::cout << "6425" << endl;
+							object = ufv[vt2][ufv_index][vt3];
+							ufvt = 'f';
+							name = &((MathFunction*) object)->getName(ufv_i[vt2][ufv_index][vt3]).name;
+							name_length = name->length();
+							case_sensitive = ((MathFunction*) object)->getName(ufv_i[vt2][ufv_index][vt3]).case_sensitive;
+							vt3++;
 							break;
 						}
-						vt2 = 2;std::cout << "6428" << endl;
-						vt3 = 0;std::cout << "6429" << endl;
+						vt2 = 2;
+						vt3 = 0;
 					}
 					case 2: {
 						if(po.units_enabled && !p_mode && (!po.limit_implicit_multiplication || ufv_index + 1 == unit_chars_left) && ufv_index < unit_chars_left && vt3 < ufv[vt2][ufv_index].size()) {
-							object = ufv[vt2][ufv_index][vt3];std::cout << "6433" << endl;
+							object = ufv[vt2][ufv_index][vt3];
 							if(ufv_index + 1 == unit_chars_left || !((Unit*) object)->getName(ufv_i[vt2][ufv_index][vt3]).plural) {
-								ufvt = 'u';std::cout << "6435" << endl;
-								name = &((Unit*) object)->getName(ufv_i[vt2][ufv_index][vt3]).name;std::cout << "6436" << endl;
-								name_length = name->length();std::cout << "6437" << endl;
-								case_sensitive = ((Unit*) object)->getName(ufv_i[vt2][ufv_index][vt3]).case_sensitive;std::cout << "6438" << endl;
+								ufvt = 'u';
+								name = &((Unit*) object)->getName(ufv_i[vt2][ufv_index][vt3]).name;
+								name_length = name->length();
+								case_sensitive = ((Unit*) object)->getName(ufv_i[vt2][ufv_index][vt3]).case_sensitive;
 							}
-							vt3++;std::cout << "6440" << endl;
+							vt3++;
 							break;
 						}
-						vt2 = 3;std::cout << "6443" << endl;
-						vt3 = 0;std::cout << "6444" << endl;
+						vt2 = 3;
+						vt3 = 0;
 					}
 					case 3: {
 						if(po.variables_enabled && !p_mode && (!po.limit_implicit_multiplication || ufv_index + 1 == unit_chars_left || ufv_index + 1 == name_chars_left) && vt3 < ufv[vt2][ufv_index].size()) {
-							object = ufv[vt2][ufv_index][vt3];std::cout << "6448" << endl;
-							ufvt = 'v';std::cout << "6449" << endl;
-							name = &((Variable*) object)->getName(ufv_i[vt2][ufv_index][vt3]).name;std::cout << "6450" << endl;
-							name_length = name->length();std::cout << "6451" << endl;
-							case_sensitive = ((Variable*) object)->getName(ufv_i[vt2][ufv_index][vt3]).case_sensitive;std::cout << "6452" << endl;
-							vt3++;std::cout << "6453" << endl;
+							object = ufv[vt2][ufv_index][vt3];
+							ufvt = 'v';
+							name = &((Variable*) object)->getName(ufv_i[vt2][ufv_index][vt3]).name;
+							name_length = name->length();
+							case_sensitive = ((Variable*) object)->getName(ufv_i[vt2][ufv_index][vt3]).case_sensitive;
+							vt3++;
 							break;
 						}
 						if(ufv_index == 0 || found_function_name) {
-							vt2 = 4;std::cout << "6457" << endl;
+							vt2 = 4;
 						} else {
-							ufv_index--;std::cout << "6459" << endl;
-							vt3 = 0;std::cout << "6460" << endl;
-							vt2 = 0;std::cout << "6461" << endl;
+							ufv_index--;
+							vt3 = 0;
+							vt2 = 0;
 						}
 					}
 				}
@@ -6469,109 +6502,109 @@ void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &p
 					moved_forward = false;
 					switch(ufvt) {
 						case 'v': {
-							stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6469" << endl;
-							stmp += i2s(addId(new MathStructure((Variable*) object)));std::cout << "6470" << endl;
-							stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6471" << endl;
-							str.replace(str_index, name_length, stmp);std::cout << "6472" << endl;
-							str_index += stmp.length();std::cout << "6473" << endl;
+							stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+							stmp += i2s(addId(new MathStructure((Variable*) object)));
+							stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+							str.replace(str_index, name_length, stmp);
+							str_index += stmp.length();
 							moved_forward = true;
 							break;
 						}
 						case 'f': {
 							if(((ExpressionItem*) object)->subtype() == SUBTYPE_DATA_SET && str[str_index + name_length] == DOT_CH) {
-								str[str_index + name_length] = LEFT_PARENTHESIS_CH;std::cout << "6479" << endl;
-								size_t dot2_index = str.find(DOT_CH, str_index + name_length + 1);std::cout << "6480" << endl;
-								str[dot2_index] = COMMA_CH;std::cout << "6481" << endl;
-								size_t end_index = str.find_first_of(NOT_IN_NAMES INTERNAL_OPERATORS, dot2_index + 1);std::cout << "6482" << endl;
+								str[str_index + name_length] = LEFT_PARENTHESIS_CH;
+								size_t dot2_index = str.find(DOT_CH, str_index + name_length + 1);
+								str[dot2_index] = COMMA_CH;
+								size_t end_index = str.find_first_of(NOT_IN_NAMES INTERNAL_OPERATORS, dot2_index + 1);
 								if(end_index == string::npos) str += RIGHT_PARENTHESIS_CH;
-								else str.insert(end_index, 1, RIGHT_PARENTHESIS_CH);std::cout << "6484" << endl;
+								else str.insert(end_index, 1, RIGHT_PARENTHESIS_CH);
 							}
-							size_t not_space_index;std::cout << "6486" << endl;
+							size_t not_space_index;
 							if((not_space_index = str.find_first_not_of(SPACES, str_index + name_length)) == string::npos || str[not_space_index] != LEFT_PARENTHESIS_CH) {
-								found_function = object;std::cout << "6488" << endl;
-								found_function_name = name;std::cout << "6489" << endl;
-								found_function_name_length = name_length;std::cout << "6490" << endl;
+								found_function = object;
+								found_function_name = name;
+								found_function_name_length = name_length;
 								break;
 							}
 							set_function:
-							MathFunction *f = (MathFunction*) object;std::cout << "6494" << endl;
-							int i4 = -1;std::cout << "6495" << endl;
-							size_t i6;std::cout << "6496" << endl;
+							MathFunction *f = (MathFunction*) object;
+							int i4 = -1;
+							size_t i6;
 							if(f->args() == 0) {
-								size_t i7 = str.find_first_not_of(SPACES, str_index + name_length);std::cout << "6498" << endl;
+								size_t i7 = str.find_first_not_of(SPACES, str_index + name_length);
 								if(i7 != string::npos && str[i7] == LEFT_PARENTHESIS_CH) {
-									i7 = str.find_first_not_of(SPACES, i7 + 1);std::cout << "6500" << endl;
+									i7 = str.find_first_not_of(SPACES, i7 + 1);
 									if(i7 != string::npos && str[i7] == RIGHT_PARENTHESIS_CH) {
-										i4 = i7 - str_index + 1;std::cout << "6502" << endl;
+										i4 = i7 - str_index + 1;
 									}
 								}
-								stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6505" << endl;
-								stmp += i2s(parseAddId(f, empty_string, po));std::cout << "6506" << endl;
-								stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6507" << endl;
+								stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+								stmp += i2s(parseAddId(f, empty_string, po));
+								stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
 								if(i4 < 0) i4 = name_length;
 							} else if(po.rpn && f->args() == 1 && str_index > 0 && str[str_index - 1] != LEFT_PARENTHESIS_CH && (str_index + name_length >= str.length() || str[str_index + name_length] != LEFT_PARENTHESIS_CH) && (i6 = str.find_last_not_of(SPACE, str_index - 1)) != string::npos) {
-								size_t i7 = i6;std::cout << "6510" << endl;
-								int nr_of_p = 0, nr_of_op = 0;std::cout << "6511" << endl;
-								bool b_started = false;std::cout << "6512" << endl;
+								size_t i7 = i6;
+								int nr_of_p = 0, nr_of_op = 0;
+								bool b_started = false;
 								while(i7 != 0) {
 									if(nr_of_p > 0) {
 										if(str[i7] == LEFT_PARENTHESIS_CH) {
-											nr_of_p--;std::cout << "6516" << endl;
+											nr_of_p--;
 											if(nr_of_p == 0 && nr_of_op == 0) break;
 										} else if(str[i7] == RIGHT_PARENTHESIS_CH) {
-											nr_of_p++;std::cout << "6519" << endl;
+											nr_of_p++;
 										}
 									} else if(nr_of_p == 0 && is_in(OPERATORS INTERNAL_OPERATORS SPACE RIGHT_PARENTHESIS, str[i7])) {
 										if(nr_of_op == 0 && b_started) {
-											i7++;std::cout << "6523" << endl;
+											i7++;
 											break;
 										} else {
 											if(is_in(OPERATORS INTERNAL_OPERATORS, str[i7])) {
-												nr_of_op++;std::cout << "6527" << endl;
-												b_started = false;std::cout << "6528" << endl;
+												nr_of_op++;
+												b_started = false;
 											} else if(str[i7] == RIGHT_PARENTHESIS_CH) {
-												nr_of_p++;std::cout << "6530" << endl;
-												b_started = true;std::cout << "6531" << endl;
+												nr_of_p++;
+												b_started = true;
 											} else if(b_started) {
-												nr_of_op--;std::cout << "6533" << endl;
-												b_started = false;std::cout << "6534" << endl;
+												nr_of_op--;
+												b_started = false;
 											}
 										}
 									} else {
-										b_started = true;std::cout << "6538" << endl;
+										b_started = true;
 									}
-									i7--;std::cout << "6540" << endl;
+									i7--;
 								}
-								stmp2 = str.substr(i7, i6 - i7 + 1);std::cout << "6542" << endl;
-								stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6543" << endl;
+								stmp2 = str.substr(i7, i6 - i7 + 1);
+								stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
 								if(f == f_vector) stmp += i2s(parseAddVectorId(stmp2, po));
-								else stmp += i2s(parseAddId(f, stmp2, po));std::cout << "6545" << endl;
-								stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6546" << endl;
-								str.replace(i7, str_index + name_length - i7, stmp);std::cout << "6547" << endl;
-								str_index += name_length;std::cout << "6548" << endl;
+								else stmp += i2s(parseAddId(f, stmp2, po));
+								stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+								str.replace(i7, str_index + name_length - i7, stmp);
+								str_index += name_length;
 								moved_forward = true;
 							} else {
 								bool b = false, b_unended_function = false, b_comma_before = false, b_power_before = false;
-								//bool b_space_first = false;std::cout << "6552" << endl;
-								size_t i5 = 1;std::cout << "6553" << endl;
-								int arg_i = f->args();std::cout << "6554" << endl;
-								i6 = 0;std::cout << "6555" << endl;
+								//bool b_space_first = false;
+								size_t i5 = 1;
+								int arg_i = f->args();
+								i6 = 0;
 								while(!b) {
 									if(i6 + str_index + name_length >= str.length()) {
-										b = true;std::cout << "6558" << endl;
-										i5 = 2;std::cout << "6559" << endl;
-										i6++;std::cout << "6560" << endl;
-										b_unended_function = true;std::cout << "6561" << endl;
+										b = true;
+										i5 = 2;
+										i6++;
+										b_unended_function = true;
 										break;
 									} else {
-										char c = str[str_index + name_length + i6];std::cout << "6564" << endl;
+										char c = str[str_index + name_length + i6];
 										if(c == LEFT_PARENTHESIS_CH) {
 											if(i5 < 2) b = true;
 											else if(i5 == 2 && po.parsing_mode == PARSING_MODE_CONVENTIONAL && !b_power_before) b = true;
-											else i5++;std::cout << "6568" << endl;
+											else i5++;
 										} else if(c == RIGHT_PARENTHESIS_CH) {
 											if(i5 <= 2) b = true;
-											else i5--;std::cout << "6571" << endl;
+											else i5--;
 										} else if(c == POWER_CH) {
 											if(i5 < 2) i5 = 2;
 											b_power_before = true;
@@ -6579,88 +6612,88 @@ void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &p
 											//if(i5 < 2) b_space_first = true;
 											if(i5 == 2) b = true;
 										} else if(!b_comma_before && i5 == 2 && arg_i <= 1 && is_in(OPERATORS INTERNAL_OPERATORS, c) && c != POWER_CH) {
-											b = true;std::cout << "6579" << endl;
+											b = true;
 										} else if(c == COMMA_CH) {
 											if(i5 == 2) arg_i--;
 											b_comma_before = true;
 											if(i5 < 2) i5 = 2;
 										} else if(i5 < 2) {
-											i5 = 2;std::cout << "6585" << endl;
+											i5 = 2;
 										}
 										if(c != COMMA_CH && c != ' ') b_comma_before = false;
 										if(c != POWER_CH && c != ' ') b_power_before = false;
 									}
-									i6++;std::cout << "6590" << endl;
+									i6++;
 								}
 								if(b && i5 >= 2) {
-									stmp2 = str.substr(str_index + name_length, i6 - 1);std::cout << "6593" << endl;
-									stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6594" << endl;
+									stmp2 = str.substr(str_index + name_length, i6 - 1);
+									stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
 									if(b_unended_function && unended_function) {
-										po.unended_function = unended_function;std::cout << "6596" << endl;
+										po.unended_function = unended_function;
 									}
 									if(f == f_vector) {
-										stmp += i2s(parseAddVectorId(stmp2, po));std::cout << "6599" << endl;
+										stmp += i2s(parseAddVectorId(stmp2, po));
 									} else if((f == f_interval || f == f_uncertainty) && po.read_precision != DONT_READ_PRECISION) {
-										ParseOptions po2 = po;std::cout << "6601" << endl;
-										po2.read_precision = DONT_READ_PRECISION;std::cout << "6602" << endl;
-										stmp += i2s(parseAddId(f, stmp2, po2));std::cout << "6603" << endl;
+										ParseOptions po2 = po;
+										po2.read_precision = DONT_READ_PRECISION;
+										stmp += i2s(parseAddId(f, stmp2, po2));
 									} else {
-										stmp += i2s(parseAddId(f, stmp2, po));std::cout << "6605" << endl;
+										stmp += i2s(parseAddId(f, stmp2, po));
 									}
-									po.unended_function = NULL;std::cout << "6607" << endl;
-									stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6608" << endl;
-									i4 = i6 + 1 + name_length - 2;std::cout << "6609" << endl;
-									b = false;std::cout << "6610" << endl;
+									po.unended_function = NULL;
+									stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+									i4 = i6 + 1 + name_length - 2;
+									b = false;
 								}
-								size_t i9 = i6;std::cout << "6612" << endl;
+								size_t i9 = i6;
 								if(b) {
-									b = false;std::cout << "6614" << endl;
-									i6 = i6 + 1 + str_index + name_length;std::cout << "6615" << endl;
-									size_t i7 = i6 - 1;std::cout << "6616" << endl;
-									size_t i8 = i7;std::cout << "6617" << endl;
+									b = false;
+									i6 = i6 + 1 + str_index + name_length;
+									size_t i7 = i6 - 1;
+									size_t i8 = i7;
 									while(true) {
-										i5 = str.find(RIGHT_PARENTHESIS_CH, i7);std::cout << "6619" << endl;
+										i5 = str.find(RIGHT_PARENTHESIS_CH, i7);
 										if(i5 == string::npos) {
-											b_unended_function = true;std::cout << "6621" << endl;
-											//str.append(1, RIGHT_PARENTHESIS_CH);std::cout << "6622" << endl;
-											//i5 = str.length() - 1;std::cout << "6623" << endl;
-											i5 = str.length();std::cout << "6624" << endl;
+											b_unended_function = true;
+											//str.append(1, RIGHT_PARENTHESIS_CH);
+											//i5 = str.length() - 1;
+											i5 = str.length();
 										}
 										if(i5 < (i6 = str.find(LEFT_PARENTHESIS_CH, i8)) || i6 == string::npos) {
-											i6 = i5;std::cout << "6627" << endl;
-											b = true;std::cout << "6628" << endl;
+											i6 = i5;
+											b = true;
 											break;
 										}
-										i7 = i5 + 1;std::cout << "6631" << endl;
-										i8 = i6 + 1;std::cout << "6632" << endl;
+										i7 = i5 + 1;
+										i8 = i6 + 1;
 									}
 									if(!b) {
-										b_unended_function = false;std::cout << "6635" << endl;
+										b_unended_function = false;
 									}
 								}
 								if(b) {
-									stmp2 = str.substr(str_index + name_length + i9, i6 - (str_index + name_length + i9));std::cout << "6639" << endl;
-									stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6640" << endl;
+									stmp2 = str.substr(str_index + name_length + i9, i6 - (str_index + name_length + i9));
+									stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
 									if(b_unended_function && unended_function) {
-										po.unended_function = unended_function;std::cout << "6642" << endl;
+										po.unended_function = unended_function;
 									}
 									if(f == f_vector) {
-										stmp += i2s(parseAddVectorId(stmp2, po));std::cout << "6645" << endl;
+										stmp += i2s(parseAddVectorId(stmp2, po));
 									} else if((f == f_interval || f == f_uncertainty) && po.read_precision != DONT_READ_PRECISION) {
-										ParseOptions po2 = po;std::cout << "6647" << endl;
-										po2.read_precision = DONT_READ_PRECISION;std::cout << "6648" << endl;
-										stmp += i2s(parseAddId(f, stmp2, po2));std::cout << "6649" << endl;
+										ParseOptions po2 = po;
+										po2.read_precision = DONT_READ_PRECISION;
+										stmp += i2s(parseAddId(f, stmp2, po2));
 									} else {
-										stmp += i2s(parseAddId(f, stmp2, po));std::cout << "6651" << endl;
+										stmp += i2s(parseAddId(f, stmp2, po));
 									}
-									po.unended_function = NULL;std::cout << "6653" << endl;
-									stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6654" << endl;
-									i4 = i6 + 1 - str_index;std::cout << "6655" << endl;
+									po.unended_function = NULL;
+									stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+									i4 = i6 + 1 - str_index;
 								}
 							}
 							if(i4 > 0) {
-								str.replace(str_index, i4, stmp);std::cout << "6659" << endl;
-								str_index += stmp.length();std::cout << "6660" << endl;
+								str.replace(str_index, i4, stmp);
+								str_index += stmp.length();
 								moved_forward = true;
 							}
 							break;
@@ -6668,15 +6701,15 @@ void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &p
 						case 'u': {
 							replace_text_by_unit_place:
 							if(str.length() > str_index + name_length && is_in("23", str[str_index + name_length]) && (str.length() == str_index + name_length + 1 || is_not_in(NUMBER_ELEMENTS, str[str_index + name_length + 1])) && *name != SIGN_DEGREE && !((Unit*) object)->isCurrency()) {
-								str.insert(str_index + name_length, 1, POWER_CH);std::cout << "6668" << endl;
+								str.insert(str_index + name_length, 1, POWER_CH);
 							}
-							stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6670" << endl;
-							stmp += i2s(addId(new MathStructure((Unit*) object, p)));std::cout << "6671" << endl;
-							stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6672" << endl;
-							str.replace(str_index, name_length, stmp);std::cout << "6673" << endl;
-							str_index += stmp.length();std::cout << "6674" << endl;
+							stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+							stmp += i2s(addId(new MathStructure((Unit*) object, p)));
+							stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+							str.replace(str_index, name_length, stmp);
+							str_index += stmp.length();
 							moved_forward = true;
-							p = NULL;std::cout << "6676" << endl;
+							p = NULL;
 							break;
 						}
 						case 'p': {}
@@ -6685,74 +6718,74 @@ void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &p
 							if(str_index + name_length == str.length() || is_in(NOT_IN_NAMES INTERNAL_OPERATORS, str[str_index + name_length])) {
 								break;
 							}
-							p = (Prefix*) object;std::cout << "6685" << endl;
-							str_index += name_length;std::cout << "6686" << endl;
-							unit_chars_left = last_unit_char - str_index + 1;std::cout << "6687" << endl;
-							size_t name_length_old = name_length;std::cout << "6688" << endl;
-							int index = 0;std::cout << "6689" << endl;
+							p = (Prefix*) object;
+							str_index += name_length;
+							unit_chars_left = last_unit_char - str_index + 1;
+							size_t name_length_old = name_length;
+							int index = 0;
 							if(unit_chars_left > UFV_LENGTHS) {
 								for(size_t ufv_index2 = 0; ufv_index2 < ufvl.size(); ufv_index2++) {
-									name = NULL;std::cout << "6692" << endl;
+									name = NULL;
 									switch(ufvl_t[ufv_index2]) {
 										case 'u': {
-											name = &((Unit*) ufvl[ufv_index2])->getName(ufvl_i[ufv_index2]).name;std::cout << "6695" << endl;
-											case_sensitive = ((Unit*) ufvl[ufv_index2])->getName(ufvl_i[ufv_index2]).case_sensitive;std::cout << "6696" << endl;
-											name_length = name->length();std::cout << "6697" << endl;
+											name = &((Unit*) ufvl[ufv_index2])->getName(ufvl_i[ufv_index2]).name;
+											case_sensitive = ((Unit*) ufvl[ufv_index2])->getName(ufvl_i[ufv_index2]).case_sensitive;
+											name_length = name->length();
 											if(po.limit_implicit_multiplication || ((Unit*) ufvl[ufv_index2])->getName(ufvl_i[ufv_index2]).plural) {
 												if(name_length != unit_chars_left) name = NULL;
 											} else if(name_length > unit_chars_left) {
-												name = NULL;std::cout << "6701" << endl;
+												name = NULL;
 											}
 											break;
 										}
 									}
 									if(name && ((case_sensitive && compare_name(*name, str, name_length, str_index, base)) || (!case_sensitive && (name_length = compare_name_no_case(*name, str, name_length, str_index, base))))) {
 										if((!p_mode && name_length_old > 1) || (p_mode && (name_length + name_length_old > best_pl || ((ufvt != 'P' || !((Unit*) ufvl[ufv_index2])->getName(ufvl_i[ufv_index2]).abbreviation) && name_length + name_length_old == best_pl)))) {
-											p_mode = true;std::cout << "6708" << endl;
-											best_p = p;std::cout << "6709" << endl;
-											best_p_object = ufvl[ufv_index2];std::cout << "6710" << endl;
-											best_pl = name_length + name_length_old;std::cout << "6711" << endl;
-											best_pnl = name_length_old;std::cout << "6712" << endl;
-											index = -1;std::cout << "6713" << endl;
+											p_mode = true;
+											best_p = p;
+											best_p_object = ufvl[ufv_index2];
+											best_pl = name_length + name_length_old;
+											best_pnl = name_length_old;
+											index = -1;
 											break;
 										}
 										if(!p_mode) {
-											str.erase(str_index - name_length_old, name_length_old);std::cout << "6717" << endl;
-											str_index -= name_length_old;std::cout << "6718" << endl;
-											object = ufvl[ufv_index2];std::cout << "6719" << endl;
-											goto replace_text_by_unit_place;std::cout << "6720" << endl;
+											str.erase(str_index - name_length_old, name_length_old);
+											str_index -= name_length_old;
+											object = ufvl[ufv_index2];
+											goto replace_text_by_unit_place;
 										}
 									}
 								}
 							}
 							if(index < 0) {
 							} else if(UFV_LENGTHS >= unit_chars_left) {
-								index = unit_chars_left - 1;std::cout << "6727" << endl;
+								index = unit_chars_left - 1;
 							} else if(po.limit_implicit_multiplication) {
-								index = -1;std::cout << "6729" << endl;
+								index = -1;
 							} else {
-								index = UFV_LENGTHS - 1;std::cout << "6731" << endl;
+								index = UFV_LENGTHS - 1;
 							}
 							for(; index >= 0; index--) {
 								for(size_t ufv_index2 = 0; ufv_index2 < ufv[2][index].size(); ufv_index2++) {
-									name = &((Unit*) ufv[2][index][ufv_index2])->getName(ufv_i[2][index][ufv_index2]).name;std::cout << "6735" << endl;
-									case_sensitive = ((Unit*) ufv[2][index][ufv_index2])->getName(ufv_i[2][index][ufv_index2]).case_sensitive;std::cout << "6736" << endl;
-									name_length = name->length();std::cout << "6737" << endl;
+									name = &((Unit*) ufv[2][index][ufv_index2])->getName(ufv_i[2][index][ufv_index2]).name;
+									case_sensitive = ((Unit*) ufv[2][index][ufv_index2])->getName(ufv_i[2][index][ufv_index2]).case_sensitive;
+									name_length = name->length();
 									if(index + 1 == (int) unit_chars_left || !((Unit*) ufv[2][index][ufv_index2])->getName(ufv_i[2][index][ufv_index2]).plural) {
 										if(name_length <= unit_chars_left && ((case_sensitive && compare_name(*name, str, name_length, str_index, base)) || (!case_sensitive && (name_length = compare_name_no_case(*name, str, name_length, str_index, base))))) {
 											if((!p_mode && name_length_old > 1) || (p_mode && (name_length + name_length_old > best_pl || ((ufvt != 'P' || !((Unit*) ufv[2][index][ufv_index2])->getName(ufv_i[2][index][ufv_index2]).abbreviation) && name_length + name_length_old == best_pl)))) {
-												p_mode = true;std::cout << "6741" << endl;
-												best_p = p;std::cout << "6742" << endl;
-												best_p_object = ufv[2][index][ufv_index2];std::cout << "6743" << endl;
-												best_pl = name_length + name_length_old;std::cout << "6744" << endl;
-												best_pnl = name_length_old;std::cout << "6745" << endl;
-												index = -1;std::cout << "6746" << endl;
+												p_mode = true;
+												best_p = p;
+												best_p_object = ufv[2][index][ufv_index2];
+												best_pl = name_length + name_length_old;
+												best_pnl = name_length_old;
+												index = -1;
 											}
 											if(!p_mode) {
-												str.erase(str_index - name_length_old, name_length_old);std::cout << "6749" << endl;
-												str_index -= name_length_old;std::cout << "6750" << endl;
-												object = ufv[2][index][ufv_index2];std::cout << "6751" << endl;
-												goto replace_text_by_unit_place;std::cout << "6752" << endl;
+												str.erase(str_index - name_length_old, name_length_old);
+												str_index -= name_length_old;
+												object = ufv[2][index][ufv_index2];
+												goto replace_text_by_unit_place;
 											}
 										}
 									}
@@ -6761,139 +6794,140 @@ void Calculator::parse(MathStructure *mstruct, string str, const ParseOptions &p
 									break;
 								}
 							}
-							str_index -= name_length_old;std::cout << "6761" << endl;
-							unit_chars_left = last_unit_char - str_index + 1;std::cout << "6762" << endl;
+							str_index -= name_length_old;
+							unit_chars_left = last_unit_char - str_index + 1;
 							break;
 						}
 					}
 					if(moved_forward) {
-						str_index--;std::cout << "6767" << endl;
+						str_index--;
 						break;
 					}
 				}
 			}
 			if(!moved_forward && p_mode) {
-				object = best_p_object;std::cout << "6773" << endl;
-				p = best_p;std::cout << "6774" << endl;
-				str.erase(str_index, best_pnl);std::cout << "6775" << endl;
-				name_length = best_pl - best_pnl;std::cout << "6776" << endl;
-				goto replace_text_by_unit_place;std::cout << "6777" << endl;
+				object = best_p_object;
+				p = best_p;
+				str.erase(str_index, best_pnl);
+				name_length = best_pl - best_pnl;
+				goto replace_text_by_unit_place;
 			} else if(!moved_forward && found_function) {
-				object = found_function;std::cout << "6779" << endl;
-				name = found_function_name;std::cout << "6780" << endl;
-				name_length = found_function_name_length;std::cout << "6781" << endl;
-				goto set_function;std::cout << "6782" << endl;
+				object = found_function;
+				name = found_function_name;
+				name_length = found_function_name_length;
+				goto set_function;
 			}
 			if(!moved_forward) {
-				bool b = po.unknowns_enabled && is_not_number(str[str_index], base) && !(str_index > 0 && is_in(EXPS, str[str_index]) && str_index + 1 < str.length() && (is_in(NUMBER_ELEMENTS, str[str_index + 1]) || (is_in(PLUS MINUS, str[str_index + 1]) && str_index + 2 < str.length() && is_in(NUMBER_ELEMENTS, str[str_index + 2]))) && is_in(NUMBER_ELEMENTS, str[str_index - 1]));std::cout << "6785" << endl;
+				bool b = po.unknowns_enabled && is_not_number(str[str_index], base) && !(str_index > 0 && is_in(EXPS, str[str_index]) && str_index + 1 < str.length() && (is_in(NUMBER_ELEMENTS, str[str_index + 1]) || (is_in(PLUS MINUS, str[str_index + 1]) && str_index + 2 < str.length() && is_in(NUMBER_ELEMENTS, str[str_index + 2]))) && is_in(NUMBER_ELEMENTS, str[str_index - 1]));
 				if(po.limit_implicit_multiplication) {
 					if(b) {
-						stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6788" << endl;
-						stmp += i2s(addId(new MathStructure(str.substr(str_index, unit_chars_left))));std::cout << "6789" << endl;
-						stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6790" << endl;
-						str.replace(str_index, unit_chars_left, stmp);std::cout << "6791" << endl;
-						str_index += stmp.length() - 1;std::cout << "6792" << endl;
+						stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+						stmp += i2s(addId(new MathStructure(str.substr(str_index, unit_chars_left))));
+						stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+						str.replace(str_index, unit_chars_left, stmp);
+						str_index += stmp.length() - 1;
 					} else {
-						str_index += unit_chars_left - 1;std::cout << "6794" << endl;
+						str_index += unit_chars_left - 1;
 					}
 				} else if(b) {
-					size_t i = 1;std::cout << "6797" << endl;
+					size_t i = 1;
 					if(str[str_index + 1] < 0) {
-						i++;std::cout << "6799" << endl;
+						i++;
 						while(i <= unit_chars_left && (unsigned char) str[str_index + i] >= 0x80 && (unsigned char) str[str_index + i] <= 0xBF) {
-							i++;std::cout << "6801" << endl;
+							i++;
 						}
 					}
-					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6804" << endl;
-					stmp += i2s(addId(new MathStructure(str.substr(str_index, i))));std::cout << "6805" << endl;
-					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6806" << endl;
-					str.replace(str_index, i, stmp);std::cout << "6807" << endl;
-					str_index += stmp.length() - 1;std::cout << "6808" << endl;
+					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+					stmp += i2s(addId(new MathStructure(str.substr(str_index, i))));
+					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+					str.replace(str_index, i, stmp);
+					str_index += stmp.length() - 1;
 				}
 			}
 		}
 	}
 
-	size_t comma_i = str.find(COMMA, 0);std::cout << "6814" << endl;
+	size_t comma_i = str.find(COMMA, 0);
 	while(comma_i != string::npos) {
-		int i3 = 1;std::cout << "6816" << endl;
-		size_t left_par_i = comma_i;std::cout << "6817" << endl;
+		int i3 = 1;
+		size_t left_par_i = comma_i;
 		while(left_par_i > 0) {
-			left_par_i = str.find_last_of(LEFT_PARENTHESIS RIGHT_PARENTHESIS, left_par_i - 1);std::cout << "6819" << endl;
+			left_par_i = str.find_last_of(LEFT_PARENTHESIS RIGHT_PARENTHESIS, left_par_i - 1);
 			if(left_par_i == string::npos) break;
 			if(str[left_par_i] == LEFT_PARENTHESIS_CH) {
-				i3--;std::cout << "6822" << endl;
+				i3--;
 				if(i3 == 0) break;
 			} else if(str[left_par_i] == RIGHT_PARENTHESIS_CH) {
-				i3++;std::cout << "6825" << endl;
+				i3++;
 			}
 		}
 		if(i3 > 0) {
-			str.insert(0, i3, LEFT_PARENTHESIS_CH);std::cout << "6829" << endl;
-			comma_i += i3;std::cout << "6830" << endl;
-			i3 = 0;std::cout << "6831" << endl;
-			left_par_i = 0;std::cout << "6832" << endl;
+			str.insert(0, i3, LEFT_PARENTHESIS_CH);
+			comma_i += i3;
+			i3 = 0;
+			left_par_i = 0;
 		}
 		if(i3 == 0) {
-			i3 = 1;std::cout << "6835" << endl;
-			size_t right_par_i = comma_i;std::cout << "6836" << endl;
+			i3 = 1;
+			size_t right_par_i = comma_i;
 			while(true) {
-				right_par_i = str.find_first_of(LEFT_PARENTHESIS RIGHT_PARENTHESIS, right_par_i + 1);std::cout << "6838" << endl;
+				right_par_i = str.find_first_of(LEFT_PARENTHESIS RIGHT_PARENTHESIS, right_par_i + 1);
 				if(right_par_i == string::npos) {
 					for(; i3 > 0; i3--) {
-						str += RIGHT_PARENTHESIS;std::cout << "6841" << endl;
+						str += RIGHT_PARENTHESIS;
 					}
-					right_par_i = str.length() - 1;std::cout << "6843" << endl;
+					right_par_i = str.length() - 1;
 				} else if(str[right_par_i] == LEFT_PARENTHESIS_CH) {
-					i3++;std::cout << "6845" << endl;
+					i3++;
 				} else if(str[right_par_i] == RIGHT_PARENTHESIS_CH) {
-					i3--;std::cout << "6847" << endl;
+					i3--;
 				}
 				if(i3 == 0) {
-					stmp2 = str.substr(left_par_i + 1, right_par_i - left_par_i - 1);std::cout << "6850" << endl;
-					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;std::cout << "6851" << endl;
-					stmp += i2s(parseAddVectorId(stmp2, po));std::cout << "6852" << endl;
-					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;std::cout << "6853" << endl;
-					str.replace(left_par_i, right_par_i + 1 - left_par_i, stmp);std::cout << "6854" << endl;
-					comma_i = left_par_i + stmp.length() - 1;std::cout << "6855" << endl;
+					stmp2 = str.substr(left_par_i + 1, right_par_i - left_par_i - 1);
+					stmp = LEFT_PARENTHESIS ID_WRAP_LEFT;
+					stmp += i2s(parseAddVectorId(stmp2, po));
+					stmp += ID_WRAP_RIGHT RIGHT_PARENTHESIS;
+					str.replace(left_par_i, right_par_i + 1 - left_par_i, stmp);
+					comma_i = left_par_i + stmp.length() - 1;
 					break;
 				}
 			}
 		}
-		comma_i = str.find(COMMA, comma_i + 1);std::cout << "6860" << endl;
+		comma_i = str.find(COMMA, comma_i + 1);
 	}
 
 	if(po.rpn) {
-		size_t rpn_i = str.find(SPACE, 0);std::cout << "6864" << endl;
+		size_t rpn_i = str.find(SPACE, 0);
 		while(rpn_i != string::npos) {
 			if(rpn_i == 0 || rpn_i + 1 == str.length() || is_in("~+-*/^\a\b\\\x1c", str[rpn_i - 1]) || (is_in("%&|", str[rpn_i - 1]) && str[rpn_i + 1] != str[rpn_i - 1]) || (is_in("!><=", str[rpn_i - 1]) && is_not_in("=<>", str[rpn_i + 1])) || (is_in(SPACE OPERATORS INTERNAL_OPERATORS, str[rpn_i + 1]) && (str[rpn_i - 1] == SPACE_CH || (str[rpn_i - 1] != str[rpn_i + 1] && is_not_in("!><=", str[rpn_i - 1]))))) {
-				str.erase(rpn_i, 1);std::cout << "6867" << endl;
+				str.erase(rpn_i, 1);
 			} else {
-				rpn_i++;std::cout << "6869" << endl;
+				rpn_i++;
 			}
-			rpn_i = str.find(SPACE, rpn_i);std::cout << "6871" << endl;
+			rpn_i = str.find(SPACE, rpn_i);
 		}
 	} else if(po.parsing_mode != PARSING_MODE_ADAPTIVE) {
-		remove_blanks(str);std::cout << "6874" << endl;
+		remove_blanks(str);
 	} else {
 		//remove spaces between next to operators (except '/') and before/after parentheses
-		space_i = str.find(SPACE_CH, 0);std::cout << "6877" << endl;
+		space_i = str.find(SPACE_CH, 0);
 		while(space_i != string::npos) {
 			if((str[space_i + 1] != DIVISION_CH && is_in(OPERATORS INTERNAL_OPERATORS RIGHT_PARENTHESIS, str[space_i + 1])) || (str[space_i - 1] != DIVISION_CH && is_in(OPERATORS INTERNAL_OPERATORS LEFT_PARENTHESIS, str[space_i - 1]))) {
-				str.erase(space_i, 1);std::cout << "6880" << endl;
-				space_i--;std::cout << "6881" << endl;
+				str.erase(space_i, 1);
+				space_i--;
 			}
-			space_i = str.find(SPACE_CH, space_i + 1);std::cout << "6883" << endl;
+			space_i = str.find(SPACE_CH, space_i + 1);
 		}
 	}
 
-	parseOperators(mstruct, str, po);std::cout << "6887" << endl;
+	parseOperators(mstruct, str, po);
 
 }
 
 #define BASE_2_10 ((po.base >= 2 && po.base <= 10) || (po.base < BASE_CUSTOM && po.base != BASE_UNICODE && po.base != BASE_BIJECTIVE_26) || (po.base == BASE_CUSTOM && priv->custom_input_base_i <= 10))
+
 bool Calculator::parseNumber(MathStructure *mstruct, string str, const ParseOptions &po) {
-	mstruct->clear();std::cout << "6893" << endl;
+	mstruct->clear();
 	if(str.empty()) return false;
 	if(str.find_first_not_of(OPERATORS "\a%\x1c" SPACE) == string::npos && (po.base != BASE_ROMAN_NUMERALS || str.find("|") == string::npos)) {
 		gsub("\a", str.find_first_of("%" OPERATORS) != string::npos ? " xor " : "xor", str);
@@ -6901,148 +6935,141 @@ bool Calculator::parseNumber(MathStructure *mstruct, string str, const ParseOpti
 		error(false, _("Misplaced operator(s) \"%s\" ignored"), str.c_str(), NULL);
 		return false;
 	}
-	int minus_count = 0;std::cout << "6901" << endl;
-	bool has_sign = false, had_non_sign = false, b_dot = false, b_exp = false, after_sign_e = false;std::cout << "6902" << endl;
-	int i_colon = 0;std::cout << "6903" << endl;
-	size_t i = 0;std::cout << "6904" << endl;
+	int minus_count = 0;
+	bool has_sign = false, had_non_sign = false, b_dot = false, b_exp = false, after_sign_e = false;
+	int i_colon = 0;
+	size_t i = 0;
 
 	while(i < str.length()) {
 		if(!had_non_sign && str[i] == MINUS_CH) {
-			has_sign = true;std::cout << "6908" << endl;
-			minus_count++;std::cout << "6909" << endl;
-			str.erase(i, 1);std::cout << "6910" << endl;
+			has_sign = true;
+			minus_count++;
+			str.erase(i, 1);
 		} else if(!had_non_sign && str[i] == PLUS_CH) {
-			has_sign = true;std::cout << "6912" << endl;
-			str.erase(i, 1);std::cout << "6913" << endl;
+			has_sign = true;
+			str.erase(i, 1);
 		} else if(str[i] == SPACE_CH) {
-			str.erase(i, 1);std::cout << "6915" << endl;
+			str.erase(i, 1);
 		} else if(!b_exp && BASE_2_10 && (str[i] == EXP_CH || str[i] == EXP2_CH)) {
-			b_exp = true;std::cout << "6917" << endl;
-			had_non_sign = true;std::cout << "6918" << endl;
-			after_sign_e = true;std::cout << "6919" << endl;
-			i++;std::cout << "6920" << endl;
+			b_exp = true;
+			had_non_sign = true;
+			after_sign_e = true;
+			i++;
 		} else if(after_sign_e && (str[i] == MINUS_CH || str[i] == PLUS_CH)) {
-			after_sign_e = false;std::cout << "6922" << endl;
-			i++;std::cout << "6923" << endl;
+			after_sign_e = false;
+			i++;
 		} else if(po.preserve_format && str[i] == DOT_CH) {
-			b_dot = true;std::cout << "6925" << endl;
-			had_non_sign = true;std::cout << "6926" << endl;
-			after_sign_e = false;std::cout << "6927" << endl;
-			i++;std::cout << "6928" << endl;
+			b_dot = true;
+			had_non_sign = true;
+			after_sign_e = false;
+			i++;
 		} else if(po.preserve_format && (!b_dot || i_colon > 0) && str[i] == ':') {
-			i_colon++;std::cout << "6930" << endl;
-			had_non_sign = true;std::cout << "6931" << endl;
-			after_sign_e = false;std::cout << "6932" << endl;
-			i++;std::cout << "6933" << endl;
+			i_colon++;
+			had_non_sign = true;
+			after_sign_e = false;
+			i++;
 		} else if(str[i] == COMMA_CH && DOT_S == ".") {
-			str.erase(i, 1);std::cout << "6935" << endl;
-			after_sign_e = false;std::cout << "6936" << endl;
-			had_non_sign = true;std::cout << "6937" << endl;
+			str.erase(i, 1);
+			after_sign_e = false;
+			had_non_sign = true;
 		} else if(is_in(OPERATORS, str[i]) && (po.base != BASE_ROMAN_NUMERALS || (str[i] != '(' && str[i] != ')' && str[i] != '|'))) {
 			error(false, _("Misplaced '%c' ignored"), str[i], NULL);
-			str.erase(i, 1);std::cout << "6940" << endl;
+			str.erase(i, 1);
 		} else if(str[i] == '\a') {
 			error(false, _("Misplaced operator(s) \"%s\" ignored"), "xor", NULL);
-			str.erase(i, 1);std::cout << "6943" << endl;
+			str.erase(i, 1);
 		} else if(str[i] == '\x1c') {
 			error(false, _("Misplaced operator(s) \"%s\" ignored"), "∠", NULL);
-			str.erase(i, 1);std::cout << "6946" << endl;
+			str.erase(i, 1);
 		} else if(str[i] == '\b') {
-			b_exp = false;std::cout << "6948" << endl;
-			had_non_sign = false;std::cout << "6949" << endl;
-			after_sign_e = false;std::cout << "6950" << endl;
-			i++;std::cout << "6951" << endl;
+			b_exp = false;
+			had_non_sign = false;
+			after_sign_e = false;
+			i++;
 		} else {
-			had_non_sign = true;std::cout << "6953" << endl;
-			after_sign_e = false;std::cout << "6954" << endl;
-			i++;std::cout << "6955" << endl;
+			had_non_sign = true;
+			after_sign_e = false;
+			i++;
 		}
 	}
 	if(str.empty()) {
 		if(minus_count % 2 == 1 && !po.preserve_format) {
-			mstruct->set(-1, 1, 0);std::cout << "6960" << endl;
+			mstruct->set(-1, 1, 0);
 		} else if(has_sign) {
-			mstruct->set(1, 1, 0);std::cout << "6962" << endl;
+			mstruct->set(1, 1, 0);
 			if(po.preserve_format) {
 				while(minus_count > 0) {
 					mstruct->transform(STRUCT_NEGATE);
-					minus_count--;std::cout << "6966" << endl;
+					minus_count--;
 				}
 			}
 		}
 		return false;
 	}
 	if(str[0] == ID_WRAP_LEFT_CH && str.length() > 2 && str[str.length() - 1] == ID_WRAP_RIGHT_CH) {
-		int id = s2i(str.substr(1, str.length() - 2));std::cout << "6973" << endl;
-		MathStructure *m_temp = getId((size_t) id);std::cout << "6974" << endl;
+		int id = s2i(str.substr(1, str.length() - 2));
+		MathStructure *m_temp = getId((size_t) id);
 		if(!m_temp) {
-			mstruct->setUndefined();std::cout << "6976" << endl;
+			mstruct->setUndefined();
 			error(true, _("Internal id %s does not exist."), i2s(id).c_str(), NULL);
 			return true;
 		}
-		mstruct->set_nocopy(*m_temp);std::cout << "6980" << endl;
-		m_temp->unref();std::cout << "6981" << endl;
+		mstruct->set_nocopy(*m_temp);
+		m_temp->unref();
 		if(po.preserve_format) {
 			while(minus_count > 0) {
 				mstruct->transform(STRUCT_NEGATE);
-				minus_count--;std::cout << "6985" << endl;
+				minus_count--;
 			}
 		} else if(minus_count % 2 == 1) {
-			mstruct->negate();std::cout << "6988" << endl;
+			mstruct->negate();
 		}
 		return true;
 	}
-	size_t itmp;std::cout << "6992" << endl;
-	if((BASE_2_10 || po.base == BASE_DUODECIMAL) &&
-	    (itmp = str.find_first_not_of(po.base == BASE_DUODECIMAL ?
-	     NUMBER_ELEMENTS INTERNAL_NUMBER_CHARS MINUS DUODECIMAL_CHARS :
-	     NUMBER_ELEMENTS INTERNAL_NUMBER_CHARS EXPS MINUS, 0)) != string::npos) {
+	size_t itmp;
+	if((BASE_2_10 || po.base == BASE_DUODECIMAL) && (itmp = str.find_first_not_of(po.base == BASE_DUODECIMAL ? NUMBER_ELEMENTS INTERNAL_NUMBER_CHARS MINUS DUODECIMAL_CHARS : NUMBER_ELEMENTS INTERNAL_NUMBER_CHARS EXPS MINUS, 0)) != string::npos) {
 		if(itmp == 0) {
-		    std::cout << "6997-x" << endl;
 			error(true, _("\"%s\" is not a valid variable/function/unit."), str.c_str(), NULL);
 			if(minus_count % 2 == 1 && !po.preserve_format) {
-				mstruct->set(-1, 1, 0);std::cout << "6997" << endl;
+				mstruct->set(-1, 1, 0);
 			} else if(has_sign) {
-				mstruct->set(1, 1, 0);std::cout << "6999" << endl;
+				mstruct->set(1, 1, 0);
 				if(po.preserve_format) {
 					while(minus_count > 0) {
 						mstruct->transform(STRUCT_NEGATE);
-						minus_count--;std::cout << "7003" << endl;
+						minus_count--;
 					}
 				}
 			}
 			return false;
 		} else {
-		    std::cout << "6997-y" << endl;
-			string stmp = str.substr(itmp, str.length() - itmp);std::cout << "7009" << endl;
+			string stmp = str.substr(itmp, str.length() - itmp);
 			error(true, _("Trailing characters \"%s\" (not a valid variable/function/unit) in number \"%s\" was ignored."), stmp.c_str(), str.c_str(), NULL);
-			str.erase(itmp, str.length() - itmp);std::cout << "7011" << endl;
+			str.erase(itmp, str.length() - itmp);
 		}
 	}
-	std::cout << "6992-z" << endl;
 	gsub("\b", "±", str);
-	std::cout << "6992-w" << endl;
-	Number nr(str, po);std::cout << "7015" << endl;
+	Number nr(str, po);
 	if(!po.preserve_format && minus_count % 2 == 1) {
-		nr.negate();std::cout << "7017" << endl;
+		nr.negate();
 	}
 	if(i_colon && nr.isRational() && !nr.isInteger()) {
-		Number nr_num(nr.numerator()), nr_den(1, 1, 0);std::cout << "7020" << endl;
+		Number nr_num(nr.numerator()), nr_den(1, 1, 0);
 		while(i_colon) {
-			nr_den *= 60;std::cout << "7022" << endl;
-			i_colon--;std::cout << "7023" << endl;
+			nr_den *= 60;
+			i_colon--;
 		}
-		nr_num *= nr_den;std::cout << "7025" << endl;
-		nr_num /= nr.denominator();std::cout << "7026" << endl;
-		mstruct->set(nr_num);std::cout << "7027" << endl;
+		nr_num *= nr_den;
+		nr_num /= nr.denominator();
+		mstruct->set(nr_num);
 		mstruct->transform(STRUCT_DIVISION, nr_den);
 	} else {
-		mstruct->set(nr);std::cout << "7030" << endl;
+		mstruct->set(nr);
 	}
 	if(po.preserve_format) {
 		while(minus_count > 0) {
 			mstruct->transform(STRUCT_NEGATE);
-			minus_count--;std::cout << "7035" << endl;
+			minus_count--;
 		}
 	}
 	return true;
@@ -7051,11 +7078,11 @@ bool Calculator::parseNumber(MathStructure *mstruct, string str, const ParseOpti
 
 bool Calculator::parseAdd(string &str, MathStructure *mstruct, const ParseOptions &po) {
 	if(str.length() > 0) {
-		size_t i;std::cout << "7044" << endl;
+		size_t i;
 		if(BASE_2_10) {
-			i = str.find_first_of(SPACE MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS EXPS ID_WRAP_LEFT, 1);std::cout << "7046" << endl;
+			i = str.find_first_of(SPACE MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS EXPS ID_WRAP_LEFT, 1);
 		} else {
-			i = str.find_first_of(SPACE MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS ID_WRAP_LEFT, 1);std::cout << "7048" << endl;
+			i = str.find_first_of(SPACE MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS ID_WRAP_LEFT, 1);
 		}
 		if(i == string::npos && str[0] != LOGICAL_NOT_CH && str[0] != BITWISE_NOT_CH && !(str[0] == ID_WRAP_LEFT_CH && str.find(ID_WRAP_RIGHT) < str.length() - 1)) {
 			return parseNumber(mstruct, str, po);
@@ -7067,54 +7094,54 @@ bool Calculator::parseAdd(string &str, MathStructure *mstruct, const ParseOption
 }
 bool Calculator::parseAdd(string &str, MathStructure *mstruct, const ParseOptions &po, MathOperation s, bool append) {
 	if(str.length() > 0) {
-		size_t i;std::cout << "7060" << endl;
+		size_t i;
 		if(BASE_2_10) {
-			i = str.find_first_of(SPACE MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS EXPS ID_WRAP_LEFT, 1);std::cout << "7062" << endl;
+			i = str.find_first_of(SPACE MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS EXPS ID_WRAP_LEFT, 1);
 		} else {
-			i = str.find_first_of(SPACE MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS ID_WRAP_LEFT, 1);std::cout << "7064" << endl;
+			i = str.find_first_of(SPACE MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS ID_WRAP_LEFT, 1);
 		}
 		if(i == string::npos && str[0] != LOGICAL_NOT_CH && str[0] != BITWISE_NOT_CH && !(str[0] == ID_WRAP_LEFT_CH && str.find(ID_WRAP_RIGHT) < str.length() - 1)) {
 			if(s == OPERATION_EXP10 && po.read_precision == ALWAYS_READ_PRECISION) {
-				ParseOptions po2 = po;std::cout << "7068" << endl;
-				po2.read_precision = READ_PRECISION_WHEN_DECIMALS;std::cout << "7069" << endl;
-				MathStructure *mstruct2 = new MathStructure();std::cout << "7070" << endl;
+				ParseOptions po2 = po;
+				po2.read_precision = READ_PRECISION_WHEN_DECIMALS;
+				MathStructure *mstruct2 = new MathStructure();
 				if(!parseNumber(mstruct2, str, po2)) {
-					mstruct2->unref();std::cout << "7072" << endl;
+					mstruct2->unref();
 					return false;
 				}
-				mstruct->add_nocopy(mstruct2, s, append);std::cout << "7075" << endl;
+				mstruct->add_nocopy(mstruct2, s, append);
 			} else {
-				MathStructure *mstruct2 = new MathStructure();std::cout << "7077" << endl;
+				MathStructure *mstruct2 = new MathStructure();
 				if(!parseNumber(mstruct2, str, po)) {
-					mstruct2->unref();std::cout << "7079" << endl;
+					mstruct2->unref();
 					return false;
 				}
 				if(s == OPERATION_EXP10 && !po.preserve_format && mstruct->isNumber() && mstruct2->isNumber()) {
-					mstruct->number().exp10(mstruct2->number());std::cout << "7083" << endl;
-					mstruct->numberUpdated();std::cout << "7084" << endl;
-					mstruct->mergePrecision(*mstruct2);std::cout << "7085" << endl;
+					mstruct->number().exp10(mstruct2->number());
+					mstruct->numberUpdated();
+					mstruct->mergePrecision(*mstruct2);
 				} else if(s == OPERATION_DIVIDE && po.preserve_format) {
 					mstruct->transform_nocopy(STRUCT_DIVISION, mstruct2);
 				} else if(s == OPERATION_SUBTRACT && po.preserve_format) {
 					mstruct2->transform(STRUCT_NEGATE);
-					mstruct->add_nocopy(mstruct2, OPERATION_ADD, append);std::cout << "7090" << endl;
+					mstruct->add_nocopy(mstruct2, OPERATION_ADD, append);
 				} else {
-					mstruct->add_nocopy(mstruct2, s, append);std::cout << "7092" << endl;
+					mstruct->add_nocopy(mstruct2, s, append);
 				}
 			}
 		} else {
-			MathStructure *mstruct2 = new MathStructure();std::cout << "7096" << endl;
+			MathStructure *mstruct2 = new MathStructure();
 			if(!parseOperators(mstruct2, str, po)) {
-				mstruct2->unref();std::cout << "7098" << endl;
+				mstruct2->unref();
 				return false;
 			}
 			if(s == OPERATION_DIVIDE && po.preserve_format) {
 				mstruct->transform_nocopy(STRUCT_DIVISION, mstruct2);
 			} else if(s == OPERATION_SUBTRACT && po.preserve_format) {
 				mstruct2->transform(STRUCT_NEGATE);
-				mstruct->add_nocopy(mstruct2, OPERATION_ADD, append);std::cout << "7105" << endl;
+				mstruct->add_nocopy(mstruct2, OPERATION_ADD, append);
 			} else {
-				mstruct->add_nocopy(mstruct2, s, append);std::cout << "7107" << endl;
+				mstruct->add_nocopy(mstruct2, s, append);
 			}
 		}
 	}
@@ -7123,165 +7150,165 @@ bool Calculator::parseAdd(string &str, MathStructure *mstruct, const ParseOption
 
 MathStructure *get_out_of_negate(MathStructure &mstruct, int *i_neg) {
 	if(mstruct.isNegate() || (mstruct.isMultiplication() && mstruct.size() == 2 && mstruct[0].isMinusOne())) {
-		(*i_neg)++;std::cout << "7116" << endl;
+		(*i_neg)++;
 		return get_out_of_negate(mstruct.last(), i_neg);
 	}
 	return &mstruct;
 }
 
 bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseOptions &po) {
-	string save_str = str;std::cout << "7123" << endl;
-	mstruct->clear();std::cout << "7124" << endl;
-	size_t i = 0, i2 = 0, i3 = 0;std::cout << "7125" << endl;
-	string str2, str3;std::cout << "7126" << endl;
+	string save_str = str;
+	mstruct->clear();
+	size_t i = 0, i2 = 0, i3 = 0;
+	string str2, str3;
 	bool extended_roman = (po.base == BASE_ROMAN_NUMERALS && (i = str.find("|")) != string::npos && i + 1 < str.length() && str[i + 1] == RIGHT_PARENTHESIS_CH);
 	while(!extended_roman) {
 		//find first right parenthesis and then the last left parenthesis before
-		i2 = str.find(RIGHT_PARENTHESIS_CH);std::cout << "7130" << endl;
+		i2 = str.find(RIGHT_PARENTHESIS_CH);
 		if(i2 == string::npos) {
-			i = str.rfind(LEFT_PARENTHESIS_CH);std::cout << "7132" << endl;
+			i = str.rfind(LEFT_PARENTHESIS_CH);
 			if(i == string::npos) {
 				//if no parenthesis break
 				break;
 			} else {
 				//right parenthesis missing -- append
-				str += RIGHT_PARENTHESIS_CH;std::cout << "7138" << endl;
-				i2 = str.length() - 1;std::cout << "7139" << endl;
+				str += RIGHT_PARENTHESIS_CH;
+				i2 = str.length() - 1;
 			}
 		} else {
 			if(i2 > 0) {
-				i = str.rfind(LEFT_PARENTHESIS_CH, i2 - 1);std::cout << "7143" << endl;
+				i = str.rfind(LEFT_PARENTHESIS_CH, i2 - 1);
 			} else {
-				i = string::npos;std::cout << "7145" << endl;
+				i = string::npos;
 			}
 			if(i == string::npos) {
 				//left parenthesis missing -- prepend
-				str.insert(str.begin(), 1, LEFT_PARENTHESIS_CH);std::cout << "7149" << endl;
-				i = 0;std::cout << "7150" << endl;
-				i2++;std::cout << "7151" << endl;
+				str.insert(str.begin(), 1, LEFT_PARENTHESIS_CH);
+				i = 0;
+				i2++;
 			}
 		}
 		while(true) {
 			//remove unnecessary double parenthesis and the found parenthesis
 			if(i > 0 && i2 + 1 < str.length() && str[i - 1] == LEFT_PARENTHESIS_CH && str[i2 + 1] == RIGHT_PARENTHESIS_CH) {
-				str.erase(str.begin() + (i - 1));std::cout << "7157" << endl;
-				i--;std::cout << "7158" << endl; i2--;std::cout << "7158" << endl;
-				str.erase(str.begin() + (i2 + 1));std::cout << "7159" << endl;
+				str.erase(str.begin() + (i - 1));
+				i--; i2--;
+				str.erase(str.begin() + (i2 + 1));
 			} else {
 				break;
 			}
 		}
 		if(i > 0 && is_not_in(MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS SPACE, str[i - 1]) && (!BASE_2_10 || (str[i - 1] != EXP_CH && str[i - 1] != EXP2_CH))) {
 			if(po.rpn) {
-				str.insert(i2 + 1, MULTIPLICATION);std::cout << "7166" << endl;
-				str.insert(i, SPACE);std::cout << "7167" << endl;
-				i++;std::cout << "7168" << endl;
-				i2++;std::cout << "7169" << endl;
+				str.insert(i2 + 1, MULTIPLICATION);
+				str.insert(i, SPACE);
+				i++;
+				i2++;
 			}
 		}
 		if(i2 + 1 < str.length() && is_not_in(MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS PARENTHESISS SPACE, str[i2 + 1]) && (!BASE_2_10 || (str[i2 + 1] != EXP_CH && str[i2 + 1] != EXP2_CH))) {
 			if(po.rpn) {
-				i3 = str.find(SPACE, i2 + 1);std::cout << "7174" << endl;
+				i3 = str.find(SPACE, i2 + 1);
 				if(i3 == string::npos) {
-					str += MULTIPLICATION;std::cout << "7176" << endl;
+					str += MULTIPLICATION;
 				} else {
-					str.replace(i3, 1, MULTIPLICATION);std::cout << "7178" << endl;
+					str.replace(i3, 1, MULTIPLICATION);
 				}
-				str.insert(i2 + 1, SPACE);std::cout << "7180" << endl;
+				str.insert(i2 + 1, SPACE);
 			}
 		}
 		if(po.rpn && i > 0 && i2 + 1 == str.length() && is_not_in(PARENTHESISS SPACE, str[i - 1])) {
-			str += MULTIPLICATION_CH;std::cout << "7184" << endl;
+			str += MULTIPLICATION_CH;
 		}
-		str2 = str.substr(i + 1, i2 - (i + 1));std::cout << "7186" << endl;
-		MathStructure *mstruct2 = new MathStructure();std::cout << "7187" << endl;
+		str2 = str.substr(i + 1, i2 - (i + 1));
+		MathStructure *mstruct2 = new MathStructure();
 		if(str2.empty()) {
 			error(false, "Empty expression in parentheses interpreted as zero.", NULL);
 		} else {
-			parseOperators(mstruct2, str2, po);std::cout << "7191" << endl;
+			parseOperators(mstruct2, str2, po);
 		}
-		mstruct2->setInParentheses(true);std::cout << "7193" << endl;
-		str2 = ID_WRAP_LEFT;std::cout << "7194" << endl;
-		str2 += i2s(addId(mstruct2));std::cout << "7195" << endl;
-		str2 += ID_WRAP_RIGHT;std::cout << "7196" << endl;
-		str.replace(i, i2 - i + 1, str2);std::cout << "7197" << endl;
-		mstruct->clear();std::cout << "7198" << endl;
+		mstruct2->setInParentheses(true);
+		str2 = ID_WRAP_LEFT;
+		str2 += i2s(addId(mstruct2));
+		str2 += ID_WRAP_RIGHT;
+		str.replace(i, i2 - i + 1, str2);
+		mstruct->clear();
 	}
-	bool b_abs_or = false, b_bit_or = false;std::cout << "7200" << endl;
-	i = 0;std::cout << "7201" << endl;
+	bool b_abs_or = false, b_bit_or = false;
+	i = 0;
 	if(!po.rpn) {
 		while(po.base != BASE_ROMAN_NUMERALS && (i = str.find('|', i)) != string::npos) {
 			if(i == 0 || i == str.length() - 1 || is_in(OPERATORS INTERNAL_OPERATORS SPACE, str[i - 1])) {b_abs_or = true; break;}
 			if(str[i + 1] == '|') {
 				if(i == str.length() - 2) {b_abs_or = true; break;}
 				if(b_bit_or) {
-					b_abs_or = true;std::cout << "7208" << endl;
+					b_abs_or = true;
 					break;
 				}
-				i += 2;std::cout << "7211" << endl;
+				i += 2;
 			} else {
-				b_bit_or = true;std::cout << "7213" << endl;
-				i++;std::cout << "7214" << endl;
+				b_bit_or = true;
+				i++;
 			}
 		}
 	}
 	if(b_abs_or) {
 		while((i = str.find('|', 0)) != string::npos && i + 1 != str.length()) {
 			if(str[i + 1] == '|') {
-				size_t depth = 1;std::cout << "7221" << endl;
-				i2 = i;std::cout << "7222" << endl;
+				size_t depth = 1;
+				i2 = i;
 				while((i2 = str.find("||", i2 + 2)) != string::npos) {
 					if(is_in(OPERATORS INTERNAL_OPERATORS, str[i2 - 1])) depth++;
-					else depth--;std::cout << "7225" << endl;
+					else depth--;
 					if(depth == 0) break;
 				}
 				if(i2 == string::npos) str2 = str.substr(i + 2);
-				else str2 = str.substr(i + 2, i2 - (i + 2));std::cout << "7229" << endl;
-				str3 = ID_WRAP_LEFT;std::cout << "7230" << endl;
-				str3 += i2s(parseAddId(f_magnitude, str2, po));std::cout << "7231" << endl;
-				str3 += ID_WRAP_RIGHT;std::cout << "7232" << endl;
+				else str2 = str.substr(i + 2, i2 - (i + 2));
+				str3 = ID_WRAP_LEFT;
+				str3 += i2s(parseAddId(f_magnitude, str2, po));
+				str3 += ID_WRAP_RIGHT;
 				if(i2 == string::npos) str.replace(i, str.length() - i, str3);
-				else str.replace(i, i2 - i + 2, str3);std::cout << "7234" << endl;
+				else str.replace(i, i2 - i + 2, str3);
 			} else {
-				size_t depth = 1;std::cout << "7236" << endl;
-				i2 = i;std::cout << "7237" << endl;
+				size_t depth = 1;
+				i2 = i;
 				while((i2 = str.find('|', i2 + 1)) != string::npos) {
 					if(is_in(OPERATORS INTERNAL_OPERATORS, str[i2 - 1])) depth++;
-					else depth--;std::cout << "7240" << endl;
+					else depth--;
 					if(depth == 0) break;
 				}
 				if(i2 == string::npos) str2 = str.substr(i + 1);
-				else str2 = str.substr(i + 1, i2 - (i + 1));std::cout << "7244" << endl;
-				str3 = ID_WRAP_LEFT;std::cout << "7245" << endl;
-				str3 += i2s(parseAddId(f_abs, str2, po));std::cout << "7246" << endl;
-				str3 += ID_WRAP_RIGHT;std::cout << "7247" << endl;
+				else str2 = str.substr(i + 1, i2 - (i + 1));
+				str3 = ID_WRAP_LEFT;
+				str3 += i2s(parseAddId(f_abs, str2, po));
+				str3 += ID_WRAP_RIGHT;
 				if(i2 == string::npos) str.replace(i, str.length() - i, str3);
-				else str.replace(i, i2 - i + 1, str3);std::cout << "7249" << endl;
+				else str.replace(i, i2 - i + 1, str3);
 			}
 		}
 	}
 	if(po.rpn) {
-		i = 0;std::cout << "7254" << endl;
-		i3 = 0;std::cout << "7255" << endl;
-		ParseOptions po2 = po;std::cout << "7256" << endl;
-		po2.rpn = false;std::cout << "7257" << endl;
-		vector<MathStructure*> mstack;std::cout << "7258" << endl;
-		bool b = false;std::cout << "7259" << endl;
-		char last_operator = 0;std::cout << "7260" << endl;
-		char last_operator2 = 0;std::cout << "7261" << endl;
+		i = 0;
+		i3 = 0;
+		ParseOptions po2 = po;
+		po2.rpn = false;
+		vector<MathStructure*> mstack;
+		bool b = false;
+		char last_operator = 0;
+		char last_operator2 = 0;
 		while(true) {
 			i = str.find_first_of(OPERATORS "\a%\x1c" SPACE "\\", i3 + 1);
 			if(i == string::npos) {
 				if(!b) {
-					parseAdd(str, mstruct, po2);std::cout << "7266" << endl;
+					parseAdd(str, mstruct, po2);
 					return true;
 				}
 				if(i3 != 0) {
-					str2 = str.substr(i3 + 1, str.length() - i3 - 1);std::cout << "7270" << endl;
+					str2 = str.substr(i3 + 1, str.length() - i3 - 1);
 				} else {
-					str2 = str.substr(i3, str.length() - i3);std::cout << "7272" << endl;
+					str2 = str.substr(i3, str.length() - i3);
 				}
-				remove_blank_ends(str2);std::cout << "7274" << endl;
+				remove_blank_ends(str2);
 				if(!str2.empty()) {
 					error(false, _("RPN syntax error. Values left at the end of the RPN expression."), NULL);
 				} else if(mstack.size() > 1) {
@@ -7291,75 +7318,75 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 						while(mstack.size() > 1) {
 							switch(last_operator) {
 								case PLUS_CH: {
-									mstack[mstack.size() - 2]->add_nocopy(mstack.back());std::cout << "7284" << endl;
-									mstack.pop_back();std::cout << "7285" << endl;
+									mstack[mstack.size() - 2]->add_nocopy(mstack.back());
+									mstack.pop_back();
 									break;
 								}
 								case MINUS_CH: {
 									if(po.preserve_format) {
 										mstack.back()->transform(STRUCT_NEGATE);
-										mstack[mstack.size() - 2]->add_nocopy(mstack.back());std::cout << "7291" << endl;
+										mstack[mstack.size() - 2]->add_nocopy(mstack.back());
 									} else {
-										mstack[mstack.size() - 2]->subtract_nocopy(mstack.back());std::cout << "7293" << endl;
+										mstack[mstack.size() - 2]->subtract_nocopy(mstack.back());
 									}
-									mstack.pop_back();std::cout << "7295" << endl;
+									mstack.pop_back();
 									break;
 								}
 								case MULTIPLICATION_CH: {
-									mstack[mstack.size() - 2]->multiply_nocopy(mstack.back());std::cout << "7299" << endl;
-									mstack.pop_back();std::cout << "7300" << endl;
+									mstack[mstack.size() - 2]->multiply_nocopy(mstack.back());
+									mstack.pop_back();
 									break;
 								}
 								case DIVISION_CH: {
 									if(po.preserve_format) {
 										mstack[mstack.size() - 2]->transform_nocopy(STRUCT_DIVISION, mstack.back());
 									} else {
-										mstack[mstack.size() - 2]->divide_nocopy(mstack.back());std::cout << "7307" << endl;
+										mstack[mstack.size() - 2]->divide_nocopy(mstack.back());
 									}
-									mstack.pop_back();std::cout << "7309" << endl;
+									mstack.pop_back();
 									break;
 								}
 								case POWER_CH: {
-									mstack[mstack.size() - 2]->raise_nocopy(mstack.back());std::cout << "7313" << endl;
-									mstack.pop_back();std::cout << "7314" << endl;
+									mstack[mstack.size() - 2]->raise_nocopy(mstack.back());
+									mstack.pop_back();
 									break;
 								}
 								case AND_CH: {
 									mstack[mstack.size() - 2]->transform_nocopy(STRUCT_BITWISE_AND, mstack.back());
-									mstack.pop_back();std::cout << "7319" << endl;
+									mstack.pop_back();
 									break;
 								}
 								case OR_CH: {
 									mstack[mstack.size() - 2]->transform_nocopy(STRUCT_BITWISE_OR, mstack.back());
-									mstack.pop_back();std::cout << "7324" << endl;
+									mstack.pop_back();
 									break;
 								}
 								case GREATER_CH: {
 									if(last_operator2 == GREATER_CH) {
 										if(po.preserve_format) mstack.back()->transform(STRUCT_NEGATE);
-										else mstack.back()->negate();std::cout << "7330" << endl;
+										else mstack.back()->negate();
 										mstack[mstack.size() - 2]->transform(CALCULATOR->f_shift);
-										mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());std::cout << "7332" << endl;
-										mstack[mstack.size() - 2]->addChild(m_one);std::cout << "7333" << endl;
+										mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());
+										mstack[mstack.size() - 2]->addChild(m_one);
 									} else if(last_operator2 == EQUALS_CH) {
-										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS_GREATER);std::cout << "7335" << endl;
+										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS_GREATER);
 									} else {
-										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_GREATER);std::cout << "7337" << endl;
+										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_GREATER);
 									}
-									mstack.pop_back();std::cout << "7339" << endl;
+									mstack.pop_back();
 									break;
 								}
 								case LESS_CH: {
 									if(last_operator2 == LESS_CH) {
 										mstack[mstack.size() - 2]->transform(CALCULATOR->f_shift);
-										mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());std::cout << "7345" << endl;
-										mstack[mstack.size() - 2]->addChild(m_one);std::cout << "7346" << endl;
+										mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());
+										mstack[mstack.size() - 2]->addChild(m_one);
 									} else if(last_operator2 == EQUALS_CH) {
-										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS_LESS);std::cout << "7348" << endl;
+										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS_LESS);
 									} else {
-										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_LESS);std::cout << "7350" << endl;
+										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_LESS);
 									}
-									mstack.pop_back();std::cout << "7352" << endl;
+									mstack.pop_back();
 									break;
 								}
 								case NOT_CH: {
@@ -7368,11 +7395,11 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 								}
 								case EQUALS_CH: {
 									if(last_operator2 == NOT_CH) {
-										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_NOT_EQUALS);std::cout << "7361" << endl;
+										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_NOT_EQUALS);
 									} else {
-										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS);std::cout << "7363" << endl;
+										mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS);
 									}
-									mstack.pop_back();std::cout << "7365" << endl;
+									mstack.pop_back();
 									break;
 								}
 								case BITWISE_NOT_CH: {
@@ -7390,12 +7417,12 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 									}
 									mstack.back()->transform(priv->f_cis);
 									mstack[mstack.size() - 2]->transform_nocopy(STRUCT_MULTIPLICATION, mstack.back());
-									mstack.pop_back();std::cout << "7383" << endl;
+									mstack.pop_back();
 									break;
 								}
 								case '\a': {
 									mstack[mstack.size() - 2]->transform_nocopy(STRUCT_BITWISE_XOR, mstack.back());
-									mstack.pop_back();std::cout << "7388" << endl;
+									mstack.pop_back();
 									break;
 								}
 								case '%': {
@@ -7404,23 +7431,23 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 									} else {
 										mstack[mstack.size() - 2]->transform(f_rem);
 									}
-									mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());std::cout << "7397" << endl;
-									mstack.pop_back();std::cout << "7398" << endl;
+									mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());
+									mstack.pop_back();
 									break;
 								}
 								case '\\': {
 									if(po.preserve_format) {
 										mstack[mstack.size() - 2]->transform_nocopy(STRUCT_DIVISION, mstack.back());
 									} else {
-										mstack[mstack.size() - 2]->divide_nocopy(mstack.back());std::cout << "7405" << endl;
+										mstack[mstack.size() - 2]->divide_nocopy(mstack.back());
 									}
 									mstack[mstack.size() - 2]->transform(f_trunc);
-									mstack.pop_back();std::cout << "7408" << endl;
+									mstack.pop_back();
 									break;
 								}
 								default: {
 									error(true, _("RPN syntax error. Operator '%c' not supported."), last_operator, NULL);
-									mstack.pop_back();std::cout << "7413" << endl;
+									mstack.pop_back();
 									break;
 								}
 							}
@@ -7434,33 +7461,33 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 						mstack.back()->transform(STRUCT_BITWISE_NOT);
 					}
 				}
-				mstruct->set_nocopy(*mstack.back());std::cout << "7427" << endl;
+				mstruct->set_nocopy(*mstack.back());
 				while(!mstack.empty()) {
-					mstack.back()->unref();std::cout << "7429" << endl;
-					mstack.pop_back();std::cout << "7430" << endl;
+					mstack.back()->unref();
+					mstack.pop_back();
 				}
 				return true;
 			}
-			b = true;std::cout << "7434" << endl;
+			b = true;
 			if(i3 != 0) {
-				str2 = str.substr(i3 + 1, i - i3 - 1);std::cout << "7436" << endl;
+				str2 = str.substr(i3 + 1, i - i3 - 1);
 			} else {
-				str2 = str.substr(i3, i - i3);std::cout << "7438" << endl;
+				str2 = str.substr(i3, i - i3);
 			}
-			remove_blank_ends(str2);std::cout << "7440" << endl;
+			remove_blank_ends(str2);
 			if(!str2.empty()) {
-				mstack.push_back(new MathStructure());std::cout << "7442" << endl;
+				mstack.push_back(new MathStructure());
 				if((str[i] == GREATER_CH || str[i] == LESS_CH) && po2.base < 10 && po2.base >= 2 && i + 1 < str.length() && str[i + 1] == str[i] && str2.find_first_not_of(NUMBERS SPACE PLUS MINUS) == string::npos) {
 					for(i = 0; i < str2.size(); i++) {
 						if(str2[i] >= '0' && str2[i] <= '9' && po.base <= str2[i] - '0') {
-							po2.base = BASE_DECIMAL;std::cout << "7446" << endl;
+							po2.base = BASE_DECIMAL;
 							break;
 						}
 					}
-					parseAdd(str2, mstack.back(), po2);std::cout << "7450" << endl;
-					po2.base = po.base;std::cout << "7451" << endl;
+					parseAdd(str2, mstack.back(), po2);
+					po2.base = po.base;
 				} else {
-					parseAdd(str2, mstack.back(), po2);std::cout << "7453" << endl;
+					parseAdd(str2, mstack.back(), po2);
 				}
 			}
 			if(str[i] != SPACE_CH) {
@@ -7471,7 +7498,7 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 						mstack.back()->transform(STRUCT_LOGICAL_NOT);
 					} else if(str[i] == MINUS_CH) {
 						if(po.preserve_format) mstack.back()->transform(STRUCT_NEGATE);
-						else mstack.back()->negate();std::cout << "7464" << endl;
+						else mstack.back()->negate();
 					} else if(str[i] == BITWISE_NOT_CH) {
 						mstack.back()->transform(STRUCT_BITWISE_NOT);
 					} else if(str[i] == '\x1c') {
@@ -7483,7 +7510,7 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 							}
 						}
 						mstack.back()->transform(priv->f_cis);
-						mstack.back()->multiply(m_one);std::cout << "7476" << endl;
+						mstack.back()->multiply(m_one);
 						if(po.preserve_format) mstack.back()->swapChildren(1, 2);
 					} else {
 						error(false, _("RPN syntax error. Operator ignored as there where only one stack value."), NULL);
@@ -7491,37 +7518,37 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 				} else {
 					switch(str[i]) {
 						case PLUS_CH: {
-							mstack[mstack.size() - 2]->add_nocopy(mstack.back());std::cout << "7484" << endl;
-							mstack.pop_back();std::cout << "7485" << endl;
+							mstack[mstack.size() - 2]->add_nocopy(mstack.back());
+							mstack.pop_back();
 							break;
 						}
 						case MINUS_CH: {
 							if(po.preserve_format) {
 								mstack.back()->transform(STRUCT_NEGATE);
-								mstack[mstack.size() - 2]->add_nocopy(mstack.back());std::cout << "7491" << endl;
+								mstack[mstack.size() - 2]->add_nocopy(mstack.back());
 							} else {
-								mstack[mstack.size() - 2]->subtract_nocopy(mstack.back());std::cout << "7493" << endl;
+								mstack[mstack.size() - 2]->subtract_nocopy(mstack.back());
 							}
-							mstack.pop_back();std::cout << "7495" << endl;
+							mstack.pop_back();
 							break;
 						}
 						case MULTIPLICATION_CH: {
-							mstack[mstack.size() - 2]->multiply_nocopy(mstack.back());std::cout << "7499" << endl;
-							mstack.pop_back();std::cout << "7500" << endl;
+							mstack[mstack.size() - 2]->multiply_nocopy(mstack.back());
+							mstack.pop_back();
 							break;
 						}
 						case DIVISION_CH: {
 							if(po.preserve_format) {
 								mstack[mstack.size() - 2]->transform_nocopy(STRUCT_DIVISION, mstack.back());
 							} else {
-								mstack[mstack.size() - 2]->divide_nocopy(mstack.back());std::cout << "7507" << endl;
+								mstack[mstack.size() - 2]->divide_nocopy(mstack.back());
 							}
-							mstack.pop_back();std::cout << "7509" << endl;
+							mstack.pop_back();
 							break;
 						}
 						case POWER_CH: {
-							mstack[mstack.size() - 2]->raise_nocopy(mstack.back());std::cout << "7513" << endl;
-							mstack.pop_back();std::cout << "7514" << endl;
+							mstack[mstack.size() - 2]->raise_nocopy(mstack.back());
+							mstack.pop_back();
 							break;
 						}
 						case AND_CH: {
@@ -7530,7 +7557,7 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 							} else {
 								mstack[mstack.size() - 2]->transform_nocopy(STRUCT_BITWISE_AND, mstack.back());
 							}
-							mstack.pop_back();std::cout << "7523" << endl;
+							mstack.pop_back();
 							break;
 						}
 						case OR_CH: {
@@ -7539,35 +7566,35 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 							} else {
 								mstack[mstack.size() - 2]->transform_nocopy(STRUCT_BITWISE_OR, mstack.back());
 							}
-							mstack.pop_back();std::cout << "7532" << endl;
+							mstack.pop_back();
 							break;
 						}
 						case GREATER_CH: {
 							if(i + 1 < str.length() && str[i + 1] == GREATER_CH) {
 								if(po.preserve_format) mstack.back()->transform(STRUCT_NEGATE);
-								else mstack.back()->negate();std::cout << "7538" << endl;
+								else mstack.back()->negate();
 								mstack[mstack.size() - 2]->transform(CALCULATOR->f_shift);
-								mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());std::cout << "7540" << endl;
-								mstack[mstack.size() - 2]->addChild(m_one);std::cout << "7541" << endl;
+								mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());
+								mstack[mstack.size() - 2]->addChild(m_one);
 							} else if(i + 1 < str.length() && str[i + 1] == EQUALS_CH) {
-								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS_GREATER);std::cout << "7543" << endl;
+								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS_GREATER);
 							} else {
-								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_GREATER);std::cout << "7545" << endl;
+								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_GREATER);
 							}
-							mstack.pop_back();std::cout << "7547" << endl;
+							mstack.pop_back();
 							break;
 						}
 						case LESS_CH: {
 							if(i + 1 < str.length() && str[i + 1] == LESS_CH) {
 								mstack[mstack.size() - 2]->transform(CALCULATOR->f_shift);
-								mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());std::cout << "7553" << endl;
-								mstack[mstack.size() - 2]->addChild(m_one);std::cout << "7554" << endl;
+								mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());
+								mstack[mstack.size() - 2]->addChild(m_one);
 							} else if(i + 1 < str.length() && str[i + 1] == EQUALS_CH) {
-								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS_LESS);std::cout << "7556" << endl;
+								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS_LESS);
 							} else {
-								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_LESS);std::cout << "7558" << endl;
+								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_LESS);
 							}
-							mstack.pop_back();std::cout << "7560" << endl;
+							mstack.pop_back();
 							break;
 						}
 						case NOT_CH: {
@@ -7576,12 +7603,12 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 						}
 						case EQUALS_CH: {
 							if(i + 1 < str.length() && str[i + 1] == NOT_CH) {
-								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_NOT_EQUALS);std::cout << "7569" << endl;
-								mstack.pop_back();std::cout << "7570" << endl;
+								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_NOT_EQUALS);
+								mstack.pop_back();
 							} else {
-								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS);std::cout << "7572" << endl;
+								mstack[mstack.size() - 2]->add_nocopy(mstack.back(), OPERATION_EQUALS);
 							}
-							mstack.pop_back();std::cout << "7574" << endl;
+							mstack.pop_back();
 							break;
 						}
 						case BITWISE_NOT_CH: {
@@ -7598,12 +7625,12 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 							}
 							mstack.back()->transform(priv->f_cis);
 							mstack[mstack.size() - 2]->transform_nocopy(STRUCT_MULTIPLICATION, mstack.back());
-							mstack.pop_back();std::cout << "7591" << endl;
+							mstack.pop_back();
 							break;
 						}
 						case '\a': {
 							mstack[mstack.size() - 2]->transform_nocopy(STRUCT_BITWISE_XOR, mstack.back());
-							mstack.pop_back();std::cout << "7596" << endl;
+							mstack.pop_back();
 							break;
 						}
 						case '%': {
@@ -7612,167 +7639,167 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 							} else {
 								mstack[mstack.size() - 2]->transform(f_rem);
 							}
-							mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());std::cout << "7605" << endl;
-							mstack.pop_back();std::cout << "7606" << endl;
+							mstack[mstack.size() - 2]->addChild_nocopy(mstack.back());
+							mstack.pop_back();
 							break;
 						}
 						case '\\': {
 							if(po.preserve_format) {
 								mstack[mstack.size() - 2]->transform_nocopy(STRUCT_DIVISION, mstack.back());
 							} else {
-								mstack[mstack.size() - 2]->divide_nocopy(mstack.back());std::cout << "7613" << endl;
+								mstack[mstack.size() - 2]->divide_nocopy(mstack.back());
 							}
 							mstack[mstack.size() - 2]->transform(f_trunc);
-							mstack.pop_back();std::cout << "7616" << endl;
+							mstack.pop_back();
 							break;
 						}
 						default: {
 							error(true, _("RPN syntax error. Operator '%c' not supported."), str[i], NULL);
-							mstack.pop_back();std::cout << "7621" << endl;
+							mstack.pop_back();
 							break;
 						}
 					}
-					last_operator = str[i];std::cout << "7625" << endl;
+					last_operator = str[i];
 					if(i + 1 < str.length()) last_operator2 = str[i + 1];
-					else last_operator2 = 0;std::cout << "7627" << endl;
+					else last_operator2 = 0;
 					if((last_operator2 == EQUALS_CH && (last_operator == GREATER_CH || last_operator == LESS_CH || last_operator == EQUALS_CH)) || (last_operator2 == NOT_CH && last_operator == EQUALS_CH) || (last_operator == last_operator2 && (last_operator == GREATER_CH || last_operator == LESS_CH || last_operator == '%' || last_operator == AND_CH || last_operator == OR_CH))) {
-						i++;std::cout << "7629" << endl;
+						i++;
 					}
 				}
 			}
-			i3 = i;std::cout << "7633" << endl;
+			i3 = i;
 		}
 	}
 	if(po.rpn) remove_blanks(str);
-	i = 0;std::cout << "7637" << endl;
-	i3 = 0;std::cout << "7638" << endl;
+	i = 0;
+	i3 = 0;
 	if((i = str.find(LOGICAL_AND, 1)) != string::npos && i + 2 != str.length()) {
-		bool b = false, append = false;std::cout << "7640" << endl;
+		bool b = false, append = false;
 		while(i != string::npos && i + 2 != str.length()) {
-			str2 = str.substr(0, i);std::cout << "7642" << endl;
-			str = str.substr(i + 2, str.length() - (i + 2));std::cout << "7643" << endl;
+			str2 = str.substr(0, i);
+			str = str.substr(i + 2, str.length() - (i + 2));
 			if(b) {
-				parseAdd(str2, mstruct, po, OPERATION_LOGICAL_AND, append);std::cout << "7645" << endl;
-				append = true;std::cout << "7646" << endl;
+				parseAdd(str2, mstruct, po, OPERATION_LOGICAL_AND, append);
+				append = true;
 			} else {
-				parseAdd(str2, mstruct, po);std::cout << "7648" << endl;
-				b = true;std::cout << "7649" << endl;
+				parseAdd(str2, mstruct, po);
+				b = true;
 			}
-			i = str.find(LOGICAL_AND, 1);std::cout << "7651" << endl;
+			i = str.find(LOGICAL_AND, 1);
 		}
 		if(b) {
-			parseAdd(str, mstruct, po, OPERATION_LOGICAL_AND, append);std::cout << "7654" << endl;
+			parseAdd(str, mstruct, po, OPERATION_LOGICAL_AND, append);
 		} else {
-			parseAdd(str, mstruct, po);std::cout << "7656" << endl;
+			parseAdd(str, mstruct, po);
 		}
 		return true;
 	}
 	if(po.base != BASE_ROMAN_NUMERALS && (i = str.find(LOGICAL_OR, 1)) != string::npos && i + 2 != str.length()) {
-		bool b = false, append = false;std::cout << "7661" << endl;
+		bool b = false, append = false;
 		while(i != string::npos && i + 2 != str.length()) {
-			str2 = str.substr(0, i);std::cout << "7663" << endl;
-			str = str.substr(i + 2, str.length() - (i + 2));std::cout << "7664" << endl;
+			str2 = str.substr(0, i);
+			str = str.substr(i + 2, str.length() - (i + 2));
 			if(b) {
-				parseAdd(str2, mstruct, po, OPERATION_LOGICAL_OR, append);std::cout << "7666" << endl;
-				append = true;std::cout << "7667" << endl;
+				parseAdd(str2, mstruct, po, OPERATION_LOGICAL_OR, append);
+				append = true;
 			} else {
-				parseAdd(str2, mstruct, po);std::cout << "7669" << endl;
-				b = true;std::cout << "7670" << endl;
+				parseAdd(str2, mstruct, po);
+				b = true;
 			}
-			i = str.find(LOGICAL_OR, 1);std::cout << "7672" << endl;
+			i = str.find(LOGICAL_OR, 1);
 		}
 		if(b) {
-			parseAdd(str, mstruct, po, OPERATION_LOGICAL_OR, append);std::cout << "7675" << endl;
+			parseAdd(str, mstruct, po, OPERATION_LOGICAL_OR, append);
 		} else {
-			parseAdd(str, mstruct, po);std::cout << "7677" << endl;
+			parseAdd(str, mstruct, po);
 		}
 		return true;
 	}
 	/*if((i = str.find(LOGICAL_XOR, 1)) != string::npos && i + strlen(LOGICAL_XOR) != str.length()) {
-		str2 = str.substr(0, i);std::cout << "7682" << endl;
-		str = str.substr(i + strlen(LOGICAL_XOR), str.length() - (i + strlen(LOGICAL_XOR)));std::cout << "7683" << endl;
-		parseAdd(str2, mstruct, po);std::cout << "7684" << endl;
-		parseAdd(str, mstruct, po, OPERATION_LOGICAL_XOR);std::cout << "7685" << endl;
+		str2 = str.substr(0, i);
+		str = str.substr(i + strlen(LOGICAL_XOR), str.length() - (i + strlen(LOGICAL_XOR)));
+		parseAdd(str2, mstruct, po);
+		parseAdd(str, mstruct, po, OPERATION_LOGICAL_XOR);
 		return true;
 	}*/
 	if(po.base != BASE_ROMAN_NUMERALS && (i = str.find(BITWISE_OR, 1)) != string::npos && i + 1 != str.length()) {
-		bool b = false, append = false;std::cout << "7689" << endl;
+		bool b = false, append = false;
 		while(i != string::npos && i + 1 != str.length()) {
-			str2 = str.substr(0, i);std::cout << "7691" << endl;
-			str = str.substr(i + 1, str.length() - (i + 1));std::cout << "7692" << endl;
+			str2 = str.substr(0, i);
+			str = str.substr(i + 1, str.length() - (i + 1));
 			if(b) {
-				parseAdd(str2, mstruct, po, OPERATION_BITWISE_OR, append);std::cout << "7694" << endl;
-				append = true;std::cout << "7695" << endl;
+				parseAdd(str2, mstruct, po, OPERATION_BITWISE_OR, append);
+				append = true;
 			} else {
-				parseAdd(str2, mstruct, po);std::cout << "7697" << endl;
-				b = true;std::cout << "7698" << endl;
+				parseAdd(str2, mstruct, po);
+				b = true;
 			}
-			i = str.find(BITWISE_OR, 1);std::cout << "7700" << endl;
+			i = str.find(BITWISE_OR, 1);
 		}
 		if(b) {
-			parseAdd(str, mstruct, po, OPERATION_BITWISE_OR, append);std::cout << "7703" << endl;
+			parseAdd(str, mstruct, po, OPERATION_BITWISE_OR, append);
 		} else {
-			parseAdd(str, mstruct, po);std::cout << "7705" << endl;
+			parseAdd(str, mstruct, po);
 		}
 		return true;
 	}
 	if((i = str.find('\a', 1)) != string::npos && i + 1 != str.length()) {
-		str2 = str.substr(0, i);std::cout << "7710" << endl;
-		str = str.substr(i + 1, str.length() - (i + 1));std::cout << "7711" << endl;
-		parseAdd(str2, mstruct, po);std::cout << "7712" << endl;
-		parseAdd(str, mstruct, po, OPERATION_BITWISE_XOR);std::cout << "7713" << endl;
+		str2 = str.substr(0, i);
+		str = str.substr(i + 1, str.length() - (i + 1));
+		parseAdd(str2, mstruct, po);
+		parseAdd(str, mstruct, po, OPERATION_BITWISE_XOR);
 		return true;
 	}
 	if((i = str.find(BITWISE_AND, 1)) != string::npos && i + 1 != str.length()) {
-		bool b = false, append = false;std::cout << "7717" << endl;
+		bool b = false, append = false;
 		while(i != string::npos && i + 1 != str.length()) {
-			str2 = str.substr(0, i);std::cout << "7719" << endl;
-			str = str.substr(i + 1, str.length() - (i + 1));std::cout << "7720" << endl;
+			str2 = str.substr(0, i);
+			str = str.substr(i + 1, str.length() - (i + 1));
 			if(b) {
-				parseAdd(str2, mstruct, po, OPERATION_BITWISE_AND, append);std::cout << "7722" << endl;
-				append = true;std::cout << "7723" << endl;
+				parseAdd(str2, mstruct, po, OPERATION_BITWISE_AND, append);
+				append = true;
 			} else {
-				parseAdd(str2, mstruct, po);std::cout << "7725" << endl;
-				b = true;std::cout << "7726" << endl;
+				parseAdd(str2, mstruct, po);
+				b = true;
 			}
-			i = str.find(BITWISE_AND, 1);std::cout << "7728" << endl;
+			i = str.find(BITWISE_AND, 1);
 		}
 		if(b) {
-			parseAdd(str, mstruct, po, OPERATION_BITWISE_AND, append);std::cout << "7731" << endl;
+			parseAdd(str, mstruct, po, OPERATION_BITWISE_AND, append);
 		} else {
-			parseAdd(str, mstruct, po);std::cout << "7733" << endl;
+			parseAdd(str, mstruct, po);
 		}
 		return true;
 	}
 	if((i = str.find_first_of(LESS GREATER EQUALS NOT, 0)) != string::npos) {
 		while(i != string::npos && ((str[i] == LOGICAL_NOT_CH && (i + 1 >= str.length() || str[i + 1] != EQUALS_CH)) || (str[i] == LESS_CH && i + 1 < str.length() && str[i + 1] == LESS_CH) || (str[i] == GREATER_CH && i + 1 < str.length() && str[i + 1] == GREATER_CH))) {
-			i = str.find_first_of(LESS GREATER NOT EQUALS, i + 2);std::cout << "7739" << endl;
+			i = str.find_first_of(LESS GREATER NOT EQUALS, i + 2);
 		}
 	}
 	if(i != string::npos) {
-		bool b = false;std::cout << "7743" << endl;
-		bool c = false;std::cout << "7744" << endl;
+		bool b = false;
+		bool c = false;
 		while(i != string::npos && str[i] == NOT_CH && str.length() > i + 1 && str[i + 1] == NOT_CH) {
-			i++;std::cout << "7746" << endl;
+			i++;
 			if(i + 1 == str.length()) {
-				c = true;std::cout << "7748" << endl;
+				c = true;
 			}
 		}
-		MathOperation s = OPERATION_ADD;std::cout << "7751" << endl;
+		MathOperation s = OPERATION_ADD;
 		while(!c) {
 			while(i != string::npos && ((str[i] == LOGICAL_NOT_CH && (i + 1 >= str.length() || str[i + 1] != EQUALS_CH)) || (str[i] == LESS_CH && i + 1 < str.length() && str[i + 1] == LESS_CH) || (str[i] == GREATER_CH && i + 1 < str.length() && str[i + 1] == GREATER_CH))) {
-				i = str.find_first_of(LESS GREATER NOT EQUALS, i + 2);std::cout << "7754" << endl;
+				i = str.find_first_of(LESS GREATER NOT EQUALS, i + 2);
 				while(i != string::npos && str[i] == NOT_CH && str.length() > i + 1 && str[i + 1] == NOT_CH) {
-					i++;std::cout << "7756" << endl;
+					i++;
 					if(i + 1 == str.length()) {
-						i = string::npos;std::cout << "7758" << endl;
+						i = string::npos;
 					}
 				}
 			}
 			if(i == string::npos) {
-				str2 = str.substr(0, str.length());std::cout << "7763" << endl;
+				str2 = str.substr(0, str.length());
 			} else {
-				str2 = str.substr(0, i);std::cout << "7765" << endl;
+				str2 = str.substr(0, i);
 			}
 			if(b) {
 				switch(i3) {
@@ -7783,207 +7810,207 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 					case LESS_CH * EQUALS_CH: {s = OPERATION_EQUALS_LESS; break;}
 					case GREATER_CH * LESS_CH: {s = OPERATION_NOT_EQUALS; break;}
 				}
-				parseAdd(str2, mstruct, po, s);std::cout << "7776" << endl;
+				parseAdd(str2, mstruct, po, s);
 			}
 			if(i == string::npos) {
 				return true;
 			}
 			if(!b) {
-				parseAdd(str2, mstruct, po);std::cout << "7782" << endl;
-				b = true;std::cout << "7783" << endl;
+				parseAdd(str2, mstruct, po);
+				b = true;
 			}
 			if(str.length() > i + 1 && is_in(LESS GREATER NOT EQUALS, str[i + 1])) {
 				if(str[i] == str[i + 1]) {
-					i3 = str[i];std::cout << "7787" << endl;
+					i3 = str[i];
 				} else {
-					i3 = str[i] * str[i + 1];std::cout << "7789" << endl;
+					i3 = str[i] * str[i + 1];
 					if(i3 == NOT_CH * EQUALS_CH) {
-						i3 = GREATER_CH * LESS_CH;std::cout << "7791" << endl;
+						i3 = GREATER_CH * LESS_CH;
 					} else if(i3 == NOT_CH * LESS_CH) {
-						i3 = GREATER_CH;std::cout << "7793" << endl;
+						i3 = GREATER_CH;
 					} else if(i3 == NOT_CH * GREATER_CH) {
-						i3 = LESS_CH;std::cout << "7795" << endl;
+						i3 = LESS_CH;
 					}
 				}
-				i++;std::cout << "7798" << endl;
+				i++;
 			} else {
-				i3 = str[i];std::cout << "7800" << endl;
+				i3 = str[i];
 			}
-			str = str.substr(i + 1, str.length() - (i + 1));std::cout << "7802" << endl;
-			i = str.find_first_of(LESS GREATER NOT EQUALS, 0);std::cout << "7803" << endl;
+			str = str.substr(i + 1, str.length() - (i + 1));
+			i = str.find_first_of(LESS GREATER NOT EQUALS, 0);
 			while(i != string::npos && str[i] == NOT_CH && str.length() > i + 1 && str[i + 1] == NOT_CH) {
-				i++;std::cout << "7805" << endl;
+				i++;
 				if(i + 1 == str.length()) {
-					i = string::npos;std::cout << "7807" << endl;
+					i = string::npos;
 				}
 			}
 		}
 	}
-	i = str.find(SHIFT_LEFT, 1);std::cout << "7812" << endl;
-	i2 = str.find(SHIFT_RIGHT, 1);std::cout << "7813" << endl;
+	i = str.find(SHIFT_LEFT, 1);
+	i2 = str.find(SHIFT_RIGHT, 1);
 	if(i2 != string::npos && (i == string::npos || i2 < i)) i = i2;
 	if(i != string::npos && i + 2 != str.length()) {
-		MathStructure mstruct1, mstruct2;std::cout << "7816" << endl;
-		bool b_neg = (str[i] == '>');std::cout << "7817" << endl;
-		str2 = str.substr(0, i);std::cout << "7818" << endl;
-		str = str.substr(i + 2, str.length() - (i + 2));std::cout << "7819" << endl;
-		parseAdd(str2, &mstruct1, po);std::cout << "7820" << endl;
+		MathStructure mstruct1, mstruct2;
+		bool b_neg = (str[i] == '>');
+		str2 = str.substr(0, i);
+		str = str.substr(i + 2, str.length() - (i + 2));
+		parseAdd(str2, &mstruct1, po);
 		if(po.base < 10 && po.base >= 2 && str.find_first_not_of(NUMBERS SPACE PLUS MINUS) == string::npos) {
 			for(i = 0; i < str.size(); i++) {
 				if(str[i] >= '0' && str[i] <= '9' && po.base <= str[i] - '0') {
-					ParseOptions po2 = po;std::cout << "7824" << endl;
-					po2.base = BASE_DECIMAL;std::cout << "7825" << endl;
-					parseAdd(str, &mstruct2, po2);std::cout << "7826" << endl;
+					ParseOptions po2 = po;
+					po2.base = BASE_DECIMAL;
+					parseAdd(str, &mstruct2, po2);
 					if(b_neg) {
 						if(po.preserve_format) mstruct2.transform(STRUCT_NEGATE);
-						else mstruct2.negate();std::cout << "7829" << endl;
+						else mstruct2.negate();
 					}
 					mstruct->set(f_shift, &mstruct1, &mstruct2, &m_one, NULL);
 					return true;
 				}
 			}
 		}
-		parseAdd(str, &mstruct2, po);std::cout << "7836" << endl;
+		parseAdd(str, &mstruct2, po);
 		if(b_neg) {
 			if(po.preserve_format) mstruct2.transform(STRUCT_NEGATE);
-			else mstruct2.negate();std::cout << "7839" << endl;
+			else mstruct2.negate();
 		}
 		mstruct->set(f_shift, &mstruct1, &mstruct2, &m_one, NULL);
 		return true;
 	}
 
 	if((i = str.find_first_of(PLUS MINUS, 1)) != string::npos && i + 1 != str.length()) {
-		bool b = false, c = false, append = false;std::cout << "7846" << endl;
-		bool min = false;std::cout << "7847" << endl;
+		bool b = false, c = false, append = false;
+		bool min = false;
 		while(i != string::npos && i + 1 != str.length()) {
 			if(is_not_in(MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS EXPS, str[i - 1])) {
-				str2 = str.substr(0, i);std::cout << "7850" << endl;
+				str2 = str.substr(0, i);
 				if(!c && b) {
-					bool b_add;std::cout << "7852" << endl;
+					bool b_add;
 					if(min) {
-						b_add = parseAdd(str2, mstruct, po, OPERATION_SUBTRACT, append) && mstruct->isAddition();std::cout << "7854" << endl;
+						b_add = parseAdd(str2, mstruct, po, OPERATION_SUBTRACT, append) && mstruct->isAddition();
 					} else {
-						b_add = parseAdd(str2, mstruct, po, OPERATION_ADD, append) && mstruct->isAddition();std::cout << "7856" << endl;
+						b_add = parseAdd(str2, mstruct, po, OPERATION_ADD, append) && mstruct->isAddition();
 					}
-					append = true;std::cout << "7858" << endl;
+					append = true;
 					if(b_add) {
-						int i_neg = 0;std::cout << "7860" << endl;
-						MathStructure *mstruct_a = get_out_of_negate(mstruct->last(), &i_neg);std::cout << "7861" << endl;
-						MathStructure *mstruct_b = mstruct_a;std::cout << "7862" << endl;
+						int i_neg = 0;
+						MathStructure *mstruct_a = get_out_of_negate(mstruct->last(), &i_neg);
+						MathStructure *mstruct_b = mstruct_a;
 						if(mstruct_a->isMultiplication() && mstruct_a->size() >= 2) mstruct_b = &mstruct_a->last();
 						if(mstruct_b->isVariable() && (mstruct_b->variable() == v_percent || mstruct_b->variable() == v_permille || mstruct_b->variable() == v_permyriad)) {
-							Variable *v = mstruct_b->variable();std::cout << "7865" << endl;
-							bool b_neg = (i_neg % 2 == 1);std::cout << "7866" << endl;
+							Variable *v = mstruct_b->variable();
+							bool b_neg = (i_neg % 2 == 1);
 							while(i_neg > 0) {
-								mstruct->last().setToChild(mstruct->last().size());std::cout << "7868" << endl;
-								i_neg--;std::cout << "7869" << endl;
+								mstruct->last().setToChild(mstruct->last().size());
+								i_neg--;
 							}
 							if(mstruct->last().isVariable()) {
-								mstruct->last().multiply(m_one);std::cout << "7872" << endl;
-								mstruct->last().swapChildren(1, 2);std::cout << "7873" << endl;
+								mstruct->last().multiply(m_one);
+								mstruct->last().swapChildren(1, 2);
 							}
 							if(mstruct->last().size() > 2) {
-								mstruct->last().delChild(mstruct->last().size());std::cout << "7876" << endl;
-								mstruct->last().multiply(v);std::cout << "7877" << endl;
+								mstruct->last().delChild(mstruct->last().size());
+								mstruct->last().multiply(v);
 							}
 							if(mstruct->last()[0].isNumber()) {
 								if(b_neg) mstruct->last()[0].number().negate();
 								if(v == v_percent) mstruct->last()[0].number().add(100);
 								else if(v == v_permille) mstruct->last()[0].number().add(1000);
-								else mstruct->last()[0].number().add(10000);std::cout << "7883" << endl;
+								else mstruct->last()[0].number().add(10000);
 							} else {
 								if(b_neg && po.preserve_format) mstruct->last()[0].transform(STRUCT_NEGATE);
 								else if(b_neg) mstruct->last()[0].negate();
 								if(v == v_percent) mstruct->last()[0] += Number(100, 1);
 								else if(v == v_permille) mstruct->last()[0] += Number(1000, 1);
-								else mstruct->last()[0] += Number(10000, 1);std::cout << "7889" << endl;
-								mstruct->last()[0].swapChildren(1, 2);std::cout << "7890" << endl;
+								else mstruct->last()[0] += Number(10000, 1);
+								mstruct->last()[0].swapChildren(1, 2);
 							}
 							if(mstruct->size() == 2) {
-								mstruct->setType(STRUCT_MULTIPLICATION);std::cout << "7893" << endl;
+								mstruct->setType(STRUCT_MULTIPLICATION);
 							} else {
-								MathStructure *mpercent = &mstruct->last();std::cout << "7895" << endl;
-								mpercent->ref();std::cout << "7896" << endl;
-								mstruct->delChild(mstruct->size());std::cout << "7897" << endl;
-								mstruct->multiply_nocopy(mpercent);std::cout << "7898" << endl;
+								MathStructure *mpercent = &mstruct->last();
+								mpercent->ref();
+								mstruct->delChild(mstruct->size());
+								mstruct->multiply_nocopy(mpercent);
 							}
 						}
 					}
 				} else {
 					if(!b && str2.empty()) {
-						c = true;std::cout << "7904" << endl;
+						c = true;
 					} else {
-						parseAdd(str2, mstruct, po);std::cout << "7906" << endl;
+						parseAdd(str2, mstruct, po);
 						if(c && min) {
 							if(po.preserve_format) mstruct->transform(STRUCT_NEGATE);
-							else mstruct->negate();std::cout << "7909" << endl;
+							else mstruct->negate();
 						}
-						c = false;std::cout << "7911" << endl;
+						c = false;
 					}
-					b = true;std::cout << "7913" << endl;
+					b = true;
 				}
-				min = str[i] == MINUS_CH;std::cout << "7915" << endl;
-				str = str.substr(i + 1, str.length() - (i + 1));std::cout << "7916" << endl;
-				i = str.find_first_of(PLUS MINUS, 1);std::cout << "7917" << endl;
+				min = str[i] == MINUS_CH;
+				str = str.substr(i + 1, str.length() - (i + 1));
+				i = str.find_first_of(PLUS MINUS, 1);
 			} else {
-				i = str.find_first_of(PLUS MINUS, i + 1);std::cout << "7919" << endl;
+				i = str.find_first_of(PLUS MINUS, i + 1);
 			}
 		}
 		if(b) {
 			if(c) {
-				b = parseAdd(str, mstruct, po);std::cout << "7924" << endl;
+				b = parseAdd(str, mstruct, po);
 				if(min) {
 					if(po.preserve_format) mstruct->transform(STRUCT_NEGATE);
-					else mstruct->negate();std::cout << "7927" << endl;
+					else mstruct->negate();
 				}
 				return b;
 			} else {
-				bool b_add;std::cout << "7931" << endl;
+				bool b_add;
 				if(min) {
-					b_add = parseAdd(str, mstruct, po, OPERATION_SUBTRACT, append) && mstruct->isAddition();std::cout << "7933" << endl;
+					b_add = parseAdd(str, mstruct, po, OPERATION_SUBTRACT, append) && mstruct->isAddition();
 				} else {
-					b_add = parseAdd(str, mstruct, po, OPERATION_ADD, append) && mstruct->isAddition();std::cout << "7935" << endl;
+					b_add = parseAdd(str, mstruct, po, OPERATION_ADD, append) && mstruct->isAddition();
 				}
 				if(b_add) {
-					int i_neg = 0;std::cout << "7938" << endl;
-					MathStructure *mstruct_a = get_out_of_negate(mstruct->last(), &i_neg);std::cout << "7939" << endl;
-					MathStructure *mstruct_b = mstruct_a;std::cout << "7940" << endl;
+					int i_neg = 0;
+					MathStructure *mstruct_a = get_out_of_negate(mstruct->last(), &i_neg);
+					MathStructure *mstruct_b = mstruct_a;
 					if(mstruct_a->isMultiplication() && mstruct_a->size() >= 2) mstruct_b = &mstruct_a->last();
 					if(mstruct_b->isVariable() && (mstruct_b->variable() == v_percent || mstruct_b->variable() == v_permille || mstruct_b->variable() == v_permyriad)) {
-						Variable *v = mstruct_b->variable();std::cout << "7943" << endl;
-						bool b_neg = (i_neg % 2 == 1);std::cout << "7944" << endl;
+						Variable *v = mstruct_b->variable();
+						bool b_neg = (i_neg % 2 == 1);
 						while(i_neg > 0) {
-							mstruct->last().setToChild(mstruct->last().size());std::cout << "7946" << endl;
-							i_neg--;std::cout << "7947" << endl;
+							mstruct->last().setToChild(mstruct->last().size());
+							i_neg--;
 						}
 						if(mstruct->last().isVariable()) {
-							mstruct->last().multiply(m_one);std::cout << "7950" << endl;
-							mstruct->last().swapChildren(1, 2);std::cout << "7951" << endl;
+							mstruct->last().multiply(m_one);
+							mstruct->last().swapChildren(1, 2);
 						}
 						if(mstruct->last().size() > 2) {
-							mstruct->last().delChild(mstruct->last().size());std::cout << "7954" << endl;
-							mstruct->last().multiply(v);std::cout << "7955" << endl;
+							mstruct->last().delChild(mstruct->last().size());
+							mstruct->last().multiply(v);
 						}
 						if(mstruct->last()[0].isNumber()) {
 							if(b_neg) mstruct->last()[0].number().negate();
 							if(v == v_percent) mstruct->last()[0].number().add(100);
 							else if(v == v_permille) mstruct->last()[0].number().add(1000);
-							else mstruct->last()[0].number().add(10000);std::cout << "7961" << endl;
+							else mstruct->last()[0].number().add(10000);
 						} else {
 							if(b_neg && po.preserve_format) mstruct->last()[0].transform(STRUCT_NEGATE);
 							else if(b_neg) mstruct->last()[0].negate();
 							if(v == v_percent) mstruct->last()[0] += Number(100, 1);
 							else if(v == v_permille) mstruct->last()[0] += Number(1000, 1);
-							else mstruct->last()[0] += Number(10000, 1);std::cout << "7967" << endl;
-							mstruct->last()[0].swapChildren(1, 2);std::cout << "7968" << endl;
+							else mstruct->last()[0] += Number(10000, 1);
+							mstruct->last()[0].swapChildren(1, 2);
 						}
 						if(mstruct->size() == 2) {
-							mstruct->setType(STRUCT_MULTIPLICATION);std::cout << "7971" << endl;
+							mstruct->setType(STRUCT_MULTIPLICATION);
 						} else {
-							MathStructure *mpercent = &mstruct->last();std::cout << "7973" << endl;
-							mpercent->ref();std::cout << "7974" << endl;
-							mstruct->delChild(mstruct->size());std::cout << "7975" << endl;
-							mstruct->multiply_nocopy(mpercent);std::cout << "7976" << endl;
+							MathStructure *mpercent = &mstruct->last();
+							mpercent->ref();
+							mstruct->delChild(mstruct->size());
+							mstruct->multiply_nocopy(mpercent);
 						}
 					}
 				}
@@ -7993,86 +8020,86 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 	}
 	if(!po.rpn && po.parsing_mode == PARSING_MODE_ADAPTIVE && (i = str.find(DIVISION_CH, 1)) != string::npos && i + 1 != str.length()) {
 		while(i != string::npos && i + 1 != str.length()) {
-			bool b = false;std::cout << "7986" << endl;
+			bool b = false;
 			if(i > 2 && i < str.length() - 3 && str[i + 1] == ID_WRAP_LEFT_CH) {
-				i2 = i;std::cout << "7988" << endl;
-				b = true;std::cout << "7989" << endl;
-				bool had_unit = false, had_nonunit = false;std::cout << "7990" << endl;
-				MathStructure *m_temp = NULL, *m_temp2 = NULL;std::cout << "7991" << endl;
+				i2 = i;
+				b = true;
+				bool had_unit = false, had_nonunit = false;
+				MathStructure *m_temp = NULL, *m_temp2 = NULL;
 				while(b) {
-					b = false;std::cout << "7993" << endl;
-					size_t i4 = i2;std::cout << "7994" << endl;
+					b = false;
+					size_t i4 = i2;
 					if(i2 > 2 && str[i2 - 1] == ID_WRAP_RIGHT_CH) {
-						b = true;std::cout << "7996" << endl;
+						b = true;
 					} else if(i2 > 4 && str[i2 - 3] == ID_WRAP_RIGHT_CH && str[i2 - 2] == POWER_CH && is_in(NUMBERS, str[i2 - 1])) {
-						b = true;std::cout << "7998" << endl;
-						i4 -= 2;std::cout << "7999" << endl;
+						b = true;
+						i4 -= 2;
 					}
 					if(!b) {
 						if((i2 > 1 && is_not_in(OPERATORS INTERNAL_OPERATORS MULTIPLICATION_2, str[i2 - 1])) || (i2 > 2 && str[i2 - 1] == MULTIPLICATION_2_CH && is_not_in(OPERATORS INTERNAL_OPERATORS, str[i2 - 2]))) had_nonunit = true;
 						break;
 					}
-					i2 = str.rfind(ID_WRAP_LEFT_CH, i4 - 2);std::cout << "8005" << endl;
-					m_temp = NULL;std::cout << "8006" << endl;
+					i2 = str.rfind(ID_WRAP_LEFT_CH, i4 - 2);
+					m_temp = NULL;
 					if(i2 != string::npos) {
-						int id = s2i(str.substr(i2 + 1, (i4 - 1) - (i2 + 1)));std::cout << "8008" << endl;
+						int id = s2i(str.substr(i2 + 1, (i4 - 1) - (i2 + 1)));
 						if(priv->id_structs.find(id) != priv->id_structs.end()) m_temp = priv->id_structs[id];
 					}
 					if(!m_temp || !m_temp->isUnit()) {
-						had_nonunit = true;std::cout << "8012" << endl;
+						had_nonunit = true;
 						break;
 					}
-					had_unit = true;std::cout << "8015" << endl;
+					had_unit = true;
 				}
-				i3 = i;std::cout << "8017" << endl;
-				b = had_unit && had_nonunit;std::cout << "8018" << endl;
-				had_unit = false;std::cout << "8019" << endl;
+				i3 = i;
+				b = had_unit && had_nonunit;
+				had_unit = false;
 				while(b) {
-					size_t i4 = i3;std::cout << "8021" << endl;
-					i3 = str.find(ID_WRAP_RIGHT_CH, i4 + 2);std::cout << "8022" << endl;
-					m_temp2 = NULL;std::cout << "8023" << endl;
+					size_t i4 = i3;
+					i3 = str.find(ID_WRAP_RIGHT_CH, i4 + 2);
+					m_temp2 = NULL;
 					if(i3 != string::npos) {
-						int id = s2i(str.substr(i4 + 2, (i3 - 1) - (i4 + 1)));std::cout << "8025" << endl;
+						int id = s2i(str.substr(i4 + 2, (i3 - 1) - (i4 + 1)));
 						if(priv->id_structs.find(id) != priv->id_structs.end()) m_temp2 = priv->id_structs[id];
 					}
 					if(!m_temp2 || !m_temp2->isUnit()) {
-						b = false;std::cout << "8029" << endl;
+						b = false;
 						break;
 					}
-					had_unit = true;std::cout << "8032" << endl;
-					b = false;std::cout << "8033" << endl;
+					had_unit = true;
+					b = false;
 					if(i3 < str.length() - 3 && str[i3 + 1] == ID_WRAP_LEFT_CH) {
-						b = true;std::cout << "8035" << endl;
+						b = true;
 					} else if(i3 < str.length() - 5 && str[i3 + 3] == ID_WRAP_LEFT_CH && str[i3 + 1] == POWER_CH && is_in(NUMBERS, str[i3 + 2])) {
-						b = true;std::cout << "8037" << endl;
-						i3 += 2;std::cout << "8038" << endl;
+						b = true;
+						i3 += 2;
 					}
 				}
-				b = had_unit;std::cout << "8041" << endl;
+				b = had_unit;
 				if(b) {
 					if(i3 < str.length() - 2 && str[i3 + 1] == POWER_CH && is_in(NUMBERS, str[i3 + 2])) {
-						i3 += 2;std::cout << "8044" << endl;
+						i3 += 2;
 						while(i3 < str.length() - 1 && is_in(NUMBERS, str[i3 + 1])) i3++;
 					}
 					if(i3 == str.length() - 1 || (str[i3 + 1] != POWER_CH && str[i3 + 1] != DIVISION_CH)) {
-						MathStructure *mstruct2 = new MathStructure();std::cout << "8048" << endl;
-						str2 = str.substr(i2, i - i2);std::cout << "8049" << endl;
-						parseAdd(str2, mstruct2, po);std::cout << "8050" << endl;
-						str2 = str.substr(i + 1, i3 - i);std::cout << "8051" << endl;
-						parseAdd(str2, mstruct2, po, OPERATION_DIVIDE);std::cout << "8052" << endl;
-						str2 = ID_WRAP_LEFT;std::cout << "8053" << endl;
-						str2 += i2s(addId(mstruct2));std::cout << "8054" << endl;
-						str2 += ID_WRAP_RIGHT;std::cout << "8055" << endl;
-						str.replace(i2, i3 - i2 + 1, str2);std::cout << "8056" << endl;
+						MathStructure *mstruct2 = new MathStructure();
+						str2 = str.substr(i2, i - i2);
+						parseAdd(str2, mstruct2, po);
+						str2 = str.substr(i + 1, i3 - i);
+						parseAdd(str2, mstruct2, po, OPERATION_DIVIDE);
+						str2 = ID_WRAP_LEFT;
+						str2 += i2s(addId(mstruct2));
+						str2 += ID_WRAP_RIGHT;
+						str.replace(i2, i3 - i2 + 1, str2);
 					} else {
-						b = false;std::cout << "8058" << endl;
+						b = false;
 					}
 				}
 			}
 			if(!b) {
-				i2 = str.find_last_not_of(NUMBERS INTERNAL_NUMBER_CHARS PLUS MINUS EXPS, i - 1);std::cout << "8063" << endl;
+				i2 = str.find_last_not_of(NUMBERS INTERNAL_NUMBER_CHARS PLUS MINUS EXPS, i - 1);
 				if(i2 == string::npos || (i2 != i - 1 && str[i2] == MULTIPLICATION_2_CH)) b = true;
-				i2 = str.rfind(MULTIPLICATION_2_CH, i - 1);std::cout << "8065" << endl;
+				i2 = str.rfind(MULTIPLICATION_2_CH, i - 1);
 				if(i2 == string::npos) b = true;
 				if(b) {
 					i3 = str.find_first_of(MULTIPLICATION_2 "%" MULTIPLICATION DIVISION, i + 1);
@@ -8084,15 +8111,15 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 					if(i2 != string::npos) str[i2] = MULTIPLICATION_CH;
 				} else {
 					if(str[i + 1] == MULTIPLICATION_2_CH) {
-						str.erase(i + 1, 1);std::cout << "8077" << endl;
+						str.erase(i + 1, 1);
 					}
 					if(str[i - 1] == MULTIPLICATION_2_CH) {
-						str.erase(i - 1, 1);std::cout << "8080" << endl;
-						i--;std::cout << "8081" << endl;
+						str.erase(i - 1, 1);
+						i--;
 					}
 				}
 			}
-			i = str.find(DIVISION_CH, i + 1);std::cout << "8085" << endl;
+			i = str.find(DIVISION_CH, i + 1);
 		}
 	}
 	if(po.parsing_mode == PARSING_MODE_ADAPTIVE && !po.rpn) remove_blanks(str);
@@ -8100,25 +8127,25 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 		if((i = str.find(ID_WRAP_RIGHT_CH, 1)) != string::npos && i + 1 != str.length()) {
 			while(i != string::npos && i + 1 != str.length()) {
 				if(is_in(NUMBERS ID_WRAP_LEFT, str[i + 1])) {
-					str.insert(i + 1, 1, MULTIPLICATION_CH);std::cout << "8093" << endl;
-					i++;std::cout << "8094" << endl;
+					str.insert(i + 1, 1, MULTIPLICATION_CH);
+					i++;
 				}
-				i = str.find(ID_WRAP_RIGHT_CH, i + 1);std::cout << "8096" << endl;
+				i = str.find(ID_WRAP_RIGHT_CH, i + 1);
 			}
 		}
 		if((i = str.find(ID_WRAP_LEFT_CH, 1)) != string::npos) {
 			while(i != string::npos) {
 				if(is_in(NUMBERS, str[i - 1])) {
-					str.insert(i, 1, MULTIPLICATION_CH);std::cout << "8102" << endl;
-					i++;std::cout << "8103" << endl;
+					str.insert(i, 1, MULTIPLICATION_CH);
+					i++;
 				}
-				i = str.find(ID_WRAP_LEFT_CH, i + 1);std::cout << "8105" << endl;
+				i = str.find(ID_WRAP_LEFT_CH, i + 1);
 			}
 		}
 	}
 	if((i = str.find_first_of(MULTIPLICATION DIVISION "%", 0)) != string::npos && i + 1 != str.length()) {
-		bool b = false, append = false;std::cout << "8110" << endl;
-		int type = 0;std::cout << "8111" << endl;
+		bool b = false, append = false;
+		int type = 0;
 		while(i != string::npos && i + 1 != str.length()) {
 			if(i < 1) {
 				if(i < 1 && str.find_first_not_of(MULTIPLICATION_2 OPERATORS INTERNAL_OPERATORS EXPS) == string::npos) {
@@ -8126,101 +8153,101 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 					error(false, _("Misplaced operator(s) \"%s\" ignored"), str.c_str(), NULL);
 					return b;
 				}
-				i = 1;std::cout << "8119" << endl;
+				i = 1;
 				while(i < str.length() && is_in(MULTIPLICATION DIVISION "%", str[i])) {
-					i++;std::cout << "8121" << endl;
+					i++;
 				}
-				string errstr = str.substr(0, i);std::cout << "8123" << endl;
+				string errstr = str.substr(0, i);
 				gsub("\a", str.find_first_of(OPERATORS "%") != string::npos ? " xor " : "xor", errstr);
 				error(false, _("Misplaced operator(s) \"%s\" ignored"), errstr.c_str(), NULL);
-				str = str.substr(i, str.length() - i);std::cout << "8126" << endl;
+				str = str.substr(i, str.length() - i);
 				i = str.find_first_of(MULTIPLICATION DIVISION "%", 0);
 			} else {
-				str2 = str.substr(0, i);std::cout << "8129" << endl;
+				str2 = str.substr(0, i);
 				if(b) {
 					switch(type) {
 						case 1: {
-							parseAdd(str2, mstruct, po, OPERATION_DIVIDE, append);std::cout << "8133" << endl;
+							parseAdd(str2, mstruct, po, OPERATION_DIVIDE, append);
 							break;
 						}
 						case 2: {
-							MathStructure *mstruct2 = new MathStructure();std::cout << "8137" << endl;
-							parseAdd(str2, mstruct2, po);std::cout << "8138" << endl;
+							MathStructure *mstruct2 = new MathStructure();
+							parseAdd(str2, mstruct2, po);
 							mstruct->transform(f_rem);
-							mstruct->addChild_nocopy(mstruct2);std::cout << "8140" << endl;
+							mstruct->addChild_nocopy(mstruct2);
 							break;
 						}
 						case 3: {
-							parseAdd(str2, mstruct, po, OPERATION_DIVIDE, append);std::cout << "8144" << endl;
+							parseAdd(str2, mstruct, po, OPERATION_DIVIDE, append);
 							mstruct->transform(f_trunc);
 							break;
 						}
 						case 4: {
-							MathStructure *mstruct2 = new MathStructure();std::cout << "8149" << endl;
-							parseAdd(str2, mstruct2, po);std::cout << "8150" << endl;
+							MathStructure *mstruct2 = new MathStructure();
+							parseAdd(str2, mstruct2, po);
 							mstruct->transform(f_mod);
-							mstruct->addChild_nocopy(mstruct2);std::cout << "8152" << endl;
+							mstruct->addChild_nocopy(mstruct2);
 							break;
 						}
 						default: {
-							parseAdd(str2, mstruct, po, OPERATION_MULTIPLY, append);std::cout << "8156" << endl;
+							parseAdd(str2, mstruct, po, OPERATION_MULTIPLY, append);
 						}
 					}
-					append = true;std::cout << "8159" << endl;
+					append = true;
 				} else {
-					parseAdd(str2, mstruct, po);std::cout << "8161" << endl;
-					b = true;std::cout << "8162" << endl;
+					parseAdd(str2, mstruct, po);
+					b = true;
 				}
 				if(str[i] == DIVISION_CH) {
 					if(str[i + 1] == DIVISION_CH) {type = 3; i++;}
-					else type = 1;std::cout << "8166" << endl;
+					else type = 1;
 				} else if(str[i] == '%') {
 					if(str[i + 1] == '%') {type = 4; i++;}
-					else type = 2;std::cout << "8169" << endl;
+					else type = 2;
 				} else {
-					type = 0;std::cout << "8171" << endl;
+					type = 0;
 				}
 				if(is_in(MULTIPLICATION DIVISION "%", str[i + 1])) {
-					i2 = 1;std::cout << "8174" << endl;
+					i2 = 1;
 					while(i2 + i + 1 != str.length() && is_in(MULTIPLICATION DIVISION "%", str[i2 + i + 1])) {
-						i2++;std::cout << "8176" << endl;
+						i2++;
 					}
-					string errstr = str.substr(i, i2);std::cout << "8178" << endl;
+					string errstr = str.substr(i, i2);
 					gsub("\a", str.find_first_of(OPERATORS "%") != string::npos ? " xor " : "xor", errstr);
 					error(false, _("Misplaced operator(s) \"%s\" ignored"), errstr.c_str(), NULL);
-					i += i2;std::cout << "8181" << endl;
+					i += i2;
 				}
-				str = str.substr(i + 1, str.length() - (i + 1));std::cout << "8183" << endl;
+				str = str.substr(i + 1, str.length() - (i + 1));
 				i = str.find_first_of(MULTIPLICATION DIVISION "%", 0);
 			}
 		}
 		if(b) {
 			switch(type) {
 				case 1: {
-					parseAdd(str, mstruct, po, OPERATION_DIVIDE, append);std::cout << "8190" << endl;
+					parseAdd(str, mstruct, po, OPERATION_DIVIDE, append);
 					break;
 				}
 				case 2: {
-					MathStructure *mstruct2 = new MathStructure();std::cout << "8194" << endl;
-					parseAdd(str, mstruct2, po);std::cout << "8195" << endl;
+					MathStructure *mstruct2 = new MathStructure();
+					parseAdd(str, mstruct2, po);
 					mstruct->transform(f_rem);
-					mstruct->addChild_nocopy(mstruct2);std::cout << "8197" << endl;
+					mstruct->addChild_nocopy(mstruct2);
 					break;
 				}
 				case 3: {
-					parseAdd(str, mstruct, po, OPERATION_DIVIDE, append);std::cout << "8201" << endl;
+					parseAdd(str, mstruct, po, OPERATION_DIVIDE, append);
 					mstruct->transform(f_trunc);
 					break;
 				}
 				case 4: {
-					MathStructure *mstruct2 = new MathStructure();std::cout << "8206" << endl;
-					parseAdd(str, mstruct2, po);std::cout << "8207" << endl;
+					MathStructure *mstruct2 = new MathStructure();
+					parseAdd(str, mstruct2, po);
 					mstruct->transform(f_mod);
-					mstruct->addChild_nocopy(mstruct2);std::cout << "8209" << endl;
+					mstruct->addChild_nocopy(mstruct2);
 					break;
 				}
 				default: {
-					parseAdd(str, mstruct, po, OPERATION_MULTIPLY, append);std::cout << "8213" << endl;
+					parseAdd(str, mstruct, po, OPERATION_MULTIPLY, append);
 				}
 			}
 			return true;
@@ -8229,9 +8256,9 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 
 	if((i = str.find('\x1c', 0)) != string::npos && i + 1 != str.length()) {
 		if(i != 0) str2 = str.substr(0, i);
-		str = str.substr(i + 1, str.length() - (i + 1));std::cout << "8222" << endl;
+		str = str.substr(i + 1, str.length() - (i + 1));
 		if(i != 0) parseAdd(str2, mstruct, po);
-		else mstruct->set(1, 1, 0);std::cout << "8224" << endl;
+		else mstruct->set(1, 1, 0);
 		if(parseAdd(str, mstruct, po, OPERATION_MULTIPLY)) {
 			if(po.angle_unit != ANGLE_UNIT_NONE && po.angle_unit != ANGLE_UNIT_RADIANS && mstruct->last().contains(getRadUnit(), false, true, true) <= 0 && mstruct->last().contains(getGraUnit(), false, true, true) <= 0 && mstruct->last().contains(getDegUnit(), false, true, true) <= 0) {
 				switch(po.angle_unit) {
@@ -8253,118 +8280,118 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 		return false;
 	}
 
-	i = 0;std::cout << "8246" << endl;
-	bool ret = true;std::cout << "8247" << endl;
-	bool has_sign = false;std::cout << "8248" << endl;
-	int minus_count = 0;std::cout << "8249" << endl;
+	i = 0;
+	bool ret = true;
+	bool has_sign = false;
+	int minus_count = 0;
 	while(i < str.length()) {
 		if(str[i] == MINUS_CH) {
-			has_sign = true;std::cout << "8252" << endl;
-			minus_count++;std::cout << "8253" << endl;
-			str.erase(i, 1);std::cout << "8254" << endl;
+			has_sign = true;
+			minus_count++;
+			str.erase(i, 1);
 		} else if(str[i] == PLUS_CH) {
-			has_sign = true;std::cout << "8256" << endl;
-			str.erase(i, 1);std::cout << "8257" << endl;
+			has_sign = true;
+			str.erase(i, 1);
 		} else if(str[i] == SPACE_CH) {
-			str.erase(i, 1);std::cout << "8259" << endl;
+			str.erase(i, 1);
 		} else if(str[i] == BITWISE_NOT_CH || str[i] == LOGICAL_NOT_CH) {
 			break;
 		} else if(is_in(OPERATORS INTERNAL_OPERATORS, str[i]) && (po.base != BASE_ROMAN_NUMERALS || (str[i] != '(' && str[i] != ')' && str[i] != '|'))) {
 			if(str[i] == '\a') error(false, _("Misplaced operator(s) \"%s\" ignored"), "xor", NULL);
 			else if(str[i] == '\x1c') error(false, _("Misplaced operator(s) \"%s\" ignored"), "∠", NULL);
 			else error(false, _("Misplaced '%c' ignored"), str[i], NULL);
-			str.erase(i, 1);std::cout << "8266" << endl;
+			str.erase(i, 1);
 		} else {
 			break;
 		}
 	}
 
 	if(!str.empty() && (str[0] == BITWISE_NOT_CH || str[0] == LOGICAL_NOT_CH)) {
-		bool bit = (str[0] == BITWISE_NOT_CH);std::cout << "8273" << endl;
-		str.erase(0, 1);std::cout << "8274" << endl;
-		parseAdd(str, mstruct, po);std::cout << "8275" << endl;
+		bool bit = (str[0] == BITWISE_NOT_CH);
+		str.erase(0, 1);
+		parseAdd(str, mstruct, po);
 		if(bit) mstruct->setBitwiseNot();
-		else mstruct->setLogicalNot();std::cout << "8277" << endl;
+		else mstruct->setLogicalNot();
 		if(po.preserve_format) {
 			while(minus_count > 0) {
 				mstruct->transform(STRUCT_NEGATE);
-				minus_count--;std::cout << "8281" << endl;
+				minus_count--;
 			}
 		} else if(minus_count % 2 == 1) {
-			mstruct->negate();std::cout << "8284" << endl;
+			mstruct->negate();
 		}
 		return true;
 	}
 
 	if(str.empty()) {
 		if(minus_count % 2 == 1 && !po.preserve_format) {
-			mstruct->set(-1, 1, 0);std::cout << "8291" << endl;
+			mstruct->set(-1, 1, 0);
 		} else if(has_sign) {
-			mstruct->set(1, 1, 0);std::cout << "8293" << endl;
+			mstruct->set(1, 1, 0);
 			if(po.preserve_format) {
 				while(minus_count > 0) {
 					mstruct->transform(STRUCT_NEGATE);
-					minus_count--;std::cout << "8297" << endl;
+					minus_count--;
 				}
 			}
 		}
 		return false;
 	}
 	if((i = str.find(ID_WRAP_RIGHT_CH, 1)) != string::npos && i + 1 != str.length()) {
-		bool b = false, append = false;std::cout << "8304" << endl;
+		bool b = false, append = false;
 		while(i != string::npos && i + 1 != str.length()) {
 			if(str[i + 1] != POWER_CH && str[i + 1] != '\b') {
-				str2 = str.substr(0, i + 1);std::cout << "8307" << endl;
-				str = str.substr(i + 1, str.length() - (i + 1));std::cout << "8308" << endl;
+				str2 = str.substr(0, i + 1);
+				str = str.substr(i + 1, str.length() - (i + 1));
 				if(b) {
-					parseAdd(str2, mstruct, po, OPERATION_MULTIPLY, append);std::cout << "8310" << endl;
-					append = true;std::cout << "8311" << endl;
+					parseAdd(str2, mstruct, po, OPERATION_MULTIPLY, append);
+					append = true;
 				} else {
-					parseAdd(str2, mstruct, po);std::cout << "8313" << endl;
-					b = true;std::cout << "8314" << endl;
+					parseAdd(str2, mstruct, po);
+					b = true;
 				}
-				i = str.find(ID_WRAP_RIGHT_CH, 1);std::cout << "8316" << endl;
+				i = str.find(ID_WRAP_RIGHT_CH, 1);
 			} else {
-				i = str.find(ID_WRAP_RIGHT_CH, i + 1);std::cout << "8318" << endl;
+				i = str.find(ID_WRAP_RIGHT_CH, i + 1);
 			}
 		}
 		if(b) {
-			parseAdd(str, mstruct, po, OPERATION_MULTIPLY, append);std::cout << "8322" << endl;
+			parseAdd(str, mstruct, po, OPERATION_MULTIPLY, append);
 			if(po.parsing_mode == PARSING_MODE_ADAPTIVE && mstruct->isMultiplication() && mstruct->size() >= 2 && !(*mstruct)[0].inParentheses()) {
-				Unit *u1 = NULL;std::cout << "8324" << endl; Prefix *p1 = NULL;std::cout << "8324" << endl;
-				bool b_plus = false;std::cout << "8325" << endl;
+				Unit *u1 = NULL; Prefix *p1 = NULL;
+				bool b_plus = false;
 				if((*mstruct)[0].isMultiplication() && (*mstruct)[0].size() == 2 && (*mstruct)[0][0].isNumber() && (*mstruct)[0][1].isUnit()) {u1 = (*mstruct)[0][1].unit(); p1 = (*mstruct)[0][1].prefix();}
 				if(u1 && u1->subtype() == SUBTYPE_BASE_UNIT && (u1->referenceName() == "m" || (!p1 && u1->referenceName() == "L")) && (!p1 || (p1->type() == PREFIX_DECIMAL && ((DecimalPrefix*) p1)->exponent() <= 3 && ((DecimalPrefix*) p1)->exponent() > -3))) {
-					b_plus = true;std::cout << "8328" << endl;
+					b_plus = true;
 					for(size_t i2 = 1; i2 < mstruct->size(); i2++) {
 						if(!(*mstruct)[i2].inParentheses() && (*mstruct)[i2].isMultiplication() && (*mstruct)[i2].size() == 2 && (*mstruct)[i2][0].isNumber() && (*mstruct)[i2][1].isUnit() && (*mstruct)[i2][1].unit() == u1) {
-							Prefix *p2 = (*mstruct)[i2][1].prefix();std::cout << "8331" << endl;
+							Prefix *p2 = (*mstruct)[i2][1].prefix();
 							if(p1 && p2) b_plus = p1->type() == PREFIX_DECIMAL && p2->type() == PREFIX_DECIMAL && ((DecimalPrefix*) p1)->exponent() > ((DecimalPrefix*) p2)->exponent() && ((DecimalPrefix*) p2)->exponent() >= -3;
 							else if(p2) b_plus = p2->type() == PREFIX_DECIMAL && ((DecimalPrefix*) p2)->exponent() < 0 && ((DecimalPrefix*) p2)->exponent() >= -3;
 							else if(p1) b_plus = p1->type() == PREFIX_DECIMAL && ((DecimalPrefix*) p1)->exponent() > 1;
-							else b_plus = false;std::cout << "8335" << endl;
+							else b_plus = false;
 							if(!b_plus) break;
-							p1 = p2;std::cout << "8337" << endl;
+							p1 = p2;
 						} else {
-							b_plus = false;std::cout << "8339" << endl;
+							b_plus = false;
 							break;
 						}
 					}
 				} else if(u1 && !p1 && u1->subtype() == SUBTYPE_ALIAS_UNIT && ((AliasUnit*) u1)->mixWithBase()) {
-					b_plus = true;std::cout << "8344" << endl;
+					b_plus = true;
 					for(size_t i2 = 1; i2 < mstruct->size(); i2++) {
 						if(!(*mstruct)[i2].inParentheses() && (*mstruct)[i2].isMultiplication() && (*mstruct)[i2].size() == 2 && (*mstruct)[i2][0].isNumber() && (*mstruct)[i2][1].isUnit() && u1->isChildOf((*mstruct)[i2][1].unit()) && !(*mstruct)[i2][1].prefix() && (i2 == mstruct->size() - 1 || ((*mstruct)[i2][1].unit()->subtype() == SUBTYPE_ALIAS_UNIT && ((AliasUnit*) (*mstruct)[i2][1].unit())->mixWithBase()))) {
 							while(((AliasUnit*) u1)->firstBaseUnit() != (*mstruct)[i2][1].unit()) {
-								u1 = ((AliasUnit*) u1)->firstBaseUnit();std::cout << "8348" << endl;
+								u1 = ((AliasUnit*) u1)->firstBaseUnit();
 								if(u1->subtype() != SUBTYPE_ALIAS_UNIT || !((AliasUnit*) u1)->mixWithBase()) {
-									b_plus = false;std::cout << "8350" << endl;
+									b_plus = false;
 									break;
 								}
 							}
 							if(!b_plus) break;
-							u1 = (*mstruct)[i2][1].unit();std::cout << "8355" << endl;
+							u1 = (*mstruct)[i2][1].unit();
 						} else {
-							b_plus = false;std::cout << "8357" << endl;
+							b_plus = false;
 							break;
 						}
 					}
@@ -8374,173 +8401,173 @@ bool Calculator::parseOperators(MathStructure *mstruct, string str, const ParseO
 			if(po.preserve_format) {
 				while(minus_count > 0) {
 					mstruct->transform(STRUCT_NEGATE);
-					minus_count--;std::cout << "8367" << endl;
+					minus_count--;
 				}
 			} else if(minus_count % 2 == 1) {
-				mstruct->negate();std::cout << "8370" << endl;
+				mstruct->negate();
 			}
 			return true;
 		}
 	}
 	if((i = str.find(ID_WRAP_LEFT_CH, 1)) != string::npos) {
-		bool b = false, append = false;std::cout << "8376" << endl;
+		bool b = false, append = false;
 		while(i != string::npos) {
 			if(str[i - 1] != POWER_CH && (i < 2 || str[i - 1] != MINUS_CH || str[i - 2] != POWER_CH) && str[i - 1] != '\b') {
-				str2 = str.substr(0, i);std::cout << "8379" << endl;
-				str = str.substr(i, str.length() - i);std::cout << "8380" << endl;
+				str2 = str.substr(0, i);
+				str = str.substr(i, str.length() - i);
 				if(b) {
-					parseAdd(str2, mstruct, po, OPERATION_MULTIPLY, append);std::cout << "8382" << endl;
-					append = true;std::cout << "8383" << endl;
+					parseAdd(str2, mstruct, po, OPERATION_MULTIPLY, append);
+					append = true;
 				} else {
-					parseAdd(str2, mstruct, po);std::cout << "8385" << endl;
-					b = true;std::cout << "8386" << endl;
+					parseAdd(str2, mstruct, po);
+					b = true;
 				}
-				i = str.find(ID_WRAP_LEFT_CH, 1);std::cout << "8388" << endl;
+				i = str.find(ID_WRAP_LEFT_CH, 1);
 			} else {
-				i = str.find(ID_WRAP_LEFT_CH, i + 1);std::cout << "8390" << endl;
+				i = str.find(ID_WRAP_LEFT_CH, i + 1);
 			}
 		}
 		if(b) {
-			parseAdd(str, mstruct, po, OPERATION_MULTIPLY, append);std::cout << "8394" << endl;
+			parseAdd(str, mstruct, po, OPERATION_MULTIPLY, append);
 			if(po.preserve_format) {
 				while(minus_count > 0) {
 					mstruct->transform(STRUCT_NEGATE);
-					minus_count--;std::cout << "8398" << endl;
+					minus_count--;
 				}
 			} else if(minus_count % 2 == 1) {
-				mstruct->negate();std::cout << "8401" << endl;
+				mstruct->negate();
 			}
 			return true;
 		}
 	}
 	if((i = str.find(POWER_CH, 1)) != string::npos && i + 1 != str.length()) {
-		str2 = str.substr(0, i);std::cout << "8407" << endl;
-		str = str.substr(i + 1, str.length() - (i + 1));std::cout << "8408" << endl;
-		parseAdd(str2, mstruct, po);std::cout << "8409" << endl;
-		parseAdd(str, mstruct, po, OPERATION_RAISE);std::cout << "8410" << endl;
+		str2 = str.substr(0, i);
+		str = str.substr(i + 1, str.length() - (i + 1));
+		parseAdd(str2, mstruct, po);
+		parseAdd(str, mstruct, po, OPERATION_RAISE);
 	} else if((i = str.find("\b", 1)) != string::npos && i + 1 != str.length()) {
-		str2 = str.substr(0, i);std::cout << "8412" << endl;
-		str = str.substr(i + 1, str.length() - (i + 1));std::cout << "8413" << endl;
-		MathStructure *mstruct2 = new MathStructure;std::cout << "8414" << endl;
+		str2 = str.substr(0, i);
+		str = str.substr(i + 1, str.length() - (i + 1));
+		MathStructure *mstruct2 = new MathStructure;
 		if(po.read_precision != DONT_READ_PRECISION) {
-			ParseOptions po2 = po;std::cout << "8416" << endl;
-			po2.read_precision = DONT_READ_PRECISION;std::cout << "8417" << endl;
-			parseAdd(str2, mstruct, po2);std::cout << "8418" << endl;
-			parseAdd(str, mstruct2, po2);std::cout << "8419" << endl;
+			ParseOptions po2 = po;
+			po2.read_precision = DONT_READ_PRECISION;
+			parseAdd(str2, mstruct, po2);
+			parseAdd(str, mstruct2, po2);
 		} else {
-			parseAdd(str2, mstruct, po);std::cout << "8421" << endl;
-			parseAdd(str, mstruct2, po);std::cout << "8422" << endl;
+			parseAdd(str2, mstruct, po);
+			parseAdd(str, mstruct2, po);
 		}
 		mstruct->transform(f_uncertainty);
-		mstruct->addChild_nocopy(mstruct2);std::cout << "8425" << endl;
-		mstruct->addChild(m_zero);std::cout << "8426" << endl;
+		mstruct->addChild_nocopy(mstruct2);
+		mstruct->addChild(m_zero);
 	} else if(BASE_2_10 && (i = str.find_first_of(EXPS, 1)) != string::npos && i + 1 != str.length() && str.find("\b") == string::npos) {
-		str2 = str.substr(0, i);std::cout << "8428" << endl;
-		str = str.substr(i + 1, str.length() - (i + 1));std::cout << "8429" << endl;
-		parseAdd(str2, mstruct, po);std::cout << "8430" << endl;
-		parseAdd(str, mstruct, po, OPERATION_EXP10);std::cout << "8431" << endl;
+		str2 = str.substr(0, i);
+		str = str.substr(i + 1, str.length() - (i + 1));
+		parseAdd(str2, mstruct, po);
+		parseAdd(str, mstruct, po, OPERATION_EXP10);
 	} else if((i = str.find(ID_WRAP_LEFT_CH, 1)) != string::npos && i + 1 != str.length() && str.find(ID_WRAP_RIGHT_CH, i + 1) && str.find_first_not_of(PLUS MINUS, 0) != i) {
-		str2 = str.substr(0, i);std::cout << "8433" << endl;
-		str = str.substr(i, str.length() - i);std::cout << "8434" << endl;
-		parseAdd(str2, mstruct, po);std::cout << "8435" << endl;
-		parseAdd(str, mstruct, po, OPERATION_MULTIPLY);std::cout << "8436" << endl;
+		str2 = str.substr(0, i);
+		str = str.substr(i, str.length() - i);
+		parseAdd(str2, mstruct, po);
+		parseAdd(str, mstruct, po, OPERATION_MULTIPLY);
 	} else if(str.length() > 0 && str[0] == ID_WRAP_LEFT_CH && (i = str.find(ID_WRAP_RIGHT_CH, 1)) != string::npos && i + 1 != str.length()) {
-		str2 = str.substr(0, i + 1);std::cout << "8438" << endl;
-		str = str.substr(i + 1, str.length() - (i + 1));std::cout << "8439" << endl;
-		parseAdd(str2, mstruct, po);std::cout << "8440" << endl;
-		parseAdd(str, mstruct, po, OPERATION_MULTIPLY);std::cout << "8441" << endl;
+		str2 = str.substr(0, i + 1);
+		str = str.substr(i + 1, str.length() - (i + 1));
+		parseAdd(str2, mstruct, po);
+		parseAdd(str, mstruct, po, OPERATION_MULTIPLY);
 	} else {
-		ret = parseNumber(mstruct, str, po);std::cout << "8443" << endl;
+		ret = parseNumber(mstruct, str, po);
 	}
 	if(po.preserve_format) {
 		while(minus_count > 0) {
 			mstruct->transform(STRUCT_NEGATE);
-			minus_count--;std::cout << "8448" << endl;
+			minus_count--;
 		}
 	} else if(minus_count % 2 == 1) {
-		mstruct->negate();std::cout << "8451" << endl;
+		mstruct->negate();
 	}
 	return ret;
 }
 
 string Calculator::getName(string name, ExpressionItem *object, bool force, bool always_append) {
-	ExpressionItem *item = NULL;std::cout << "8457" << endl;
+	ExpressionItem *item = NULL;
 	if(!object) {
 	} else if(object->type() == TYPE_FUNCTION) {
-		item = getActiveFunction(name);std::cout << "8460" << endl;
+		item = getActiveFunction(name);
 	} else {
-		item = getActiveVariable(name);std::cout << "8462" << endl;
+		item = getActiveVariable(name);
 		if(!item) {
-			item = getActiveUnit(name);std::cout << "8464" << endl;
+			item = getActiveUnit(name);
 		}
 		if(!item) {
-			item = getCompositeUnit(name);std::cout << "8467" << endl;
+			item = getCompositeUnit(name);
 		}
 	}
 	if(item && force && !name.empty() && item != object && object) {
 		if(!item->isLocal()) {
-			bool b = item->hasChanged();std::cout << "8472" << endl;
+			bool b = item->hasChanged();
 			if(object->isActive()) {
-				item->setActive(false);std::cout << "8474" << endl;
+				item->setActive(false);
 			}
 			if(!object->isLocal()) {
-				item->setChanged(b);std::cout << "8477" << endl;
+				item->setChanged(b);
 			}
 		} else {
 			if(object->isActive()) {
-				item->destroy();std::cout << "8481" << endl;
+				item->destroy();
 			}
 		}
 		return name;
 	}
-	int i2 = 1;std::cout << "8486" << endl;
-	bool changed = false;std::cout << "8487" << endl;
+	int i2 = 1;
+	bool changed = false;
 	if(name.empty()) {
 		name = "var";
-		always_append = true;std::cout << "8490" << endl;
-		item = NULL;std::cout << "8491" << endl;
-		changed = true;std::cout << "8492" << endl;
+		always_append = true;
+		item = NULL;
+		changed = true;
 	}
-	string stmp = name;std::cout << "8494" << endl;
+	string stmp = name;
 	if(always_append) {
-		stmp += NAME_NUMBER_PRE_STR;std::cout << "8496" << endl;
+		stmp += NAME_NUMBER_PRE_STR;
 		stmp += "1";
 	}
 	if(changed || (item && item != object)) {
 		if(item) {
-			i2++;std::cout << "8501" << endl;
-			stmp = name;std::cout << "8502" << endl;
-			stmp += NAME_NUMBER_PRE_STR;std::cout << "8503" << endl;
-			stmp += i2s(i2);std::cout << "8504" << endl;
+			i2++;
+			stmp = name;
+			stmp += NAME_NUMBER_PRE_STR;
+			stmp += i2s(i2);
 		}
 		while(true) {
 			if(!object) {
-				item = getActiveFunction(stmp);std::cout << "8508" << endl;
+				item = getActiveFunction(stmp);
 				if(!item) {
-					item = getActiveVariable(stmp);std::cout << "8510" << endl;
+					item = getActiveVariable(stmp);
 				}
 				if(!item) {
-					item = getActiveUnit(stmp);std::cout << "8513" << endl;
+					item = getActiveUnit(stmp);
 				}
 				if(!item) {
-					item = getCompositeUnit(stmp);std::cout << "8516" << endl;
+					item = getCompositeUnit(stmp);
 				}
 			} else if(object->type() == TYPE_FUNCTION) {
-				item = getActiveFunction(stmp);std::cout << "8519" << endl;
+				item = getActiveFunction(stmp);
 			} else {
-				item = getActiveVariable(stmp);std::cout << "8521" << endl;
+				item = getActiveVariable(stmp);
 				if(!item) {
-					item = getActiveUnit(stmp);std::cout << "8523" << endl;
+					item = getActiveUnit(stmp);
 				}
 				if(!item) {
-					item = getCompositeUnit(stmp);std::cout << "8526" << endl;
+					item = getCompositeUnit(stmp);
 				}
 			}
 			if(item && item != object) {
-				i2++;std::cout << "8530" << endl;
-				stmp = name;std::cout << "8531" << endl;
-				stmp += NAME_NUMBER_PRE_STR;std::cout << "8532" << endl;
-				stmp += i2s(i2);std::cout << "8533" << endl;
+				i2++;
+				stmp = name;
+				stmp += NAME_NUMBER_PRE_STR;
+				stmp += i2s(i2);
 			} else {
 				break;
 			}
@@ -8553,7 +8580,7 @@ string Calculator::getName(string name, ExpressionItem *object, bool force, bool
 }
 
 bool Calculator::loadGlobalDefinitions() {
-	bool b = true;std::cout << "8546" << endl;
+	bool b = true;
 	if(!loadDefinitions(buildPath(getGlobalDefinitionsDir(), "prefixes.xml").c_str(), false)) b = false;
 	if(!loadDefinitions(buildPath(getGlobalDefinitionsDir(), "currencies.xml").c_str(), false)) b = false;
 	if(!loadDefinitions(buildPath(getGlobalDefinitionsDir(), "units.xml").c_str(), false)) b = false;
@@ -8590,53 +8617,53 @@ bool Calculator::loadLocalDefinitions() {
 		string homedir_old = buildPath(getOldLocalDir(), "definitions");
 		if(dirExists(homedir)) {
 			if(!dirExists(getLocalDataDir())) {
-				recursiveMakeDir(getLocalDataDir());std::cout << "8583" << endl;
+				recursiveMakeDir(getLocalDataDir());
 			}
 			if(makeDir(homedir)) {
-				list<string> eps_old;std::cout << "8586" << endl;
-				struct dirent *ep_old;std::cout << "8587" << endl;
-				DIR *dp_old = opendir(homedir_old.c_str());std::cout << "8588" << endl;
+				list<string> eps_old;
+				struct dirent *ep_old;
+				DIR *dp_old = opendir(homedir_old.c_str());
 				if(dp_old) {
 					while((ep_old = readdir(dp_old))) {
 #ifdef _DIRENT_HAVE_D_TYPE
 						if(ep_old->d_type != DT_DIR) {
 #endif
 							if(strcmp(ep_old->d_name, "..") != 0 && strcmp(ep_old->d_name, ".") != 0 && strcmp(ep_old->d_name, "datasets") != 0) {
-								eps_old.push_back(ep_old->d_name);std::cout << "8595" << endl;
+								eps_old.push_back(ep_old->d_name);
 							}
 #ifdef _DIRENT_HAVE_D_TYPE
 						}
 #endif
 					}
-					closedir(dp_old);std::cout << "8601" << endl;
+					closedir(dp_old);
 				}
 				for(list<string>::iterator it = eps_old.begin(); it != eps_old.end(); ++it) {
-					move_file(buildPath(homedir_old, *it).c_str(), buildPath(homedir, *it).c_str());std::cout << "8604" << endl;
+					move_file(buildPath(homedir_old, *it).c_str(), buildPath(homedir, *it).c_str());
 				}
 				if(removeDir(homedir_old)) {
-					removeDir(getOldLocalDir());std::cout << "8607" << endl;
+					removeDir(getOldLocalDir());
 				}
 			}
 		}
 	}
-	list<string> eps;std::cout << "8612" << endl;
-	struct dirent *ep;std::cout << "8613" << endl;
-	DIR *dp = opendir(homedir.c_str());std::cout << "8614" << endl;
+	list<string> eps;
+	struct dirent *ep;
+	DIR *dp = opendir(homedir.c_str());
 	if(dp) {
 		while((ep = readdir(dp))) {
 #ifdef _DIRENT_HAVE_D_TYPE
 			if(ep->d_type != DT_DIR) {
 #endif
 				if(strcmp(ep->d_name, "..") != 0 && strcmp(ep->d_name, ".") != 0 && strcmp(ep->d_name, "datasets") != 0) {
-					eps.push_back(ep->d_name);std::cout << "8621" << endl;
+					eps.push_back(ep->d_name);
 				}
 #ifdef _DIRENT_HAVE_D_TYPE
 			}
 #endif
 		}
-		closedir(dp);std::cout << "8627" << endl;
+		closedir(dp);
 	}
-	eps.sort();std::cout << "8629" << endl;
+	eps.sort();
 	for(list<string>::iterator it = eps.begin(); it != eps.end(); ++it) {
 		loadDefinitions(buildPath(homedir, *it).c_str(), (*it) == "functions.xml" || (*it) == "variables.xml" || (*it) == "units.xml" || (*it) == "datasets.xml", true);
 	}
@@ -8658,7 +8685,7 @@ bool Calculator::loadLocalDefinitions() {
 		if(item->getName(i).reference) { \
 			for(size_t i2 = 0; i2 < 10; i2++) { \
 				if(ref_names[i2].name.empty()) { \
-					ref_names[i2] = item->getName(i);std::cout << "8651" << endl; \
+					ref_names[i2] = item->getName(i); \
 					break; \
 				} \
 			} \
@@ -8674,25 +8701,25 @@ bool Calculator::loadLocalDefinitions() {
 	else if(!nextbest_names.empty()) {str_names = &nextbest_names;} \
 	else {str_names = &default_names;} \
 	if(!str_names->empty() && (*str_names)[0] == '!') { \
-		names_i = str_names->find('!', 1) + 1;std::cout << "8667" << endl; \
+		names_i = str_names->find('!', 1) + 1; \
 	} \
 	while(true) { \
-		size_t i3 = names_i;std::cout << "8670" << endl; \
+		size_t i3 = names_i; \
 		names_i = str_names->find(",", i3); \
 		if(i2 == 0) { \
 			i2 = str_names->find(":", i3); \
 		} \
-		bool case_set = false;std::cout << "8675" << endl; \
-		ename.unicode = false;std::cout << "8676" << endl; \
-		ename.abbreviation = false;std::cout << "8677" << endl; \
-		ename.case_sensitive = false;std::cout << "8678" << endl; \
-		ename.suffix = false;std::cout << "8679" << endl; \
-		ename.avoid_input = false;std::cout << "8680" << endl; \
-		ename.completion_only = false;std::cout << "8681" << endl; \
-		ename.reference = false;std::cout << "8682" << endl; \
-		ename.plural = false;std::cout << "8683" << endl; \
+		bool case_set = false; \
+		ename.unicode = false; \
+		ename.abbreviation = false; \
+		ename.case_sensitive = false; \
+		ename.suffix = false; \
+		ename.avoid_input = false; \
+		ename.completion_only = false; \
+		ename.reference = false; \
+		ename.plural = false; \
 		if(i2 < names_i) { \
-			bool b = true;std::cout << "8685" << endl; \
+			bool b = true; \
 			for(; i3 < i2; i3++) { \
 				switch((*str_names)[i3]) { \
 					case '-': {b = false; break;} \
@@ -8706,20 +8733,20 @@ bool Calculator::loadLocalDefinitions() {
 					case 'o': {ename.completion_only = b; b = true; break;} \
 				} \
 			} \
-			i3++;std::cout << "8699" << endl; \
-			i2 = 0;std::cout << "8700" << endl; \
+			i3++; \
+			i2 = 0; \
 		} \
 		if(names_i == string::npos) {ename.name = str_names->substr(i3, str_names->length() - i3);} \
-		else {ename.name = str_names->substr(i3, names_i - i3);std::cout << "8703" << endl;} \
-		remove_blank_ends(ename.name);std::cout << "8704" << endl; \
+		else {ename.name = str_names->substr(i3, names_i - i3);} \
+		remove_blank_ends(ename.name); \
 		if(!ename.name.empty() && validation(ename.name, version_numbers, is_user_defs)) { \
 			if(!case_set) { \
-				ename.case_sensitive = ename.abbreviation || text_length_is_one(ename.name);std::cout << "8707" << endl; \
+				ename.case_sensitive = ename.abbreviation || text_length_is_one(ename.name); \
 			} \
-			item->addName(ename);std::cout << "8709" << endl; \
+			item->addName(ename); \
 		} \
 		if(names_i == string::npos) {break;} \
-		names_i++;std::cout << "8712" << endl; \
+		names_i++; \
 	}
 
 #define ITEM_SET_BUILTIN_NAMES \
@@ -8727,52 +8754,52 @@ bool Calculator::loadLocalDefinitions() {
 		if(ref_names[i].name.empty()) { \
 			break; \
 		} else { \
-			size_t i4 = item->hasName(ref_names[i].name, ref_names[i].case_sensitive);std::cout << "8720" << endl; \
+			size_t i4 = item->hasName(ref_names[i].name, ref_names[i].case_sensitive); \
 			if(i4 > 0) { \
-				const ExpressionName *enameptr = &item->getName(i4);std::cout << "8722" << endl; \
-				ref_names[i].case_sensitive = enameptr->case_sensitive;std::cout << "8723" << endl; \
-				ref_names[i].abbreviation = enameptr->abbreviation;std::cout << "8724" << endl; \
-				ref_names[i].avoid_input = enameptr->avoid_input;std::cout << "8725" << endl; \
-				ref_names[i].completion_only = enameptr->completion_only;std::cout << "8726" << endl; \
-				ref_names[i].plural = enameptr->plural;std::cout << "8727" << endl; \
-				ref_names[i].suffix = enameptr->suffix;std::cout << "8728" << endl; \
-				item->setName(ref_names[i], i4);std::cout << "8729" << endl; \
+				const ExpressionName *enameptr = &item->getName(i4); \
+				ref_names[i].case_sensitive = enameptr->case_sensitive; \
+				ref_names[i].abbreviation = enameptr->abbreviation; \
+				ref_names[i].avoid_input = enameptr->avoid_input; \
+				ref_names[i].completion_only = enameptr->completion_only; \
+				ref_names[i].plural = enameptr->plural; \
+				ref_names[i].suffix = enameptr->suffix; \
+				item->setName(ref_names[i], i4); \
 			} else { \
-				item->addName(ref_names[i]);std::cout << "8731" << endl; \
+				item->addName(ref_names[i]); \
 			} \
 			ref_names[i].name = ""; \
 		} \
 	} \
 	if(!is_user_defs) { \
-		item->setRegistered(true);std::cout << "8737" << endl; \
-		nameChanged(item);std::cout << "8738" << endl; \
+		item->setRegistered(true); \
+		nameChanged(item); \
 	}
 
 #define ITEM_SET_REFERENCE_NAMES(validation) \
 	if(str_names != &default_names && !default_names.empty()) { \
 		if(default_names[0] == '!') { \
-			names_i = default_names.find('!', 1) + 1;std::cout << "8744" << endl; \
+			names_i = default_names.find('!', 1) + 1; \
 		} else { \
-			names_i = 0;std::cout << "8746" << endl; \
+			names_i = 0; \
 		} \
-		i2 = 0;std::cout << "8748" << endl; \
+		i2 = 0; \
 		while(true) { \
-			size_t i3 = names_i;std::cout << "8750" << endl; \
+			size_t i3 = names_i; \
 			names_i = default_names.find(",", i3); \
 			if(i2 == 0) { \
 				i2 = default_names.find(":", i3); \
 			} \
-			bool case_set = false;std::cout << "8755" << endl; \
-			ename.unicode = false;std::cout << "8756" << endl; \
-			ename.abbreviation = false;std::cout << "8757" << endl; \
-			ename.case_sensitive = false;std::cout << "8758" << endl; \
-			ename.suffix = false;std::cout << "8759" << endl; \
-			ename.avoid_input = false;std::cout << "8760" << endl; \
-			ename.completion_only = false;std::cout << "8761" << endl; \
-			ename.reference = false;std::cout << "8762" << endl; \
-			ename.plural = false;std::cout << "8763" << endl; \
+			bool case_set = false; \
+			ename.unicode = false; \
+			ename.abbreviation = false; \
+			ename.case_sensitive = false; \
+			ename.suffix = false; \
+			ename.avoid_input = false; \
+			ename.completion_only = false; \
+			ename.reference = false; \
+			ename.plural = false; \
 			if(i2 < names_i) { \
-				bool b = true;std::cout << "8765" << endl; \
+				bool b = true; \
 				for(; i3 < i2; i3++) { \
 					switch(default_names[i3]) { \
 						case '-': {b = false; break;} \
@@ -8786,62 +8813,62 @@ bool Calculator::loadLocalDefinitions() {
 						case 'o': {ename.completion_only = b; b = true; break;} \
 					} \
 				} \
-				i3++;std::cout << "8779" << endl; \
-				i2 = 0;std::cout << "8780" << endl; \
+				i3++; \
+				i2 = 0; \
 			} \
 			if(ename.reference) { \
 				if(names_i == string::npos) {ename.name = default_names.substr(i3, default_names.length() - i3);} \
-				else {ename.name = default_names.substr(i3, names_i - i3);std::cout << "8784" << endl;} \
-				remove_blank_ends(ename.name);std::cout << "8785" << endl; \
-				size_t i4 = item->hasName(ename.name, ename.case_sensitive);std::cout << "8786" << endl; \
+				else {ename.name = default_names.substr(i3, names_i - i3);} \
+				remove_blank_ends(ename.name); \
+				size_t i4 = item->hasName(ename.name, ename.case_sensitive); \
 				if(i4 > 0) { \
-					const ExpressionName *enameptr = &item->getName(i4);std::cout << "8788" << endl; \
-					ename.suffix = enameptr->suffix;std::cout << "8789" << endl; \
-					ename.abbreviation = enameptr->abbreviation;std::cout << "8790" << endl; \
-					ename.avoid_input = enameptr->avoid_input;std::cout << "8791" << endl; \
-					ename.completion_only = enameptr->completion_only;std::cout << "8792" << endl; \
-					ename.plural = enameptr->plural;std::cout << "8793" << endl; \
-					ename.case_sensitive = enameptr->case_sensitive;std::cout << "8794" << endl; \
-					item->setName(ename, i4);std::cout << "8795" << endl; \
+					const ExpressionName *enameptr = &item->getName(i4); \
+					ename.suffix = enameptr->suffix; \
+					ename.abbreviation = enameptr->abbreviation; \
+					ename.avoid_input = enameptr->avoid_input; \
+					ename.completion_only = enameptr->completion_only; \
+					ename.plural = enameptr->plural; \
+					ename.case_sensitive = enameptr->case_sensitive; \
+					item->setName(ename, i4); \
 				} else if(!ename.name.empty() && validation(ename.name, version_numbers, is_user_defs)) { \
 					if(!case_set) { \
-						ename.case_sensitive = ename.abbreviation || text_length_is_one(ename.name);std::cout << "8798" << endl; \
+						ename.case_sensitive = ename.abbreviation || text_length_is_one(ename.name); \
 					} \
-					item->addName(ename);std::cout << "8800" << endl; \
+					item->addName(ename); \
 				} \
 			} \
 			if(names_i == string::npos) {break;} \
-			names_i++;std::cout << "8804" << endl; \
+			names_i++; \
 		} \
 	}
 
 
 #define ITEM_READ_NAME(validation)\
 					if(!new_names && (!xmlStrcmp(child->name, (const xmlChar*) "name") || !xmlStrcmp(child->name, (const xmlChar*) "abbreviation") || !xmlStrcmp(child->name, (const xmlChar*) "plural"))) {\
-						name_index = 1;std::cout << "8811" << endl;\
+						name_index = 1;\
 						XML_GET_INT_FROM_PROP(child, "index", name_index)\
 						if(name_index > 0 && name_index <= 10) {\
-							name_index--;std::cout << "8814" << endl;\
-							names[name_index] = empty_expression_name;std::cout << "8815" << endl;\
-							ref_names[name_index] = empty_expression_name;std::cout << "8816" << endl;\
-							value2 = NULL;std::cout << "8817" << endl;\
-							bool case_set = false;std::cout << "8818" << endl;\
+							name_index--;\
+							names[name_index] = empty_expression_name;\
+							ref_names[name_index] = empty_expression_name;\
+							value2 = NULL;\
+							bool case_set = false;\
 							if(child->name[0] == 'a') {\
-								names[name_index].abbreviation = true;std::cout << "8820" << endl;\
-								ref_names[name_index].abbreviation = true;std::cout << "8821" << endl;\
+								names[name_index].abbreviation = true;\
+								ref_names[name_index].abbreviation = true;\
 							} else if(child->name[0] == 'p') {\
-								names[name_index].plural = true;std::cout << "8823" << endl;\
-								ref_names[name_index].plural = true;std::cout << "8824" << endl;\
+								names[name_index].plural = true;\
+								ref_names[name_index].plural = true;\
 							}\
-							child2 = child->xmlChildrenNode;std::cout << "8826" << endl;\
+							child2 = child->xmlChildrenNode;\
 							while(child2 != NULL) {\
 								if((!best_name[name_index] || (ref_names[name_index].name.empty() && !locale.empty())) && !xmlStrcmp(child2->name, (const xmlChar*) "name")) {\
-									lang = xmlNodeGetLang(child2);std::cout << "8829" << endl;\
+									lang = xmlNodeGetLang(child2);\
 									if(!lang) {\
-										value2 = xmlNodeListGetString(doc, child2->xmlChildrenNode, 1);std::cout << "8831" << endl;\
+										value2 = xmlNodeListGetString(doc, child2->xmlChildrenNode, 1);\
 										if(!value2 || validation((char*) value2, version_numbers, is_user_defs)) {\
 											if(locale.empty()) {\
-												best_name[name_index] = true;std::cout << "8834" << endl;\
+												best_name[name_index] = true;\
 												if(value2) names[name_index].name = (char*) value2;\
 												else names[name_index].name = "";\
 											} else if(!require_translation) {\
@@ -8855,16 +8882,16 @@ bool Calculator::loadLocalDefinitions() {
 										}\
 									} else if(!best_name[name_index] && !locale.empty()) {\
 										if(locale == (char*) lang) {\
-											value2 = xmlNodeListGetString(doc, child2->xmlChildrenNode, 1);std::cout << "8848" << endl;\
+											value2 = xmlNodeListGetString(doc, child2->xmlChildrenNode, 1);\
 											if(!value2 || validation((char*) value2, version_numbers, is_user_defs)) {\
-												best_name[name_index] = true;std::cout << "8850" << endl;\
+												best_name[name_index] = true;\
 												if(value2) names[name_index].name = (char*) value2;\
 												else names[name_index].name = "";\
 											}\
 										} else if(!nextbest_name[name_index] && strlen((char*) lang) >= 2 && fulfilled_translation == 0 && lang[0] == localebase[0] && lang[1] == localebase[1]) {\
-											value2 = xmlNodeListGetString(doc, child2->xmlChildrenNode, 1);std::cout << "8855" << endl;\
+											value2 = xmlNodeListGetString(doc, child2->xmlChildrenNode, 1);\
 											if(!value2 || validation((char*) value2, version_numbers, is_user_defs)) {\
-												nextbest_name[name_index] = true;std::cout << "8857" << endl; \
+												nextbest_name[name_index] = true; \
 												if(value2) names[name_index].name = (char*) value2;\
 												else names[name_index].name = "";\
 											}\
@@ -8872,45 +8899,45 @@ bool Calculator::loadLocalDefinitions() {
 									}\
 									if(value2) xmlFree(value2);\
 									if(lang) xmlFree(lang);\
-									value2 = NULL;std::cout << "8865" << endl; lang = NULL;std::cout << "8865" << endl;\
+									value2 = NULL; lang = NULL;\
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "unicode")) {\
 									XML_GET_BOOL_FROM_TEXT(child2, names[name_index].unicode)\
-									ref_names[name_index].unicode = names[name_index].unicode;std::cout << "8868" << endl;\
+									ref_names[name_index].unicode = names[name_index].unicode;\
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "reference")) {\
 									XML_GET_BOOL_FROM_TEXT(child2, names[name_index].reference)\
-									ref_names[name_index].reference = names[name_index].reference;std::cout << "8871" << endl;\
+									ref_names[name_index].reference = names[name_index].reference;\
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "suffix")) {\
 									XML_GET_BOOL_FROM_TEXT(child2, names[name_index].suffix)\
-									ref_names[name_index].suffix = names[name_index].suffix;std::cout << "8874" << endl;\
+									ref_names[name_index].suffix = names[name_index].suffix;\
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "avoid_input")) {\
 									XML_GET_BOOL_FROM_TEXT(child2, names[name_index].avoid_input)\
-									ref_names[name_index].avoid_input = names[name_index].avoid_input;std::cout << "8877" << endl;\
+									ref_names[name_index].avoid_input = names[name_index].avoid_input;\
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "completion_only")) {\
 									XML_GET_BOOL_FROM_TEXT(child2, names[name_index].completion_only)\
-									ref_names[name_index].completion_only = names[name_index].completion_only;std::cout << "8880" << endl;\
+									ref_names[name_index].completion_only = names[name_index].completion_only;\
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "plural")) {\
 									XML_GET_BOOL_FROM_TEXT(child2, names[name_index].plural)\
-									ref_names[name_index].plural = names[name_index].plural;std::cout << "8883" << endl;\
+									ref_names[name_index].plural = names[name_index].plural;\
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "abbreviation")) {\
 									XML_GET_BOOL_FROM_TEXT(child2, names[name_index].abbreviation)\
-									ref_names[name_index].abbreviation = names[name_index].abbreviation;std::cout << "8886" << endl;\
+									ref_names[name_index].abbreviation = names[name_index].abbreviation;\
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "case_sensitive")) {\
 									XML_GET_BOOL_FROM_TEXT(child2, names[name_index].case_sensitive)\
-									ref_names[name_index].case_sensitive = names[name_index].case_sensitive;std::cout << "8889" << endl;\
-									case_set = true;std::cout << "8890" << endl;\
+									ref_names[name_index].case_sensitive = names[name_index].case_sensitive;\
+									case_set = true;\
 								}\
-								child2 = child2->next;std::cout << "8892" << endl;\
+								child2 = child2->next;\
 							}\
 							if(!case_set) {\
-								ref_names[name_index].case_sensitive = ref_names[name_index].abbreviation || text_length_is_one(ref_names[name_index].name);std::cout << "8895" << endl;\
-								names[name_index].case_sensitive = names[name_index].abbreviation || text_length_is_one(names[name_index].name);std::cout << "8896" << endl;\
+								ref_names[name_index].case_sensitive = ref_names[name_index].abbreviation || text_length_is_one(ref_names[name_index].name);\
+								names[name_index].case_sensitive = names[name_index].abbreviation || text_length_is_one(names[name_index].name);\
 							}\
 							if(names[name_index].reference) {\
 								if(!ref_names[name_index].name.empty()) {\
 									if(ref_names[name_index].name == names[name_index].name) {\
 										ref_names[name_index].name = "";\
 									} else {\
-										names[name_index].reference = false;std::cout << "8903" << endl;\
+										names[name_index].reference = false;\
 									}\
 								}\
 							} else if(!ref_names[name_index].name.empty()) {\
@@ -8925,18 +8952,18 @@ bool Calculator::loadLocalDefinitions() {
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "title")) {\
 						XML_GET_LOCALE_STRING_FROM_TEXT_REQ(child, title, best_title, next_best_title)\
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "hidden")) {\
-						XML_GET_TRUE_FROM_TEXT(child, hidden);std::cout << "8918" << endl;\
+						XML_GET_TRUE_FROM_TEXT(child, hidden);\
 					}
 
 #define ITEM_READ_NAMES \
 					if(new_names && ((best_names.empty() && fulfilled_translation != 2) || default_names.empty()) && !xmlStrcmp(child->name, (const xmlChar*) "names")) {\
-						value = xmlNodeListGetString(doc, child->xmlChildrenNode, 1);std::cout << "8923" << endl;\
- 						lang = xmlNodeGetLang(child);std::cout << "8924" << endl;\
+						value = xmlNodeListGetString(doc, child->xmlChildrenNode, 1);\
+ 						lang = xmlNodeGetLang(child);\
 						if(!lang) {\
 							if(default_names.empty()) {\
 								if(value) {\
-									default_names = (char*) value;std::cout << "8928" << endl;\
-									remove_blank_ends(default_names);std::cout << "8929" << endl;\
+									default_names = (char*) value;\
+									remove_blank_ends(default_names);\
 								} else {\
 									default_names = "";\
 								}\
@@ -8944,21 +8971,21 @@ bool Calculator::loadLocalDefinitions() {
 						} else if(best_names.empty()) {\
 							if(locale == (char*) lang) {\
 								if(value) {\
-									best_names = (char*) value;std::cout << "8937" << endl;\
-									remove_blank_ends(best_names);std::cout << "8938" << endl;\
+									best_names = (char*) value;\
+									remove_blank_ends(best_names);\
 								} else {\
 									best_names = " ";\
 								}\
 							} else if(nextbest_names.empty() && strlen((char*) lang) >= 2 && fulfilled_translation == 0 && lang[0] == localebase[0] && lang[1] == localebase[1]) {\
 								if(value) {\
-									nextbest_names = (char*) value;std::cout << "8944" << endl;\
-									remove_blank_ends(nextbest_names);std::cout << "8945" << endl;\
+									nextbest_names = (char*) value;\
+									remove_blank_ends(nextbest_names);\
 								} else {\
 									nextbest_names = " ";\
 								}\
 							} else if(nextbest_names.empty() && default_names.empty() && value && !require_translation) {\
-								nextbest_names = (char*) value;std::cout << "8950" << endl;\
-								remove_blank_ends(nextbest_names);std::cout << "8951" << endl;\
+								nextbest_names = (char*) value;\
+								remove_blank_ends(nextbest_names);\
 							}\
 						}\
 						if(value) xmlFree(value);\
@@ -8979,33 +9006,33 @@ bool Calculator::loadLocalDefinitions() {
 						default_names = "";\
 					} else {\
 						for(size_t i = 0; i < 10; i++) {\
-							best_name[i] = false;std::cout << "8972" << endl;\
-							nextbest_name[i] = false;std::cout << "8973" << endl;\
+							best_name[i] = false;\
+							nextbest_name[i] = false;\
 						}\
 					}
 
 
 #define ITEM_SET_NAME_1(validation)\
 					if(!name.empty() && validation(name, version_numbers, is_user_defs)) {\
-						ename.name = name;std::cout << "8980" << endl;\
-						ename.unicode = false;std::cout << "8981" << endl;\
-						ename.abbreviation = false;std::cout << "8982" << endl;\
-						ename.case_sensitive = text_length_is_one(ename.name);std::cout << "8983" << endl;\
-						ename.suffix = false;std::cout << "8984" << endl;\
-						ename.avoid_input = false;std::cout << "8985" << endl;\
-						ename.completion_only = false;std::cout << "8986" << endl;\
-						ename.reference = true;std::cout << "8987" << endl;\
-						ename.plural = false;std::cout << "8988" << endl;\
-						item->addName(ename);std::cout << "8989" << endl;\
+						ename.name = name;\
+						ename.unicode = false;\
+						ename.abbreviation = false;\
+						ename.case_sensitive = text_length_is_one(ename.name);\
+						ename.suffix = false;\
+						ename.avoid_input = false;\
+						ename.completion_only = false;\
+						ename.reference = true;\
+						ename.plural = false;\
+						item->addName(ename);\
 					}
 
 #define ITEM_SET_NAME_2\
 					for(size_t i = 0; i < 10; i++) {\
 						if(!names[i].name.empty()) {\
-							item->addName(names[i], i + 1);std::cout << "8995" << endl;\
+							item->addName(names[i], i + 1);\
 							names[i].name = "";\
 						} else if(!ref_names[i].name.empty()) {\
-							item->addName(ref_names[i], i + 1);std::cout << "8998" << endl;\
+							item->addName(ref_names[i], i + 1);\
 							ref_names[i].name = "";\
 						}\
 					}
@@ -9013,7 +9040,7 @@ bool Calculator::loadLocalDefinitions() {
 #define ITEM_SET_NAME_3\
 					for(size_t i = 0; i < 10; i++) {\
 						if(!ref_names[i].name.empty()) {\
-							item->addName(ref_names[i]);std::cout << "9006" << endl;\
+							item->addName(ref_names[i]);\
 							ref_names[i].name = "";\
 						}\
 					}
@@ -9021,59 +9048,59 @@ bool Calculator::loadLocalDefinitions() {
 #define ITEM_SET_DTH\
 					item->setDescription(description);\
 					if(!title.empty() && title[0] == '!') {\
-						size_t i = title.find('!', 1);std::cout << "9014" << endl;\
+						size_t i = title.find('!', 1);\
 						if(i == string::npos) {\
-							item->setTitle(title);std::cout << "9016" << endl;\
+							item->setTitle(title);\
 						} else if(i + 1 == title.length()) {\
 							item->setTitle("");\
 						} else {\
-							item->setTitle(title.substr(i + 1, title.length() - (i + 1)));std::cout << "9020" << endl;\
+							item->setTitle(title.substr(i + 1, title.length() - (i + 1)));\
 						}\
 					} else {\
-						item->setTitle(title);std::cout << "9023" << endl;\
+						item->setTitle(title);\
 					}\
 					item->setHidden(hidden);
 
 #define ITEM_SET_SHORT_NAME\
 					if(!name.empty() && unitNameIsValid(name, version_numbers, is_user_defs)) {\
-						ename.name = name;std::cout << "9029" << endl;\
-						ename.unicode = false;std::cout << "9030" << endl;\
-						ename.abbreviation = true;std::cout << "9031" << endl;\
-						ename.case_sensitive = true;std::cout << "9032" << endl;\
-						ename.suffix = false;std::cout << "9033" << endl;\
-						ename.avoid_input = false;std::cout << "9034" << endl;\
-						ename.completion_only = false;std::cout << "9035" << endl;\
-						ename.reference = true;std::cout << "9036" << endl;\
-						ename.plural = false;std::cout << "9037" << endl;\
-						item->addName(ename);std::cout << "9038" << endl;\
+						ename.name = name;\
+						ename.unicode = false;\
+						ename.abbreviation = true;\
+						ename.case_sensitive = true;\
+						ename.suffix = false;\
+						ename.avoid_input = false;\
+						ename.completion_only = false;\
+						ename.reference = true;\
+						ename.plural = false;\
+						item->addName(ename);\
 					}
 
 #define ITEM_SET_SINGULAR\
 					if(!singular.empty()) {\
-						ename.name = singular;std::cout << "9043" << endl;\
-						ename.unicode = false;std::cout << "9044" << endl;\
-						ename.abbreviation = false;std::cout << "9045" << endl;\
-						ename.case_sensitive = text_length_is_one(ename.name);std::cout << "9046" << endl;\
-						ename.suffix = false;std::cout << "9047" << endl;\
-						ename.avoid_input = false;std::cout << "9048" << endl;\
-						ename.completion_only = false;std::cout << "9049" << endl;\
-						ename.reference = false;std::cout << "9050" << endl;\
-						ename.plural = false;std::cout << "9051" << endl;\
-						item->addName(ename);std::cout << "9052" << endl;\
+						ename.name = singular;\
+						ename.unicode = false;\
+						ename.abbreviation = false;\
+						ename.case_sensitive = text_length_is_one(ename.name);\
+						ename.suffix = false;\
+						ename.avoid_input = false;\
+						ename.completion_only = false;\
+						ename.reference = false;\
+						ename.plural = false;\
+						item->addName(ename);\
 					}
 
 #define ITEM_SET_PLURAL\
 					if(!plural.empty()) {\
-						ename.name = plural;std::cout << "9057" << endl;\
-						ename.unicode = false;std::cout << "9058" << endl;\
-						ename.abbreviation = false;std::cout << "9059" << endl;\
-						ename.case_sensitive = text_length_is_one(ename.name);std::cout << "9060" << endl;\
-						ename.suffix = false;std::cout << "9061" << endl;\
-						ename.avoid_input = false;std::cout << "9062" << endl;\
-						ename.completion_only = false;std::cout << "9063" << endl;\
-						ename.reference = false;std::cout << "9064" << endl;\
-						ename.plural = true;std::cout << "9065" << endl;\
-						item->addName(ename);std::cout << "9066" << endl;\
+						ename.name = plural;\
+						ename.unicode = false;\
+						ename.abbreviation = false;\
+						ename.case_sensitive = text_length_is_one(ename.name);\
+						ename.suffix = false;\
+						ename.avoid_input = false;\
+						ename.completion_only = false;\
+						ename.reference = false;\
+						ename.plural = true;\
+						item->addName(ename);\
 					}
 
 #define BUILTIN_NAMES_1\
@@ -9081,17 +9108,17 @@ bool Calculator::loadLocalDefinitions() {
 					bool has_ref_name;\
 					for(size_t i = 1; i <= item->countNames(); i++) {\
 						if(item->getName(i).reference) {\
-							has_ref_name = false;std::cout << "9074" << endl;\
+							has_ref_name = false;\
 							for(size_t i2 = 0; i2 < 10; i2++) {\
 								if(names[i2].name == item->getName(i).name || ref_names[i2].name == item->getName(i).name) {\
-									has_ref_name = true;std::cout << "9077" << endl;\
+									has_ref_name = true;\
 									break;\
 								}\
 							}\
 							if(!has_ref_name) {\
 								for(int i2 = 9; i2 >= 0; i2--) {\
 									if(ref_names[i2].name.empty()) {\
-										ref_names[i2] = item->getName(i);std::cout << "9084" << endl;\
+										ref_names[i2] = item->getName(i);\
 										break;\
 									}\
 								}\
@@ -9105,17 +9132,17 @@ bool Calculator::loadLocalDefinitions() {
 					bool has_ref_name;\
 					for(size_t i = 1; i <= item->countNames(); i++) {\
 						if(item->getName(i).reference) {\
-							has_ref_name = item->getName(i).name == singular || item->getName(i).name == plural;std::cout << "9098" << endl;\
+							has_ref_name = item->getName(i).name == singular || item->getName(i).name == plural;\
 							for(size_t i2 = 0; !has_ref_name && i2 < 10; i2++) {\
 								if(names[i2].name == item->getName(i).name || ref_names[i2].name == item->getName(i).name) {\
-									has_ref_name = true;std::cout << "9101" << endl;\
+									has_ref_name = true;\
 									break;\
 								}\
 							}\
 							if(!has_ref_name) {\
 								for(int i2 = 9; i2 >= 0; i2--) {\
 									if(ref_names[i2].name.empty()) {\
-										ref_names[i2] = item->getName(i);std::cout << "9108" << endl;\
+										ref_names[i2] = item->getName(i);\
 										break;\
 									}\
 								}\
@@ -9126,8 +9153,8 @@ bool Calculator::loadLocalDefinitions() {
 
 #define BUILTIN_NAMES_2\
 				if(!is_user_defs) {\
-					item->setRegistered(true);std::cout << "9119" << endl;\
-					nameChanged(item);std::cout << "9120" << endl;\
+					item->setRegistered(true);\
+					nameChanged(item);\
 				}
 
 #define ITEM_CLEAR_NAMES\
@@ -9142,358 +9169,377 @@ bool Calculator::loadLocalDefinitions() {
 
 int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool check_duplicates) {
 
-	xmlDocPtr doc;std::cout << "9135" << endl;
-	xmlNodePtr cur, child, child2, child3;std::cout << "9136" << endl;
-	string version, stmp, name, uname, type, svalue, sexp, plural, countries, singular, category_title, category, description, title, inverse, suncertainty, base, argname, usystem;std::cout << "9137" << endl;
-	bool unc_rel;std::cout << "9138" << endl;
-	bool best_title, next_best_title, best_category_title, next_best_category_title, best_description, next_best_description;std::cout << "9139" << endl;
-	bool best_plural, next_best_plural, best_singular, next_best_singular, best_argname, next_best_argname, best_countries, next_best_countries;std::cout << "9140" << endl;
-	bool best_proptitle, next_best_proptitle, best_propdescr, next_best_propdescr;std::cout << "9141" << endl;
-	string proptitle, propdescr;std::cout << "9142" << endl;
-	ExpressionName names[10];std::cout << "9143" << endl;
-	ExpressionName ref_names[10];std::cout << "9144" << endl;
-	string prop_names[10];std::cout << "9145" << endl;
-	string ref_prop_names[10];std::cout << "9146" << endl;
-	bool best_name[10];std::cout << "9147" << endl;
-	bool nextbest_name[10];std::cout << "9148" << endl;
-	string best_names, nextbest_names, default_names;std::cout << "9149" << endl;
-	string best_prop_names, nextbest_prop_names, default_prop_names;std::cout << "9150" << endl;
-	int name_index, prec;std::cout << "9151" << endl;
-	ExpressionName ename;std::cout << "9152" << endl;
+	xmlDocPtr doc;
+	xmlNodePtr cur, child, child2, child3;
+	string version, stmp, name, uname, type, svalue, sexp, plural, countries, singular, category_title, category, description, title, inverse, suncertainty, base, argname, usystem;
+	bool unc_rel;
+	bool best_title, next_best_title, best_category_title, next_best_category_title, best_description, next_best_description;
+	bool best_plural, next_best_plural, best_singular, next_best_singular, best_argname, next_best_argname, best_countries, next_best_countries;
+	bool best_proptitle, next_best_proptitle, best_propdescr, next_best_propdescr;
+	string proptitle, propdescr;
+	ExpressionName names[10];
+	ExpressionName ref_names[10];
+	string prop_names[10];
+	string ref_prop_names[10];
+	bool best_name[10];
+	bool nextbest_name[10];
+	string best_names, nextbest_names, default_names;
+	string best_prop_names, nextbest_prop_names, default_prop_names;
+	int name_index, prec;
+	ExpressionName ename;
 
-	string locale;std::cout << "9154" << endl;
+	string locale;
 #ifdef _WIN32
-	WCHAR wlocale[LOCALE_NAME_MAX_LENGTH];std::cout << "9156" << endl;
+	WCHAR wlocale[LOCALE_NAME_MAX_LENGTH];
 	if(LCIDToLocaleName(LOCALE_USER_DEFAULT, wlocale, LOCALE_NAME_MAX_LENGTH, 0) != 0) locale = utf8_encode(wlocale);
 	gsub("-", "_", locale);
 #else
-	char *clocale = setlocale(LC_MESSAGES, NULL);std::cout << "9160" << endl;
+	char *clocale = setlocale(LC_MESSAGES, NULL);
 	if(clocale) locale = clocale;
 #endif
 
 	if(b_ignore_locale || locale == "POSIX" || locale == "C") {
 		locale = "";
 	} else {
-		size_t i = locale.find('.');std::cout << "9167" << endl;
+		size_t i = locale.find('.');
 		if(i != string::npos) locale = locale.substr(0, i);
 	}
 
-	int fulfilled_translation = 0;std::cout << "9171" << endl;
-	string localebase;std::cout << "9172" << endl;
+	int fulfilled_translation = 0;
+	string localebase;
 	if(locale.length() > 2) {
-		localebase = locale.substr(0, 2);std::cout << "9174" << endl;
+		localebase = locale.substr(0, 2);
 		if(locale == "en_US") {
-			fulfilled_translation = 2;std::cout << "9176" << endl;
+			fulfilled_translation = 2;
 		} else if(localebase == "en") {
-			fulfilled_translation = 1;std::cout << "9178" << endl;
+			fulfilled_translation = 1;
 		}
 	} else {
-		localebase = locale;std::cout << "9181" << endl;
+		localebase = locale;
 		if(locale == "en") {
-			fulfilled_translation = 2;std::cout << "9183" << endl;
+			fulfilled_translation = 2;
 		}
 	}
 	while(localebase.length() < 2) {
 		localebase += " ";
-		fulfilled_translation = 2;std::cout << "9188" << endl;
+		fulfilled_translation = 2;
 	}
 
-	int exponent = 1, litmp = 0, mix_priority = 0, mix_min = 0;std::cout << "9191" << endl;
-	bool active = false, hidden = false, b = false, require_translation = false, use_with_prefixes = false, use_with_prefixes_set = false;std::cout << "9192" << endl;
-	Number nr;std::cout << "9193" << endl;
-	ExpressionItem *item;std::cout << "9194" << endl;
-	MathFunction *f;std::cout << "9195" << endl;
-	Variable *v;std::cout << "9196" << endl;
-	Unit *u;std::cout << "9197" << endl;
-	AliasUnit *au;std::cout << "9198" << endl;
-	CompositeUnit *cu;std::cout << "9199" << endl;
-	Prefix *p;std::cout << "9200" << endl;
-	Argument *arg;std::cout << "9201" << endl;
-	DataSet *dc;std::cout << "9202" << endl;
-	DataProperty *dp;std::cout << "9203" << endl;
-	int itmp;std::cout << "9204" << endl;
-	IntegerArgument *iarg;std::cout << "9205" << endl;
-	NumberArgument *farg;std::cout << "9206" << endl;
-	xmlChar *value, *lang, *value2;std::cout << "9207" << endl;
-	int in_unfinished = 0;std::cout << "9208" << endl;
-	bool done_something = false;std::cout << "9209" << endl;
-	doc = xmlParseFile(file_name);std::cout << "9210" << endl;
+	int exponent = 1, litmp = 0, mix_priority = 0, mix_min = 0;
+	bool active = false, hidden = false, b = false, require_translation = false, use_with_prefixes = false, use_with_prefixes_set = false;
+	Number nr;
+	ExpressionItem *item;
+	MathFunction *f;
+	Variable *v;
+	Unit *u;
+	AliasUnit *au;
+	CompositeUnit *cu;
+	Prefix *p;
+	Argument *arg;
+	DataSet *dc;
+	DataProperty *dp;
+	int itmp;
+	IntegerArgument *iarg;
+	NumberArgument *farg;
+	xmlChar *value, *lang, *value2;
+	int in_unfinished = 0;
+	bool done_something = false;
+	doc = xmlParseFile(file_name);
 	if(doc == NULL) {
 		return false;
 	}
-	cur = xmlDocGetRootElement(doc);std::cout << "9214" << endl;
+	cur = xmlDocGetRootElement(doc);
 	if(cur == NULL) {
-		xmlFreeDoc(doc);std::cout << "9216" << endl;
+		xmlFreeDoc(doc);
 		return false;
 	}
 	while(cur != NULL) {
 		if(!xmlStrcmp(cur->name, (const xmlChar*) "QALCULATE")) {
-			XML_GET_STRING_FROM_PROP(cur, "version", version)			break;
+			XML_GET_STRING_FROM_PROP(cur, "version", version)
+			break;
 		}
-		cur = cur->next;std::cout << "9223" << endl;
+		cur = cur->next;
 	}
 	if(cur == NULL) {
 		error(true, _("File not identified as Qalculate! definitions file: %s."), file_name, NULL);
-		xmlFreeDoc(doc);std::cout << "9227" << endl;
+		xmlFreeDoc(doc);
 		return false;
 	}
-	int version_numbers[] = {3, 6, 0};std::cout << "9230" << endl;
-	parse_qalculate_version(version, version_numbers);std::cout << "9231" << endl;
+	int version_numbers[] = {3, 6, 0};
+	parse_qalculate_version(version, version_numbers);
 
-	bool new_names = version_numbers[0] > 0 || version_numbers[1] > 9 || (version_numbers[1] == 9 && version_numbers[2] >= 4);std::cout << "9233" << endl;
+	bool new_names = version_numbers[0] > 0 || version_numbers[1] > 9 || (version_numbers[1] == 9 && version_numbers[2] >= 4);
 
-	ParseOptions po;std::cout << "9235" << endl;
+	ParseOptions po;
 
-	vector<xmlNodePtr> unfinished_nodes;std::cout << "9237" << endl;
-	vector<string> unfinished_cats;std::cout << "9238" << endl;
-	queue<xmlNodePtr> sub_items;std::cout << "9239" << endl;
-	vector<queue<xmlNodePtr> > nodes;std::cout << "9240" << endl;
+	vector<xmlNodePtr> unfinished_nodes;
+	vector<string> unfinished_cats;
+	queue<xmlNodePtr> sub_items;
+	vector<queue<xmlNodePtr> > nodes;
 
 	category = "";
-	nodes.resize(1);std::cout << "9243" << endl;
+	nodes.resize(1);
 
 	Unit *u_usd = getUnit("USD");
 
 	while(true) {
 		if(!in_unfinished) {
 			category_title = ""; best_category_title = false; next_best_category_title = false;
-			child = cur->xmlChildrenNode;std::cout << "9250" << endl;
+			child = cur->xmlChildrenNode;
 			while(child != NULL) {
 				if(!xmlStrcmp(child->name, (const xmlChar*) "title")) {
-					XML_GET_LOCALE_STRING_FROM_TEXT(child, category_title, best_category_title, next_best_category_title)				} else if(!xmlStrcmp(child->name, (const xmlChar*) "category")) {
-					nodes.back().push(child);std::cout << "9254" << endl;
+					XML_GET_LOCALE_STRING_FROM_TEXT(child, category_title, best_category_title, next_best_category_title)
+				} else if(!xmlStrcmp(child->name, (const xmlChar*) "category")) {
+					nodes.back().push(child);
 				} else {
-					sub_items.push(child);std::cout << "9256" << endl;
+					sub_items.push(child);
 				}
-				child = child->next;std::cout << "9258" << endl;
+				child = child->next;
 			}
 			if(!category.empty()) {
 				category += "/";
 			}
 			if(!category_title.empty() && category_title[0] == '!') {\
-				size_t i = category_title.find('!', 1);std::cout << "9264" << endl;
+				size_t i = category_title.find('!', 1);
 				if(i == string::npos) {
-					category += category_title;std::cout << "9266" << endl;
+					category += category_title;
 				} else if(i + 1 < category_title.length()) {
-					category += category_title.substr(i + 1, category_title.length() - (i + 1));std::cout << "9268" << endl;
+					category += category_title.substr(i + 1, category_title.length() - (i + 1));
 				}
 			} else {
-				category += category_title;std::cout << "9271" << endl;
+				category += category_title;
 			}
 		}
 		while(!sub_items.empty() || (in_unfinished && cur)) {
 			if(!in_unfinished) {
-				cur = sub_items.front();std::cout << "9276" << endl;
-				sub_items.pop();std::cout << "9277" << endl;
+				cur = sub_items.front();
+				sub_items.pop();
 			}
 			if(!xmlStrcmp(cur->name, (const xmlChar*) "activate")) {
-				XML_GET_STRING_FROM_TEXT(cur, name)				ExpressionItem *item = getInactiveExpressionItem(name);std::cout << "9280" << endl;
+				XML_GET_STRING_FROM_TEXT(cur, name)
+				ExpressionItem *item = getInactiveExpressionItem(name);
 				if(item && !item->isLocal()) {
-					item->setActive(true);std::cout << "9282" << endl;
-					done_something = true;std::cout << "9283" << endl;
+					item->setActive(true);
+					done_something = true;
 				}
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "deactivate")) {
-				XML_GET_STRING_FROM_TEXT(cur, name)				ExpressionItem *item = getActiveExpressionItem(name);std::cout << "9286" << endl;
+				XML_GET_STRING_FROM_TEXT(cur, name)
+				ExpressionItem *item = getActiveExpressionItem(name);
 				if(item && !item->isLocal()) {
-					item->setActive(false);std::cout << "9288" << endl;
-					done_something = true;std::cout << "9289" << endl;
+					item->setActive(false);
+					done_something = true;
 				}
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "function")) {
 				if(VERSION_BEFORE(0, 6, 3)) {
-					XML_GET_STRING_FROM_PROP(cur, "name", name)				} else {
+					XML_GET_STRING_FROM_PROP(cur, "name", name)
+				} else {
 					name = "";
 				}
-				XML_GET_FALSE_FROM_PROP(cur, "active", active)				f = new UserFunction(category, "", "", is_user_defs, 0, "", "", 0, active);
-				item = f;std::cout << "9297" << endl;
-				done_something = true;std::cout << "9298" << endl;
-				child = cur->xmlChildrenNode;std::cout << "9299" << endl;
+				XML_GET_FALSE_FROM_PROP(cur, "active", active)
+				f = new UserFunction(category, "", "", is_user_defs, 0, "", "", 0, active);
+				item = f;
+				done_something = true;
+				child = cur->xmlChildrenNode;
 				ITEM_INIT_DTH
 				ITEM_INIT_NAME
 				while(child != NULL) {
 					if(!xmlStrcmp(child->name, (const xmlChar*) "expression")) {
-						XML_DO_FROM_TEXT(child, ((UserFunction*) f)->setFormula);std::cout << "9304" << endl;
-						XML_GET_PREC_FROM_PROP(child, prec)						f->setPrecision(prec);std::cout << "9305" << endl;
-						XML_GET_APPROX_FROM_PROP(child, b)						f->setApproximate(b);std::cout << "9306" << endl;
+						XML_DO_FROM_TEXT(child, ((UserFunction*) f)->setFormula);
+						XML_GET_PREC_FROM_PROP(child, prec)
+						f->setPrecision(prec);
+						XML_GET_APPROX_FROM_PROP(child, b)
+						f->setApproximate(b);
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "condition")) {
-						XML_DO_FROM_TEXT(child, f->setCondition);std::cout << "9308" << endl;
+						XML_DO_FROM_TEXT(child, f->setCondition);
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "subfunction")) {
 						XML_GET_FALSE_FROM_PROP(child, "precalculate", b);
-						value = xmlNodeListGetString(doc, child->xmlChildrenNode, 1);std::cout << "9311" << endl;
+						value = xmlNodeListGetString(doc, child->xmlChildrenNode, 1);
 						if(value) ((UserFunction*) f)->addSubfunction((char*) value, b);
 						else ((UserFunction*) f)->addSubfunction("", true);
 						if(value) xmlFree(value);
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "argument")) {
-						farg = NULL;std::cout << "9316" << endl; iarg = NULL;std::cout << "9316" << endl;
+						farg = NULL; iarg = NULL;
 						XML_GET_STRING_FROM_PROP(child, "type", type);
 						if(type == "text") {
-							arg = new TextArgument();std::cout << "9319" << endl;
+							arg = new TextArgument();
 						} else if(type == "symbol") {
-							arg = new SymbolicArgument();std::cout << "9321" << endl;
+							arg = new SymbolicArgument();
 						} else if(type == "date") {
-							arg = new DateArgument();std::cout << "9323" << endl;
+							arg = new DateArgument();
 						} else if(type == "integer") {
-							iarg = new IntegerArgument();std::cout << "9325" << endl;
-							arg = iarg;std::cout << "9326" << endl;
+							iarg = new IntegerArgument();
+							arg = iarg;
 						} else if(type == "number") {
-							farg = new NumberArgument();std::cout << "9328" << endl;
-							arg = farg;std::cout << "9329" << endl;
+							farg = new NumberArgument();
+							arg = farg;
 						} else if(type == "vector") {
-							arg = new VectorArgument();std::cout << "9331" << endl;
+							arg = new VectorArgument();
 						} else if(type == "matrix") {
-							arg = new MatrixArgument();std::cout << "9333" << endl;
+							arg = new MatrixArgument();
 						} else if(type == "boolean") {
-							arg = new BooleanArgument();std::cout << "9335" << endl;
+							arg = new BooleanArgument();
 						} else if(type == "function") {
-							arg = new FunctionArgument();std::cout << "9337" << endl;
+							arg = new FunctionArgument();
 						} else if(type == "unit") {
-							arg = new UnitArgument();std::cout << "9339" << endl;
+							arg = new UnitArgument();
 						} else if(type == "variable") {
-							arg = new VariableArgument();std::cout << "9341" << endl;
+							arg = new VariableArgument();
 						} else if(type == "object") {
-							arg = new ExpressionItemArgument();std::cout << "9343" << endl;
+							arg = new ExpressionItemArgument();
 						} else if(type == "angle") {
-							arg = new AngleArgument();std::cout << "9345" << endl;
+							arg = new AngleArgument();
 						} else if(type == "data-object") {
 							arg = new DataObjectArgument(NULL, "");
 						} else if(type == "data-property") {
 							arg = new DataPropertyArgument(NULL, "");
 						} else {
-							arg = new Argument();std::cout << "9351" << endl;
+							arg = new Argument();
 						}
-						child2 = child->xmlChildrenNode;std::cout << "9353" << endl;
+						child2 = child->xmlChildrenNode;
 						argname = ""; best_argname = false; next_best_argname = false;
 						while(child2 != NULL) {
 							if(!xmlStrcmp(child2->name, (const xmlChar*) "title")) {
-								XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "min")) {
+								XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)
+							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "min")) {
 								if(farg) {
-									XML_DO_FROM_TEXT(child2, nr.set);std::cout << "9359" << endl;
-									farg->setMin(&nr);std::cout << "9360" << endl;
-									XML_GET_FALSE_FROM_PROP(child, "include_equals", b)									farg->setIncludeEqualsMin(b);
+									XML_DO_FROM_TEXT(child2, nr.set);
+									farg->setMin(&nr);
+									XML_GET_FALSE_FROM_PROP(child, "include_equals", b)
+									farg->setIncludeEqualsMin(b);
 								} else if(iarg) {
-									XML_GET_STRING_FROM_TEXT(child2, stmp);std::cout << "9363" << endl;
-									Number integ(stmp);std::cout << "9364" << endl;
-									iarg->setMin(&integ);std::cout << "9365" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, stmp);
+									Number integ(stmp);
+									iarg->setMin(&integ);
 								}
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "max")) {
 								if(farg) {
-									XML_DO_FROM_TEXT(child2, nr.set);std::cout << "9369" << endl;
-									farg->setMax(&nr);std::cout << "9370" << endl;
-									XML_GET_FALSE_FROM_PROP(child, "include_equals", b)									farg->setIncludeEqualsMax(b);
+									XML_DO_FROM_TEXT(child2, nr.set);
+									farg->setMax(&nr);
+									XML_GET_FALSE_FROM_PROP(child, "include_equals", b)
+									farg->setIncludeEqualsMax(b);
 								} else if(iarg) {
-									XML_GET_STRING_FROM_TEXT(child2, stmp);std::cout << "9373" << endl;
-									Number integ(stmp);std::cout << "9374" << endl;
-									iarg->setMax(&integ);std::cout << "9375" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, stmp);
+									Number integ(stmp);
+									iarg->setMax(&integ);
 								}
 							} else if(farg && !xmlStrcmp(child2->name, (const xmlChar*) "complex_allowed")) {
-								XML_GET_FALSE_FROM_TEXT(child2, b);std::cout << "9378" << endl;
-								farg->setComplexAllowed(b);std::cout << "9379" << endl;
+								XML_GET_FALSE_FROM_TEXT(child2, b);
+								farg->setComplexAllowed(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "condition")) {
-								XML_DO_FROM_TEXT(child2, arg->setCustomCondition);std::cout << "9381" << endl;
+								XML_DO_FROM_TEXT(child2, arg->setCustomCondition);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "matrix_allowed")) {
-								XML_GET_TRUE_FROM_TEXT(child2, b);std::cout << "9383" << endl;
-								arg->setMatrixAllowed(b);std::cout << "9384" << endl;
+								XML_GET_TRUE_FROM_TEXT(child2, b);
+								arg->setMatrixAllowed(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "zero_forbidden")) {
-								XML_GET_TRUE_FROM_TEXT(child2, b);std::cout << "9386" << endl;
-								arg->setZeroForbidden(b);std::cout << "9387" << endl;
+								XML_GET_TRUE_FROM_TEXT(child2, b);
+								arg->setZeroForbidden(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "test")) {
-								XML_GET_FALSE_FROM_TEXT(child2, b);std::cout << "9389" << endl;
-								arg->setTests(b);std::cout << "9390" << endl;
+								XML_GET_FALSE_FROM_TEXT(child2, b);
+								arg->setTests(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "handle_vector")) {
-								XML_GET_FALSE_FROM_TEXT(child2, b);std::cout << "9392" << endl;
-								arg->setHandleVector(b);std::cout << "9393" << endl;
+								XML_GET_FALSE_FROM_TEXT(child2, b);
+								arg->setHandleVector(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "alert")) {
-								XML_GET_FALSE_FROM_TEXT(child2, b);std::cout << "9395" << endl;
-								arg->setAlerts(b);std::cout << "9396" << endl;
+								XML_GET_FALSE_FROM_TEXT(child2, b);
+								arg->setAlerts(b);
 							}
-							child2 = child2->next;std::cout << "9398" << endl;
+							child2 = child2->next;
 						}
 						if(!argname.empty() && argname[0] == '!') {
-							size_t i = argname.find('!', 1);std::cout << "9401" << endl;
+							size_t i = argname.find('!', 1);
 							if(i == string::npos) {
-								arg->setName(argname);std::cout << "9403" << endl;
+								arg->setName(argname);
 							} else if(i + 1 < argname.length()) {
-								arg->setName(argname.substr(i + 1, argname.length() - (i + 1)));std::cout << "9405" << endl;
+								arg->setName(argname.substr(i + 1, argname.length() - (i + 1)));
 							}
 						} else {
-							arg->setName(argname);std::cout << "9408" << endl;
+							arg->setName(argname);
 						}
-						itmp = 1;std::cout << "9410" << endl;
+						itmp = 1;
 						XML_GET_INT_FROM_PROP(child, "index", itmp);
-						f->setArgumentDefinition(itmp, arg);std::cout << "9412" << endl;
+						f->setArgumentDefinition(itmp, arg);
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "example")) {
-						XML_DO_FROM_TEXT(child, f->setExample);std::cout << "9414" << endl;
-					} else ITEM_READ_NAME(functionNameIsValid)					 else ITEM_READ_DTH
+						XML_DO_FROM_TEXT(child, f->setExample);
+					} else ITEM_READ_NAME(functionNameIsValid)
+					 else ITEM_READ_DTH
 					 else {
 						ITEM_READ_NAMES
 					}
-					child = child->next;std::cout << "9419" << endl;
+					child = child->next;
 				}
 				if(new_names) {
-					ITEM_SET_BEST_NAMES(functionNameIsValid)					ITEM_SET_REFERENCE_NAMES(functionNameIsValid)				} else {
-					ITEM_SET_NAME_1(functionNameIsValid)					ITEM_SET_NAME_2
+					ITEM_SET_BEST_NAMES(functionNameIsValid)
+					ITEM_SET_REFERENCE_NAMES(functionNameIsValid)
+				} else {
+					ITEM_SET_NAME_1(functionNameIsValid)
+					ITEM_SET_NAME_2
 					ITEM_SET_NAME_3
 				}
 				ITEM_SET_DTH
 				if(check_duplicates && !is_user_defs) {
 					for(size_t i = 1; i <= f->countNames();) {
 						if(getActiveFunction(f->getName(i).name)) f->removeName(i);
-						else i++;std::cout << "9430" << endl;
+						else i++;
 					}
 				}
 				if(f->countNames() == 0) {
-					f->destroy();std::cout << "9434" << endl;
-					f = NULL;std::cout << "9435" << endl;
+					f->destroy();
+					f = NULL;
 				} else {
-					f->setChanged(false);std::cout << "9437" << endl;
-					addFunction(f, true, is_user_defs);std::cout << "9438" << endl;
+					f->setChanged(false);
+					addFunction(f, true, is_user_defs);
 				}
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "dataset") || !xmlStrcmp(cur->name, (const xmlChar*) "builtin_dataset")) {
 				bool builtin = !xmlStrcmp(cur->name, (const xmlChar*) "builtin_dataset");
-				XML_GET_FALSE_FROM_PROP(cur, "active", active)				if(builtin) {
-					XML_GET_STRING_FROM_PROP(cur, "name", name)					dc = getDataSet(name);
+				XML_GET_FALSE_FROM_PROP(cur, "active", active)
+				if(builtin) {
+					XML_GET_STRING_FROM_PROP(cur, "name", name)
+					dc = getDataSet(name);
 					if(!dc) {
-						goto after_load_object;std::cout << "9445" << endl;
+						goto after_load_object;
 					}
-					dc->setCategory(category);std::cout << "9447" << endl;
+					dc->setCategory(category);
 				} else {
 					dc = new DataSet(category, "", "", "", "", is_user_defs);
 				}
-				item = dc;std::cout << "9451" << endl;
-				done_something = true;std::cout << "9452" << endl;
-				child = cur->xmlChildrenNode;std::cout << "9453" << endl;
+				item = dc;
+				done_something = true;
+				child = cur->xmlChildrenNode;
 				ITEM_INIT_DTH
 				ITEM_INIT_NAME
 				while(child != NULL) {
 					if(!xmlStrcmp(child->name, (const xmlChar*) "property")) {
-						dp = new DataProperty(dc);std::cout << "9458" << endl;
-						child2 = child->xmlChildrenNode;std::cout << "9459" << endl;
+						dp = new DataProperty(dc);
+						child2 = child->xmlChildrenNode;
 						if(new_names) {
 							default_prop_names = ""; best_prop_names = ""; nextbest_prop_names = "";
 						} else {
 							for(size_t i = 0; i < 10; i++) {
-								best_name[i] = false;std::cout << "9464" << endl;
-								nextbest_name[i] = false;std::cout << "9465" << endl;
+								best_name[i] = false;
+								nextbest_name[i] = false;
 							}
 						}
 						proptitle = ""; best_proptitle = false; next_best_proptitle = false;
 						propdescr = ""; best_propdescr = false; next_best_propdescr = false;
 						while(child2 != NULL) {
 							if(!xmlStrcmp(child2->name, (const xmlChar*) "title")) {
-								XML_GET_LOCALE_STRING_FROM_TEXT(child2, proptitle, best_proptitle, next_best_proptitle)							} else if(!new_names && !xmlStrcmp(child2->name, (const xmlChar*) "name")) {
-								name_index = 1;std::cout << "9473" << endl;
-								XML_GET_INT_FROM_PROP(child2, "index", name_index)								if(name_index > 0 && name_index <= 10) {
-									name_index--;std::cout << "9475" << endl;
+								XML_GET_LOCALE_STRING_FROM_TEXT(child2, proptitle, best_proptitle, next_best_proptitle)
+							} else if(!new_names && !xmlStrcmp(child2->name, (const xmlChar*) "name")) {
+								name_index = 1;
+								XML_GET_INT_FROM_PROP(child2, "index", name_index)
+								if(name_index > 0 && name_index <= 10) {
+									name_index--;
 									prop_names[name_index] = "";
 									ref_prop_names[name_index] = "";
-									value2 = NULL;std::cout << "9478" << endl;
-									child3 = child2->xmlChildrenNode;std::cout << "9479" << endl;
+									value2 = NULL;
+									child3 = child2->xmlChildrenNode;
 									while(child3 != NULL) {
 										if((!best_name[name_index] || (ref_prop_names[name_index].empty() && !locale.empty())) && !xmlStrcmp(child3->name, (const xmlChar*) "name")) {
-											lang = xmlNodeGetLang(child3);std::cout << "9482" << endl;
+											lang = xmlNodeGetLang(child3);
 											if(!lang) {
-												value2 = xmlNodeListGetString(doc, child3->xmlChildrenNode, 1);std::cout << "9484" << endl;
+												value2 = xmlNodeListGetString(doc, child3->xmlChildrenNode, 1);
 												if(locale.empty()) {
-													best_name[name_index] = true;std::cout << "9486" << endl;
+													best_name[name_index] = true;
 													if(value2) prop_names[name_index] = (char*) value2;
 													else prop_names[name_index] = "";
 												} else {
@@ -9506,35 +9552,35 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 												}
 											} else if(!best_name[name_index] && !locale.empty()) {
 												if(locale == (char*) lang) {
-													value2 = xmlNodeListGetString(doc, child3->xmlChildrenNode, 1);std::cout << "9499" << endl;
-													best_name[name_index] = true;std::cout << "9500" << endl;
+													value2 = xmlNodeListGetString(doc, child3->xmlChildrenNode, 1);
+													best_name[name_index] = true;
 													if(value2) prop_names[name_index] = (char*) value2;
 													else prop_names[name_index] = "";
 												} else if(!nextbest_name[name_index] && strlen((char*) lang) >= 2 && fulfilled_translation == 0 && lang[0] == localebase[0] && lang[1] == localebase[1]) {
-													value2 = xmlNodeListGetString(doc, child3->xmlChildrenNode, 1);std::cout << "9504" << endl;
-													nextbest_name[name_index] = true;std::cout << "9505" << endl;
+													value2 = xmlNodeListGetString(doc, child3->xmlChildrenNode, 1);
+													nextbest_name[name_index] = true;
 													if(value2) prop_names[name_index] = (char*) value2;
 													else prop_names[name_index] = "";
 												}
 											}
 											if(value2) xmlFree(value2);
 											if(lang) xmlFree(lang);
-											value2 = NULL;std::cout << "9512" << endl; lang = NULL;std::cout << "9512" << endl;
+											value2 = NULL; lang = NULL;
 										}
-										child3 = child3->next;std::cout << "9514" << endl;
+										child3 = child3->next;
 									}
 									if(!ref_prop_names[name_index].empty() && ref_prop_names[name_index] == prop_names[name_index]) {
 										ref_prop_names[name_index] = "";
 									}
 								}
 							} else if(new_names && !xmlStrcmp(child2->name, (const xmlChar*) "names") && ((best_prop_names.empty() && fulfilled_translation != 2) || default_prop_names.empty())) {
-									value2 = xmlNodeListGetString(doc, child2->xmlChildrenNode, 1);std::cout << "9521" << endl;
- 									lang = xmlNodeGetLang(child2);std::cout << "9522" << endl;
+									value2 = xmlNodeListGetString(doc, child2->xmlChildrenNode, 1);
+ 									lang = xmlNodeGetLang(child2);
 									if(!lang) {
 										if(default_prop_names.empty()) {
 											if(value2) {
-												default_prop_names = (char*) value2;std::cout << "9526" << endl;
-												remove_blank_ends(default_prop_names);std::cout << "9527" << endl;
+												default_prop_names = (char*) value2;
+												remove_blank_ends(default_prop_names);
 											} else {
 												default_prop_names = "";
 											}
@@ -9542,149 +9588,157 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 									} else {
 										if(locale == (char*) lang) {
 											if(value2) {
-												best_prop_names = (char*) value2;std::cout << "9535" << endl;
-												remove_blank_ends(best_prop_names);std::cout << "9536" << endl;
+												best_prop_names = (char*) value2;
+												remove_blank_ends(best_prop_names);
 											} else {
 												best_prop_names = " ";
 											}
 									} else if(nextbest_prop_names.empty() && strlen((char*) lang) >= 2 && fulfilled_translation == 0 && lang[0] == localebase[0] && lang[1] == localebase[1]) {
 										if(value2) {
-											nextbest_prop_names = (char*) value2;std::cout << "9542" << endl;
-											remove_blank_ends(nextbest_prop_names);std::cout << "9543" << endl;
+											nextbest_prop_names = (char*) value2;
+											remove_blank_ends(nextbest_prop_names);
 										} else {
 											nextbest_prop_names = " ";
 										}
 									} else if(nextbest_prop_names.empty() && default_prop_names.empty() && value2 && !require_translation) {
-										nextbest_prop_names = (char*) value2;std::cout << "9548" << endl;
-										remove_blank_ends(nextbest_prop_names);std::cout << "9549" << endl;
+										nextbest_prop_names = (char*) value2;
+										remove_blank_ends(nextbest_prop_names);
 									}
 								}
 								if(value2) xmlFree(value2);
 								if(lang) xmlFree(lang);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "description")) {
-								XML_GET_LOCALE_STRING_FROM_TEXT(child2, propdescr, best_propdescr, next_best_propdescr)							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "unit")) {
-								XML_DO_FROM_TEXT(child2, dp->setUnit)							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "key")) {
-								XML_GET_TRUE_FROM_TEXT(child2, b)								dp->setKey(b);std::cout << "9557" << endl;
+								XML_GET_LOCALE_STRING_FROM_TEXT(child2, propdescr, best_propdescr, next_best_propdescr)
+							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "unit")) {
+								XML_DO_FROM_TEXT(child2, dp->setUnit)
+							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "key")) {
+								XML_GET_TRUE_FROM_TEXT(child2, b)
+								dp->setKey(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "hidden")) {
-								XML_GET_TRUE_FROM_TEXT(child2, b)								dp->setHidden(b);std::cout << "9559" << endl;
+								XML_GET_TRUE_FROM_TEXT(child2, b)
+								dp->setHidden(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "brackets")) {
-								XML_GET_TRUE_FROM_TEXT(child2, b)								dp->setUsesBrackets(b);std::cout << "9561" << endl;
+								XML_GET_TRUE_FROM_TEXT(child2, b)
+								dp->setUsesBrackets(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "approximate")) {
-								XML_GET_TRUE_FROM_TEXT(child2, b)								dp->setApproximate(b);std::cout << "9563" << endl;
+								XML_GET_TRUE_FROM_TEXT(child2, b)
+								dp->setApproximate(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "case_sensitive")) {
-								XML_GET_TRUE_FROM_TEXT(child2, b)								dp->setCaseSensitive(b);std::cout << "9565" << endl;
+								XML_GET_TRUE_FROM_TEXT(child2, b)
+								dp->setCaseSensitive(b);
 							} else if(!xmlStrcmp(child2->name, (const xmlChar*) "type")) {
-								XML_GET_STRING_FROM_TEXT(child2, stmp)								if(stmp == "text") {
-									dp->setPropertyType(PROPERTY_STRING);std::cout << "9568" << endl;
+								XML_GET_STRING_FROM_TEXT(child2, stmp)
+								if(stmp == "text") {
+									dp->setPropertyType(PROPERTY_STRING);
 								} else if(stmp == "number") {
-									dp->setPropertyType(PROPERTY_NUMBER);std::cout << "9570" << endl;
+									dp->setPropertyType(PROPERTY_NUMBER);
 								} else if(stmp == "expression") {
-									dp->setPropertyType(PROPERTY_EXPRESSION);std::cout << "9572" << endl;
+									dp->setPropertyType(PROPERTY_EXPRESSION);
 								}
 							}
-							child2 = child2->next;std::cout << "9575" << endl;
+							child2 = child2->next;
 						}
 						if(!proptitle.empty() && proptitle[0] == '!') {\
-							size_t i = proptitle.find('!', 1);std::cout << "9578" << endl;
+							size_t i = proptitle.find('!', 1);
 							if(i == string::npos) {
-								dp->setTitle(proptitle);std::cout << "9580" << endl;
+								dp->setTitle(proptitle);
 							} else if(i + 1 < proptitle.length()) {
-								dp->setTitle(proptitle.substr(i + 1, proptitle.length() - (i + 1)));std::cout << "9582" << endl;
+								dp->setTitle(proptitle.substr(i + 1, proptitle.length() - (i + 1)));
 							}
 						} else {
-							dp->setTitle(proptitle);std::cout << "9585" << endl;
+							dp->setTitle(proptitle);
 						}
-						dp->setDescription(propdescr);std::cout << "9587" << endl;
+						dp->setDescription(propdescr);
 						if(new_names) {
-							size_t names_i = 0, i2 = 0;std::cout << "9589" << endl;
-							string *str_names;std::cout << "9590" << endl;
-							bool had_ref = false;std::cout << "9591" << endl;
+							size_t names_i = 0, i2 = 0;
+							string *str_names;
+							bool had_ref = false;
 							if(best_prop_names == "-") {best_prop_names = ""; nextbest_prop_names = "";}
 							if(!best_prop_names.empty()) {str_names = &best_prop_names;}
 							else if(!nextbest_prop_names.empty()) {str_names = &nextbest_prop_names;}
-							else {str_names = &default_prop_names;std::cout << "9595" << endl;}
+							else {str_names = &default_prop_names;}
 							if(!str_names->empty() && (*str_names)[0] == '!') {
-								names_i = str_names->find('!', 1) + 1;std::cout << "9597" << endl;
+								names_i = str_names->find('!', 1) + 1;
 							}
 							while(true) {
-								size_t i3 = names_i;std::cout << "9600" << endl;
+								size_t i3 = names_i;
 								names_i = str_names->find(",", i3);
 								if(i2 == 0) {
 									i2 = str_names->find(":", i3);
 								}
-								bool b_prop_ref = false;std::cout << "9605" << endl;
+								bool b_prop_ref = false;
 								if(i2 < names_i) {
-									bool b = true;std::cout << "9607" << endl;
+									bool b = true;
 									for(; i3 < i2; i3++) {
 										switch((*str_names)[i3]) {
 											case '-': {b = false; break;}
 											case 'r': {b_prop_ref = b; b = true; break;}
 										}
 									}
-									i3++;std::cout << "9614" << endl;
-									i2 = 0;std::cout << "9615" << endl;
+									i3++;
+									i2 = 0;
 								}
 								if(names_i == string::npos) {stmp = str_names->substr(i3, str_names->length() - i3);}
-								else {stmp = str_names->substr(i3, names_i - i3);std::cout << "9618" << endl;}
-								remove_blank_ends(stmp);std::cout << "9619" << endl;
+								else {stmp = str_names->substr(i3, names_i - i3);}
+								remove_blank_ends(stmp);
 								if(!stmp.empty()) {
 									if(b_prop_ref) had_ref = true;
-									dp->addName(stmp, b_prop_ref);std::cout << "9622" << endl;
+									dp->addName(stmp, b_prop_ref);
 								}
 								if(names_i == string::npos) {break;}
-								names_i++;std::cout << "9625" << endl;
+								names_i++;
 							}
 							if(str_names != &default_prop_names && !default_prop_names.empty()) {
 								if(default_prop_names[0] == '!') {
-									names_i = default_prop_names.find('!', 1) + 1;std::cout << "9629" << endl;
+									names_i = default_prop_names.find('!', 1) + 1;
 								} else {
-									names_i = 0;std::cout << "9631" << endl;
+									names_i = 0;
 								}
-								i2 = 0;std::cout << "9633" << endl;
+								i2 = 0;
 								while(true) {
-									size_t i3 = names_i;std::cout << "9635" << endl;
+									size_t i3 = names_i;
 									names_i = default_prop_names.find(",", i3);
 									if(i2 == 0) {
 										i2 = default_prop_names.find(":", i3);
 									}
-									bool b_prop_ref = false;std::cout << "9640" << endl;
+									bool b_prop_ref = false;
 									if(i2 < names_i) {
-										bool b = true;std::cout << "9642" << endl;
+										bool b = true;
 										for(; i3 < i2; i3++) {
 											switch(default_prop_names[i3]) {
 												case '-': {b = false; break;}
 												case 'r': {b_prop_ref = b; b = true; break;}
 											}
 										}
-										i3++;std::cout << "9649" << endl;
-										i2 = 0;std::cout << "9650" << endl;
+										i3++;
+										i2 = 0;
 									}
 									if(b_prop_ref || (!had_ref && names_i == string::npos)) {
-										had_ref = true;std::cout << "9653" << endl;
+										had_ref = true;
 										if(names_i == string::npos) {stmp = default_prop_names.substr(i3, default_prop_names.length() - i3);}
-										else {stmp = default_prop_names.substr(i3, names_i - i3);std::cout << "9655" << endl;}
-										remove_blank_ends(stmp);std::cout << "9656" << endl;
-										size_t i4 = dp->hasName(stmp);std::cout << "9657" << endl;
+										else {stmp = default_prop_names.substr(i3, names_i - i3);}
+										remove_blank_ends(stmp);
+										size_t i4 = dp->hasName(stmp);
 										if(i4 > 0) {
-											dp->setNameIsReference(i4, true);std::cout << "9659" << endl;
+											dp->setNameIsReference(i4, true);
 										} else if(!stmp.empty()) {
-											dp->addName(stmp, true);std::cout << "9661" << endl;
+											dp->addName(stmp, true);
 										}
 									}
 									if(names_i == string::npos) {break;}
-									names_i++;std::cout << "9665" << endl;
+									names_i++;
 								}
 							}
 							if(!had_ref && dp->countNames() > 0) dp->setNameIsReference(1, true);
 						} else {
-							bool b = false;std::cout << "9670" << endl;
+							bool b = false;
 							for(size_t i = 0; i < 10; i++) {
 								if(!prop_names[i].empty()) {
 									if(!b && ref_prop_names[i].empty()) {
-										dp->addName(prop_names[i], true, i + 1);std::cout << "9674" << endl;
-										b = true;std::cout << "9675" << endl;
+										dp->addName(prop_names[i], true, i + 1);
+										b = true;
 									} else {
-										dp->addName(prop_names[i], false, i + 1);std::cout << "9677" << endl;
+										dp->addName(prop_names[i], false, i + 1);
 									}
 									prop_names[i] = "";
 								}
@@ -9692,88 +9746,97 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 							for(size_t i = 0; i < 10; i++) {
 								if(!ref_prop_names[i].empty()) {
 									if(!b) {
-										dp->addName(ref_prop_names[i], true);std::cout << "9685" << endl;
-										b = true;std::cout << "9686" << endl;
+										dp->addName(ref_prop_names[i], true);
+										b = true;
 									} else {
-										dp->addName(ref_prop_names[i], false);std::cout << "9688" << endl;
+										dp->addName(ref_prop_names[i], false);
 									}
 									ref_prop_names[i] = "";
 								}
 							}
 						}
 						dp->setUserModified(is_user_defs);
-						dc->addProperty(dp);std::cout << "9695" << endl;
+						dc->addProperty(dp);
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "argument")) {
-						child2 = child->xmlChildrenNode;std::cout << "9697" << endl;
+						child2 = child->xmlChildrenNode;
 						argname = ""; best_argname = false; next_best_argname = false;
 						while(child2 != NULL) {
 							if(!xmlStrcmp(child2->name, (const xmlChar*) "title")) {
-								XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)							}
-							child2 = child2->next;std::cout << "9702" << endl;
+								XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)
+							}
+							child2 = child2->next;
 						}
-						itmp = 1;std::cout << "9704" << endl;
+						itmp = 1;
 						XML_GET_INT_FROM_PROP(child, "index", itmp);
 						if(dc->getArgumentDefinition(itmp)) {
-							dc->getArgumentDefinition(itmp)->setName(argname);std::cout << "9707" << endl;
+							dc->getArgumentDefinition(itmp)->setName(argname);
 						}
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "object_argument")) {
-						child2 = child->xmlChildrenNode;std::cout << "9710" << endl;
+						child2 = child->xmlChildrenNode;
 						argname = ""; best_argname = false; next_best_argname = false;
 						while(child2 != NULL) {
 							if(!xmlStrcmp(child2->name, (const xmlChar*) "title")) {
-								XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)							}
-							child2 = child2->next;std::cout << "9715" << endl;
+								XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)
+							}
+							child2 = child2->next;
 						}
-						itmp = 1;std::cout << "9717" << endl;
+						itmp = 1;
 						if(dc->getArgumentDefinition(itmp)) {
 							if(!argname.empty() && argname[0] == '!') {
-								size_t i = argname.find('!', 1);std::cout << "9720" << endl;
+								size_t i = argname.find('!', 1);
 								if(i == string::npos) {
-									dc->getArgumentDefinition(itmp)->setName(argname);std::cout << "9722" << endl;
+									dc->getArgumentDefinition(itmp)->setName(argname);
 								} else if(i + 1 < argname.length()) {
-									dc->getArgumentDefinition(itmp)->setName(argname.substr(i + 1, argname.length() - (i + 1)));std::cout << "9724" << endl;
+									dc->getArgumentDefinition(itmp)->setName(argname.substr(i + 1, argname.length() - (i + 1)));
 								}
 							} else {
-								dc->getArgumentDefinition(itmp)->setName(argname);std::cout << "9727" << endl;
+								dc->getArgumentDefinition(itmp)->setName(argname);
 							}
 						}
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "property_argument")) {
-						child2 = child->xmlChildrenNode;std::cout << "9731" << endl;
+						child2 = child->xmlChildrenNode;
 						argname = ""; best_argname = false; next_best_argname = false;
 						while(child2 != NULL) {
 							if(!xmlStrcmp(child2->name, (const xmlChar*) "title")) {
-								XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)							}
-							child2 = child2->next;std::cout << "9736" << endl;
+								XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)
+							}
+							child2 = child2->next;
 						}
-						itmp = 2;std::cout << "9738" << endl;
+						itmp = 2;
 						if(dc->getArgumentDefinition(itmp)) {
 							if(!argname.empty() && argname[0] == '!') {
-								size_t i = argname.find('!', 1);std::cout << "9741" << endl;
+								size_t i = argname.find('!', 1);
 								if(i == string::npos) {
-									dc->getArgumentDefinition(itmp)->setName(argname);std::cout << "9743" << endl;
+									dc->getArgumentDefinition(itmp)->setName(argname);
 								} else if(i + 1 < argname.length()) {
-									dc->getArgumentDefinition(itmp)->setName(argname.substr(i + 1, argname.length() - (i + 1)));std::cout << "9745" << endl;
+									dc->getArgumentDefinition(itmp)->setName(argname.substr(i + 1, argname.length() - (i + 1)));
 								}
 							} else {
-								dc->getArgumentDefinition(itmp)->setName(argname);std::cout << "9748" << endl;
+								dc->getArgumentDefinition(itmp)->setName(argname);
 							}
 						}
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "default_property")) {
-						XML_DO_FROM_TEXT(child, dc->setDefaultProperty)					} else if(!builtin && !xmlStrcmp(child->name, (const xmlChar*) "copyright")) {
-						XML_DO_FROM_TEXT(child, dc->setCopyright)					} else if(!builtin && !xmlStrcmp(child->name, (const xmlChar*) "datafile")) {
-						XML_DO_FROM_TEXT(child, dc->setDefaultDataFile)					} else if(!xmlStrcmp(child->name, (const xmlChar*) "example")) {
-						XML_DO_FROM_TEXT(child, dc->setExample);std::cout << "9755" << endl;
-					} else ITEM_READ_NAME(functionNameIsValid)					 else ITEM_READ_DTH
+						XML_DO_FROM_TEXT(child, dc->setDefaultProperty)
+					} else if(!builtin && !xmlStrcmp(child->name, (const xmlChar*) "copyright")) {
+						XML_DO_FROM_TEXT(child, dc->setCopyright)
+					} else if(!builtin && !xmlStrcmp(child->name, (const xmlChar*) "datafile")) {
+						XML_DO_FROM_TEXT(child, dc->setDefaultDataFile)
+					} else if(!xmlStrcmp(child->name, (const xmlChar*) "example")) {
+						XML_DO_FROM_TEXT(child, dc->setExample);
+					} else ITEM_READ_NAME(functionNameIsValid)
+					 else ITEM_READ_DTH
 					 else {
 						ITEM_READ_NAMES
 					}
-					child = child->next;std::cout << "9760" << endl;
+					child = child->next;
 				}
 				if(new_names) {
 					if(builtin) {
 						ITEM_SAVE_BUILTIN_NAMES
 					}
-					ITEM_SET_BEST_NAMES(functionNameIsValid)					ITEM_SET_REFERENCE_NAMES(functionNameIsValid)					if(builtin) {
+					ITEM_SET_BEST_NAMES(functionNameIsValid)
+					ITEM_SET_REFERENCE_NAMES(functionNameIsValid)
+					if(builtin) {
 						ITEM_SET_BUILTIN_NAMES
 					}
 				} else {
@@ -9790,71 +9853,77 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 				if(check_duplicates && !is_user_defs) {
 					for(size_t i = 1; i <= dc->countNames();) {
 						if(getActiveFunction(dc->getName(i).name)) dc->removeName(i);
-						else i++;std::cout << "9783" << endl;
+						else i++;
 					}
 				}
 				if(!builtin && dc->countNames() == 0) {
-					dc->destroy();std::cout << "9787" << endl;
-					dc = NULL;std::cout << "9788" << endl;
+					dc->destroy();
+					dc = NULL;
 				} else {
-					dc->setChanged(builtin && is_user_defs);std::cout << "9790" << endl;
+					dc->setChanged(builtin && is_user_defs);
 					if(!builtin) addDataSet(dc, true, is_user_defs);
 				}
-				done_something = true;std::cout << "9793" << endl;
+				done_something = true;
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "builtin_function")) {
-				XML_GET_STRING_FROM_PROP(cur, "name", name)				f = getFunction(name);
+				XML_GET_STRING_FROM_PROP(cur, "name", name)
+				f = getFunction(name);
 				if(f) {
-					XML_GET_FALSE_FROM_PROP(cur, "active", active)					f->setLocal(is_user_defs, active);
-					f->setCategory(category);std::cout << "9798" << endl;
-					item = f;std::cout << "9799" << endl;
-					child = cur->xmlChildrenNode;std::cout << "9800" << endl;
+					XML_GET_FALSE_FROM_PROP(cur, "active", active)
+					f->setLocal(is_user_defs, active);
+					f->setCategory(category);
+					item = f;
+					child = cur->xmlChildrenNode;
 					ITEM_INIT_DTH
 					ITEM_INIT_NAME
 					while(child != NULL) {
 						if(!xmlStrcmp(child->name, (const xmlChar*) "argument")) {
-							child2 = child->xmlChildrenNode;std::cout << "9805" << endl;
+							child2 = child->xmlChildrenNode;
 							argname = ""; best_argname = false; next_best_argname = false;
 							while(child2 != NULL) {
 								if(!xmlStrcmp(child2->name, (const xmlChar*) "title")) {
-									XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)								}
-								child2 = child2->next;std::cout << "9810" << endl;
+									XML_GET_LOCALE_STRING_FROM_TEXT(child2, argname, best_argname, next_best_argname)
+								}
+								child2 = child2->next;
 							}
-							itmp = 1;std::cout << "9812" << endl;
+							itmp = 1;
 							XML_GET_INT_FROM_PROP(child, "index", itmp);
 							if(f->getArgumentDefinition(itmp)) {
 								if(!argname.empty() && argname[0] == '!') {
-									size_t i = argname.find('!', 1);std::cout << "9816" << endl;
+									size_t i = argname.find('!', 1);
 									if(i == string::npos) {
-										f->getArgumentDefinition(itmp)->setName(argname);std::cout << "9818" << endl;
+										f->getArgumentDefinition(itmp)->setName(argname);
 									} else if(i + 1 < argname.length()) {
-										f->getArgumentDefinition(itmp)->setName(argname.substr(i + 1, argname.length() - (i + 1)));std::cout << "9820" << endl;
+										f->getArgumentDefinition(itmp)->setName(argname.substr(i + 1, argname.length() - (i + 1)));
 									}
 								} else {
-									f->getArgumentDefinition(itmp)->setName(argname);std::cout << "9823" << endl;
+									f->getArgumentDefinition(itmp)->setName(argname);
 								}
 							} else if(itmp <= f->maxargs() || itmp <= f->minargs()) {
 								if(!argname.empty() && argname[0] == '!') {
-									size_t i = argname.find('!', 1);std::cout << "9827" << endl;
+									size_t i = argname.find('!', 1);
 									if(i == string::npos) {
-										f->setArgumentDefinition(itmp, new Argument(argname, false));std::cout << "9829" << endl;
+										f->setArgumentDefinition(itmp, new Argument(argname, false));
 									} else if(i + 1 < argname.length()) {
-										f->setArgumentDefinition(itmp, new Argument(argname.substr(i + 1, argname.length() - (i + 1)), false));std::cout << "9831" << endl;
+										f->setArgumentDefinition(itmp, new Argument(argname.substr(i + 1, argname.length() - (i + 1)), false));
 									}
 								} else {
-									f->setArgumentDefinition(itmp, new Argument(argname, false));std::cout << "9834" << endl;
+									f->setArgumentDefinition(itmp, new Argument(argname, false));
 								}
 							}
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "example")) {
-							XML_DO_FROM_TEXT(child, f->setExample);std::cout << "9838" << endl;
-						} else ITEM_READ_NAME(functionNameIsValid)						 else ITEM_READ_DTH
+							XML_DO_FROM_TEXT(child, f->setExample);
+						} else ITEM_READ_NAME(functionNameIsValid)
+						 else ITEM_READ_DTH
 						 else {
 							ITEM_READ_NAMES
 						}
-						child = child->next;std::cout << "9843" << endl;
+						child = child->next;
 					}
 					if(new_names) {
 						ITEM_SAVE_BUILTIN_NAMES
-						ITEM_SET_BEST_NAMES(functionNameIsValid)						ITEM_SET_REFERENCE_NAMES(functionNameIsValid)						ITEM_SET_BUILTIN_NAMES
+						ITEM_SET_BEST_NAMES(functionNameIsValid)
+						ITEM_SET_REFERENCE_NAMES(functionNameIsValid)
+						ITEM_SET_BUILTIN_NAMES
 					} else {
 						BUILTIN_NAMES_1
 						ITEM_SET_NAME_2
@@ -9862,25 +9931,27 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 						BUILTIN_NAMES_2
 					}
 					ITEM_SET_DTH
-					f->setChanged(false);std::cout << "9855" << endl;
-					done_something = true;std::cout << "9856" << endl;
+					f->setChanged(false);
+					done_something = true;
 				}
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "unknown")) {
 				if(VERSION_BEFORE(0, 6, 3)) {
-					XML_GET_STRING_FROM_PROP(cur, "name", name)				} else {
+					XML_GET_STRING_FROM_PROP(cur, "name", name)
+				} else {
 					name = "";
 				}
-				XML_GET_FALSE_FROM_PROP(cur, "active", active)				svalue = "";
+				XML_GET_FALSE_FROM_PROP(cur, "active", active)
+				svalue = "";
 				v = new UnknownVariable(category, "", "", is_user_defs, false, active);
-				item = v;std::cout << "9865" << endl;
-				done_something = true;std::cout << "9866" << endl;
-				child = cur->xmlChildrenNode;std::cout << "9867" << endl;
-				b = true;std::cout << "9868" << endl;
+				item = v;
+				done_something = true;
+				child = cur->xmlChildrenNode;
+				b = true;
 				ITEM_INIT_DTH
 				ITEM_INIT_NAME
 				while(child != NULL) {
 					if(!xmlStrcmp(child->name, (const xmlChar*) "type")) {
-						XML_GET_STRING_FROM_TEXT(child, stmp);std::cout << "9873" << endl;
+						XML_GET_STRING_FROM_TEXT(child, stmp);
 						if(!((UnknownVariable*) v)->assumptions()) ((UnknownVariable*) v)->setAssumptions(new Assumptions());
 						if(stmp == "integer") ((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_INTEGER);
 						else if(stmp == "rational") ((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_RATIONAL);
@@ -9889,19 +9960,19 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 						else if(stmp == "number") ((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_NUMBER);
 						else if(stmp == "non-matrix") {
 							if(VERSION_BEFORE(0, 9, 13)) {
-								((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_NUMBER);std::cout << "9882" << endl;
+								((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_NUMBER);
 							} else {
-								((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_NONMATRIX);std::cout << "9884" << endl;
+								((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_NONMATRIX);
 							}
 						} else if(stmp == "none") {
 							if(VERSION_BEFORE(0, 9, 13)) {
-								((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_NUMBER);std::cout << "9888" << endl;
+								((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_NUMBER);
 							} else {
-								((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_NONE);std::cout << "9890" << endl;
+								((UnknownVariable*) v)->assumptions()->setType(ASSUMPTION_TYPE_NONE);
 							}
 						}
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "sign")) {
-						XML_GET_STRING_FROM_TEXT(child, stmp);std::cout << "9894" << endl;
+						XML_GET_STRING_FROM_TEXT(child, stmp);
 						if(!((UnknownVariable*) v)->assumptions()) ((UnknownVariable*) v)->setAssumptions(new Assumptions());
 						if(stmp == "non-zero") ((UnknownVariable*) v)->assumptions()->setSign(ASSUMPTION_SIGN_NONZERO);
 						else if(stmp == "non-positive") ((UnknownVariable*) v)->assumptions()->setSign(ASSUMPTION_SIGN_NONPOSITIVE);
@@ -9909,22 +9980,26 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 						else if(stmp == "non-negative") ((UnknownVariable*) v)->assumptions()->setSign(ASSUMPTION_SIGN_NONNEGATIVE);
 						else if(stmp == "positive") ((UnknownVariable*) v)->assumptions()->setSign(ASSUMPTION_SIGN_POSITIVE);
 						else if(stmp == "unknown") ((UnknownVariable*) v)->assumptions()->setSign(ASSUMPTION_SIGN_UNKNOWN);
-					} else ITEM_READ_NAME(variableNameIsValid)					 else ITEM_READ_DTH
+					} else ITEM_READ_NAME(variableNameIsValid)
+					 else ITEM_READ_DTH
 					 else {
 						ITEM_READ_NAMES
 					}
-					child = child->next;std::cout << "9906" << endl;
+					child = child->next;
 				}
 				if(new_names) {
-					ITEM_SET_BEST_NAMES(variableNameIsValid)					ITEM_SET_REFERENCE_NAMES(variableNameIsValid)				} else {
-					ITEM_SET_NAME_1(variableNameIsValid)					ITEM_SET_NAME_2
+					ITEM_SET_BEST_NAMES(variableNameIsValid)
+					ITEM_SET_REFERENCE_NAMES(variableNameIsValid)
+				} else {
+					ITEM_SET_NAME_1(variableNameIsValid)
+					ITEM_SET_NAME_2
 					ITEM_SET_NAME_3
 				}
 				ITEM_SET_DTH
 				if(check_duplicates && !is_user_defs) {
 					for(size_t i = 1; i <= v->countNames();) {
 						if(getActiveVariable(v->getName(i).name) || getActiveUnit(v->getName(i).name) || getCompositeUnit(v->getName(i).name)) v->removeName(i);
-						else i++;std::cout << "9917" << endl;
+						else i++;
 					}
 				}
 				for(size_t i = 1; i <= v->countNames(); i++) {
@@ -9933,79 +10008,93 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 					if(v->getName(i).name == "z") {v_z->destroy(); v_z = (UnknownVariable*) v; break;}
 				}
 				if(v->countNames() == 0) {
-					v->destroy();std::cout << "9926" << endl;
-					v = NULL;std::cout << "9927" << endl;
+					v->destroy();
+					v = NULL;
 				} else {
-					addVariable(v, true, is_user_defs);std::cout << "9929" << endl;
-					v->setChanged(false);std::cout << "9930" << endl;
+					addVariable(v, true, is_user_defs);
+					v->setChanged(false);
 				}
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "variable")) {
 				if(VERSION_BEFORE(0, 6, 3)) {
-					XML_GET_STRING_FROM_PROP(cur, "name", name)				} else {
+					XML_GET_STRING_FROM_PROP(cur, "name", name)
+				} else {
 					name = "";
 				}
-				XML_GET_FALSE_FROM_PROP(cur, "active", active)				svalue = "";
+				XML_GET_FALSE_FROM_PROP(cur, "active", active)
+				svalue = "";
 				v = new KnownVariable(category, "", "", "", is_user_defs, false, active);
-				item = v;std::cout << "9939" << endl;
-				done_something = true;std::cout << "9940" << endl;
-				child = cur->xmlChildrenNode;std::cout << "9941" << endl;
-				b = true;std::cout << "9942" << endl;
+				item = v;
+				done_something = true;
+				child = cur->xmlChildrenNode;
+				b = true;
 				ITEM_INIT_DTH
 				ITEM_INIT_NAME
 				while(child != NULL) {
 					if(!xmlStrcmp(child->name, (const xmlChar*) "value")) {
-						XML_DO_FROM_TEXT(child, ((KnownVariable*) v)->set);std::cout << "9947" << endl;
-						XML_GET_STRING_FROM_PROP(child, "relative_uncertainty", suncertainty)						unc_rel = false;
+						XML_DO_FROM_TEXT(child, ((KnownVariable*) v)->set);
+						XML_GET_STRING_FROM_PROP(child, "relative_uncertainty", suncertainty)
+						unc_rel = false;
 						if(suncertainty.empty()) {XML_GET_STRING_FROM_PROP(child, "uncertainty", suncertainty)}
-						else unc_rel = true;std::cout << "9950" << endl;
-						((KnownVariable*) v)->setUncertainty(suncertainty, unc_rel);std::cout << "9951" << endl;
-						XML_DO_FROM_PROP(child, "unit", ((KnownVariable*) v)->setUnit)						XML_GET_PREC_FROM_PROP(child, prec)						v->setPrecision(prec);
-						XML_GET_APPROX_FROM_PROP(child, b);std::cout << "9953" << endl;
+						else unc_rel = true;
+						((KnownVariable*) v)->setUncertainty(suncertainty, unc_rel);
+						XML_DO_FROM_PROP(child, "unit", ((KnownVariable*) v)->setUnit)
+						XML_GET_PREC_FROM_PROP(child, prec)
+						v->setPrecision(prec);
+						XML_GET_APPROX_FROM_PROP(child, b);
 						if(b) v->setApproximate(true);
-					} else ITEM_READ_NAME(variableNameIsValid)					 else ITEM_READ_DTH
+					} else ITEM_READ_NAME(variableNameIsValid)
+					 else ITEM_READ_DTH
 					 else {
 						ITEM_READ_NAMES
 					}
-					child = child->next;std::cout << "9959" << endl;
+					child = child->next;
 				}
 				if(new_names) {
-					ITEM_SET_BEST_NAMES(variableNameIsValid)					ITEM_SET_REFERENCE_NAMES(variableNameIsValid)				} else {
-					ITEM_SET_NAME_1(variableNameIsValid)					ITEM_SET_NAME_2
+					ITEM_SET_BEST_NAMES(variableNameIsValid)
+					ITEM_SET_REFERENCE_NAMES(variableNameIsValid)
+				} else {
+					ITEM_SET_NAME_1(variableNameIsValid)
+					ITEM_SET_NAME_2
 					ITEM_SET_NAME_3
 				}
 				ITEM_SET_DTH
 				if(check_duplicates && !is_user_defs) {
 					for(size_t i = 1; i <= v->countNames();) {
 						if(getActiveVariable(v->getName(i).name) || getActiveUnit(v->getName(i).name) || getCompositeUnit(v->getName(i).name)) v->removeName(i);
-						else i++;std::cout << "9970" << endl;
+						else i++;
 					}
 				}
 				if(v->countNames() == 0) {
-					v->destroy();std::cout << "9974" << endl;
-					v = NULL;std::cout << "9975" << endl;
+					v->destroy();
+					v = NULL;
 				} else {
-					addVariable(v, true, is_user_defs);std::cout << "9977" << endl;
-					item->setChanged(false);std::cout << "9978" << endl;
+					addVariable(v, true, is_user_defs);
+					item->setChanged(false);
 				}
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "builtin_variable")) {
-				XML_GET_STRING_FROM_PROP(cur, "name", name)				v = getVariable(name);
+				XML_GET_STRING_FROM_PROP(cur, "name", name)
+				v = getVariable(name);
 				if(v) {
-					XML_GET_FALSE_FROM_PROP(cur, "active", active)					v->setLocal(is_user_defs, active);
-					v->setCategory(category);std::cout << "9984" << endl;
-					item = v;std::cout << "9985" << endl;
-					child = cur->xmlChildrenNode;std::cout << "9986" << endl;
+					XML_GET_FALSE_FROM_PROP(cur, "active", active)
+					v->setLocal(is_user_defs, active);
+					v->setCategory(category);
+					item = v;
+					child = cur->xmlChildrenNode;
 					ITEM_INIT_DTH
 					ITEM_INIT_NAME
 					while(child != NULL) {
-						ITEM_READ_NAME(variableNameIsValid)						 else ITEM_READ_DTH
+						ITEM_READ_NAME(variableNameIsValid)
+						 else ITEM_READ_DTH
 						 else {
 							ITEM_READ_NAMES
 						}
-						child = child->next;std::cout << "9994" << endl;
+						child = child->next;
 					}
 					if(new_names) {
 						ITEM_SAVE_BUILTIN_NAMES
-						ITEM_SET_BEST_NAMES(variableNameIsValid)						ITEM_SET_REFERENCE_NAMES(variableNameIsValid)						ITEM_SET_BUILTIN_NAMES
+						ITEM_SET_BEST_NAMES(variableNameIsValid)
+						ITEM_SET_REFERENCE_NAMES(variableNameIsValid)
+						ITEM_SET_BUILTIN_NAMES
 					} else {
 						BUILTIN_NAMES_1
 						ITEM_SET_NAME_2
@@ -10013,46 +10102,57 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 						BUILTIN_NAMES_2
 					}
 					ITEM_SET_DTH
-					v->setChanged(false);std::cout << "10006" << endl;
-					done_something = true;std::cout << "10007" << endl;
+					v->setChanged(false);
+					done_something = true;
 				}
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "unit")) {
-				XML_GET_STRING_FROM_PROP(cur, "type", type)				if(type == "base") {
+				XML_GET_STRING_FROM_PROP(cur, "type", type)
+				if(type == "base") {
 					if(VERSION_BEFORE(0, 6, 3)) {
-						XML_GET_STRING_FROM_PROP(cur, "name", name)					} else {
+						XML_GET_STRING_FROM_PROP(cur, "name", name)
+					} else {
 						name = "";
 					}
-					XML_GET_FALSE_FROM_PROP(cur, "active", active)					u = new Unit(category, "", "", "", "", is_user_defs, false, active);
-					item = u;std::cout << "10016" << endl;
-					child = cur->xmlChildrenNode;std::cout << "10017" << endl;
+					XML_GET_FALSE_FROM_PROP(cur, "active", active)
+					u = new Unit(category, "", "", "", "", is_user_defs, false, active);
+					item = u;
+					child = cur->xmlChildrenNode;
 					singular = ""; best_singular = false; next_best_singular = false;
 					plural = ""; best_plural = false; next_best_plural = false;
 					countries = "", best_countries = false, next_best_countries = false;
-					use_with_prefixes_set = false;std::cout << "10021" << endl;
+					use_with_prefixes_set = false;
 					ITEM_INIT_DTH
 					ITEM_INIT_NAME
 					while(child != NULL) {
 						if(!xmlStrcmp(child->name, (const xmlChar*) "system")) {
-							XML_DO_FROM_TEXT(child, u->setSystem)						} else if(!xmlStrcmp(child->name, (const xmlChar*) "use_with_prefixes")) {
-							XML_GET_TRUE_FROM_TEXT(child, use_with_prefixes)							use_with_prefixes_set = true;std::cout << "10027" << endl;
+							XML_DO_FROM_TEXT(child, u->setSystem)
+						} else if(!xmlStrcmp(child->name, (const xmlChar*) "use_with_prefixes")) {
+							XML_GET_TRUE_FROM_TEXT(child, use_with_prefixes)
+							use_with_prefixes_set = true;
 						} else if((VERSION_BEFORE(0, 6, 3)) && !xmlStrcmp(child->name, (const xmlChar*) "singular")) {
-							XML_GET_LOCALE_STRING_FROM_TEXT(child, singular, best_singular, next_best_singular)							if(!unitNameIsValid(singular, version_numbers, is_user_defs)) {
+							XML_GET_LOCALE_STRING_FROM_TEXT(child, singular, best_singular, next_best_singular)
+							if(!unitNameIsValid(singular, version_numbers, is_user_defs)) {
 								singular = "";
 							}
 						} else if((VERSION_BEFORE(0, 6, 3)) && !xmlStrcmp(child->name, (const xmlChar*) "plural") && !xmlGetProp(child, (xmlChar*) "index")) {
-							XML_GET_LOCALE_STRING_FROM_TEXT(child, plural, best_plural, next_best_plural)							if(!unitNameIsValid(plural, version_numbers, is_user_defs)) {
+							XML_GET_LOCALE_STRING_FROM_TEXT(child, plural, best_plural, next_best_plural)
+							if(!unitNameIsValid(plural, version_numbers, is_user_defs)) {
 								plural = "";
 							}
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "countries")) {
-							XML_GET_LOCALE_STRING_FROM_TEXT(child, countries, best_countries, next_best_countries)						} else ITEM_READ_NAME(unitNameIsValid)						 else ITEM_READ_DTH
+							XML_GET_LOCALE_STRING_FROM_TEXT(child, countries, best_countries, next_best_countries)
+						} else ITEM_READ_NAME(unitNameIsValid)
+						 else ITEM_READ_DTH
 						 else {
 							ITEM_READ_NAMES
 						}
-						child = child->next;std::cout << "10041" << endl;
+						child = child->next;
 					}
-					u->setCountries(countries);std::cout << "10043" << endl;
+					u->setCountries(countries);
 					if(new_names) {
-						ITEM_SET_BEST_NAMES(unitNameIsValid)						ITEM_SET_REFERENCE_NAMES(unitNameIsValid)					} else {
+						ITEM_SET_BEST_NAMES(unitNameIsValid)
+						ITEM_SET_REFERENCE_NAMES(unitNameIsValid)
+					} else {
 						ITEM_SET_SHORT_NAME
 						ITEM_SET_SINGULAR
 						ITEM_SET_PLURAL
@@ -10061,144 +10161,156 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 					}
 					ITEM_SET_DTH
 					if(use_with_prefixes_set) {
-						u->setUseWithPrefixesByDefault(use_with_prefixes);std::cout << "10054" << endl;
+						u->setUseWithPrefixesByDefault(use_with_prefixes);
 					}
 					if(check_duplicates && !is_user_defs) {
 						for(size_t i = 1; i <= u->countNames();) {
 							if(getActiveVariable(u->getName(i).name) || getActiveUnit(u->getName(i).name) || getCompositeUnit(u->getName(i).name)) u->removeName(i);
-							else i++;std::cout << "10059" << endl;
+							else i++;
 						}
 					}
 					if(u->countNames() == 0) {
-						u->destroy();std::cout << "10063" << endl;
-						u = NULL;std::cout << "10064" << endl;
+						u->destroy();
+						u = NULL;
 					} else {
 						if(!is_user_defs && u->referenceName() == "s") u_second = u;
-						addUnit(u, true, is_user_defs);std::cout << "10067" << endl;
-						u->setChanged(false);std::cout << "10068" << endl;
+						addUnit(u, true, is_user_defs);
+						u->setChanged(false);
 					}
-					done_something = true;std::cout << "10070" << endl;
+					done_something = true;
 				} else if(type == "alias") {
 					if(VERSION_BEFORE(0, 6, 3)) {
-						XML_GET_STRING_FROM_PROP(cur, "name", name)					} else {
+						XML_GET_STRING_FROM_PROP(cur, "name", name)
+					} else {
 						name = "";
 					}
-					XML_GET_FALSE_FROM_PROP(cur, "active", active)					u = NULL;
-					child = cur->xmlChildrenNode;std::cout << "10077" << endl;
+					XML_GET_FALSE_FROM_PROP(cur, "active", active)
+					u = NULL;
+					child = cur->xmlChildrenNode;
 					singular = ""; best_singular = false; next_best_singular = false;
 					plural = ""; best_plural = false; next_best_plural = false;
 					countries = "", best_countries = false, next_best_countries = false;
-					bool b_currency = false;std::cout << "10081" << endl;
-					use_with_prefixes_set = false;std::cout << "10082" << endl;
+					bool b_currency = false;
+					use_with_prefixes_set = false;
 					usystem = "";
-					prec = -1;std::cout << "10084" << endl;
+					prec = -1;
 					ITEM_INIT_DTH
 					ITEM_INIT_NAME
-					unc_rel = false;std::cout << "10087" << endl;
+					unc_rel = false;
 					while(child != NULL) {
 						if(!xmlStrcmp(child->name, (const xmlChar*) "base")) {
-							child2 = child->xmlChildrenNode;std::cout << "10090" << endl;
-							exponent = 1;std::cout << "10091" << endl;
-							mix_priority = 0;std::cout << "10092" << endl;
-							mix_min = 0;std::cout << "10093" << endl;
+							child2 = child->xmlChildrenNode;
+							exponent = 1;
+							mix_priority = 0;
+							mix_min = 0;
 							svalue = "";
 							inverse = "";
 							suncertainty = "";
-							b = true;std::cout << "10097" << endl;
+							b = true;
 							while(child2 != NULL) {
 								if(!xmlStrcmp(child2->name, (const xmlChar*) "unit")) {
-									XML_GET_STRING_FROM_TEXT(child2, base);std::cout << "10100" << endl;
-									u = getUnit(base);std::cout << "10101" << endl;
-									b_currency = (!is_user_defs && u && u == u_euro);std::cout << "10102" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, base);
+									u = getUnit(base);
+									b_currency = (!is_user_defs && u && u == u_euro);
 									if(!u) {
-										u = getCompositeUnit(base);std::cout << "10104" << endl;
+										u = getCompositeUnit(base);
 									}
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "relation")) {
-									XML_GET_STRING_FROM_TEXT(child2, svalue);std::cout << "10107" << endl;
-									XML_GET_APPROX_FROM_PROP(child2, b)									XML_GET_PREC_FROM_PROP(child2, prec)									XML_GET_STRING_FROM_PROP(child2, "relative_uncertainty", suncertainty)									if(suncertainty.empty()) {XML_GET_STRING_FROM_PROP(child2, "uncertainty", suncertainty)}
-									else unc_rel = true;std::cout << "10109" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, svalue);
+									XML_GET_APPROX_FROM_PROP(child2, b)
+									XML_GET_PREC_FROM_PROP(child2, prec)
+									XML_GET_STRING_FROM_PROP(child2, "relative_uncertainty", suncertainty)
+									if(suncertainty.empty()) {XML_GET_STRING_FROM_PROP(child2, "uncertainty", suncertainty)}
+									else unc_rel = true;
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "reverse_relation")) {
-									XML_GET_STRING_FROM_TEXT(child2, inverse);std::cout << "10111" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, inverse);
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "inverse_relation")) {
-									XML_GET_STRING_FROM_TEXT(child2, inverse);std::cout << "10113" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, inverse);
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "exponent")) {
-									XML_GET_STRING_FROM_TEXT(child2, stmp);std::cout << "10115" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, stmp);
 									if(stmp.empty()) {
-										exponent = 1;std::cout << "10117" << endl;
+										exponent = 1;
 									} else {
-										exponent = s2i(stmp);std::cout << "10119" << endl;
+										exponent = s2i(stmp);
 									}
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "mix")) {
 									XML_GET_INT_FROM_PROP(child2, "min", mix_min);
-									XML_GET_STRING_FROM_TEXT(child2, stmp);std::cout << "10123" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, stmp);
 									if(stmp.empty()) {
-										mix_priority = 0;std::cout << "10125" << endl;
+										mix_priority = 0;
 									} else {
-										mix_priority = s2i(stmp);std::cout << "10127" << endl;
+										mix_priority = s2i(stmp);
 									}
 								}
-								child2 = child2->next;std::cout << "10130" << endl;
+								child2 = child2->next;
 							}
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "system")) {
-							XML_GET_STRING_FROM_TEXT(child, usystem);std::cout << "10133" << endl;
+							XML_GET_STRING_FROM_TEXT(child, usystem);
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "use_with_prefixes")) {
-							XML_GET_TRUE_FROM_TEXT(child, use_with_prefixes)							use_with_prefixes_set = true;std::cout << "10135" << endl;
+							XML_GET_TRUE_FROM_TEXT(child, use_with_prefixes)
+							use_with_prefixes_set = true;
 						} else if((VERSION_BEFORE(0, 6, 3)) && !xmlStrcmp(child->name, (const xmlChar*) "singular")) {
-							XML_GET_LOCALE_STRING_FROM_TEXT(child, singular, best_singular, next_best_singular)							if(!unitNameIsValid(singular, version_numbers, is_user_defs)) {
+							XML_GET_LOCALE_STRING_FROM_TEXT(child, singular, best_singular, next_best_singular)
+							if(!unitNameIsValid(singular, version_numbers, is_user_defs)) {
 								singular = "";
 							}
 						} else if((VERSION_BEFORE(0, 6, 3)) && !xmlStrcmp(child->name, (const xmlChar*) "plural") && !xmlGetProp(child, (xmlChar*) "index")) {
-							XML_GET_LOCALE_STRING_FROM_TEXT(child, plural, best_plural, next_best_plural)							if(!unitNameIsValid(plural, version_numbers, is_user_defs)) {
+							XML_GET_LOCALE_STRING_FROM_TEXT(child, plural, best_plural, next_best_plural)
+							if(!unitNameIsValid(plural, version_numbers, is_user_defs)) {
 								plural = "";
 							}
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "countries")) {
-							XML_GET_LOCALE_STRING_FROM_TEXT(child, countries, best_countries, next_best_countries)						} else ITEM_READ_NAME(unitNameIsValid)						 else ITEM_READ_DTH
+							XML_GET_LOCALE_STRING_FROM_TEXT(child, countries, best_countries, next_best_countries)
+						} else ITEM_READ_NAME(unitNameIsValid)
+						 else ITEM_READ_DTH
 						 else {
 							ITEM_READ_NAMES
 						}
-						child = child->next;std::cout << "10149" << endl;
+						child = child->next;
 					}
 					if(!u) {
 						ITEM_CLEAR_NAMES
 						if(!in_unfinished) {
-							unfinished_nodes.push_back(cur);std::cout << "10154" << endl;
-							unfinished_cats.push_back(category);std::cout << "10155" << endl;
+							unfinished_nodes.push_back(cur);
+							unfinished_cats.push_back(category);
 						}
 					} else {
-						au = new AliasUnit(category, name, plural, singular, title, u, svalue, exponent, inverse, is_user_defs, false, active);std::cout << "10158" << endl;
-						au->setCountries(countries);std::cout << "10159" << endl;
+						au = new AliasUnit(category, name, plural, singular, title, u, svalue, exponent, inverse, is_user_defs, false, active);
+						au->setCountries(countries);
 						if(mix_priority > 0) {
-							au->setMixWithBase(mix_priority);std::cout << "10161" << endl;
-							au->setMixWithBaseMinimum(mix_min);std::cout << "10162" << endl;
+							au->setMixWithBase(mix_priority);
+							au->setMixWithBaseMinimum(mix_min);
 						}
-						au->setDescription(description);std::cout << "10164" << endl;
-						au->setPrecision(prec);std::cout << "10165" << endl;
+						au->setDescription(description);
+						au->setPrecision(prec);
 						if(b) au->setApproximate(true);
-						au->setUncertainty(suncertainty, unc_rel);std::cout << "10167" << endl;
-						au->setHidden(hidden);std::cout << "10168" << endl;
-						au->setSystem(usystem);std::cout << "10169" << endl;
+						au->setUncertainty(suncertainty, unc_rel);
+						au->setHidden(hidden);
+						au->setSystem(usystem);
 						if(use_with_prefixes_set) {
-							au->setUseWithPrefixesByDefault(use_with_prefixes);std::cout << "10171" << endl;
+							au->setUseWithPrefixesByDefault(use_with_prefixes);
 						}
-						item = au;std::cout << "10173" << endl;
+						item = au;
 						if(new_names) {
-							ITEM_SET_BEST_NAMES(unitNameIsValid)							ITEM_SET_REFERENCE_NAMES(unitNameIsValid)						} else {
+							ITEM_SET_BEST_NAMES(unitNameIsValid)
+							ITEM_SET_REFERENCE_NAMES(unitNameIsValid)
+						} else {
 							ITEM_SET_NAME_2
 							ITEM_SET_NAME_3
 						}
 						if(b_currency && !au->referenceName().empty()) {
-							u = getUnit(au->referenceName());std::cout << "10180" << endl;
+							u = getUnit(au->referenceName());
 							if(u && u->subtype() == SUBTYPE_ALIAS_UNIT && ((AliasUnit*) u)->baseUnit() == u_euro) u->destroy();
 						}
 						if(check_duplicates && !is_user_defs) {
 							for(size_t i = 1; i <= au->countNames();) {
 								if(getActiveVariable(au->getName(i).name) || getActiveUnit(au->getName(i).name) || getCompositeUnit(au->getName(i).name)) au->removeName(i);
-								else i++;std::cout << "10186" << endl;
+								else i++;
 							}
 						}
 						if(au->countNames() == 0) {
-							au->destroy();std::cout << "10190" << endl;
-							au = NULL;std::cout << "10191" << endl;
+							au->destroy();
+							au = NULL;
 						} else {
 							if(!is_user_defs && au->baseUnit() == u_second) {
 								if(au->referenceName() == "d" || au->referenceName() == "day") u_day = au;
@@ -10207,171 +10319,188 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 								else if(au->referenceName() == "min") u_minute = au;
 								else if(au->referenceName() == "h") u_hour = au;
 							}
-							addUnit(au, true, is_user_defs);std::cout << "10200" << endl;
-							au->setChanged(false);std::cout << "10201" << endl;
+							addUnit(au, true, is_user_defs);
+							au->setChanged(false);
 						}
-						done_something = true;std::cout << "10203" << endl;
+						done_something = true;
 					}
 				} else if(type == "composite") {
 					if(VERSION_BEFORE(0, 6, 3)) {
-						XML_GET_STRING_FROM_PROP(cur, "name", name)					} else {
+						XML_GET_STRING_FROM_PROP(cur, "name", name)
+					} else {
 						name = "";
 					}
-					XML_GET_FALSE_FROM_PROP(cur, "active", active)					child = cur->xmlChildrenNode;
+					XML_GET_FALSE_FROM_PROP(cur, "active", active)
+					child = cur->xmlChildrenNode;
 					usystem = "";
-					cu = NULL;std::cout << "10212" << endl;
+					cu = NULL;
 					ITEM_INIT_DTH
 					ITEM_INIT_NAME
-					b = true;std::cout << "10215" << endl;
+					b = true;
 					while(child != NULL) {
-						u = NULL;std::cout << "10217" << endl;
+						u = NULL;
 						if(!xmlStrcmp(child->name, (const xmlChar*) "part")) {
-							child2 = child->xmlChildrenNode;std::cout << "10219" << endl;
-							p = NULL;std::cout << "10220" << endl;
-							exponent = 1;std::cout << "10221" << endl;
+							child2 = child->xmlChildrenNode;
+							p = NULL;
+							exponent = 1;
 							while(child2 != NULL) {
 								if(!xmlStrcmp(child2->name, (const xmlChar*) "unit")) {
-									XML_GET_STRING_FROM_TEXT(child2, base);std::cout << "10224" << endl;
-									u = getUnit(base);std::cout << "10225" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, base);
+									u = getUnit(base);
 									if(!u) {
-										u = getCompositeUnit(base);std::cout << "10227" << endl;
+										u = getCompositeUnit(base);
 									}
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "prefix")) {
-									XML_GET_STRING_FROM_PROP(child2, "type", stmp)									XML_GET_STRING_FROM_TEXT(child2, svalue);
-									p = NULL;std::cout << "10231" << endl;
+									XML_GET_STRING_FROM_PROP(child2, "type", stmp)
+									XML_GET_STRING_FROM_TEXT(child2, svalue);
+									p = NULL;
 									if(stmp == "binary") {
-										litmp = s2i(svalue);std::cout << "10233" << endl;
+										litmp = s2i(svalue);
 										if(litmp != 0) {
-											p = getExactBinaryPrefix(litmp);std::cout << "10235" << endl;
+											p = getExactBinaryPrefix(litmp);
 											if(!p) b = false;
 										}
 									} else if(stmp == "number") {
-										nr.set(stmp);std::cout << "10239" << endl;
+										nr.set(stmp);
 										if(!nr.isZero()) {
-											p = getExactPrefix(stmp);std::cout << "10241" << endl;
+											p = getExactPrefix(stmp);
 											if(!p) b = false;
 										}
 									} else {
-										litmp = s2i(svalue);std::cout << "10245" << endl;
+										litmp = s2i(svalue);
 										if(litmp != 0) {
-											p = getExactDecimalPrefix(litmp);std::cout << "10247" << endl;
+											p = getExactDecimalPrefix(litmp);
 											if(!p) b = false;
 										}
 									}
 									if(!b) {
 										if(cu) {
-											delete cu;std::cout << "10253" << endl;
+											delete cu;
 										}
-										cu = NULL;std::cout << "10255" << endl;
+										cu = NULL;
 										break;
 									}
 								} else if(!xmlStrcmp(child2->name, (const xmlChar*) "exponent")) {
-									XML_GET_STRING_FROM_TEXT(child2, stmp);std::cout << "10259" << endl;
+									XML_GET_STRING_FROM_TEXT(child2, stmp);
 									if(stmp.empty()) {
-										exponent = 1;std::cout << "10261" << endl;
+										exponent = 1;
 									} else {
-										exponent = s2i(stmp);std::cout << "10263" << endl;
+										exponent = s2i(stmp);
 									}
 								}
-								child2 = child2->next;std::cout << "10266" << endl;
+								child2 = child2->next;
 							}
 							if(!b) break;
 							if(u) {
 								if(!cu) {
 									cu = new CompositeUnit("", "", "", "", is_user_defs, false, active);
 								}
-								cu->add(u, exponent, p);std::cout << "10273" << endl;
+								cu->add(u, exponent, p);
 							} else {
 								if(cu) delete cu;
-								cu = NULL;std::cout << "10276" << endl;
+								cu = NULL;
 								if(!in_unfinished) {
-									unfinished_nodes.push_back(cur);std::cout << "10278" << endl;
-									unfinished_cats.push_back(category);std::cout << "10279" << endl;
+									unfinished_nodes.push_back(cur);
+									unfinished_cats.push_back(category);
 								}
 								break;
 							}
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "system")) {
-							XML_GET_STRING_FROM_TEXT(child, usystem);std::cout << "10284" << endl;
+							XML_GET_STRING_FROM_TEXT(child, usystem);
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "use_with_prefixes")) {
-							XML_GET_TRUE_FROM_TEXT(child, use_with_prefixes)							use_with_prefixes_set = true;std::cout << "10286" << endl;
-						} else ITEM_READ_NAME(unitNameIsValid)						 else ITEM_READ_DTH
+							XML_GET_TRUE_FROM_TEXT(child, use_with_prefixes)
+							use_with_prefixes_set = true;
+						} else ITEM_READ_NAME(unitNameIsValid)
+						 else ITEM_READ_DTH
 						 else {
 							ITEM_READ_NAMES
 						}
-						child = child->next;std::cout << "10291" << endl;
+						child = child->next;
 					}
 					if(cu) {
-						item = cu;std::cout << "10294" << endl;
-						cu->setCategory(category);std::cout << "10295" << endl;
-						cu->setSystem(usystem);std::cout << "10296" << endl;
+						item = cu;
+						cu->setCategory(category);
+						cu->setSystem(usystem);
 						/*if(use_with_prefixes_set) {
-							cu->setUseWithPrefixesByDefault(use_with_prefixes);std::cout << "10298" << endl;
+							cu->setUseWithPrefixesByDefault(use_with_prefixes);
 						}*/
 						if(new_names) {
-							ITEM_SET_BEST_NAMES(unitNameIsValid)							ITEM_SET_REFERENCE_NAMES(unitNameIsValid)						} else {
-							ITEM_SET_NAME_1(unitNameIsValid)							ITEM_SET_NAME_2
+							ITEM_SET_BEST_NAMES(unitNameIsValid)
+							ITEM_SET_REFERENCE_NAMES(unitNameIsValid)
+						} else {
+							ITEM_SET_NAME_1(unitNameIsValid)
+							ITEM_SET_NAME_2
 							ITEM_SET_NAME_3
 						}
 						ITEM_SET_DTH
 						if(check_duplicates && !is_user_defs) {
 							for(size_t i = 1; i <= cu->countNames();) {
 								if(getActiveVariable(cu->getName(i).name) || getActiveUnit(cu->getName(i).name) || getCompositeUnit(cu->getName(i).name)) cu->removeName(i);
-								else i++;std::cout << "10309" << endl;
+								else i++;
 							}
 						}
 						if(cu->countNames() == 0) {
-							cu->destroy();std::cout << "10313" << endl;
-							cu = NULL;std::cout << "10314" << endl;
+							cu->destroy();
+							cu = NULL;
 						} else {
-							addUnit(cu, true, is_user_defs);std::cout << "10316" << endl;
-							cu->setChanged(false);std::cout << "10317" << endl;
+							addUnit(cu, true, is_user_defs);
+							cu->setChanged(false);
 						}
-						done_something = true;std::cout << "10319" << endl;
+						done_something = true;
 					} else {
 						ITEM_CLEAR_NAMES
 					}
 				}
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "builtin_unit")) {
-				XML_GET_STRING_FROM_PROP(cur, "name", name)				u = getUnit(name);
+				XML_GET_STRING_FROM_PROP(cur, "name", name)
+				u = getUnit(name);
 				if(!u) {
-					u = getCompositeUnit(name);std::cout << "10327" << endl;
+					u = getCompositeUnit(name);
 				}
 				if(u) {
-					XML_GET_FALSE_FROM_PROP(cur, "active", active)					u->setLocal(is_user_defs, active);
-					u->setCategory(category);std::cout << "10331" << endl;
-					item = u;std::cout << "10332" << endl;
-					child = cur->xmlChildrenNode;std::cout << "10333" << endl;
+					XML_GET_FALSE_FROM_PROP(cur, "active", active)
+					u->setLocal(is_user_defs, active);
+					u->setCategory(category);
+					item = u;
+					child = cur->xmlChildrenNode;
 					singular = ""; best_singular = false; next_best_singular = false;
 					plural = ""; best_plural = false; next_best_plural = false;
 					countries = "", best_countries = false, next_best_countries = false;
-					use_with_prefixes_set = false;std::cout << "10337" << endl;
+					use_with_prefixes_set = false;
 					ITEM_INIT_DTH
 					ITEM_INIT_NAME
 					while(child != NULL) {
 						if(!xmlStrcmp(child->name, (const xmlChar*) "singular")) {
-							XML_GET_LOCALE_STRING_FROM_TEXT(child, singular, best_singular, next_best_singular)							if(!unitNameIsValid(singular, version_numbers, is_user_defs)) {
+							XML_GET_LOCALE_STRING_FROM_TEXT(child, singular, best_singular, next_best_singular)
+							if(!unitNameIsValid(singular, version_numbers, is_user_defs)) {
 								singular = "";
 							}
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "plural") && !xmlGetProp(child, (xmlChar*) "index")) {
-							XML_GET_LOCALE_STRING_FROM_TEXT(child, plural, best_plural, next_best_plural)							if(!unitNameIsValid(plural, version_numbers, is_user_defs)) {
+							XML_GET_LOCALE_STRING_FROM_TEXT(child, plural, best_plural, next_best_plural)
+							if(!unitNameIsValid(plural, version_numbers, is_user_defs)) {
 								plural = "";
 							}
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "use_with_prefixes")) {
-							XML_GET_TRUE_FROM_TEXT(child, use_with_prefixes)							use_with_prefixes_set = true;std::cout << "10350" << endl;
+							XML_GET_TRUE_FROM_TEXT(child, use_with_prefixes)
+							use_with_prefixes_set = true;
 						} else if(!xmlStrcmp(child->name, (const xmlChar*) "countries")) {
-							XML_GET_LOCALE_STRING_FROM_TEXT(child, countries, best_countries, next_best_countries)						} else ITEM_READ_NAME(unitNameIsValid)						 else ITEM_READ_DTH
+							XML_GET_LOCALE_STRING_FROM_TEXT(child, countries, best_countries, next_best_countries)
+						} else ITEM_READ_NAME(unitNameIsValid)
+						 else ITEM_READ_DTH
 						 else {
 							ITEM_READ_NAMES
 						}
-						child = child->next;std::cout << "10356" << endl;
+						child = child->next;
 					}
 					if(use_with_prefixes_set) {
-						u->setUseWithPrefixesByDefault(use_with_prefixes);std::cout << "10359" << endl;
+						u->setUseWithPrefixesByDefault(use_with_prefixes);
 					}
-					u->setCountries(countries);std::cout << "10361" << endl;
+					u->setCountries(countries);
 					if(new_names) {
 						ITEM_SAVE_BUILTIN_NAMES
-						ITEM_SET_BEST_NAMES(unitNameIsValid)						ITEM_SET_REFERENCE_NAMES(unitNameIsValid)						ITEM_SET_BUILTIN_NAMES
+						ITEM_SET_BEST_NAMES(unitNameIsValid)
+						ITEM_SET_REFERENCE_NAMES(unitNameIsValid)
+						ITEM_SET_BUILTIN_NAMES
 					} else {
 						BUILTIN_UNIT_NAMES_1
 						ITEM_SET_SINGULAR
@@ -10382,76 +10511,77 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 					}
 					ITEM_SET_DTH
 					if(u_usd && u->subtype() == SUBTYPE_ALIAS_UNIT && ((AliasUnit*) u)->firstBaseUnit() == u_usd) u->setHidden(true);
-					u->setChanged(false);std::cout << "10375" << endl;
-					done_something = true;std::cout << "10376" << endl;
+					u->setChanged(false);
+					done_something = true;
 				}
 			} else if(!xmlStrcmp(cur->name, (const xmlChar*) "prefix")) {
-				child = cur->xmlChildrenNode;std::cout << "10379" << endl;
-				XML_GET_STRING_FROM_PROP(cur, "type", type)				uname = ""; sexp = ""; svalue = ""; name = "";
-				bool b_best = false;std::cout << "10381" << endl;
+				child = cur->xmlChildrenNode;
+				XML_GET_STRING_FROM_PROP(cur, "type", type)
+				uname = ""; sexp = ""; svalue = ""; name = "";
+				bool b_best = false;
 				while(child != NULL) {
 					if(!xmlStrcmp(child->name, (const xmlChar*) "name")) {
-						lang = xmlNodeGetLang(child);std::cout << "10384" << endl;
+						lang = xmlNodeGetLang(child);
 						if(!lang) {
 							if(name.empty()) {
-								XML_GET_STRING_FROM_TEXT(child, name);std::cout << "10387" << endl;
+								XML_GET_STRING_FROM_TEXT(child, name);
 							}
 						} else {
 							if(!b_best && !locale.empty()) {
 								if(locale == (char*) lang) {
-									XML_GET_STRING_FROM_TEXT(child, name);std::cout << "10392" << endl;
-									b_best = true;std::cout << "10393" << endl;
+									XML_GET_STRING_FROM_TEXT(child, name);
+									b_best = true;
 								} else if(strlen((char*) lang) >= 2 && lang[0] == localebase[0] && lang[1] == localebase[1]) {
-									XML_GET_STRING_FROM_TEXT(child, name);std::cout << "10395" << endl;
+									XML_GET_STRING_FROM_TEXT(child, name);
 								}
 							}
-							xmlFree(lang);std::cout << "10398" << endl;
+							xmlFree(lang);
 						}
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "abbreviation")) {
-						XML_GET_STRING_FROM_TEXT(child, stmp);std::cout << "10401" << endl;
+						XML_GET_STRING_FROM_TEXT(child, stmp);
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "unicode")) {
-						XML_GET_STRING_FROM_TEXT(child, uname);std::cout << "10403" << endl;
+						XML_GET_STRING_FROM_TEXT(child, uname);
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "exponent")) {
-						XML_GET_STRING_FROM_TEXT(child, sexp);std::cout << "10405" << endl;
+						XML_GET_STRING_FROM_TEXT(child, sexp);
 					} else if(!xmlStrcmp(child->name, (const xmlChar*) "value")) {
-						XML_GET_STRING_FROM_TEXT(child, svalue);std::cout << "10407" << endl;
+						XML_GET_STRING_FROM_TEXT(child, svalue);
 					}
-					child = child->next;std::cout << "10409" << endl;
+					child = child->next;
 				}
 				if(type == "decimal") {
-					addPrefix(new DecimalPrefix(s2i(sexp), name, stmp, uname));std::cout << "10412" << endl;
+					addPrefix(new DecimalPrefix(s2i(sexp), name, stmp, uname));
 				} else if(type == "number") {
-					addPrefix(new NumberPrefix(svalue, name, stmp, uname));std::cout << "10414" << endl;
+					addPrefix(new NumberPrefix(svalue, name, stmp, uname));
 				} else if(type == "binary") {
-					addPrefix(new BinaryPrefix(s2i(sexp), name, stmp, uname));std::cout << "10416" << endl;
+					addPrefix(new BinaryPrefix(s2i(sexp), name, stmp, uname));
 				} else {
 					if(svalue.empty()) {
-						addPrefix(new DecimalPrefix(s2i(sexp), name, stmp, uname));std::cout << "10419" << endl;
+						addPrefix(new DecimalPrefix(s2i(sexp), name, stmp, uname));
 					} else {
-						addPrefix(new NumberPrefix(svalue, name, stmp, uname));std::cout << "10421" << endl;
+						addPrefix(new NumberPrefix(svalue, name, stmp, uname));
 					}
 				}
-				done_something = true;std::cout << "10424" << endl;
+				done_something = true;
 			}
 			after_load_object:
-			cur = NULL;std::cout << "10427" << endl;
+			cur = NULL;
 			if(in_unfinished) {
 				if(done_something) {
-					in_unfinished--;std::cout << "10430" << endl;
-					unfinished_nodes.erase(unfinished_nodes.begin() + in_unfinished);std::cout << "10431" << endl;
-					unfinished_cats.erase(unfinished_cats.begin() + in_unfinished);std::cout << "10432" << endl;
+					in_unfinished--;
+					unfinished_nodes.erase(unfinished_nodes.begin() + in_unfinished);
+					unfinished_cats.erase(unfinished_cats.begin() + in_unfinished);
 				}
 				if((int) unfinished_nodes.size() > in_unfinished) {
-					cur = unfinished_nodes[in_unfinished];std::cout << "10435" << endl;
-					category = unfinished_cats[in_unfinished];std::cout << "10436" << endl;
+					cur = unfinished_nodes[in_unfinished];
+					category = unfinished_cats[in_unfinished];
 				} else if(done_something && unfinished_nodes.size() > 0) {
-					cur = unfinished_nodes[0];std::cout << "10438" << endl;
-					category = unfinished_cats[0];std::cout << "10439" << endl;
-					in_unfinished = 0;std::cout << "10440" << endl;
-					done_something = false;std::cout << "10441" << endl;
+					cur = unfinished_nodes[0];
+					category = unfinished_cats[0];
+					in_unfinished = 0;
+					done_something = false;
 				}
-				in_unfinished++;std::cout << "10443" << endl;
-				done_something = false;std::cout << "10444" << endl;
+				in_unfinished++;
+				done_something = false;
 			}
 		}
 		if(in_unfinished) {
@@ -10462,37 +10592,37 @@ int Calculator::loadDefinitions(const char* file_name, bool is_user_defs, bool c
 			if(cat_i == string::npos) {
 				category = "";
 			} else {
-				category = category.substr(0, cat_i);std::cout << "10455" << endl;
+				category = category.substr(0, cat_i);
 			}
-			nodes.pop_back();std::cout << "10457" << endl;
+			nodes.pop_back();
 		}
 		if(!nodes.empty()) {
-			cur = nodes.back().front();std::cout << "10460" << endl;
-			nodes.back().pop();std::cout << "10461" << endl;
-			nodes.resize(nodes.size() + 1);std::cout << "10462" << endl;
+			cur = nodes.back().front();
+			nodes.back().pop();
+			nodes.resize(nodes.size() + 1);
 		} else {
 			if(unfinished_nodes.size() > 0) {
-				cur = unfinished_nodes[0];std::cout << "10465" << endl;
-				category = unfinished_cats[0];std::cout << "10466" << endl;
-				in_unfinished = 1;std::cout << "10467" << endl;
-				done_something = false;std::cout << "10468" << endl;
+				cur = unfinished_nodes[0];
+				category = unfinished_cats[0];
+				in_unfinished = 1;
+				done_something = false;
 			} else {
-				cur = NULL;std::cout << "10470" << endl;
+				cur = NULL;
 			}
 		}
 		if(cur == NULL) {
 			break;
 		}
 	}
-	xmlFreeDoc(doc);std::cout << "10477" << endl;
+	xmlFreeDoc(doc);
 	return true;
 }
 bool Calculator::saveDefinitions() {
 
-	recursiveMakeDir(getLocalDataDir());std::cout << "10482" << endl;
+	recursiveMakeDir(getLocalDataDir());
 	string homedir = buildPath(getLocalDataDir(), "definitions");
-	makeDir(homedir);std::cout << "10484" << endl;
-	bool b = true;std::cout << "10485" << endl;
+	makeDir(homedir);
+	bool b = true;
 	if(!saveFunctions(buildPath(homedir, "functions.xml").c_str())) b = false;
 	if(!saveUnits(buildPath(homedir, "units.xml").c_str())) b = false;
 	if(!saveVariables(buildPath(homedir, "variables.xml").c_str())) b = false;
@@ -10510,7 +10640,7 @@ struct node_tree_item {
 int Calculator::saveDataObjects() {
 	int returnvalue = 1;
 	for(size_t i = 0; i < data_sets.size(); i++) {
-		int rv = data_sets[i]->saveObjects(NULL, false);std::cout << "10503" << endl;
+		int rv = data_sets[i]->saveObjects(NULL, false);
 		if(rv <= 0) returnvalue = rv;
 	}
 	return returnvalue;
@@ -10521,10 +10651,10 @@ int Calculator::savePrefixes(const char* file_name, bool save_global) {
 		return true;
 	}
 	xmlDocPtr doc = xmlNewDoc((xmlChar*) "1.0");
-	xmlNodePtr cur, newnode;std::cout << "10514" << endl;
+	xmlNodePtr cur, newnode;
 	doc->children = xmlNewDocNode(doc, NULL, (xmlChar*) "QALCULATE", NULL);
 	xmlNewProp(doc->children, (xmlChar*) "version", (xmlChar*) VERSION);
-	cur = doc->children;std::cout << "10517" << endl;
+	cur = doc->children;
 	for(size_t i = 0; i < prefixes.size(); i++) {
 		newnode = xmlNewTextChild(cur, NULL, (xmlChar*) "prefix", NULL);
 		if(!prefixes[i]->longName(false).empty()) xmlNewTextChild(newnode, NULL, (xmlChar*) "name", (xmlChar*) prefixes[i]->longName(false).c_str());
@@ -10549,16 +10679,16 @@ int Calculator::savePrefixes(const char* file_name, bool save_global) {
 		}
 	}
 	int returnvalue = xmlSaveFormatFile(file_name, doc, 1);
-	xmlFreeDoc(doc);std::cout << "10542" << endl;
+	xmlFreeDoc(doc);
 	return returnvalue;
 }
 
 #define SAVE_NAMES(o)\
 				str = "";\
 				for(size_t i2 = 1;;)  {\
-					ename = &o->getName(i2);std::cout << "10549" << endl;\
+					ename = &o->getName(i2);\
 					if(ename->abbreviation) {str += 'a';}\
-					bool b_cs = (ename->abbreviation || text_length_is_one(ename->name));std::cout << "10551" << endl;\
+					bool b_cs = (ename->abbreviation || text_length_is_one(ename->name));\
 					if(ename->case_sensitive && !b_cs) {str += 'c';}\
 					if(!ename->case_sensitive && b_cs) {str += "-c";}\
 					if(ename->avoid_input) {str += 'i';}\
@@ -10577,10 +10707,10 @@ int Calculator::savePrefixes(const char* file_name, bool save_global) {
 							break;\
 						}\
 					} else {\
-						str += ':';std::cout << "10570" << endl;\
+						str += ':';\
 					}\
-					str += ename->name;std::cout << "10572" << endl;\
-					i2++;std::cout << "10573" << endl;\
+					str += ename->name;\
+					i2++;\
 					if(i2 > o->countNames()) {\
 						if(save_global) {\
 							xmlNewTextChild(newnode, NULL, (xmlChar*) "_names", (xmlChar*) str.c_str());\
@@ -10589,7 +10719,7 @@ int Calculator::savePrefixes(const char* file_name, bool save_global) {
 						}\
 						break;\
 					}\
-					str += ',';std::cout << "10582" << endl;\
+					str += ',';\
 				}
 
 string Calculator::temporaryCategory() const {
@@ -10597,43 +10727,43 @@ string Calculator::temporaryCategory() const {
 }
 
 int Calculator::saveVariables(const char* file_name, bool save_global) {
-	string str;std::cout << "10590" << endl;
-	const ExpressionName *ename;std::cout << "10591" << endl;
+	string str;
+	const ExpressionName *ename;
 	xmlDocPtr doc = xmlNewDoc((xmlChar*) "1.0");
-	xmlNodePtr cur, newnode, newnode2;std::cout << "10593" << endl;
+	xmlNodePtr cur, newnode, newnode2;
 	doc->children = xmlNewDocNode(doc, NULL, (xmlChar*) "QALCULATE", NULL);
 	xmlNewProp(doc->children, (xmlChar*) "version", (xmlChar*) VERSION);
-	node_tree_item top;std::cout << "10596" << endl;
+	node_tree_item top;
 	top.category = "";
-	top.node = doc->children;std::cout << "10598" << endl;
-	node_tree_item *item;std::cout << "10599" << endl;
-	string cat, cat_sub;std::cout << "10600" << endl;
+	top.node = doc->children;
+	node_tree_item *item;
+	string cat, cat_sub;
 	for(size_t i = 0; i < variables.size(); i++) {
 		if((save_global || variables[i]->isLocal() || variables[i]->hasChanged()) && variables[i]->category() != _("Temporary") && variables[i]->category() != "Temporary") {
-			item = &top;std::cout << "10603" << endl;
+			item = &top;
 			if(!variables[i]->category().empty()) {
-				cat = variables[i]->category();std::cout << "10605" << endl;
+				cat = variables[i]->category();
 				size_t cat_i = cat.find("/"); size_t cat_i_prev = 0;
-				bool b = false;std::cout << "10607" << endl;
+				bool b = false;
 				while(true) {
 					if(cat_i == string::npos) {
-						cat_sub = cat.substr(cat_i_prev, cat.length() - cat_i_prev);std::cout << "10610" << endl;
+						cat_sub = cat.substr(cat_i_prev, cat.length() - cat_i_prev);
 					} else {
-						cat_sub = cat.substr(cat_i_prev, cat_i - cat_i_prev);std::cout << "10612" << endl;
+						cat_sub = cat.substr(cat_i_prev, cat_i - cat_i_prev);
 					}
-					b = false;std::cout << "10614" << endl;
+					b = false;
 					for(size_t i2 = 0; i2 < item->items.size(); i2++) {
 						if(cat_sub == item->items[i2].category) {
-							item = &item->items[i2];std::cout << "10617" << endl;
-							b = true;std::cout << "10618" << endl;
+							item = &item->items[i2];
+							b = true;
 							break;
 						}
 					}
 					if(!b) {
-						item->items.resize(item->items.size() + 1);std::cout << "10623" << endl;
+						item->items.resize(item->items.size() + 1);
 						item->items[item->items.size() - 1].node = xmlNewTextChild(item->node, NULL, (xmlChar*) "category", NULL);
-						item = &item->items[item->items.size() - 1];std::cout << "10625" << endl;
-						item->category = cat_sub;std::cout << "10626" << endl;
+						item = &item->items[item->items.size() - 1];
+						item->category = cat_sub;
 						if(save_global) {
 							xmlNewTextChild(item->node, NULL, (xmlChar*) "_title", (xmlChar*) item->category.c_str());
 						} else {
@@ -10643,11 +10773,11 @@ int Calculator::saveVariables(const char* file_name, bool save_global) {
 					if(cat_i == string::npos) {
 						break;
 					}
-					cat_i_prev = cat_i + 1;std::cout << "10636" << endl;
+					cat_i_prev = cat_i + 1;
 					cat_i = cat.find("/", cat_i_prev);
 				}
 			}
-			cur = item->node;std::cout << "10640" << endl;
+			cur = item->node;
 			if(!save_global && !variables[i]->isLocal() && variables[i]->hasChanged()) {
 				if(variables[i]->isActive()) {
 					xmlNewTextChild(cur, NULL, (xmlChar*) "activate", (xmlChar*) variables[i]->referenceName().c_str());
@@ -10678,8 +10808,9 @@ int Calculator::saveVariables(const char* file_name, bool save_global) {
 						xmlNewTextChild(newnode, NULL, (xmlChar*) "title", (xmlChar*) variables[i]->title(false).c_str());
 					}
 				}
-				SAVE_NAMES(variables[i])				if(!variables[i]->description().empty()) {
-					str = variables[i]->description();std::cout << "10672" << endl;
+				SAVE_NAMES(variables[i])
+				if(!variables[i]->description().empty()) {
+					str = variables[i]->description();
 					if(save_global) {
 						xmlNewTextChild(newnode, NULL, (xmlChar*) "_description", (xmlChar*) str.c_str());
 					} else {
@@ -10688,17 +10819,17 @@ int Calculator::saveVariables(const char* file_name, bool save_global) {
 				}
 				if(!variables[i]->isBuiltin()) {
 					if(variables[i]->isKnown()) {
-						bool is_approx = false;std::cout << "10681" << endl;
-						save_printoptions.is_approximate = &is_approx;std::cout << "10682" << endl;
+						bool is_approx = false;
+						save_printoptions.is_approximate = &is_approx;
 						if(((KnownVariable*) variables[i])->isExpression()) {
 							newnode2 = xmlNewTextChild(newnode, NULL, (xmlChar*) "value", (xmlChar*) ((KnownVariable*) variables[i])->expression().c_str());
-							bool unc_rel = false;std::cout << "10685" << endl;
+							bool unc_rel = false;
 							if(!((KnownVariable*) variables[i])->uncertainty(&unc_rel).empty()) xmlNewProp(newnode2, (xmlChar*) (unc_rel ? "relative_uncertainty" : "uncertainty"), (xmlChar*) ((KnownVariable*) variables[i])->uncertainty().c_str());
 							if(!((KnownVariable*) variables[i])->unit().empty()) xmlNewProp(newnode2, (xmlChar*) "unit", (xmlChar*) ((KnownVariable*) variables[i])->unit().c_str());
 						} else {
 							newnode2 = xmlNewTextChild(newnode, NULL, (xmlChar*) "value", (xmlChar*) ((KnownVariable*) variables[i])->get().print(save_printoptions).c_str());
 						}
-						save_printoptions.is_approximate = NULL;std::cout << "10691" << endl;
+						save_printoptions.is_approximate = NULL;
 						if(variables[i]->isApproximate() || is_approx) xmlNewProp(newnode2, (xmlChar*) "approximate", (xmlChar*) "true");
 						if(variables[i]->precision() >= 0) xmlNewProp(newnode2, (xmlChar*) "precision", (xmlChar*) i2s(variables[i]->precision()).c_str());
 					} else {
@@ -10766,52 +10897,52 @@ int Calculator::saveVariables(const char* file_name, bool save_global) {
 		}
 	}
 	int returnvalue = xmlSaveFormatFile(file_name, doc, 1);
-	xmlFreeDoc(doc);std::cout << "10759" << endl;
+	xmlFreeDoc(doc);
 	return returnvalue;
 }
 
 int Calculator::saveUnits(const char* file_name, bool save_global) {
-	string str;std::cout << "10764" << endl;
+	string str;
 	xmlDocPtr doc = xmlNewDoc((xmlChar*) "1.0");
-	xmlNodePtr cur, newnode, newnode2, newnode3;std::cout << "10766" << endl;
+	xmlNodePtr cur, newnode, newnode2, newnode3;
 	doc->children = xmlNewDocNode(doc, NULL, (xmlChar*) "QALCULATE", NULL);
 	xmlNewProp(doc->children, (xmlChar*) "version", (xmlChar*) VERSION);
-	const ExpressionName *ename;std::cout << "10769" << endl;
-	CompositeUnit *cu = NULL;std::cout << "10770" << endl;
-	AliasUnit *au = NULL;std::cout << "10771" << endl;
-	Unit *u;std::cout << "10772" << endl;
-	node_tree_item top;std::cout << "10773" << endl;
+	const ExpressionName *ename;
+	CompositeUnit *cu = NULL;
+	AliasUnit *au = NULL;
+	Unit *u;
+	node_tree_item top;
 	top.category = "";
-	top.node = doc->children;std::cout << "10775" << endl;
-	node_tree_item *item;std::cout << "10776" << endl;
-	string cat, cat_sub;std::cout << "10777" << endl;
+	top.node = doc->children;
+	node_tree_item *item;
+	string cat, cat_sub;
 	for(size_t i = 0; i < units.size(); i++) {
-		u = units[i];std::cout << "10779" << endl;
+		u = units[i];
 		if(save_global || u->isLocal() || u->hasChanged()) {
-			item = &top;std::cout << "10781" << endl;
+			item = &top;
 			if(!u->category().empty()) {
-				cat = u->category();std::cout << "10783" << endl;
+				cat = u->category();
 				size_t cat_i = cat.find("/"); size_t cat_i_prev = 0;
-				bool b = false;std::cout << "10785" << endl;
+				bool b = false;
 				while(true) {
 					if(cat_i == string::npos) {
-						cat_sub = cat.substr(cat_i_prev, cat.length() - cat_i_prev);std::cout << "10788" << endl;
+						cat_sub = cat.substr(cat_i_prev, cat.length() - cat_i_prev);
 					} else {
-						cat_sub = cat.substr(cat_i_prev, cat_i - cat_i_prev);std::cout << "10790" << endl;
+						cat_sub = cat.substr(cat_i_prev, cat_i - cat_i_prev);
 					}
-					b = false;std::cout << "10792" << endl;
+					b = false;
 					for(size_t i2 = 0; i2 < item->items.size(); i2++) {
 						if(cat_sub == item->items[i2].category) {
-							item = &item->items[i2];std::cout << "10795" << endl;
-							b = true;std::cout << "10796" << endl;
+							item = &item->items[i2];
+							b = true;
 							break;
 						}
 					}
 					if(!b) {
-						item->items.resize(item->items.size() + 1);std::cout << "10801" << endl;
+						item->items.resize(item->items.size() + 1);
 						item->items[item->items.size() - 1].node = xmlNewTextChild(item->node, NULL, (xmlChar*) "category", NULL);
-						item = &item->items[item->items.size() - 1];std::cout << "10803" << endl;
-						item->category = cat_sub;std::cout << "10804" << endl;
+						item = &item->items[item->items.size() - 1];
+						item->category = cat_sub;
 						if(save_global) {
 							xmlNewTextChild(item->node, NULL, (xmlChar*) "_title", (xmlChar*) item->category.c_str());
 						} else {
@@ -10821,11 +10952,11 @@ int Calculator::saveUnits(const char* file_name, bool save_global) {
 					if(cat_i == string::npos) {
 						break;
 					}
-					cat_i_prev = cat_i + 1;std::cout << "10814" << endl;
+					cat_i_prev = cat_i + 1;
 					cat_i = cat.find("/", cat_i_prev);
 				}
 			}
-			cur = item->node;std::cout << "10818" << endl;
+			cur = item->node;
 			if(!save_global && !u->isLocal() && u->hasChanged()) {
 				if(u->isActive()) {
 					xmlNewTextChild(cur, NULL, (xmlChar*) "activate", (xmlChar*) u->referenceName().c_str());
@@ -10844,12 +10975,12 @@ int Calculator::saveUnits(const char* file_name, bool save_global) {
 							break;
 						}
 						case SUBTYPE_ALIAS_UNIT: {
-							au = (AliasUnit*) u;std::cout << "10837" << endl;
+							au = (AliasUnit*) u;
 							xmlNewProp(newnode, (xmlChar*) "type", (xmlChar*) "alias");
 							break;
 						}
 						case SUBTYPE_COMPOSITE_UNIT: {
-							cu = (CompositeUnit*) u;std::cout << "10842" << endl;
+							cu = (CompositeUnit*) u;
 							xmlNewProp(newnode, (xmlChar*) "type", (xmlChar*) "composite");
 							break;
 						}
@@ -10871,12 +11002,14 @@ int Calculator::saveUnits(const char* file_name, bool save_global) {
 					}
 				}
 				if(save_global && u->subtype() == SUBTYPE_COMPOSITE_UNIT) {
-					save_global = false;std::cout << "10864" << endl;
-					SAVE_NAMES(u)					save_global = true;std::cout << "10865" << endl;
+					save_global = false;
+					SAVE_NAMES(u)
+					save_global = true;
 				} else {
-					SAVE_NAMES(u)				}
+					SAVE_NAMES(u)
+				}
 				if(!u->description().empty()) {
-					str = u->description();std::cout << "10869" << endl;
+					str = u->description();
 					if(save_global) {
 						xmlNewTextChild(newnode, NULL, (xmlChar*) "_description", (xmlChar*) str.c_str());
 					} else {
@@ -10887,9 +11020,9 @@ int Calculator::saveUnits(const char* file_name, bool save_global) {
 					if(u->subtype() == SUBTYPE_COMPOSITE_UNIT) {
 						for(size_t i2 = 1; i2 <= cu->countUnits(); i2++) {
 							newnode2 = xmlNewTextChild(newnode, NULL, (xmlChar*) "part", NULL);
-							int exp = 1;std::cout << "10880" << endl;
-							Prefix *p = NULL;std::cout << "10881" << endl;
-							Unit *u = cu->get(i2, &exp, &p);std::cout << "10882" << endl;
+							int exp = 1;
+							Prefix *p = NULL;
+							Unit *u = cu->get(i2, &exp, &p);
 							xmlNewTextChild(newnode2, NULL, (xmlChar*) "unit", (xmlChar*) u->referenceName().c_str());
 							if(p) {
 								switch(p->type()) {
@@ -10918,7 +11051,7 @@ int Calculator::saveUnits(const char* file_name, bool save_global) {
 						newnode3 = xmlNewTextChild(newnode2, NULL, (xmlChar*) "relation", (xmlChar*) au->expression().c_str());
 						if(au->isApproximate()) xmlNewProp(newnode3, (xmlChar*) "approximate", (xmlChar*) "true");
 						if(au->precision() >= 0) xmlNewProp(newnode3, (xmlChar*) "precision", (xmlChar*) i2s(u->precision()).c_str());
-						bool unc_rel = false;std::cout << "10911" << endl;
+						bool unc_rel = false;
 						if(!au->uncertainty(&unc_rel).empty()) xmlNewProp(newnode3, (xmlChar*) (unc_rel ? "relative_uncertainty" : "uncertainty"), (xmlChar*) au->uncertainty().c_str());
 						if(!au->inverseExpression().empty()) {
 							xmlNewTextChild(newnode2, NULL, (xmlChar*) "inverse_relation", (xmlChar*) au->inverseExpression().c_str());
@@ -10934,51 +11067,51 @@ int Calculator::saveUnits(const char* file_name, bool save_global) {
 		}
 	}
 	int returnvalue = xmlSaveFormatFile(file_name, doc, 1);
-	xmlFreeDoc(doc);std::cout << "10927" << endl;
+	xmlFreeDoc(doc);
 	return returnvalue;
 }
 
 int Calculator::saveFunctions(const char* file_name, bool save_global) {
 	xmlDocPtr doc = xmlNewDoc((xmlChar*) "1.0");
-	xmlNodePtr cur, newnode, newnode2;std::cout << "10933" << endl;
+	xmlNodePtr cur, newnode, newnode2;
 	doc->children = xmlNewDocNode(doc, NULL, (xmlChar*) "QALCULATE", NULL);
 	xmlNewProp(doc->children, (xmlChar*) "version", (xmlChar*) VERSION);
-	const ExpressionName *ename;std::cout << "10936" << endl;
-	node_tree_item top;std::cout << "10937" << endl;
+	const ExpressionName *ename;
+	node_tree_item top;
 	top.category = "";
-	top.node = doc->children;std::cout << "10939" << endl;
-	node_tree_item *item;std::cout << "10940" << endl;
-	string cat, cat_sub;std::cout << "10941" << endl;
-	Argument *arg;std::cout << "10942" << endl;
-	IntegerArgument *iarg;std::cout << "10943" << endl;
-	NumberArgument *farg;std::cout << "10944" << endl;
-	string str;std::cout << "10945" << endl;
+	top.node = doc->children;
+	node_tree_item *item;
+	string cat, cat_sub;
+	Argument *arg;
+	IntegerArgument *iarg;
+	NumberArgument *farg;
+	string str;
 	for(size_t i = 0; i < functions.size(); i++) {
 		if(functions[i]->subtype() != SUBTYPE_DATA_SET && (save_global || functions[i]->isLocal() || functions[i]->hasChanged())) {
-			item = &top;std::cout << "10948" << endl;
+			item = &top;
 			if(!functions[i]->category().empty()) {
-				cat = functions[i]->category();std::cout << "10950" << endl;
+				cat = functions[i]->category();
 				size_t cat_i = cat.find("/"); size_t cat_i_prev = 0;
-				bool b = false;std::cout << "10952" << endl;
+				bool b = false;
 				while(true) {
 					if(cat_i == string::npos) {
-						cat_sub = cat.substr(cat_i_prev, cat.length() - cat_i_prev);std::cout << "10955" << endl;
+						cat_sub = cat.substr(cat_i_prev, cat.length() - cat_i_prev);
 					} else {
-						cat_sub = cat.substr(cat_i_prev, cat_i - cat_i_prev);std::cout << "10957" << endl;
+						cat_sub = cat.substr(cat_i_prev, cat_i - cat_i_prev);
 					}
-					b = false;std::cout << "10959" << endl;
+					b = false;
 					for(size_t i2 = 0; i2 < item->items.size(); i2++) {
 						if(cat_sub == item->items[i2].category) {
-							item = &item->items[i2];std::cout << "10962" << endl;
-							b = true;std::cout << "10963" << endl;
+							item = &item->items[i2];
+							b = true;
 							break;
 						}
 					}
 					if(!b) {
-						item->items.resize(item->items.size() + 1);std::cout << "10968" << endl;
+						item->items.resize(item->items.size() + 1);
 						item->items[item->items.size() - 1].node = xmlNewTextChild(item->node, NULL, (xmlChar*) "category", NULL);
-						item = &item->items[item->items.size() - 1];std::cout << "10970" << endl;
-						item->category = cat_sub;std::cout << "10971" << endl;
+						item = &item->items[item->items.size() - 1];
+						item->category = cat_sub;
 						if(save_global) {
 							xmlNewTextChild(item->node, NULL, (xmlChar*) "_title", (xmlChar*) item->category.c_str());
 						} else {
@@ -10988,11 +11121,11 @@ int Calculator::saveFunctions(const char* file_name, bool save_global) {
 					if(cat_i == string::npos) {
 						break;
 					}
-					cat_i_prev = cat_i + 1;std::cout << "10981" << endl;
+					cat_i_prev = cat_i + 1;
 					cat_i = cat.find("/", cat_i_prev);
 				}
 			}
-			cur = item->node;std::cout << "10985" << endl;
+			cur = item->node;
 			if(!save_global && !functions[i]->isLocal() && functions[i]->hasChanged()) {
 				if(functions[i]->isActive()) {
 					xmlNewTextChild(cur, NULL, (xmlChar*) "activate", (xmlChar*) functions[i]->referenceName().c_str());
@@ -11015,8 +11148,9 @@ int Calculator::saveFunctions(const char* file_name, bool save_global) {
 						xmlNewTextChild(newnode, NULL, (xmlChar*) "title", (xmlChar*) functions[i]->title(false).c_str());
 					}
 				}
-				SAVE_NAMES(functions[i])				if(!functions[i]->description().empty()) {
-					str = functions[i]->description();std::cout << "11009" << endl;
+				SAVE_NAMES(functions[i])
+				if(!functions[i]->description().empty()) {
+					str = functions[i]->description();
 					if(save_global) {
 						xmlNewTextChild(newnode, NULL, (xmlChar*) "_description", (xmlChar*) str.c_str());
 					} else {
@@ -11025,9 +11159,9 @@ int Calculator::saveFunctions(const char* file_name, bool save_global) {
 				}
 				if(!functions[i]->example(true).empty()) newnode2 = xmlNewTextChild(newnode, NULL, (xmlChar*) "example", (xmlChar*) functions[i]->example(true).c_str());
 				if(functions[i]->isBuiltin()) {
-					cur = newnode;std::cout << "11018" << endl;
+					cur = newnode;
 					for(size_t i2 = 1; i2 <= functions[i]->lastArgumentDefinitionIndex(); i2++) {
-						arg = functions[i]->getArgumentDefinition(i2);std::cout << "11020" << endl;
+						arg = functions[i]->getArgumentDefinition(i2);
 						if(arg && !arg->name().empty()) {
 							newnode = xmlNewTextChild(cur, NULL, (xmlChar*) "argument", NULL);
 							if(save_global) {
@@ -11051,9 +11185,9 @@ int Calculator::saveFunctions(const char* file_name, bool save_global) {
 					if(!functions[i]->condition().empty()) {
 						xmlNewTextChild(newnode, NULL, (xmlChar*) "condition", (xmlChar*) functions[i]->condition().c_str());
 					}
-					cur = newnode;std::cout << "11044" << endl;
+					cur = newnode;
 					for(size_t i2 = 1; i2 <= functions[i]->lastArgumentDefinitionIndex(); i2++) {
-						arg = functions[i]->getArgumentDefinition(i2);std::cout << "11046" << endl;
+						arg = functions[i]->getArgumentDefinition(i2);
 						if(arg) {
 							newnode = xmlNewTextChild(cur, NULL, (xmlChar*) "argument", NULL);
 							if(!arg->name().empty()) {
@@ -11096,7 +11230,7 @@ int Calculator::saveFunctions(const char* file_name, bool save_global) {
 							}
 							switch(arg->type()) {
 								case ARGUMENT_TYPE_INTEGER: {
-									iarg = (IntegerArgument*) arg;std::cout << "11089" << endl;
+									iarg = (IntegerArgument*) arg;
 									if(iarg->min()) {
 										xmlNewTextChild(newnode, NULL, (xmlChar*) "min", (xmlChar*) iarg->min()->print(save_printoptions).c_str());
 									}
@@ -11106,7 +11240,7 @@ int Calculator::saveFunctions(const char* file_name, bool save_global) {
 									break;
 								}
 								case ARGUMENT_TYPE_NUMBER: {
-									farg = (NumberArgument*) arg;std::cout << "11099" << endl;
+									farg = (NumberArgument*) arg;
 									if(farg->min()) {
 										newnode2 = xmlNewTextChild(newnode, NULL, (xmlChar*) "min", (xmlChar*) farg->min()->print(save_printoptions).c_str());
 										if(farg->includeEqualsMin()) {
@@ -11139,51 +11273,51 @@ int Calculator::saveFunctions(const char* file_name, bool save_global) {
 		}
 	}
 	int returnvalue = xmlSaveFormatFile(file_name, doc, 1);
-	xmlFreeDoc(doc);std::cout << "11132" << endl;
+	xmlFreeDoc(doc);
 	return returnvalue;
 }
 int Calculator::saveDataSets(const char* file_name, bool save_global) {
 	xmlDocPtr doc = xmlNewDoc((xmlChar*) "1.0");
-	xmlNodePtr cur, newnode, newnode2;std::cout << "11137" << endl;
+	xmlNodePtr cur, newnode, newnode2;
 	doc->children = xmlNewDocNode(doc, NULL, (xmlChar*) "QALCULATE", NULL);
 	xmlNewProp(doc->children, (xmlChar*) "version", (xmlChar*) VERSION);
-	const ExpressionName *ename;std::cout << "11140" << endl;
-	node_tree_item top;std::cout << "11141" << endl;
+	const ExpressionName *ename;
+	node_tree_item top;
 	top.category = "";
-	top.node = doc->children;std::cout << "11143" << endl;
-	node_tree_item *item;std::cout << "11144" << endl;
-	string cat, cat_sub;std::cout << "11145" << endl;
-	Argument *arg;std::cout << "11146" << endl;
-	DataSet *ds;std::cout << "11147" << endl;
-	DataProperty *dp;std::cout << "11148" << endl;
-	string str;std::cout << "11149" << endl;
+	top.node = doc->children;
+	node_tree_item *item;
+	string cat, cat_sub;
+	Argument *arg;
+	DataSet *ds;
+	DataProperty *dp;
+	string str;
 	for(size_t i = 0; i < functions.size(); i++) {
 		if(functions[i]->subtype() == SUBTYPE_DATA_SET && (save_global || functions[i]->isLocal() || functions[i]->hasChanged())) {
-			item = &top;std::cout << "11152" << endl;
-			ds = (DataSet*) functions[i];std::cout << "11153" << endl;
+			item = &top;
+			ds = (DataSet*) functions[i];
 			if(!ds->category().empty()) {
-				cat = ds->category();std::cout << "11155" << endl;
+				cat = ds->category();
 				size_t cat_i = cat.find("/"); size_t cat_i_prev = 0;
-				bool b = false;std::cout << "11157" << endl;
+				bool b = false;
 				while(true) {
 					if(cat_i == string::npos) {
-						cat_sub = cat.substr(cat_i_prev, cat.length() - cat_i_prev);std::cout << "11160" << endl;
+						cat_sub = cat.substr(cat_i_prev, cat.length() - cat_i_prev);
 					} else {
-						cat_sub = cat.substr(cat_i_prev, cat_i - cat_i_prev);std::cout << "11162" << endl;
+						cat_sub = cat.substr(cat_i_prev, cat_i - cat_i_prev);
 					}
-					b = false;std::cout << "11164" << endl;
+					b = false;
 					for(size_t i2 = 0; i2 < item->items.size(); i2++) {
 						if(cat_sub == item->items[i2].category) {
-							item = &item->items[i2];std::cout << "11167" << endl;
-							b = true;std::cout << "11168" << endl;
+							item = &item->items[i2];
+							b = true;
 							break;
 						}
 					}
 					if(!b) {
-						item->items.resize(item->items.size() + 1);std::cout << "11173" << endl;
+						item->items.resize(item->items.size() + 1);
 						item->items[item->items.size() - 1].node = xmlNewTextChild(item->node, NULL, (xmlChar*) "category", NULL);
-						item = &item->items[item->items.size() - 1];std::cout << "11175" << endl;
-						item->category = cat_sub;std::cout << "11176" << endl;
+						item = &item->items[item->items.size() - 1];
+						item->category = cat_sub;
 						if(save_global) {
 							xmlNewTextChild(item->node, NULL, (xmlChar*) "_title", (xmlChar*) item->category.c_str());
 						} else {
@@ -11193,11 +11327,11 @@ int Calculator::saveDataSets(const char* file_name, bool save_global) {
 					if(cat_i == string::npos) {
 						break;
 					}
-					cat_i_prev = cat_i + 1;std::cout << "11186" << endl;
+					cat_i_prev = cat_i + 1;
 					cat_i = cat.find("/", cat_i_prev);
 				}
 			}
-			cur = item->node;std::cout << "11190" << endl;
+			cur = item->node;
 			if(save_global || ds->isLocal() || ds->hasChanged()) {
 				if(save_global || ds->isLocal()) {
 					newnode = xmlNewTextChild(cur, NULL, (xmlChar*) "dataset", NULL);
@@ -11217,8 +11351,9 @@ int Calculator::saveDataSets(const char* file_name, bool save_global) {
 				if((save_global || ds->isLocal()) && !ds->defaultDataFile().empty()) {
 					xmlNewTextChild(newnode, NULL, (xmlChar*) "datafile", (xmlChar*) ds->defaultDataFile().c_str());
 				}
-				SAVE_NAMES(ds)				if(!ds->description().empty()) {
-					str = ds->description();std::cout << "11211" << endl;
+				SAVE_NAMES(ds)
+				if(!ds->description().empty()) {
+					str = ds->description();
 					if(save_global) {
 						xmlNewTextChild(newnode, NULL, (xmlChar*) "_description", (xmlChar*) str.c_str());
 					} else {
@@ -11232,7 +11367,7 @@ int Calculator::saveDataSets(const char* file_name, bool save_global) {
 						xmlNewTextChild(newnode, NULL, (xmlChar*) "copyright", (xmlChar*) ds->copyright().c_str());
 					}
 				}
-				arg = ds->getArgumentDefinition(1);std::cout << "11225" << endl;
+				arg = ds->getArgumentDefinition(1);
 				if(arg && ((!save_global && !ds->isLocal()) || arg->name() != _("Object"))) {
 					newnode2 = xmlNewTextChild(newnode, NULL, (xmlChar*) "object_argument", NULL);
 					if(save_global) {
@@ -11241,7 +11376,7 @@ int Calculator::saveDataSets(const char* file_name, bool save_global) {
 						xmlNewTextChild(newnode2, NULL, (xmlChar*) "title", (xmlChar*) arg->name().c_str());
 					}
 				}
-				arg = ds->getArgumentDefinition(2);std::cout << "11234" << endl;
+				arg = ds->getArgumentDefinition(2);
 				if(arg && ((!save_global && !ds->isLocal()) || arg->name() != _("Property"))) {
 					newnode2 = xmlNewTextChild(newnode, NULL, (xmlChar*) "property_argument", NULL);
 					if(save_global) {
@@ -11253,8 +11388,8 @@ int Calculator::saveDataSets(const char* file_name, bool save_global) {
 				if((!save_global && !ds->isLocal()) || ds->getDefaultValue(2) != _("info")) {
 					xmlNewTextChild(newnode, NULL, (xmlChar*) "default_property", (xmlChar*) ds->getDefaultValue(2).c_str());
 				}
-				DataPropertyIter it;std::cout << "11246" << endl;
-				dp = ds->getFirstProperty(&it);std::cout << "11247" << endl;
+				DataPropertyIter it;
+				dp = ds->getFirstProperty(&it);
 				while(dp) {
 					if(save_global || ds->isLocal() || dp->isUserModified()) {
 						newnode2 = xmlNewTextChild(newnode, NULL, (xmlChar*) "property", NULL);
@@ -11310,10 +11445,10 @@ int Calculator::saveDataSets(const char* file_name, bool save_global) {
 									break;
 								}
 							} else {
-								str += ':';std::cout << "11303" << endl;
+								str += ':';
 							}
-							str += dp->getName(i2);std::cout << "11305" << endl;
-							i2++;std::cout << "11306" << endl;
+							str += dp->getName(i2);
+							i2++;
 							if(i2 > dp->countNames()) {
 								if(save_global) {
 									xmlNewTextChild(newnode2, NULL, (xmlChar*) "_names", (xmlChar*) str.c_str());
@@ -11322,10 +11457,10 @@ int Calculator::saveDataSets(const char* file_name, bool save_global) {
 								}
 								break;
 							}
-							str += ',';std::cout << "11315" << endl;
+							str += ',';
 						}
 						if(!dp->description().empty()) {
-							str = dp->description();std::cout << "11318" << endl;
+							str = dp->description();
 							if(save_global) {
 								xmlNewTextChild(newnode2, NULL, (xmlChar*) "_description", (xmlChar*) str.c_str());
 							} else {
@@ -11333,13 +11468,13 @@ int Calculator::saveDataSets(const char* file_name, bool save_global) {
 							}
 						}
 					}
-					dp = ds->getNextProperty(&it);std::cout << "11326" << endl;
+					dp = ds->getNextProperty(&it);
 				}
 			}
 		}
 	}
 	int returnvalue = xmlSaveFormatFile(file_name, doc, 1);
-	xmlFreeDoc(doc);std::cout << "11332" << endl;
+	xmlFreeDoc(doc);
 	return returnvalue;
 }
 
@@ -11349,65 +11484,65 @@ bool Calculator::importCSV(MathStructure &mstruct, const char *file_name, int fi
 		return false;
 	}
 	if(first_row < 1) {
-		first_row = 1;std::cout << "11342" << endl;
+		first_row = 1;
 	}
-	char line[10000];std::cout << "11344" << endl;
-	string stmp, str1, str2;std::cout << "11345" << endl;
-	long int row = 0, rows = 1;std::cout << "11346" << endl;
-	int columns = 1;std::cout << "11347" << endl;
-	int column;std::cout << "11348" << endl;
-	mstruct = m_empty_matrix;std::cout << "11349" << endl;
-	size_t is, is_n;std::cout << "11350" << endl;
-	bool v_added = false;std::cout << "11351" << endl;
+	char line[10000];
+	string stmp, str1, str2;
+	long int row = 0, rows = 1;
+	int columns = 1;
+	int column;
+	mstruct = m_empty_matrix;
+	size_t is, is_n;
+	bool v_added = false;
 	while(fgets(line, 10000, file)) {
-		row++;std::cout << "11353" << endl;
+		row++;
 		if(row >= first_row) {
-			stmp = line;std::cout << "11355" << endl;
-			remove_blank_ends(stmp);std::cout << "11356" << endl;
+			stmp = line;
+			remove_blank_ends(stmp);
 			if(row == first_row) {
 				if(stmp.empty()) {
-					row--;std::cout << "11359" << endl;
+					row--;
 				} else {
-					is = 0;std::cout << "11361" << endl;
+					is = 0;
 					while((is_n = stmp.find(delimiter, is)) != string::npos) {
-						columns++;std::cout << "11363" << endl;
+						columns++;
 						if(headers) {
-							str1 = stmp.substr(is, is_n - is);std::cout << "11365" << endl;
-							remove_blank_ends(str1);std::cout << "11366" << endl;
-							headers->push_back(str1);std::cout << "11367" << endl;
+							str1 = stmp.substr(is, is_n - is);
+							remove_blank_ends(str1);
+							headers->push_back(str1);
 						}
-						is = is_n + delimiter.length();std::cout << "11369" << endl;
+						is = is_n + delimiter.length();
 					}
 					if(headers) {
-						str1 = stmp.substr(is, stmp.length() - is);std::cout << "11372" << endl;
-						remove_blank_ends(str1);std::cout << "11373" << endl;
-						headers->push_back(str1);std::cout << "11374" << endl;
+						str1 = stmp.substr(is, stmp.length() - is);
+						remove_blank_ends(str1);
+						headers->push_back(str1);
 					}
-					mstruct.resizeMatrix(1, columns, m_undefined);std::cout << "11376" << endl;
+					mstruct.resizeMatrix(1, columns, m_undefined);
 				}
 			}
 			if((!headers || row > first_row) && !stmp.empty()) {
-				is = 0;std::cout << "11380" << endl;
-				column = 1;std::cout << "11381" << endl;
+				is = 0;
+				column = 1;
 				if(v_added) {
-					mstruct.addRow(m_undefined);std::cout << "11383" << endl;
-					rows++;std::cout << "11384" << endl;
+					mstruct.addRow(m_undefined);
+					rows++;
 				}
 				while(column <= columns) {
-					is_n = stmp.find(delimiter, is);std::cout << "11387" << endl;
+					is_n = stmp.find(delimiter, is);
 					if(is_n == string::npos) {
-						str1 = stmp.substr(is, stmp.length() - is);std::cout << "11389" << endl;
+						str1 = stmp.substr(is, stmp.length() - is);
 					} else {
-						str1 = stmp.substr(is, is_n - is);std::cout << "11391" << endl;
-						is = is_n + delimiter.length();std::cout << "11392" << endl;
+						str1 = stmp.substr(is, is_n - is);
+						is = is_n + delimiter.length();
 					}
-					parse(&mstruct[rows - 1][column - 1], str1);std::cout << "11394" << endl;
-					column++;std::cout << "11395" << endl;
+					parse(&mstruct[rows - 1][column - 1], str1);
+					column++;
 					if(is_n == string::npos) {
 						break;
 					}
 				}
-				v_added = true;std::cout << "11400" << endl;
+				v_added = true;
 			}
 		}
 	}
@@ -11420,144 +11555,144 @@ bool Calculator::importCSV(const char *file_name, int first_row, bool headers, s
 		return false;
 	}
 	if(first_row < 1) {
-		first_row = 1;std::cout << "11413" << endl;
+		first_row = 1;
 	}
-	string filestr = file_name;std::cout << "11415" << endl;
-	remove_blank_ends(filestr);std::cout << "11416" << endl;
+	string filestr = file_name;
+	remove_blank_ends(filestr);
 	size_t i = filestr.find_last_of("/");
 	if(i != string::npos) {
-		filestr = filestr.substr(i + 1, filestr.length() - (i + 1));std::cout << "11419" << endl;
+		filestr = filestr.substr(i + 1, filestr.length() - (i + 1));
 	}
-	remove_blank_ends(name);std::cout << "11421" << endl;
+	remove_blank_ends(name);
 	if(name.empty()) {
-		name = filestr;std::cout << "11423" << endl;
+		name = filestr;
 		i = name.find_last_of("/");
 		if(i != string::npos) name = name.substr(i + 1, name.length() - i);
 		i = name.find_last_of(".");
 		if(i != string::npos) name = name.substr(0, i);
 	}
 
-	char line[10000];std::cout << "11430" << endl;
-	string stmp, str1, str2;std::cout << "11431" << endl;
-	int row = 0;std::cout << "11432" << endl;
-	int columns = 1, rows = 1;std::cout << "11433" << endl;
-	int column;std::cout << "11434" << endl;
-	vector<string> header;std::cout << "11435" << endl;
-	vector<MathStructure> vectors;std::cout << "11436" << endl;
-	MathStructure mstruct = m_empty_matrix;std::cout << "11437" << endl;
-	size_t is, is_n;std::cout << "11438" << endl;
-	bool v_added = false;std::cout << "11439" << endl;
+	char line[10000];
+	string stmp, str1, str2;
+	int row = 0;
+	int columns = 1, rows = 1;
+	int column;
+	vector<string> header;
+	vector<MathStructure> vectors;
+	MathStructure mstruct = m_empty_matrix;
+	size_t is, is_n;
+	bool v_added = false;
 	while(fgets(line, 10000, file)) {
-		row++;std::cout << "11441" << endl;
+		row++;
 		if(row >= first_row) {
-			stmp = line;std::cout << "11443" << endl;
-			remove_blank_ends(stmp);std::cout << "11444" << endl;
+			stmp = line;
+			remove_blank_ends(stmp);
 			if(row == first_row) {
 				if(stmp.empty()) {
-					row--;std::cout << "11447" << endl;
+					row--;
 				} else {
-					is = 0;std::cout << "11449" << endl;
+					is = 0;
 					while((is_n = stmp.find(delimiter, is)) != string::npos) {
-						columns++;std::cout << "11451" << endl;
+						columns++;
 						if(headers) {
-							str1 = stmp.substr(is, is_n - is);std::cout << "11453" << endl;
-							remove_blank_ends(str1);std::cout << "11454" << endl;
-							header.push_back(str1);std::cout << "11455" << endl;
+							str1 = stmp.substr(is, is_n - is);
+							remove_blank_ends(str1);
+							header.push_back(str1);
 						}
 						if(!to_matrix) {
-							vectors.push_back(m_empty_vector);std::cout << "11458" << endl;
+							vectors.push_back(m_empty_vector);
 						}
-						is = is_n + delimiter.length();std::cout << "11460" << endl;
+						is = is_n + delimiter.length();
 					}
 					if(headers) {
-						str1 = stmp.substr(is, stmp.length() - is);std::cout << "11463" << endl;
-						remove_blank_ends(str1);std::cout << "11464" << endl;
-						header.push_back(str1);std::cout << "11465" << endl;
+						str1 = stmp.substr(is, stmp.length() - is);
+						remove_blank_ends(str1);
+						header.push_back(str1);
 					}
 					if(to_matrix) {
-						mstruct.resizeMatrix(1, columns, m_undefined);std::cout << "11468" << endl;
+						mstruct.resizeMatrix(1, columns, m_undefined);
 					} else {
-						vectors.push_back(m_empty_vector);std::cout << "11470" << endl;
+						vectors.push_back(m_empty_vector);
 					}
 				}
 			}
 			if((!headers || row > first_row) && !stmp.empty()) {
 				if(to_matrix && v_added) {
-					mstruct.addRow(m_undefined);std::cout << "11476" << endl;
-					rows++;std::cout << "11477" << endl;
+					mstruct.addRow(m_undefined);
+					rows++;
 				}
-				is = 0;std::cout << "11479" << endl;
-				column = 1;std::cout << "11480" << endl;
+				is = 0;
+				column = 1;
 				while(column <= columns) {
-					is_n = stmp.find(delimiter, is);std::cout << "11482" << endl;
+					is_n = stmp.find(delimiter, is);
 					if(is_n == string::npos) {
-						str1 = stmp.substr(is, stmp.length() - is);std::cout << "11484" << endl;
+						str1 = stmp.substr(is, stmp.length() - is);
 					} else {
-						str1 = stmp.substr(is, is_n - is);std::cout << "11486" << endl;
-						is = is_n + delimiter.length();std::cout << "11487" << endl;
+						str1 = stmp.substr(is, is_n - is);
+						is = is_n + delimiter.length();
 					}
 					if(to_matrix) {
-						parse(&mstruct[rows - 1][column - 1], str1);std::cout << "11490" << endl;
+						parse(&mstruct[rows - 1][column - 1], str1);
 					} else {
-						vectors[column - 1].addChild(parse(str1));std::cout << "11492" << endl;
+						vectors[column - 1].addChild(parse(str1));
 					}
-					column++;std::cout << "11494" << endl;
+					column++;
 					if(is_n == string::npos) {
 						break;
 					}
 				}
 				for(; column <= columns; column++) {
 					if(!to_matrix) {
-						vectors[column - 1].addChild(m_undefined);std::cout << "11501" << endl;
+						vectors[column - 1].addChild(m_undefined);
 					}
 				}
-				v_added = true;std::cout << "11504" << endl;
+				v_added = true;
 			}
 		}
 	}
 	if(to_matrix) {
-		addVariable(new KnownVariable(category, name, mstruct, title));std::cout << "11509" << endl;
+		addVariable(new KnownVariable(category, name, mstruct, title));
 	} else {
 		if(vectors.size() > 1) {
 			if(!category.empty()) {
 				category += "/";
 			}
-			category += name;std::cout << "11515" << endl;
+			category += name;
 		}
 		for(size_t i = 0; i < vectors.size(); i++) {
 			str1 = "";
 			str2 = "";
 			if(vectors.size() > 1) {
-				str1 += name;std::cout << "11521" << endl;
+				str1 += name;
 				str1 += "_";
 				if(title.empty()) {
-					str2 += name;std::cout << "11524" << endl;
+					str2 += name;
 					str2 += " ";
 				} else {
-					str2 += title;std::cout << "11527" << endl;
+					str2 += title;
 					str2 += " ";
 				}
 				if(i < header.size()) {
-					str1 += header[i];std::cout << "11531" << endl;
-					str2 += header[i];std::cout << "11532" << endl;
+					str1 += header[i];
+					str2 += header[i];
 				} else {
 					str1 += _("column");
 					str1 += "_";
-					str1 += i2s(i + 1);std::cout << "11536" << endl;
+					str1 += i2s(i + 1);
 					str2 += _("Column ");
-					str2 += i2s(i + 1);std::cout << "11538" << endl;
+					str2 += i2s(i + 1);
 				}
 				gsub(" ", "_", str1);
 			} else {
-				str1 = name;std::cout << "11542" << endl;
-				str2 = title;std::cout << "11543" << endl;
+				str1 = name;
+				str2 = title;
 				if(i < header.size()) {
 					str2 += " (";
-					str2 += header[i];std::cout << "11546" << endl;
+					str2 += header[i];
 					str2 += ")";
 				}
 			}
-			addVariable(new KnownVariable(category, str1, vectors[i], str2));std::cout << "11550" << endl;
+			addVariable(new KnownVariable(category, str1, vectors[i], str2));
 		}
 	}
 	return true;
@@ -11567,8 +11702,8 @@ bool Calculator::exportCSV(const MathStructure &mstruct, const char *file_name, 
 	if(file == NULL) {
 		return false;
 	}
-	MathStructure mcsv(mstruct);std::cout << "11560" << endl;
-	PrintOptions po;std::cout << "11561" << endl;
+	MathStructure mcsv(mstruct);
+	PrintOptions po;
 	po.number_fraction_format = FRACTION_DECIMAL;
 	po.decimalpoint_sign = ".";
 	po.comma_sign = ",";
@@ -11577,26 +11712,26 @@ bool Calculator::exportCSV(const MathStructure &mstruct, const char *file_name, 
 			for(size_t i2 = 0; i2 < mcsv[i].size(); i2++) {
 				if(i2 > 0) fputs(delimiter.c_str(), file);
 				mcsv[i][i2].format(po);
-				fputs(mcsv[i][i2].print(po).c_str(), file);std::cout << "11570" << endl;
+				fputs(mcsv[i][i2].print(po).c_str(), file);
 			}
 			fputs("\n", file);
 		}
 	} else if(mcsv.isVector()) {
 		for(size_t i = 0; i < mcsv.size(); i++) {
 			mcsv[i].format(po);
-			fputs(mcsv[i].print(po).c_str(), file);std::cout << "11577" << endl;
+			fputs(mcsv[i].print(po).c_str(), file);
 			fputs("\n", file);
 		}
 	} else {
 		mcsv.format(po);
-		fputs(mcsv.print(po).c_str(), file);std::cout << "11582" << endl;
+		fputs(mcsv.print(po).c_str(), file);
 		fputs("\n", file);
 	}
-	fclose(file);std::cout << "11585" << endl;
+	fclose(file);
 	return true;
 }
 int Calculator::testCondition(string expression) {
-	MathStructure mstruct = calculate(expression);std::cout << "11589" << endl;
+	MathStructure mstruct = calculate(expression);
 	if(mstruct.isNumber()) {
 		if(mstruct.number().isPositive()) {
 			return 1;
@@ -11608,10 +11743,10 @@ int Calculator::testCondition(string expression) {
 }
 
 void Calculator::startPrintControl(int milli_timeout) {
-	startControl(milli_timeout);std::cout << "11601" << endl;
+	startControl(milli_timeout);
 }
 void Calculator::abortPrint() {
-	abort();std::cout << "11604" << endl;
+	abort();
 }
 bool Calculator::printingAborted() {
 	return aborted();
@@ -11626,25 +11761,25 @@ bool Calculator::printingControlled() const {
 	return isControlled();
 }
 void Calculator::stopPrintControl() {
-	stopControl();std::cout << "11619" << endl;
+	stopControl();
 }
 
 void Calculator::startControl(int milli_timeout) {
-	b_controlled = true;std::cout << "11623" << endl;
-	i_aborted = 0;std::cout << "11624" << endl;
-	i_timeout = milli_timeout;std::cout << "11625" << endl;
+	b_controlled = true;
+	i_aborted = 0;
+	i_timeout = milli_timeout;
 	if(i_timeout > 0) {
 #ifndef CLOCK_MONOTONIC
-		gettimeofday(&t_end, NULL);std::cout << "11628" << endl;
+		gettimeofday(&t_end, NULL);
 #else
-		struct timespec ts;std::cout << "11630" << endl;
-		clock_gettime(CLOCK_MONOTONIC, &ts);std::cout << "11631" << endl;
-		t_end.tv_sec = ts.tv_sec;std::cout << "11632" << endl;
-		t_end.tv_usec = ts.tv_nsec / 1000;std::cout << "11633" << endl;
+		struct timespec ts;
+		clock_gettime(CLOCK_MONOTONIC, &ts);
+		t_end.tv_sec = ts.tv_sec;
+		t_end.tv_usec = ts.tv_nsec / 1000;
 #endif
-		long int usecs = t_end.tv_usec + (long int) milli_timeout * 1000;std::cout << "11635" << endl;
-		t_end.tv_usec = usecs % 1000000;std::cout << "11636" << endl;
-		t_end.tv_sec += usecs / 1000000;std::cout << "11637" << endl;
+		long int usecs = t_end.tv_usec + (long int) milli_timeout * 1000;
+		t_end.tv_usec = usecs % 1000000;
+		t_end.tv_sec += usecs / 1000000;
 	}
 }
 bool Calculator::aborted() {
@@ -11652,15 +11787,15 @@ bool Calculator::aborted() {
 	if(i_aborted > 0) return true;
 	if(i_timeout > 0) {
 #ifndef CLOCK_MONOTONIC
-		struct timeval tv;std::cout << "11645" << endl;
-		gettimeofday(&tv, NULL);std::cout << "11646" << endl;
+		struct timeval tv;
+		gettimeofday(&tv, NULL);
 		if(tv.tv_sec > t_end.tv_sec || (tv.tv_sec == t_end.tv_sec && tv.tv_usec > t_end.tv_usec)) {
 #else
-		struct timespec tv;std::cout << "11649" << endl;
-		clock_gettime(CLOCK_MONOTONIC, &tv);std::cout << "11650" << endl;
+		struct timespec tv;
+		clock_gettime(CLOCK_MONOTONIC, &tv);
 		if(tv.tv_sec > t_end.tv_sec || (tv.tv_sec == t_end.tv_sec && tv.tv_nsec / 1000 > t_end.tv_usec)) {
 #endif
-			i_aborted = 2;std::cout << "11653" << endl;
+			i_aborted = 2;
 			return true;
 		}
 	}
@@ -11674,30 +11809,30 @@ bool Calculator::isControlled() const {
 	return b_controlled;
 }
 void Calculator::stopControl() {
-	b_controlled = false;std::cout << "11667" << endl;
-	i_aborted = 0;std::cout << "11668" << endl;
-	i_timeout = 0;std::cout << "11669" << endl;
+	b_controlled = false;
+	i_aborted = 0;
+	i_timeout = 0;
 }
 
 
 bool Calculator::loadExchangeRates() {
-	xmlDocPtr doc = NULL;std::cout << "11674" << endl;
-	xmlNodePtr cur = NULL;std::cout << "11675" << endl;
-	xmlChar *value;std::cout << "11676" << endl;
-	bool global_file = false;std::cout << "11677" << endl;
-	string currency, rate, sdate;std::cout << "11678" << endl;
+	xmlDocPtr doc = NULL;
+	xmlNodePtr cur = NULL;
+	xmlChar *value;
+	bool global_file = false;
+	string currency, rate, sdate;
 	string filename = buildPath(getLocalDataDir(), "eurofxref-daily.xml");
 	if(fileExists(filename)) {
-		doc = xmlParseFile(filename.c_str());std::cout << "11681" << endl;
+		doc = xmlParseFile(filename.c_str());
 	} else {
 #ifndef _WIN32
 		string filename_old = buildPath(getOldLocalDir(), "eurofxref-daily.xml");
 		if(fileExists(filename)) {
-			doc = xmlParseFile(filename_old.c_str());std::cout << "11686" << endl;
+			doc = xmlParseFile(filename_old.c_str());
 			if(doc) {
-				recursiveMakeDir(getLocalDataDir());std::cout << "11688" << endl;
-				move_file(filename_old.c_str(), filename.c_str());std::cout << "11689" << endl;
-				removeDir(getOldLocalDir());std::cout << "11690" << endl;
+				recursiveMakeDir(getLocalDataDir());
+				move_file(filename_old.c_str(), filename.c_str());
+				removeDir(getOldLocalDir());
 			}
 		}
 #endif
@@ -11706,23 +11841,23 @@ bool Calculator::loadExchangeRates() {
 	if(!cur) {
 		if(doc) xmlFreeDoc(doc);
 		filename = buildPath(getGlobalDefinitionsDir(), "eurofxref-daily.xml");
-		doc = xmlParseFile(filename.c_str());std::cout << "11699" << endl;
+		doc = xmlParseFile(filename.c_str());
 		if(!doc) return false;
-		cur = xmlDocGetRootElement(doc);std::cout << "11701" << endl;
+		cur = xmlDocGetRootElement(doc);
 		if(!cur) return false;
-		global_file = true;std::cout << "11703" << endl;
+		global_file = true;
 	}
-	Unit *u;std::cout << "11705" << endl;
+	Unit *u;
 	while(cur) {
 		if(!xmlStrcmp(cur->name, (const xmlChar*) "Cube")) {
 			if(global_file && sdate.empty()) {
 				XML_GET_STRING_FROM_PROP(cur, "time", sdate);
-				QalculateDateTime qdate;std::cout << "11710" << endl;
+				QalculateDateTime qdate;
 				if(qdate.set(sdate)) {
-					exchange_rates_time[0] = (time_t) qdate.timestamp().ulintValue();std::cout << "11712" << endl;
+					exchange_rates_time[0] = (time_t) qdate.timestamp().ulintValue();
 					if(exchange_rates_time[0] > exchange_rates_check_time[0]) exchange_rates_check_time[0] = exchange_rates_time[0];
 				} else {
-					sdate.clear();std::cout << "11715" << endl;
+					sdate.clear();
 				}
 			}
 			XML_GET_STRING_FROM_PROP(cur, "currency", currency);
@@ -11730,66 +11865,66 @@ bool Calculator::loadExchangeRates() {
 				XML_GET_STRING_FROM_PROP(cur, "rate", rate);
 				if(!rate.empty()) {
 					rate = "1/" + rate;
-					u = getUnit(currency);std::cout << "11723" << endl;
+					u = getUnit(currency);
 					if(!u) {
 						u = addUnit(new AliasUnit(_("Currency"), currency, "", "", "", u_euro, rate, 1, "", false, true));
 					} else if(u->subtype() == SUBTYPE_ALIAS_UNIT) {
-						((AliasUnit*) u)->setExpression(rate);std::cout << "11727" << endl;
+						((AliasUnit*) u)->setExpression(rate);
 					}
 					if(u) {
-						u->setApproximate();std::cout << "11730" << endl;
-						u->setPrecision(-2);std::cout << "11731" << endl;
-						u->setChanged(false);std::cout << "11732" << endl;
+						u->setApproximate();
+						u->setPrecision(-2);
+						u->setChanged(false);
 					}
 				}
 			}
 		}
 		if(cur->children) {
-			cur = cur->children;std::cout << "11738" << endl;
+			cur = cur->children;
 		} else if(cur->next) {
-			cur = cur->next;std::cout << "11740" << endl;
+			cur = cur->next;
 		} else {
-			cur = cur->parent;std::cout << "11742" << endl;
+			cur = cur->parent;
 			if(cur) {
-				cur = cur->next;std::cout << "11744" << endl;
+				cur = cur->next;
 			}
 		}
 	}
-	xmlFreeDoc(doc);std::cout << "11748" << endl;
+	xmlFreeDoc(doc);
 	if(sdate.empty()) {
-		struct stat stats;std::cout << "11750" << endl;
+		struct stat stats;
 		if(stat(filename.c_str(), &stats) == 0) {
 			if(exchange_rates_time[0] >= stats.st_mtime) {
 #ifdef _WIN32
-				struct _utimbuf new_times;std::cout << "11754" << endl;
+				struct _utimbuf new_times;
 #else
-				struct utimbuf new_times;std::cout << "11756" << endl;
+				struct utimbuf new_times;
 #endif
-				struct tm *temptm = localtime(&exchange_rates_time[0]);std::cout << "11758" << endl;
+				struct tm *temptm = localtime(&exchange_rates_time[0]);
 				if(temptm) {
-					struct tm extm = *temptm;std::cout << "11760" << endl;
-					time_t time_now = time(NULL);std::cout << "11761" << endl;
-					struct tm *newtm = localtime(&time_now);std::cout << "11762" << endl;
+					struct tm extm = *temptm;
+					time_t time_now = time(NULL);
+					struct tm *newtm = localtime(&time_now);
 					if(newtm && newtm->tm_mday != extm.tm_mday) {
-						newtm->tm_hour = extm.tm_hour;std::cout << "11764" << endl;
-						newtm->tm_min = extm.tm_min;std::cout << "11765" << endl;
-						newtm->tm_sec = extm.tm_sec;std::cout << "11766" << endl;
-						exchange_rates_time[0] = mktime(newtm);std::cout << "11767" << endl;
+						newtm->tm_hour = extm.tm_hour;
+						newtm->tm_min = extm.tm_min;
+						newtm->tm_sec = extm.tm_sec;
+						exchange_rates_time[0] = mktime(newtm);
 					} else {
-						time(&exchange_rates_time[0]);std::cout << "11769" << endl;
+						time(&exchange_rates_time[0]);
 					}
 				} else {
-					time(&exchange_rates_time[0]);std::cout << "11772" << endl;
+					time(&exchange_rates_time[0]);
 				}
-				new_times.modtime = exchange_rates_time[0];std::cout << "11774" << endl;
-				new_times.actime = exchange_rates_time[0];std::cout << "11775" << endl;
+				new_times.modtime = exchange_rates_time[0];
+				new_times.actime = exchange_rates_time[0];
 #ifdef _WIN32
-				_utime(filename.c_str(), &new_times);std::cout << "11777" << endl;
+				_utime(filename.c_str(), &new_times);
 #else
-				utime(filename.c_str(), &new_times);std::cout << "11779" << endl;
+				utime(filename.c_str(), &new_times);
 #endif
 			} else {
-				exchange_rates_time[0] = stats.st_mtime;std::cout << "11782" << endl;
+				exchange_rates_time[0] = stats.st_mtime;
 				if(exchange_rates_time[0] > exchange_rates_check_time[0]) exchange_rates_check_time[0] = exchange_rates_time[0];
 			}
 		}
@@ -11798,73 +11933,73 @@ bool Calculator::loadExchangeRates() {
 	filename = buildPath(getLocalDataDir(), "btc.json");
 	ifstream file2(filename.c_str());
 	if(file2.is_open()) {
-		std::stringstream ssbuffer2;std::cout << "11791" << endl;
-		ssbuffer2 << file2.rdbuf();std::cout << "11792" << endl;
-		string sbuffer = ssbuffer2.str();std::cout << "11793" << endl;
+		std::stringstream ssbuffer2;
+		ssbuffer2 << file2.rdbuf();
+		string sbuffer = ssbuffer2.str();
 		size_t i = sbuffer.find("\"amount\":");
 		if(i != string::npos) {
 			i = sbuffer.find("\"", i + 9);
 			if(i != string::npos) {
 				size_t i2 = sbuffer.find("\"", i + 1);
-				((AliasUnit*) u_btc)->setExpression(sbuffer.substr(i + 1, i2 - (i + 1)));std::cout << "11799" << endl;
+				((AliasUnit*) u_btc)->setExpression(sbuffer.substr(i + 1, i2 - (i + 1)));
 			}
 		}
-		file2.close();std::cout << "11802" << endl;
-		struct stat stats;std::cout << "11803" << endl;
+		file2.close();
+		struct stat stats;
 		if(stat(filename.c_str(), &stats) == 0) {
-			exchange_rates_time[1] = stats.st_mtime;std::cout << "11805" << endl;
+			exchange_rates_time[1] = stats.st_mtime;
 			if(exchange_rates_time[1] > exchange_rates_check_time[1]) exchange_rates_check_time[1] = exchange_rates_time[1];
 		}
 	} else {
-		exchange_rates_time[1] = ((time_t) 1531087L) * 1000;std::cout << "11809" << endl;
+		exchange_rates_time[1] = ((time_t) 1531087L) * 1000;
 		if(exchange_rates_time[1] > exchange_rates_check_time[1]) exchange_rates_check_time[1] = exchange_rates_time[1];
 	}
 
 	Unit *u_usd = getUnit("USD");
 	if(!u_usd) return true;
 
-	string sbuffer;std::cout << "11816" << endl;
+	string sbuffer;
 	filename = buildPath(getLocalDataDir(), "rates.html");
 	ifstream file(filename.c_str());
 	if(file.is_open()) {
-		std::stringstream ssbuffer;std::cout << "11820" << endl;
-		ssbuffer << file.rdbuf();std::cout << "11821" << endl;
-		sbuffer = ssbuffer.str();std::cout << "11822" << endl;
+		std::stringstream ssbuffer;
+		ssbuffer << file.rdbuf();
+		sbuffer = ssbuffer.str();
 	}
 	if(sbuffer.empty()) {
 		if(file.is_open()) file.close();
-		file.clear();std::cout << "11826" << endl;
+		file.clear();
 		filename = buildPath(getGlobalDefinitionsDir(), "rates.json");
-		file.open(filename.c_str());std::cout << "11828" << endl;
+		file.open(filename.c_str());
 		if(!file.is_open()) return true;
-		std::stringstream ssbuffer;std::cout << "11830" << endl;
-		ssbuffer << file.rdbuf();std::cout << "11831" << endl;
-		sbuffer = ssbuffer.str();std::cout << "11832" << endl;
-		string sname;std::cout << "11833" << endl;
+		std::stringstream ssbuffer;
+		ssbuffer << file.rdbuf();
+		sbuffer = ssbuffer.str();
+		string sname;
 		size_t i = sbuffer.find("\"currency_code\":");
 		while(i != string::npos) {
-			i += 16;std::cout << "11836" << endl;
+			i += 16;
 			size_t i2 = sbuffer.find("\"", i);
 			if(i2 == string::npos) break;
 			size_t i3 = sbuffer.find("\"", i2 + 1);
 			if(i3 != string::npos && i3 - (i2 + 1) == 3) {
-				currency = sbuffer.substr(i2 + 1, i3 - (i2 + 1));std::cout << "11841" << endl;
+				currency = sbuffer.substr(i2 + 1, i3 - (i2 + 1));
 				if(currency.length() == 3 && currency[0] >= 'A' && currency[0] <= 'Z') {
-					u = getUnit(currency);std::cout << "11843" << endl;
+					u = getUnit(currency);
 					if(!u || (u->subtype() == SUBTYPE_ALIAS_UNIT && ((AliasUnit*) u)->firstBaseUnit() == u_usd)) {
 						i2 = sbuffer.find("\"rate\":", i3 + 1);
 						size_t i4 = sbuffer.find("}", i3 + 1);
 						if(i2 != string::npos && i2 < i4) {
 							i3 = sbuffer.find(",", i2 + 7);
-							rate = sbuffer.substr(i2 + 7, i3 - (i2 + 7));std::cout << "11849" << endl;
+							rate = sbuffer.substr(i2 + 7, i3 - (i2 + 7));
 							rate = "1/" + rate;
 							if(!u) {
 								i2 = sbuffer.find("\"name\":\"", i3 + 1);
 								if(i2 != string::npos && i2 < i4) {
 									i3 = sbuffer.find("\"", i2 + 8);
 									if(i3 != string::npos) {
-										sname = sbuffer.substr(i2 + 8, i3 - (i2 + 8));std::cout << "11856" << endl;
-										remove_blank_ends(sname);std::cout << "11857" << endl;
+										sname = sbuffer.substr(i2 + 8, i3 - (i2 + 8));
+										remove_blank_ends(sname);
 									}
 								} else {
 									sname = "";
@@ -11872,13 +12007,13 @@ bool Calculator::loadExchangeRates() {
 								u = addUnit(new AliasUnit(_("Currency"), currency, "", "", sname, u_usd, rate, 1, "", false, true), false, true);
 								if(u) u->setHidden(true);
 							} else {
-								((AliasUnit*) u)->setBaseUnit(u_usd);std::cout << "11865" << endl;
-								((AliasUnit*) u)->setExpression(rate);std::cout << "11866" << endl;
+								((AliasUnit*) u)->setBaseUnit(u_usd);
+								((AliasUnit*) u)->setExpression(rate);
 							}
 							if(u) {
-								u->setApproximate();std::cout << "11869" << endl;
-								u->setPrecision(-2);std::cout << "11870" << endl;
-								u->setChanged(false);std::cout << "11871" << endl;
+								u->setApproximate();
+								u->setPrecision(-2);
+								u->setChanged(false);
 							}
 						}
 					}
@@ -11886,66 +12021,66 @@ bool Calculator::loadExchangeRates() {
 			}
 			i = sbuffer.find("\"currency_code\":", i);
 		}
-		file.close();std::cout << "11879" << endl;
-		exchange_rates_time[2] = ((time_t) 1527199L) * 1000;std::cout << "11880" << endl;
+		file.close();
+		exchange_rates_time[2] = ((time_t) 1527199L) * 1000;
 		if(exchange_rates_time[2] > exchange_rates_check_time[2]) exchange_rates_check_time[2] = exchange_rates_time[2];
 	} else {
-		string sname;std::cout << "11883" << endl;
+		string sname;
 		size_t i = sbuffer.find("class=\'country\'");
 		while(i != string::npos) {
 			currency = ""; sname = ""; rate = "";
-			i += 15;std::cout << "11887" << endl;
+			i += 15;
 			size_t i2 = sbuffer.find("data-currency-code=\"", i);
 			if(i2 != string::npos) {
-				i2 += 19;std::cout << "11890" << endl;
+				i2 += 19;
 				size_t i3 = sbuffer.find("\"", i2 + 1);
 				if(i3 != string::npos) {
-					currency = sbuffer.substr(i2 + 1, i3 - (i2 + 1));std::cout << "11893" << endl;
-					remove_blank_ends(currency);std::cout << "11894" << endl;
+					currency = sbuffer.substr(i2 + 1, i3 - (i2 + 1));
+					remove_blank_ends(currency);
 				}
 			}
 			i2 = sbuffer.find("data-currency-name=\'", i);
 			if(i2 != string::npos) {
-				i2 += 19;std::cout << "11899" << endl;
+				i2 += 19;
 				size_t i3 = sbuffer.find("|", i2 + 1);
 				if(i3 != string::npos) {
-					sname = sbuffer.substr(i2 + 1, i3 - (i2 + 1));std::cout << "11902" << endl;
-					remove_blank_ends(sname);std::cout << "11903" << endl;
+					sname = sbuffer.substr(i2 + 1, i3 - (i2 + 1));
+					remove_blank_ends(sname);
 				}
 			}
 			i2 = sbuffer.find("data-rate=\'", i);
 			if(i2 != string::npos) {
-				i2 += 10;std::cout << "11908" << endl;
+				i2 += 10;
 				size_t i3 = sbuffer.find("'", i2 + 1);
 				if(i3 != string::npos) {
-					rate = sbuffer.substr(i2 + 1, i3 - (i2 + 1));std::cout << "11911" << endl;
-					remove_blank_ends(rate);std::cout << "11912" << endl;
+					rate = sbuffer.substr(i2 + 1, i3 - (i2 + 1));
+					remove_blank_ends(rate);
 				}
 			}
 			if(currency.length() == 3 && currency[0] >= 'A' && currency[0] <= 'Z' && !rate.empty()) {
-				u = getUnit(currency);std::cout << "11916" << endl;
+				u = getUnit(currency);
 				if(!u || (u->subtype() == SUBTYPE_ALIAS_UNIT && ((AliasUnit*) u)->firstBaseUnit() == u_usd)) {
 					rate = "1/" + rate;
 					if(!u) {
 						u = addUnit(new AliasUnit(_("Currency"), currency, "", "", sname, u_usd, rate, 1, "", false, true), false, true);
 						if(u) u->setHidden(true);
 					} else {
-						((AliasUnit*) u)->setBaseUnit(u_usd);std::cout << "11923" << endl;
-						((AliasUnit*) u)->setExpression(rate);std::cout << "11924" << endl;
+						((AliasUnit*) u)->setBaseUnit(u_usd);
+						((AliasUnit*) u)->setExpression(rate);
 					}
 					if(u) {
-						u->setApproximate();std::cout << "11927" << endl;
-						u->setPrecision(-2);std::cout << "11928" << endl;
-						u->setChanged(false);std::cout << "11929" << endl;
+						u->setApproximate();
+						u->setPrecision(-2);
+						u->setChanged(false);
 					}
 				}
 			}
 			i = sbuffer.find("class=\'country\'", i);
 		}
-		file.close();std::cout << "11935" << endl;
-		struct stat stats;std::cout << "11936" << endl;
+		file.close();
+		struct stat stats;
 		if(stat(filename.c_str(), &stats) == 0) {
-			exchange_rates_time[2] = stats.st_mtime;std::cout << "11938" << endl;
+			exchange_rates_time[2] = stats.st_mtime;
 			if(exchange_rates_time[2] > exchange_rates_check_time[2]) exchange_rates_check_time[2] = exchange_rates_time[2];
 		}
 	}
@@ -11986,7 +12121,7 @@ time_t Calculator::getExchangeRatesTime(int index) {
 		if(exchange_rates_time[2] < exchange_rates_time[0]) return exchange_rates_time[2];
 		return exchange_rates_time[0];
 	}
-	index--;std::cout << "11979" << endl;
+	index--;
 	return exchange_rates_time[index];
 }
 string Calculator::getExchangeRatesUrl(int index) {
@@ -12001,7 +12136,7 @@ string Calculator::getExchangeRatesUrl(int index) {
 }
 bool Calculator::fetchExchangeRates(int timeout, string) {return fetchExchangeRates(timeout);}
 size_t write_data(void *ptr, size_t size, size_t nmemb, string *sbuffer) {
-	sbuffer->append((char*) ptr, size * nmemb);std::cout << "11994" << endl;
+	sbuffer->append((char*) ptr, size * nmemb);
 	return size * nmemb;
 }
 #define FETCH_FAIL_CLEANUP curl_easy_cleanup(curl); curl_global_cleanup(); time(&exchange_rates_check_time[0]); time(&exchange_rates_check_time[1]); time(&exchange_rates_check_time[2]);
@@ -12009,31 +12144,31 @@ bool Calculator::fetchExchangeRates(int timeout, int n) {
 #ifdef HAVE_LIBCURL
 	if(n <= 0) n = 3;
 
-	recursiveMakeDir(getLocalDataDir());std::cout << "12002" << endl;
-	string sbuffer;std::cout << "12003" << endl;
-	char error_buffer[CURL_ERROR_SIZE];std::cout << "12004" << endl;
-	CURL *curl;std::cout << "12005" << endl;
-	CURLcode res;std::cout << "12006" << endl;
-	long int file_time = 0;std::cout << "12007" << endl;
-	curl_global_init(CURL_GLOBAL_DEFAULT);std::cout << "12008" << endl;
-	curl = curl_easy_init();std::cout << "12009" << endl;
+	recursiveMakeDir(getLocalDataDir());
+	string sbuffer;
+	char error_buffer[CURL_ERROR_SIZE];
+	CURL *curl;
+	CURLcode res;
+	long int file_time = 0;
+	curl_global_init(CURL_GLOBAL_DEFAULT);
+	curl = curl_easy_init();
 	if(!curl) {return false;}
-	curl_easy_setopt(curl, CURLOPT_URL, getExchangeRatesUrl(1).c_str());std::cout << "12011" << endl;
-	curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);std::cout << "12012" << endl;
-	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);std::cout << "12013" << endl;
-	curl_easy_setopt(curl, CURLOPT_WRITEDATA, &sbuffer);std::cout << "12014" << endl;
-	curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buffer);std::cout << "12015" << endl;
-	error_buffer[0] = 0;std::cout << "12016" << endl;
-	curl_easy_setopt(curl, CURLOPT_FILETIME, &file_time);std::cout << "12017" << endl;
+	curl_easy_setopt(curl, CURLOPT_URL, getExchangeRatesUrl(1).c_str());
+	curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);
+	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+	curl_easy_setopt(curl, CURLOPT_WRITEDATA, &sbuffer);
+	curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buffer);
+	error_buffer[0] = 0;
+	curl_easy_setopt(curl, CURLOPT_FILETIME, &file_time);
 #ifdef _WIN32
-	char exepath[MAX_PATH];std::cout << "12019" << endl;
-	GetModuleFileName(NULL, exepath, MAX_PATH);std::cout << "12020" << endl;
-	string datadir(exepath);std::cout << "12021" << endl;
-	datadir.resize(datadir.find_last_of('\\'));std::cout << "12022" << endl;
+	char exepath[MAX_PATH];
+	GetModuleFileName(NULL, exepath, MAX_PATH);
+	string datadir(exepath);
+	datadir.resize(datadir.find_last_of('\\'));
 	if(datadir.substr(datadir.length() - 4) != "\\bin" && datadir.substr(datadir.length() - 6) != "\\.libs") {
 		string cainfo = buildPath(datadir, "ssl", "certs", "ca-bundle.crt");
 		gsub("\\", "/", cainfo);
-		curl_easy_setopt(curl, CURLOPT_CAINFO, cainfo.c_str());std::cout << "12026" << endl;
+		curl_easy_setopt(curl, CURLOPT_CAINFO, cainfo.c_str());
 	}
 #endif
 	res = curl_easy_perform(curl);
@@ -12041,81 +12176,81 @@ bool Calculator::fetchExchangeRates(int timeout, int n) {
 	if(res != CURLE_OK) {
 		if(strlen(error_buffer)) error(true, _("Failed to download exchange rates from %s: %s."), "ECB", error_buffer, NULL);
 		else error(true, _("Failed to download exchange rates from %s: %s."), "ECB", curl_easy_strerror(res), NULL);
-		FETCH_FAIL_CLEANUP;std::cout << "12034" << endl;
+		FETCH_FAIL_CLEANUP;
 		return false;
 	}
 	if(sbuffer.empty()) {error(true, _("Failed to download exchange rates from %s: %s."), "ECB", "Document empty", NULL); FETCH_FAIL_CLEANUP; return false;}
-	ofstream file(getExchangeRatesFileName(1).c_str(), ios::out | ios::trunc | ios::binary);std::cout << "12038" << endl;
+	ofstream file(getExchangeRatesFileName(1).c_str(), ios::out | ios::trunc | ios::binary);
 	if(!file.is_open()) {
 		error(true, _("Failed to download exchange rates from %s: %s."), "ECB", strerror(errno), NULL);
 		FETCH_FAIL_CLEANUP
 		return false;
 	}
-	file << sbuffer;std::cout << "12044" << endl;
-	file.close();std::cout << "12045" << endl;
+	file << sbuffer;
+	file.close();
 	if(file_time > 0) {
 #ifdef _WIN32
-		struct _utimbuf new_times;std::cout << "12048" << endl;
+		struct _utimbuf new_times;
 #else
-		struct utimbuf new_times;std::cout << "12050" << endl;
+		struct utimbuf new_times;
 #endif
-		new_times.modtime = (time_t) file_time;std::cout << "12052" << endl;
-		new_times.actime = (time_t) file_time;std::cout << "12053" << endl;
+		new_times.modtime = (time_t) file_time;
+		new_times.actime = (time_t) file_time;
 #ifdef _WIN32
-		_utime(getExchangeRatesFileName(1).c_str(), &new_times);std::cout << "12055" << endl;
+		_utime(getExchangeRatesFileName(1).c_str(), &new_times);
 #else
-		utime(getExchangeRatesFileName(1).c_str(), &new_times);std::cout << "12057" << endl;
+		utime(getExchangeRatesFileName(1).c_str(), &new_times);
 #endif
 	}
 
 	if(n >= 2) {
 
 		sbuffer = "";
-		curl_easy_setopt(curl, CURLOPT_URL, getExchangeRatesUrl(2).c_str());std::cout << "12064" << endl;
-		curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);std::cout << "12065" << endl;
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);std::cout << "12066" << endl;
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &sbuffer);std::cout << "12067" << endl;
-		curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buffer);std::cout << "12068" << endl;
+		curl_easy_setopt(curl, CURLOPT_URL, getExchangeRatesUrl(2).c_str());
+		curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &sbuffer);
+		curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buffer);
 
 		res = curl_easy_perform(curl);
 
 		if(res != CURLE_OK) {error(true, _("Failed to download exchange rates from %s: %s."), "coinbase.com", error_buffer, NULL); FETCH_FAIL_CLEANUP; return false;}
 		if(sbuffer.empty()) {error(true, _("Failed to download exchange rates from %s: %s."), "coinbase.com", "Document empty", NULL); FETCH_FAIL_CLEANUP; return false;}
-		ofstream file3(getExchangeRatesFileName(2).c_str(), ios::out | ios::trunc | ios::binary);std::cout << "12074" << endl;
+		ofstream file3(getExchangeRatesFileName(2).c_str(), ios::out | ios::trunc | ios::binary);
 		if(!file3.is_open()) {
 			error(true, _("Failed to download exchange rates from %s: %s."), "coinbase.com", strerror(errno), NULL);
 			FETCH_FAIL_CLEANUP
 			return false;
 		}
-		file3 << sbuffer;std::cout << "12080" << endl;
-		file3.close();std::cout << "12081" << endl;
+		file3 << sbuffer;
+		file3.close();
 
 	}
 
 	if(n >= 3) {
 
 		sbuffer = "";
-		curl_easy_setopt(curl, CURLOPT_URL, getExchangeRatesUrl(3).c_str());std::cout << "12088" << endl;
-		curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);std::cout << "12089" << endl;
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);std::cout << "12090" << endl;
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &sbuffer);std::cout << "12091" << endl;
-		curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buffer);std::cout << "12092" << endl;
+		curl_easy_setopt(curl, CURLOPT_URL, getExchangeRatesUrl(3).c_str());
+		curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &sbuffer);
+		curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buffer);
 		res = curl_easy_perform(curl);
 
 		if(res != CURLE_OK) {error(true, _("Failed to download exchange rates from %s: %s."), "mycurrency.net", error_buffer, NULL); FETCH_FAIL_CLEANUP; return false;}
 		if(sbuffer.empty() || sbuffer.find("Internal Server Error") != string::npos) {error(true, _("Failed to download exchange rates from %s: %s."), "mycurrency.net", "Document empty", NULL); FETCH_FAIL_CLEANUP; return false;}
-		ofstream file2(getExchangeRatesFileName(3).c_str(), ios::out | ios::trunc | ios::binary);std::cout << "12097" << endl;
+		ofstream file2(getExchangeRatesFileName(3).c_str(), ios::out | ios::trunc | ios::binary);
 		if(!file2.is_open()) {
 			error(true, _("Failed to download exchange rates from %s: %s."), "mycurrency.net", strerror(errno), NULL);
 			FETCH_FAIL_CLEANUP
 			return false;
 		}
-		file2 << sbuffer;std::cout << "12103" << endl;
-		file2.close();std::cout << "12104" << endl;
+		file2 << sbuffer;
+		file2.close();
 
 	}
 
-	curl_easy_cleanup(curl);std::cout << "12108" << endl; curl_global_cleanup();std::cout << "12108" << endl;
+	curl_easy_cleanup(curl); curl_global_cleanup();
 
 	return true;
 #else
@@ -12124,21 +12259,21 @@ bool Calculator::fetchExchangeRates(int timeout, int n) {
 }
 bool Calculator::checkExchangeRatesDate(unsigned int n_days, bool force_check, bool send_warning, int n) {
 	if(n <= 0) n = 3;
-	time_t extime = exchange_rates_time[0];std::cout << "12117" << endl;
+	time_t extime = exchange_rates_time[0];
 	if(n > 1 && exchange_rates_time[1] < extime) extime = exchange_rates_time[1];
 	if(n > 2 && exchange_rates_time[2] < extime) extime = exchange_rates_time[2];
-	time_t cextime = exchange_rates_check_time[0];std::cout << "12120" << endl;
+	time_t cextime = exchange_rates_check_time[0];
 	if(n > 1 && exchange_rates_check_time[1] < cextime) cextime = exchange_rates_check_time[1];
 	if(n > 2 && exchange_rates_check_time[2] < cextime) cextime = exchange_rates_check_time[2];
 	if(extime > 0 && ((!force_check && cextime > 0 && difftime(time(NULL), cextime) < 86400 * n_days) || difftime(time(NULL), extime) < (86400 * n_days) + 3600)) return true;
-	time(&exchange_rates_check_time[0]);std::cout << "12124" << endl;
+	time(&exchange_rates_check_time[0]);
 	if(n > 1) time(&exchange_rates_check_time[1]);
 	if(n > 2) time(&exchange_rates_check_time[2]);
 	if(send_warning) error(false, _("It has been %s day(s) since the exchange rates last were updated."), i2s((int) floor(difftime(time(NULL), extime) / 86400)).c_str(), NULL);
 	return false;
 }
 void Calculator::setExchangeRatesWarningEnabled(bool enable) {
-	b_exchange_rates_warning_enabled = enable;std::cout << "12131" << endl;
+	b_exchange_rates_warning_enabled = enable;
 }
 bool Calculator::exchangeRatesWarningEnabled() const {
 	return b_exchange_rates_warning_enabled;
@@ -12147,7 +12282,7 @@ int Calculator::exchangeRatesUsed() const {
 	return b_exchange_rates_used;
 }
 void Calculator::resetExchangeRatesUsed() {
-	b_exchange_rates_used = 0;std::cout << "12140" << endl;
+	b_exchange_rates_used = 0;
 }
 void Calculator::setExchangeRatesUsed(int index) {
 	if(index > b_exchange_rates_used) b_exchange_rates_used = index;
@@ -12156,8 +12291,8 @@ void Calculator::setExchangeRatesUsed(int index) {
 
 bool Calculator::canPlot() {
 #ifdef _WIN32
-	LPSTR lpFilePart;std::cout << "12149" << endl;
-	char filename[MAX_PATH];std::cout << "12150" << endl;
+	LPSTR lpFilePart;
+	char filename[MAX_PATH];
 	return SearchPath(NULL, "gnuplot", ".exe", MAX_PATH, filename, &lpFilePart);
 #else
 	FILE *pipe = popen("gnuplot - 2>/dev/null", "w");
@@ -12168,40 +12303,40 @@ bool Calculator::canPlot() {
 
 // extern bool fix_intervals(MathStructure &mstruct, const EvaluationOptions &eo, bool *failed = NULL, long int min_precision = 2, bool function_middle = false);
 void parse_and_precalculate_plot(string &expression, MathStructure &mstruct, const ParseOptions &po, EvaluationOptions &eo) {
-	eo.approximation = APPROXIMATION_APPROXIMATE;std::cout << "12161" << endl;
-	ParseOptions po2 = po;std::cout << "12162" << endl;
-	po2.read_precision = DONT_READ_PRECISION;std::cout << "12163" << endl;
-	eo.parse_options = po2;std::cout << "12164" << endl;
-	eo.interval_calculation = INTERVAL_CALCULATION_NONE;std::cout << "12165" << endl;
-	mstruct = CALCULATOR->parse(expression, po2);std::cout << "12166" << endl;
-	MathStructure mbak(mstruct);std::cout << "12167" << endl;
-	eo.calculate_functions = false;std::cout << "12168" << endl;
-	eo.expand = false;std::cout << "12169" << endl;
-	CALCULATOR->beginTemporaryStopMessages();std::cout << "12170" << endl;
-	mstruct.eval(eo);std::cout << "12171" << endl;
-	int im = 0;std::cout << "12172" << endl;
+	eo.approximation = APPROXIMATION_APPROXIMATE;
+	ParseOptions po2 = po;
+	po2.read_precision = DONT_READ_PRECISION;
+	eo.parse_options = po2;
+	eo.interval_calculation = INTERVAL_CALCULATION_NONE;
+	mstruct = CALCULATOR->parse(expression, po2);
+	MathStructure mbak(mstruct);
+	eo.calculate_functions = false;
+	eo.expand = false;
+	CALCULATOR->beginTemporaryStopMessages();
+	mstruct.eval(eo);
+	int im = 0;
 	if(CALCULATOR->endTemporaryStopMessages(NULL, &im) > 0 || im > 0) mstruct = mbak;
-	eo.calculate_functions = true;std::cout << "12174" << endl;
-	eo.expand = true;std::cout << "12175" << endl;
+	eo.calculate_functions = true;
+	eo.expand = true;
 }
 
 MathStructure Calculator::expressionToPlotVector(string expression, const MathStructure &min, const MathStructure &max, int steps, MathStructure *x_vector, string x_var, const ParseOptions &po, int msecs) {
-	Variable *v = getActiveVariable(x_var);std::cout << "12179" << endl;
-	MathStructure x_mstruct;std::cout << "12180" << endl;
+	Variable *v = getActiveVariable(x_var);
+	MathStructure x_mstruct;
 	if(v) x_mstruct = v;
-	else x_mstruct = x_var;std::cout << "12182" << endl;
-	EvaluationOptions eo;std::cout << "12183" << endl;
-	MathStructure mparse;std::cout << "12184" << endl;
+	else x_mstruct = x_var;
+	EvaluationOptions eo;
+	MathStructure mparse;
 	if(msecs > 0) startControl(msecs);
-	beginTemporaryStopIntervalArithmetic();std::cout << "12186" << endl;
-	parse_and_precalculate_plot(expression, mparse, po, eo);std::cout << "12187" << endl;
-	beginTemporaryStopMessages();std::cout << "12188" << endl;
-	MathStructure y_vector(mparse.generateVector(x_mstruct, min, max, steps, x_vector, eo));std::cout << "12189" << endl;
-	endTemporaryStopMessages();std::cout << "12190" << endl;
-	endTemporaryStopIntervalArithmetic();std::cout << "12191" << endl;
+	beginTemporaryStopIntervalArithmetic();
+	parse_and_precalculate_plot(expression, mparse, po, eo);
+	beginTemporaryStopMessages();
+	MathStructure y_vector(mparse.generateVector(x_mstruct, min, max, steps, x_vector, eo));
+	endTemporaryStopMessages();
+	endTemporaryStopIntervalArithmetic();
 	if(msecs > 0) {
 		if(aborted()) error(true, _("It took too long to generate the plot data."), NULL);
-		stopControl();std::cout << "12194" << endl;
+		stopControl();
 	}
 	if(y_vector.size() == 0) {
 		error(true, _("Unable to generate plot data with current min, max and sampling rate."), NULL);
@@ -12209,29 +12344,29 @@ MathStructure Calculator::expressionToPlotVector(string expression, const MathSt
 	return y_vector;
 }
 MathStructure Calculator::expressionToPlotVector(string expression, float min, float max, int steps, MathStructure *x_vector, string x_var, const ParseOptions &po, int msecs) {
-	MathStructure min_mstruct(min), max_mstruct(max);std::cout << "12202" << endl;
-	ParseOptions po2 = po;std::cout << "12203" << endl;
-	po2.read_precision = DONT_READ_PRECISION;std::cout << "12204" << endl;
-	MathStructure y_vector(expressionToPlotVector(expression, min_mstruct, max_mstruct, steps, x_vector, x_var, po2, msecs));std::cout << "12205" << endl;
+	MathStructure min_mstruct(min), max_mstruct(max);
+	ParseOptions po2 = po;
+	po2.read_precision = DONT_READ_PRECISION;
+	MathStructure y_vector(expressionToPlotVector(expression, min_mstruct, max_mstruct, steps, x_vector, x_var, po2, msecs));
 	return y_vector;
 }
 MathStructure Calculator::expressionToPlotVector(string expression, const MathStructure &min, const MathStructure &max, const MathStructure &step, MathStructure *x_vector, string x_var, const ParseOptions &po, int msecs) {
-	Variable *v = getActiveVariable(x_var);std::cout << "12209" << endl;
-	MathStructure x_mstruct;std::cout << "12210" << endl;
+	Variable *v = getActiveVariable(x_var);
+	MathStructure x_mstruct;
 	if(v) x_mstruct = v;
-	else x_mstruct = x_var;std::cout << "12212" << endl;
-	EvaluationOptions eo;std::cout << "12213" << endl;
-	MathStructure mparse;std::cout << "12214" << endl;
+	else x_mstruct = x_var;
+	EvaluationOptions eo;
+	MathStructure mparse;
 	if(msecs > 0) startControl(msecs);
-	beginTemporaryStopIntervalArithmetic();std::cout << "12216" << endl;
-	parse_and_precalculate_plot(expression, mparse, po, eo);std::cout << "12217" << endl;
-	beginTemporaryStopMessages();std::cout << "12218" << endl;
-	MathStructure y_vector(mparse.generateVector(x_mstruct, min, max, step, x_vector, eo));std::cout << "12219" << endl;
-	endTemporaryStopMessages();std::cout << "12220" << endl;
-	endTemporaryStopIntervalArithmetic();std::cout << "12221" << endl;
+	beginTemporaryStopIntervalArithmetic();
+	parse_and_precalculate_plot(expression, mparse, po, eo);
+	beginTemporaryStopMessages();
+	MathStructure y_vector(mparse.generateVector(x_mstruct, min, max, step, x_vector, eo));
+	endTemporaryStopMessages();
+	endTemporaryStopIntervalArithmetic();
 	if(msecs > 0) {
 		if(aborted()) error(true, _("It took too long to generate the plot data."), NULL);
-		stopControl();std::cout << "12224" << endl;
+		stopControl();
 	}
 	if(y_vector.size() == 0) {
 		error(true, _("Unable to generate plot data with current min, max and step size."), NULL);
@@ -12239,29 +12374,29 @@ MathStructure Calculator::expressionToPlotVector(string expression, const MathSt
 	return y_vector;
 }
 MathStructure Calculator::expressionToPlotVector(string expression, float min, float max, float step, MathStructure *x_vector, string x_var, const ParseOptions &po, int msecs) {
-	MathStructure min_mstruct(min), max_mstruct(max), step_mstruct(step);std::cout << "12232" << endl;
-	ParseOptions po2 = po;std::cout << "12233" << endl;
-	po2.read_precision = DONT_READ_PRECISION;std::cout << "12234" << endl;
-	MathStructure y_vector(expressionToPlotVector(expression, min_mstruct, max_mstruct, step_mstruct, x_vector, x_var, po2, msecs));std::cout << "12235" << endl;
+	MathStructure min_mstruct(min), max_mstruct(max), step_mstruct(step);
+	ParseOptions po2 = po;
+	po2.read_precision = DONT_READ_PRECISION;
+	MathStructure y_vector(expressionToPlotVector(expression, min_mstruct, max_mstruct, step_mstruct, x_vector, x_var, po2, msecs));
 	return y_vector;
 }
 MathStructure Calculator::expressionToPlotVector(string expression, const MathStructure &x_vector, string x_var, const ParseOptions &po, int msecs) {
-	Variable *v = getActiveVariable(x_var);std::cout << "12239" << endl;
-	MathStructure x_mstruct;std::cout << "12240" << endl;
+	Variable *v = getActiveVariable(x_var);
+	MathStructure x_mstruct;
 	if(v) x_mstruct = v;
-	else x_mstruct = x_var;std::cout << "12242" << endl;
-	EvaluationOptions eo;std::cout << "12243" << endl;
-	MathStructure mparse;std::cout << "12244" << endl;
+	else x_mstruct = x_var;
+	EvaluationOptions eo;
+	MathStructure mparse;
 	if(msecs > 0) startControl(msecs);
-	beginTemporaryStopIntervalArithmetic();std::cout << "12246" << endl;
-	parse_and_precalculate_plot(expression, mparse, po, eo);std::cout << "12247" << endl;
-	beginTemporaryStopMessages();std::cout << "12248" << endl;
-	MathStructure y_vector(mparse.generateVector(x_mstruct, x_vector, eo).eval(eo));std::cout << "12249" << endl;
-	endTemporaryStopMessages();std::cout << "12250" << endl;
-	endTemporaryStopIntervalArithmetic();std::cout << "12251" << endl;
+	beginTemporaryStopIntervalArithmetic();
+	parse_and_precalculate_plot(expression, mparse, po, eo);
+	beginTemporaryStopMessages();
+	MathStructure y_vector(mparse.generateVector(x_mstruct, x_vector, eo).eval(eo));
+	endTemporaryStopMessages();
+	endTemporaryStopIntervalArithmetic();
 	if(msecs > 0) {
 		if(aborted()) error(true, _("It took too long to generate the plot data."), NULL);
-		stopControl();std::cout << "12254" << endl;
+		stopControl();
 	}
 	return y_vector;
 }
@@ -12270,18 +12405,18 @@ extern bool testComplexZero(const Number *this_nr, const Number *i_nr);
 
 bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> &y_vectors, const vector<MathStructure> &x_vectors, vector<PlotDataParameters*> &pdps, bool persistent, int msecs) {
 
-	string homedir = getLocalTmpDir();std::cout << "12263" << endl;
-	recursiveMakeDir(homedir);std::cout << "12264" << endl;
+	string homedir = getLocalTmpDir();
+	recursiveMakeDir(homedir);
 
-	string commandline_extra;std::cout << "12266" << endl;
-	string title;std::cout << "12267" << endl;
+	string commandline_extra;
+	string title;
 
 	if(!param) {
-		PlotParameters pp;std::cout << "12270" << endl;
-		param = &pp;std::cout << "12271" << endl;
+		PlotParameters pp;
+		param = &pp;
 	}
 
-	string plot;std::cout << "12274" << endl;
+	string plot;
 
 	if(param->filename.empty()) {
 		if(!param->color) {
@@ -12289,30 +12424,30 @@ bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> 
 		}
 		plot += "set terminal pop\n";
 	} else {
-		persistent = true;std::cout << "12282" << endl;
+		persistent = true;
 		if(param->filetype == PLOT_FILETYPE_AUTO) {
 			size_t i = param->filename.rfind(".");
 			if(i == string::npos) {
-				param->filetype = PLOT_FILETYPE_PNG;std::cout << "12286" << endl;
+				param->filetype = PLOT_FILETYPE_PNG;
 				error(false, _("No extension in file name. Saving as PNG image."), NULL);
 			} else {
-				string ext = param->filename.substr(i + 1, param->filename.length() - (i + 1));std::cout << "12289" << endl;
+				string ext = param->filename.substr(i + 1, param->filename.length() - (i + 1));
 				if(ext == "png") {
-					param->filetype = PLOT_FILETYPE_PNG;std::cout << "12291" << endl;
+					param->filetype = PLOT_FILETYPE_PNG;
 				} else if(ext == "ps") {
-					param->filetype = PLOT_FILETYPE_PS;std::cout << "12293" << endl;
+					param->filetype = PLOT_FILETYPE_PS;
 				} else if(ext == "pdf") {
-					param->filetype = PLOT_FILETYPE_PDF;std::cout << "12295" << endl;
+					param->filetype = PLOT_FILETYPE_PDF;
 				} else if(ext == "eps") {
-					param->filetype = PLOT_FILETYPE_EPS;std::cout << "12297" << endl;
+					param->filetype = PLOT_FILETYPE_EPS;
 				} else if(ext == "svg") {
-					param->filetype = PLOT_FILETYPE_SVG;std::cout << "12299" << endl;
+					param->filetype = PLOT_FILETYPE_SVG;
 				} else if(ext == "fig") {
-					param->filetype = PLOT_FILETYPE_FIG;std::cout << "12301" << endl;
+					param->filetype = PLOT_FILETYPE_FIG;
 				} else if(ext == "tex") {
-					param->filetype = PLOT_FILETYPE_LATEX;std::cout << "12303" << endl;
+					param->filetype = PLOT_FILETYPE_LATEX;
 				} else {
-					param->filetype = PLOT_FILETYPE_PNG;std::cout << "12305" << endl;
+					param->filetype = PLOT_FILETYPE_PNG;
 					error(false, _("Unknown extension in file name. Saving as PNG image."), NULL);
 				}
 			}
@@ -12372,7 +12507,7 @@ bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> 
 
 		}
 		plot += "\nset output \"";
-		plot += param->filename;std::cout << "12365" << endl;
+		plot += param->filename;
 		plot += "\"\n";
 	}
 
@@ -12386,24 +12521,24 @@ bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> 
 		case PLOT_LEGEND_OUTSIDE: {plot += "set key outside\n"; break;}
 	}
 	if(!param->x_label.empty()) {
-		title = param->x_label;std::cout << "12379" << endl;
+		title = param->x_label;
 		gsub("\"", "\\\"", title);
 		plot += "set xlabel \"";
-		plot += title;std::cout << "12382" << endl;
+		plot += title;
 		plot += "\"\n";
 	}
 	if(!param->y_label.empty()) {
-		string title = param->y_label;std::cout << "12386" << endl;
+		string title = param->y_label;
 		gsub("\"", "\\\"", title);
 		plot += "set ylabel \"";
-		plot += title;std::cout << "12389" << endl;
+		plot += title;
 		plot += "\"\n";
 	}
 	if(!param->title.empty()) {
-		title = param->title;std::cout << "12393" << endl;
+		title = param->title;
 		gsub("\"", "\\\"", title);
 		plot += "set title \"";
-		plot += title;std::cout << "12396" << endl;
+		plot += title;
 		plot += "\"\n";
 	}
 	if(param->grid) {
@@ -12420,19 +12555,19 @@ bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> 
 	}
 	if(param->x_log) {
 		plot += "set logscale x ";
-		plot += i2s(param->x_log_base);std::cout << "12413" << endl;
+		plot += i2s(param->x_log_base);
 		plot += "\n";
 	}
 	if(param->show_all_borders) {
 		plot += "set border 15\n";
 	} else {
-		bool xaxis2 = false, yaxis2 = false;std::cout << "12419" << endl;
+		bool xaxis2 = false, yaxis2 = false;
 		for(size_t i = 0; i < pdps.size(); i++) {
 			if(pdps[i] && pdps[i]->xaxis2) {
-				xaxis2 = true;std::cout << "12422" << endl;
+				xaxis2 = true;
 			}
 			if(pdps[i] && pdps[i]->yaxis2) {
-				yaxis2 = true;std::cout << "12425" << endl;
+				yaxis2 = true;
 			}
 		}
 		if(xaxis2 && yaxis2) {
@@ -12446,18 +12581,18 @@ bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> 
 		}
 		plot += "set xtics nomirror\nset ytics nomirror\n";
 	}
-	size_t samples = 1000;std::cout << "12439" << endl;
+	size_t samples = 1000;
 	for(size_t i = 0; i < y_vectors.size(); i++) {
 		if(!y_vectors[i].isUndefined()) {
 			if(y_vectors[i].size() > 3000) {
-				samples = 6000;std::cout << "12443" << endl;
+				samples = 6000;
 				break;
 			}
 			if(y_vectors[i].size() * 2 > samples) samples = y_vectors[i].size() * 2;
 		}
 	}
 	plot += "set samples ";
-	plot += i2s(samples);std::cout << "12450" << endl;
+	plot += i2s(samples);
 	plot += "\n";
 	plot += "plot ";
 	for(size_t i = 0; i < y_vectors.size(); i++) {
@@ -12466,13 +12601,13 @@ bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> 
 				plot += ",";
 			}
 			string filename = "gnuplot_data";
-			filename += i2s(i + 1);std::cout << "12459" << endl;
-			filename = buildPath(homedir, filename);std::cout << "12460" << endl;
+			filename += i2s(i + 1);
+			filename = buildPath(homedir, filename);
 #ifdef _WIN32
 			gsub("\\", "\\\\", filename);
 #endif
 			plot += "\"";
-			plot += filename;std::cout << "12465" << endl;
+			plot += filename;
 			plot += "\"";
 			if(i < pdps.size()) {
 				switch(pdps[i]->smoothing) {
@@ -12490,10 +12625,10 @@ bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> 
 					plot += " axis x1y2";
 				}
 				if(!pdps[i]->title.empty()) {
-					title = pdps[i]->title;std::cout << "12483" << endl;
+					title = pdps[i]->title;
 					gsub("\"", "\\\"", title);
 					plot += " title \"";
-					plot += title;std::cout << "12486" << endl;
+					plot += title;
 					plot += "\"";
 				}
 				switch(pdps[i]->style) {
@@ -12510,108 +12645,108 @@ bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> 
 					plot += " lw 2";
 				} else {
 					plot += " lw ";
-					plot += i2s(param->linewidth);std::cout << "12503" << endl;
+					plot += i2s(param->linewidth);
 				}
 			}
 		}
 	}
 	plot += "\n";
 
-	string plot_data;std::cout << "12510" << endl;
-	PrintOptions po;std::cout << "12511" << endl;
+	string plot_data;
+	PrintOptions po;
 	po.number_fraction_format = FRACTION_DECIMAL;
-	po.interval_display = INTERVAL_DISPLAY_MIDPOINT;std::cout << "12513" << endl;
+	po.interval_display = INTERVAL_DISPLAY_MIDPOINT;
 	po.decimalpoint_sign = ".";
 	po.comma_sign = ",";
 	for(size_t serie = 0; serie < y_vectors.size(); serie++) {
 		if(!y_vectors[serie].isUndefined()) {
 			string filename = "gnuplot_data";
-			filename += i2s(serie + 1);std::cout << "12519" << endl;
-			string filepath = buildPath(homedir, filename);std::cout << "12520" << endl;
+			filename += i2s(serie + 1);
+			string filepath = buildPath(homedir, filename);
 			FILE *fdata = fopen(filepath.c_str(), "w+");
 			if(!fdata) {
 				error(true, _("Could not create temporary file %s"), filepath.c_str(), NULL);
 				return false;
 			}
 			plot_data = "";
-			int non_numerical = 0, non_real = 0;std::cout << "12527" << endl;
+			int non_numerical = 0, non_real = 0;
 			//string str = "";
 			if(msecs > 0) startControl(msecs);
-			ComparisonResult ct1 = COMPARISON_RESULT_EQUAL, ct2 = COMPARISON_RESULT_EQUAL;std::cout << "12530" << endl;
-			size_t last_index = string::npos, last_index2 = string::npos;std::cout << "12531" << endl;
-			bool check_continuous = pdps[serie]->test_continuous && (pdps[serie]->style == PLOT_STYLE_LINES || pdps[serie]->style == PLOT_STYLE_POINTS_LINES);std::cout << "12532" << endl;
-			bool prev_failed = false;std::cout << "12533" << endl;
+			ComparisonResult ct1 = COMPARISON_RESULT_EQUAL, ct2 = COMPARISON_RESULT_EQUAL;
+			size_t last_index = string::npos, last_index2 = string::npos;
+			bool check_continuous = pdps[serie]->test_continuous && (pdps[serie]->style == PLOT_STYLE_LINES || pdps[serie]->style == PLOT_STYLE_POINTS_LINES);
+			bool prev_failed = false;
 			for(size_t i = 1; i <= y_vectors[serie].countChildren(); i++) {
-				ComparisonResult ct = COMPARISON_RESULT_UNKNOWN;std::cout << "12535" << endl;
-				bool invalid_nr = false, b_imagzero_x = false, b_imagzero_y = false;std::cout << "12536" << endl;
+				ComparisonResult ct = COMPARISON_RESULT_UNKNOWN;
+				bool invalid_nr = false, b_imagzero_x = false, b_imagzero_y = false;
 				if(!y_vectors[serie].getChild(i)->isNumber()) {
-					invalid_nr = true;std::cout << "12538" << endl;
-					non_numerical++;std::cout << "12539" << endl;
+					invalid_nr = true;
+					non_numerical++;
 					//if(non_numerical == 1) str = y_vectors[serie].getChild(i)->print(po);
 				} else if(!y_vectors[serie].getChild(i)->number().isReal()) {
-					b_imagzero_y = testComplexZero(&y_vectors[serie].getChild(i)->number(), y_vectors[serie].getChild(i)->number().internalImaginary());std::cout << "12542" << endl;
+					b_imagzero_y = testComplexZero(&y_vectors[serie].getChild(i)->number(), y_vectors[serie].getChild(i)->number().internalImaginary());
 					if(!b_imagzero_y) {
-						invalid_nr = true;std::cout << "12544" << endl;
-						non_real++;std::cout << "12545" << endl;
+						invalid_nr = true;
+						non_real++;
 						//if(non_numerical + non_real == 1) str = y_vectors[serie].getChild(i)->print(po);
 					}
 				}
 				if(serie < x_vectors.size() && !x_vectors[serie].isUndefined() && x_vectors[serie].countChildren() == y_vectors[serie].countChildren()) {
 					if(!x_vectors[serie].getChild(i)->isNumber()) {
-						invalid_nr = true;std::cout << "12551" << endl;
-						non_numerical++;std::cout << "12552" << endl;
+						invalid_nr = true;
+						non_numerical++;
 						//if(non_numerical == 1) str = x_vectors[serie].getChild(i)->print(po);
 					} else if(!x_vectors[serie].getChild(i)->number().isReal()) {
-						b_imagzero_x = testComplexZero(&x_vectors[serie].getChild(i)->number(), x_vectors[serie].getChild(i)->number().internalImaginary());std::cout << "12555" << endl;
+						b_imagzero_x = testComplexZero(&x_vectors[serie].getChild(i)->number(), x_vectors[serie].getChild(i)->number().internalImaginary());
 						if(!b_imagzero_x) {
-							invalid_nr = true;std::cout << "12557" << endl;
-							non_real++;std::cout << "12558" << endl;
+							invalid_nr = true;
+							non_real++;
 							//if(non_numerical + non_real == 1) str = x_vectors[serie].getChild(i)->print(po);
 						}
 					}
 					if(!invalid_nr) {
 						if(b_imagzero_y) plot_data += x_vectors[serie].getChild(i)->number().realPart().print(po);
-						else plot_data += x_vectors[serie].getChild(i)->print(po);std::cout << "12564" << endl;
+						else plot_data += x_vectors[serie].getChild(i)->print(po);
 						plot_data += " ";
 					}
 				}
 				if(!invalid_nr) {
 					if(check_continuous && !prev_failed) {
 						if(i == 1 || ct2 == COMPARISON_RESULT_UNKNOWN) ct = COMPARISON_RESULT_EQUAL;
-						else ct = y_vectors[serie].getChild(i - 1)->number().compare(y_vectors[serie].getChild(i)->number());std::cout << "12571" << endl;
+						else ct = y_vectors[serie].getChild(i - 1)->number().compare(y_vectors[serie].getChild(i)->number());
 						if((ct == COMPARISON_RESULT_GREATER || ct == COMPARISON_RESULT_LESS) && (ct1 == COMPARISON_RESULT_GREATER || ct1 == COMPARISON_RESULT_LESS) && (ct2 == COMPARISON_RESULT_GREATER || ct2 == COMPARISON_RESULT_LESS) && ct1 != ct2 && ct != ct2) {
 							if(last_index2 != string::npos) plot_data.insert(last_index2 + 1, "  \n");
 						}
 					}
 					if(b_imagzero_x) plot_data += y_vectors[serie].getChild(i)->number().realPart().print(po);
-					else plot_data += y_vectors[serie].getChild(i)->print(po);std::cout << "12577" << endl;
+					else plot_data += y_vectors[serie].getChild(i)->print(po);
 					plot_data += "\n";
-					prev_failed = false;std::cout << "12579" << endl;
+					prev_failed = false;
 				} else if(!prev_failed) {
-					ct = COMPARISON_RESULT_UNKNOWN;std::cout << "12581" << endl;
+					ct = COMPARISON_RESULT_UNKNOWN;
 					plot_data += "  \n";
-					prev_failed = true;std::cout << "12583" << endl;
+					prev_failed = true;
 				}
-				last_index2 = last_index;std::cout << "12585" << endl;
-				last_index = plot_data.length() - 1;std::cout << "12586" << endl;
-				ct1 = ct2;std::cout << "12587" << endl;
-				ct2 = ct;std::cout << "12588" << endl;
+				last_index2 = last_index;
+				last_index = plot_data.length() - 1;
+				ct1 = ct2;
+				ct2 = ct;
 				if(aborted()) {
-					fclose(fdata);std::cout << "12590" << endl;
+					fclose(fdata);
 					if(msecs > 0) {
 						error(true, _("It took too long to generate the plot data."), NULL);
-						stopControl();std::cout << "12593" << endl;
+						stopControl();
 					}
 					return false;
 				}
 			}
 			if(msecs > 0) stopControl();
 			/*if(non_numerical > 0 || non_real > 0) {
-				string stitle;std::cout << "12600" << endl;
+				string stitle;
 				if(serie < pdps.size() && !pdps[serie]->title.empty()) {
-					stitle = pdps[serie]->title.c_str();std::cout << "12602" << endl;
+					stitle = pdps[serie]->title.c_str();
 				} else {
-					stitle = i2s(serie).c_str();std::cout << "12604" << endl;
+					stitle = i2s(serie).c_str();
 				}
 				if(non_numerical > 0) {
 					error(true, _("Series %s contains non-numerical data (\"%s\" first of %s) which can not be properly plotted."), stitle.c_str(), str.c_str(), i2s(non_numerical).c_str(), NULL);
@@ -12619,25 +12754,25 @@ bool Calculator::plotVectors(PlotParameters *param, const vector<MathStructure> 
 					error(true, _("Series %s contains non-real data (\"%s\" first of %s) which can not be properly plotted."), stitle.c_str(), str.c_str(), i2s(non_real).c_str(), NULL);
 				}
 			}*/
-			fputs(plot_data.c_str(), fdata);std::cout << "12612" << endl;
-			fflush(fdata);std::cout << "12613" << endl;
-			fclose(fdata);std::cout << "12614" << endl;
+			fputs(plot_data.c_str(), fdata);
+			fflush(fdata);
+			fclose(fdata);
 		}
 	}
 
 	return invokeGnuplot(plot, commandline_extra, persistent);
 }
 bool Calculator::invokeGnuplot(string commands, string commandline_extra, bool persistent) {
-	FILE *pipe = NULL;std::cout << "12621" << endl;
+	FILE *pipe = NULL;
 	if(!b_gnuplot_open || !gnuplot_pipe || persistent || commandline_extra != gnuplot_cmdline) {
 		if(!persistent) {
-			closeGnuplot();std::cout << "12624" << endl;
+			closeGnuplot();
 		}
 		string commandline = "gnuplot";
 		if(persistent) {
 			commandline += " -persist";
 		}
-		commandline += commandline_extra;std::cout << "12630" << endl;
+		commandline += commandline_extra;
 #ifdef _WIN32
 		commandline += " - 2>nul";
 		pipe = _popen(commandline.c_str(), "w");
@@ -12650,12 +12785,12 @@ bool Calculator::invokeGnuplot(string commands, string commandline_extra, bool p
 			return false;
 		}
 		if(!persistent && pipe) {
-			gnuplot_pipe = pipe;std::cout << "12643" << endl;
-			b_gnuplot_open = true;std::cout << "12644" << endl;
-			gnuplot_cmdline = commandline_extra;std::cout << "12645" << endl;
+			gnuplot_pipe = pipe;
+			b_gnuplot_open = true;
+			gnuplot_cmdline = commandline_extra;
 		}
 	} else {
-		pipe = gnuplot_pipe;std::cout << "12648" << endl;
+		pipe = gnuplot_pipe;
 	}
 	if(!pipe) {
 		return false;
@@ -12664,8 +12799,8 @@ bool Calculator::invokeGnuplot(string commands, string commandline_extra, bool p
 		fputs("clear\n", pipe);
 		fputs("reset\n", pipe);
 	}
-	fputs(commands.c_str(), pipe);std::cout << "12657" << endl;
-	fflush(pipe);std::cout << "12658" << endl;
+	fputs(commands.c_str(), pipe);
+	fflush(pipe);
 	if(persistent) {
 		return pclose(pipe) == 0;
 	}
@@ -12674,16 +12809,16 @@ bool Calculator::invokeGnuplot(string commands, string commandline_extra, bool p
 bool Calculator::closeGnuplot() {
 	if(gnuplot_pipe) {
 #ifdef _WIN32
-		int rv = _pclose(gnuplot_pipe);std::cout << "12667" << endl;
+		int rv = _pclose(gnuplot_pipe);
 #else
-		int rv = pclose(gnuplot_pipe);std::cout << "12669" << endl;
+		int rv = pclose(gnuplot_pipe);
 #endif
-		gnuplot_pipe = NULL;std::cout << "12671" << endl;
-		b_gnuplot_open = false;std::cout << "12672" << endl;
+		gnuplot_pipe = NULL;
+		b_gnuplot_open = false;
 		return rv == 0;
 	}
-	gnuplot_pipe = NULL;std::cout << "12675" << endl;
-	b_gnuplot_open = false;std::cout << "12676" << endl;
+	gnuplot_pipe = NULL;
+	b_gnuplot_open = false;
 	return true;
 }
 bool Calculator::gnuplotOpen() {

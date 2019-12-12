@@ -1,0 +1,18 @@
+{
+  "buildFiles": [
+    "/home/antonio/AndroidStudioProjects/calculate/android/../../../Android/Sdk/ndk-bundle/build/cmake/android.toolchain.cmake",
+    "/home/antonio/AndroidStudioProjects/calculate/android/../../../Android/Sdk/ndk-bundle/build/cmake/platforms.cmake",
+    "/home/antonio/AndroidStudioProjects/calculate/android/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/home/antonio/Android/Sdk/cmake/3.10.2.4988404/bin/cmake --build /home/antonio/AndroidStudioProjects/calculate/android/.externalNativeBuild/cmake/debug/x86 --target clean"
+  ],
+  "libraries": {
+    "native_add-Debug-x86": {
+      "artifactName": "native_add",
+      "buildCommand": "/home/antonio/Android/Sdk/cmake/3.10.2.4988404/bin/cmake --build /home/antonio/AndroidStudioProjects/calculate/android/.externalNativeBuild/cmake/debug/x86 --target native_add",
+      "abi": "x86",
+      "output": "/home/antonio/AndroidStudioProjects/flutter_app/build/calculate/intermediates/cmake/debug/obj/x86/libnative_add.so"
+    }
+  }
+}

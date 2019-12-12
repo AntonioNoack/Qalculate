@@ -1,0 +1,70 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "/home/antonio/AndroidStudioProjects/calculate/app/android",
+      "sdkFolder": "/home/antonio/Android/Sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "/home/antonio/AndroidStudioProjects/calculate/app/build/calculate/intermediates",
+      "gradleModulePathName": ":calculate",
+      "moduleRootFolder": "/home/antonio/AndroidStudioProjects/calculate/android",
+      "makeFile": "/home/antonio/AndroidStudioProjects/calculate/android/CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "/home/antonio/AndroidStudioProjects/calculate/app/android/.cxx",
+      "cxxFolder": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx",
+      "ndkFolder": "/home/antonio/Android/Sdk/ndk-bundle",
+      "ndkVersion": "20.0.5594570",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [],
+    "variantName": "debug",
+    "soFolder": "/home/antonio/AndroidStudioProjects/calculate/app/build/calculate/intermediates/cmake/debug/lib",
+    "objFolder": "/home/antonio/AndroidStudioProjects/calculate/app/build/calculate/intermediates/cmake/debug/obj",
+    "jsonFolder": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug",
+    "gradleBuildOutputFolder": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cxx/debug",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "X86_64",
+  "abiPlatformVersion": 16,
+  "cxxBuildFolder": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/x86_64",
+  "jsonFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/x86_64/android_gradle_build.json",
+  "gradleBuildOutputFolder": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cxx/debug/x86_64",
+  "objFolder": "/home/antonio/AndroidStudioProjects/calculate/app/build/calculate/intermediates/cmake/debug/obj/x86_64",
+  "buildCommandFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/x86_64/build_command.txt",
+  "buildOutputFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/x86_64/build_output.txt",
+  "modelOutputFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/x86_64/build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cxx/debug/x86_64/CMakeLists.txt",
+    "toolchainWrapperFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cxx/debug/x86_64/android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cxx/debug/x86_64/build_generation_state.json",
+    "cacheKeyFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cxx/debug/x86_64/compiler_cache_key.json",
+    "compilerCacheUseFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cxx/debug/x86_64/compiler_cache_use.json",
+    "compilerCacheWriteFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cxx/debug/x86_64/compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cxx/debug/x86_64/compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/x86_64/json_generation_record.json",
+  "compileCommandsJsonFile": "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/x86_64/compile_commands.json"
+}

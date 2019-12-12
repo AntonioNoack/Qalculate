@@ -1,0 +1,50 @@
+{
+  "stringTable": {
+    "0": "/home/antonio/AndroidStudioProjects/calculate/android/.externalNativeBuild/cmake/debug/x86_64",
+    "1": "--target=x86_64-none-linux-android21 --gcc-toolchain=/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dnative_add_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -O0 -fno-limit-debug-info -fPIC",
+    "2": "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC  ",
+    "3": "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC  "
+  },
+  "buildFiles": [
+    "/home/antonio/AndroidStudioProjects/calculate/android/../../../Android/Sdk/ndk-bundle/build/cmake/android.toolchain.cmake",
+    "/home/antonio/AndroidStudioProjects/calculate/android/../../../Android/Sdk/ndk-bundle/build/cmake/platforms.cmake",
+    "/home/antonio/AndroidStudioProjects/calculate/android/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/home/antonio/Android/Sdk/cmake/3.10.2.4988404/bin/cmake --build /home/antonio/AndroidStudioProjects/calculate/android/.externalNativeBuild/cmake/debug/x86_64 --target clean"
+  ],
+  "libraries": {
+    "native_add-Debug-x86_64": {
+      "buildCommand": "/home/antonio/Android/Sdk/cmake/3.10.2.4988404/bin/cmake --build /home/antonio/AndroidStudioProjects/calculate/android/.externalNativeBuild/cmake/debug/x86_64 --target native_add",
+      "buildType": "debug",
+      "toolchain": "1908370400",
+      "abi": "x86_64",
+      "artifactName": "native_add",
+      "files": [
+        {
+          "src": "/home/antonio/AndroidStudioProjects/calculate/android/../ios/Classes/qal.cpp",
+          "flagsOrdinal": 2,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/antonio/AndroidStudioProjects/calculate/android/../ios/Classes/all.c",
+          "flagsOrdinal": 3,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "output": "/home/antonio/AndroidStudioProjects/flutter_app/build/calculate/intermediates/cmake/debug/obj/x86_64/libnative_add.so"
+    }
+  },
+  "toolchains": {
+    "1908370400": {
+      "cCompilerExecutable": "/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+      "cppCompilerExecutable": "/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

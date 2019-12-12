@@ -1,0 +1,4 @@
+# ninja log v5
+0	4864	1575487476	CMakeFiles/native_add.dir/home/antonio/AndroidStudioProjects/calculate/ios/Classes/all.c.o	61b6d821ff2065f
+0	16684	1575487488	CMakeFiles/native_add.dir/home/antonio/AndroidStudioProjects/calculate/ios/Classes/qal.cpp.o	ac913f4c1a4d2add
+16684	16900	1575487488	/home/antonio/AndroidStudioProjects/flutter_app/build/calculate/intermediates/cmake/debug/obj/x86_64/libnative_add.so	53a72c746c7a50a7

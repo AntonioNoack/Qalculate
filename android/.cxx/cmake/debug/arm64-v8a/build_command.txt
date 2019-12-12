@@ -1,0 +1,14 @@
+Executable : /home/antonio/Android/Sdk/cmake/3.6.4111459/bin/cmake
+arguments : 
+-H/home/antonio/AndroidStudioProjects/calculate/android
+-B/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/arm64-v8a
+-DANDROID_ABI=arm64-v8a
+-DANDROID_PLATFORM=android-16
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/home/antonio/AndroidStudioProjects/calculate/app/build/calculate/intermediates/cmake/debug/obj/arm64-v8a
+-DCMAKE_BUILD_TYPE=Debug
+-DANDROID_NDK=/home/antonio/Android/Sdk/ndk-bundle
+-DCMAKE_TOOLCHAIN_FILE=/home/antonio/Android/Sdk/ndk-bundle/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/home/antonio/Android/Sdk/cmake/3.6.4111459/bin/ninja
+-GAndroid Gradle - Ninja
+jvmArgs : 
+

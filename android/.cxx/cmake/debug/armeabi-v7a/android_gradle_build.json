@@ -1,0 +1,48 @@
+
+{
+	"buildFiles" : 
+	[
+		"/home/antonio/AndroidStudioProjects/calculate/android/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/home/antonio/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/armeabi-v7a --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"native_add-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "native_add",
+			"buildCommand" : "/home/antonio/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/armeabi-v7a --target native_add",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi16 --gcc-toolchain=/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dnative_add_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/home/antonio/AndroidStudioProjects/calculate/ios/Classes/all.c",
+					"workingDirectory" : "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/armeabi-v7a"
+				},
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi16 --gcc-toolchain=/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_add_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/antonio/AndroidStudioProjects/calculate/ios/Classes/qal.cpp",
+					"workingDirectory" : "/home/antonio/AndroidStudioProjects/calculate/android/.cxx/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "/home/antonio/AndroidStudioProjects/calculate/app/build/calculate/intermediates/cmake/debug/obj/armeabi-v7a/libnative_add.so",
+			"toolchain" : "6031190186288147931"
+		}
+	},
+	"toolchains" : 
+	{
+		"6031190186288147931" : 
+		{
+			"cCompilerExecutable" : "/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/home/antonio/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+		}
+	}
+}
